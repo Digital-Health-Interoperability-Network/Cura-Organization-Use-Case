@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">Cura Organization</string>
+
+    <string name="cura_slogan">CURA… Providing a rewarding way of digital healthcare.</string>
+    <string name="sign_up_note">Aloha!</string>
+    <string name="sign_in_note">Welcome, User</string>
+    <string name="sign_in_email">Email or Phone Number</string>
+    <string name="sign_in_password">Password</string>
+    <string name="sign_in_forgot_password">Forgot Password</string>
+    <string name="sign_in_btn_txt">Sign In</string>
+    <string name="sign_in_create_account_prompt">Sign up</string>
+    <string name="forgot_password_intro_note">Oops!</string>
+    <string name="reset_password_intro_note">almost done!</string>
+    <string name="reset_password_sub_intro_note">Enter your new password</string>
+    <string name="reset_password_confirm_password">Confirm Password</string>
+    <string name="forgot_password_sub_intro_note">Enter your registered email below</string>
+    <string name="forgot_password_btn_txt">Reset Password</string>
+    <string name="forgot_password_remembered_password_text">Remembered Your Password?</string>
+    <string name="forgot_password_sign_in_prompt">Sign In</string>
+    <string name="forgot_password_email">Registered Email</string>
+
+    <string name="menu_logout">Log Out</string>
+
+    <string name="sign_up_sub_note">Please enter your personal email to get OTP to begin registration</string>
+    <string name="registration_sub_note">Please enter your details of driver to register</string>
+    <string name="sign_up_state_hint">State</string>
+    <string name="sign_up_city_hint">City</string>
+    <string name="sign_up_town_hint">Town</string>
+    <string name="sign_up_surname">Surname</string>
+    <string name="sign_up_first_name">First Name</string>
+    <string name="sign_up_personal_email">Enter Your Personal Email</string>
+    <string name="sign_up_organization_email">Enter Organization Email</string>
+    <string name="sign_up_btn_txt">Register</string>
+    <string name="sign_up_existing_account_text">Already have an account?</string>
+    <string name="sign_up_sign_in_prompt">Sign In</string>
+    <string name="sign_up_phone_number">Phone Number</string>
+    <string name="sign_up_gender_male">Male</string>
+    <string name="sign_up_gender_female">Female</string>
+    <string name="sign_up_blood_group">Blood Group</string>
+    <string name="gender_text">Gender</string>
+    <string name="sign_up_password">Password</string>
+    <string name="otp_message">Check Email for OTP</string>
+    <string name="otp_resend_message">Resend OTP in: </string>
+    <string name="sign_up_otp_verify_button">Verify</string>
+    <string name="sign_up_state_of_origin">State of Origin</string>
+    <string name="register_car_note">BienVeniDos</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reg_address_title">Enter Address Details</string>
+    <string name="reg_address_line_1">Address Line 1</string>
+    <string name="reg_address_line_2">Address Line 2 (Optional)</string>
+    <string name="reg_address_city">City</string>
+    <string name="reg_address_lga">LGA</string>
+    <string name="reg_address_state">State</string>
+    <string name="reg_address_postal_code">Postal Code</string>
+    <string name="btn_prev">Prev</string>
+    <string name="btn_next">Next</string>
+    <string name="reg_days_of_operation_title">Enter Days of Operation</string>
+    <string name="cb_monday_text">Monday</string>
+    <string name="cb_sunday_text">Sunday</string>
+    <string name="cb_saturday_text">Saturday</string>
+    <string name="cb_friday_text">Friday</string>
+    <string name="cb_thursday_text">Thursday</string>
+    <string name="cb_wednesday_text">Wednesday</string>
+    <string name="cb_tuesday_text">Tuesday</string>
+    <string name="reg_open_time_hint">Open Time</string>
+    <string name="reg_close_time_hint">Close Time</string>
+    <string name="title_day_of_operation">Day</string>
+    <string name="reg_open_time_hint_short">Open</string>
+    <string name="reg_close_time_hint_short">Close</string>
+
+</resources>

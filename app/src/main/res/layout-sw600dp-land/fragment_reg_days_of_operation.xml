@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".auth.registration.RegDaysOfOperation">
+
+    <TextView
+        android:id="@+id/txt_address_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reg_days_of_operation_title"
+        android:gravity="center"
+        android:padding="@dimen/padding_midi"
+        android:layout_margin="@dimen/margin_mini"
+        android:textColor="@color/custom_color"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/padding_mini"
+        android:padding="@dimen/padding_midi"
+        android:layout_margin="@dimen/margin_mini"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_address_title"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="16"
+                android:padding="@dimen/margin_midi"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.4"
+                    android:text="@string/title_day_of_operation"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_bold"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5.5"
+                    android:text="@string/reg_open_time_hint"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5.5"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:text="@string/reg_close_time_hint"
+                    android:fontFamily="@font/roboto_bold"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="16"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_monday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="@string/cb_monday_text"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_black"
+                    android:layout_margin="@dimen/margin_mini"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_monday_open"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_open_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_monday_open"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_monday_open" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_monday_close"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_close_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_monday_close"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_monday_close" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="16"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_tuesday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="@string/cb_tuesday_text"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_black"
+                    android:layout_margin="@dimen/margin_mini"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_tuesday_open"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_open_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_tuesday_open"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_tuesday_open" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_tuesday_close"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_close_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_tuesday_close"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_tuesday_close" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="16"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_wednesday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="@string/cb_wednesday_text"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_black"
+                    android:layout_margin="@dimen/margin_mini"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_wednesday_open"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_open_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_wednesday_open"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_wednesday_open" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_wednesday_close"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_close_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_wednesday_close"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_wednesday_close" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="16"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_thursday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="@string/cb_thursday_text"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_black"
+                    android:layout_margin="@dimen/margin_mini"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_thursday_open"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_open_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_thursday_open"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_thursday_open" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_thursday_close"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_close_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_thursday_close"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_thursday_close" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="16"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_friday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="@string/cb_friday_text"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_black"
+                    android:layout_margin="@dimen/margin_mini"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_friday_open"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_open_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_friday_open"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_friday_open" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_friday_close"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_close_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_friday_close"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_friday_close" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="16"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_saturday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="@string/cb_saturday_text"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_black"
+                    android:layout_margin="@dimen/margin_mini"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_saturday_open"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_open_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_saturday_open"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_saturday_open" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_saturday_close"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_close_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_saturday_close"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_saturday_close" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="16"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox_sunday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:text="@string/cb_sunday_text"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto_black"
+                    android:layout_margin="@dimen/margin_mini"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_sunday_open"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_open_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_sunday_open"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_sunday_open" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_day_of_operation_sunday_close"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:hint="@string/reg_close_time_hint_short"
+                    android:paddingTop="@dimen/padding_midi">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_day_of_operation_sunday_close"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_day_of_operation_sunday_close" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.registration.RegActivity">
+
+    <fragment
+        android:id="@+id/fragment_reg_address"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.registration.RegAddress"
+        android:layout_width="386dp"
+        android:layout_height="750dp"
+        android:layout_margin="@dimen/margin_midi"
+        android:padding="@dimen/padding_midi"
+        app:layout_constraintBottom_toTopOf="@id/ll_btns"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_reg_address" />
+
+    <LinearLayout
+        android:id="@+id/ll_btns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_margin="@dimen/margin_mini"
+        android:padding="@dimen/padding_midi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_reg_address"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/margin_midi"
+            android:id="@+id/btn_prev"
+            android:text="@string/btn_prev"
+            android:backgroundTint="@color/custom_color"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/margin_midi"
+            android:id="@+id/btn_next"
+            android:text="@string/btn_next"
+            android:backgroundTint="@color/custom_color"/>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

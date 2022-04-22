@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/sign_up_otp_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/otp_message"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_midi"
+            android:textStyle="bold"
+            android:padding="@dimen/padding_midi"
+            android:textColor="@color/black"/>
+
+        <com.mukesh.OtpView
+            android:id="@+id/otp_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:inputType="number"
+            android:layout_gravity="center"
+            android:itemBackground="@color/custom_color"
+            android:textColor="@android:color/white"
+            app:itemCount="4"
+            app:lineColor="@color/custom_color"
+            app:viewType="line"
+            tools:ignore="MissingClass" />
+
+        <TextView
+            android:id="@+id/sign_up_otp_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/otp_resend_message"
+            android:layout_margin="@dimen/margin_midi"
+            android:padding="@dimen/padding_midi"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/cura_slogan"
+            android:layout_margin="@dimen/margin_midi"
+            android:padding="@dimen/padding_midi"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

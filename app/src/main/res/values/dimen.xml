@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_mini">4dp</dimen>
+    <dimen name="padding_midi">8dp</dimen>
+    <dimen name="padding_maxi">16dp</dimen>
+
+    <dimen name="margin_maxi">32dp</dimen>
+    <dimen name="margin_mini">8dp</dimen>
+    <dimen name="margin_midi">16dp</dimen>
+
+    <dimen name="button_width_xxl">256dp</dimen>
+
+
+</resources>

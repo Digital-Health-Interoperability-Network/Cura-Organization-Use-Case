@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".auth.PersonalEmailInput">
+
+    <TextView
+        android:id="@+id/sign_up_welcome_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_midi"
+        android:fontFamily="@font/nabila"
+        android:text="@string/sign_up_note"
+        android:textColor="@color/custom_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/sign_up_welcome_sub_note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sign_up_welcome_note"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin_mini"
+        android:text="@string/sign_up_sub_note"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_welcome_note" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/sign_up_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sign_up_welcome_sub_note"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/margin_midi"
+        android:padding="@dimen/padding_maxi"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_get_otp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_welcome_sub_note">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_sign_up_personal_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_midi"
+                android:layout_margin="@dimen/margin_midi"
+                android:hint="@string/sign_up_personal_email"
+                android:paddingTop="@dimen/padding_midi">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sign_up_personal_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:labelFor="@id/sign_up_personal_email" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_get_otp"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="@dimen/button_width_xxl"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/margin_mini"
+        android:backgroundTint="@color/custom_color"
+        android:padding="@dimen/padding_mini"
+        android:text="@string/sign_up_btn_txt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_card_view" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
