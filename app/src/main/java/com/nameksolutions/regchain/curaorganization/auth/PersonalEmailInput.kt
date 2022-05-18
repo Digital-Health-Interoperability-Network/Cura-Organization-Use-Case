@@ -13,19 +13,23 @@ import androidx.core.widget.addTextChangedListener
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mukesh.OnOtpCompletionListener
 import com.nameksolutions.regchain.curaorganization.R
+import com.nameksolutions.regchain.curaorganization.auth.registration.RegActivity
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentPersonalEmailInputBinding
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.utils.enable
 import com.nameksolutions.regchain.curaorganization.utils.handleApiError
 import com.nameksolutions.regchain.curaorganization.utils.showProgressDialog
+import com.nameksolutions.regchain.curaorganization.utils.startNewActivity
 import kotlinx.android.synthetic.main.reg_otp_layout.view.*
 import java.util.*
 
-class PersonalEmailInput : BaseFragment<AuthViewModel, FragmentPersonalEmailInputBinding, AuthRepo>() {
+class PersonalEmailInput :
+    BaseFragment<AuthViewModel, FragmentPersonalEmailInputBinding, AuthRepo>() {
 
     private lateinit var personalEmail: String
     private var progressDialog: Dialog? = null
+    private val COUNTDOWN_IN_MILLIS: Long = 180000
     val TAG = "EQUA"
 
 
@@ -37,7 +41,7 @@ class PersonalEmailInput : BaseFragment<AuthViewModel, FragmentPersonalEmailInpu
 
 
         //watch the email input field for when a character has been put
-        binding.signUpPersonalEmail.addTextChangedListener{
+        binding.signUpPersonalEmail.addTextChangedListener {
             personalEmail = binding.signUpPersonalEmail.text.toString().trim()
 
             //checks if the entered email is valid
@@ -56,19 +60,19 @@ class PersonalEmailInput : BaseFragment<AuthViewModel, FragmentPersonalEmailInpu
 
     //function to make network call to request otp for the 1st time
     private fun sendEmailForOtp(personalEmail: String) {
-         viewModel.generateOtp(personalEmail)
+        viewModel.generateOtp(personalEmail)
         Log.d(TAG, "sendEmailForOtp: $personalEmail")
 
         //observe the response gotten from the network call
         viewModel.otpResponse.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            when(it){
+            when (it) {
                 is Resource.Success -> {
                     hideProgress()
                     launchBottomSheet()
                 }
                 is Resource.Failure -> {
                     hideProgress()
-                    handleApiError(it) {resendEmailForOtp(personalEmail)}
+                    handleApiError(it) { resendEmailForOtp(personalEmail) }
                 }
                 is Resource.Loading -> {
                     showProgress()
@@ -79,19 +83,19 @@ class PersonalEmailInput : BaseFragment<AuthViewModel, FragmentPersonalEmailInpu
 
     //function to make network to request for a new otp
     private fun resendEmailForOtp(personalEmail: String) {
-         viewModel.resendOtp(personalEmail)
+        viewModel.resendOtp(personalEmail)
 
         //observe the response gotten from the network call
         viewModel.otpResponse.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
 
-            when(it){
+            when (it) {
                 is Resource.Success -> {
                     hideProgress()
                     launchBottomSheet()
                 }
                 is Resource.Failure -> {
                     hideProgress()
-                    handleApiError(it) {resendEmailForOtp(personalEmail)}
+                    handleApiError(it) { resendEmailForOtp(personalEmail) }
                 }
                 is Resource.Loading -> {
                     showProgress()
@@ -100,21 +104,24 @@ class PersonalEmailInput : BaseFragment<AuthViewModel, FragmentPersonalEmailInpu
         })
     }
 
-    //function to make network to verify entered otp
+    //function to make network call to verify entered otp
     private fun verifyOtp(email: String, otp: String) {
-         viewModel.verifyOtp(email, otp)
+        viewModel.verifyOtp(email, otp)
+
+        Log.d(TAG, "verifyOtp: called")
 
         //observe the response gotten from the network call
         viewModel.otpVerification.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
 
-            when(it){
+            when (it) {
                 is Resource.Success -> {
                     hideProgress()
+                    requireActivity().startNewActivity(RegActivity::class.java)
                     //navigate to registration page
                 }
                 is Resource.Failure -> {
                     hideProgress()
-                    handleApiError(it) {verifyOtp(email, otp)}
+                    handleApiError(it) { verifyOtp(email, otp) }
                 }
                 is Resource.Loading -> {
                     showProgress()
@@ -132,40 +139,64 @@ class PersonalEmailInput : BaseFragment<AuthViewModel, FragmentPersonalEmailInpu
 
         val otpView = view.otp_view
         val otpCountDownView = view.sign_up_otp_count_down
+        otpCountDownView.setTextColor(resources.getColor(R.color.custom_color))
 
         otpCountDownView.enable(false)
         dialog.setCancelable(false)
         dialog.setContentView(view)
         dialog.show()
 
-        val timer = object : CountDownTimer(1800000, 1000) {
+        var timeLeftInMillis = COUNTDOWN_IN_MILLIS
+
+        val timer = object : CountDownTimer(timeLeftInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                val millis = millisUntilFinished
+                timeLeftInMillis = millisUntilFinished
                 val minutes = (millisUntilFinished / 1000) / 60
 
-                val seconds = millisUntilFinished / 1000
+                val seconds = (millisUntilFinished / 1000) % 60
 
                 //display timer in minutes and seconds
-                val timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
-                otpCountDownView.append(timeFormatted)
-                otpCountDownView.setTextColor(resources.getColor(R.color.custom_color))
+                val timeFormatted =
+                    String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
+                otpCountDownView.text = timeFormatted
             }
+
             override fun onFinish() {
                 //enable view to request for new otp after 3 minutes
+                timeLeftInMillis = 0
                 otpCountDownView.enable(true)
             }
         }
         timer.start()
+
+        otpView!!.setOtpCompletionListener(object :OnOtpCompletionListener
+        {
+            override fun onOtpCompleted(otp: String?) {
+                Log.d(TAG, "onOtpCompleted: ${otp.toString()}")
+                timer.cancel()
+                dialog.dismiss()
+                verifyOtp(personalEmail, otp.toString())
+
+
+            }
+
+        })
+
+
+//        otpView.setOtpCompletionListener {
+//            OnOtpCompletionListener { otp -> //call network function to perform otp verification
+//                Log.d(TAG, "launchBottomSheet: $otp")
+//                verifyOtp(personalEmail, otp!!)
+//            }
+//
+//        }
 
         otpCountDownView.setOnClickListener {
             //enable request another otp when timer elapses
             resendEmailForOtp(personalEmail)
         }
 
-        otpView.setOtpCompletionListener { otp ->
-            //call network function to perform otp verification
-            verifyOtp(personalEmail, otp!!)
-        }
+
     }
 
 
@@ -185,6 +216,6 @@ class PersonalEmailInput : BaseFragment<AuthViewModel, FragmentPersonalEmailInpu
         container: ViewGroup?
     ) = FragmentPersonalEmailInputBinding.inflate(inflater, container, false)
 
-    override fun getFragmentRepo() = AuthRepo(remoteDataSource.buildApi(AuthApi::class.java))
+    override fun getFragmentRepo() = AuthRepo(remoteDataSource.buildApi(AuthApi::class.java), userprefs)
 
 }

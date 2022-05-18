@@ -6,50 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".base.StepView">
 
-    <com.baoyachi.stepview.VerticalStepView
-        android:id="@+id/step_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/ll_btns"
-        />
-
-    <LinearLayout
-        android:id="@+id/ll_btns"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_mini"
-        android:orientation="horizontal"
-        android:padding="@dimen/padding_midi"
-        android:weightSum="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/step_view">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_prev"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_midi"
-            android:layout_weight="1"
-            android:backgroundTint="@color/custom_color"
-            android:text="@string/btn_prev" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_next"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_midi"
-            android:layout_weight="1"
-            android:backgroundTint="@color/custom_color"
-            android:text="@string/btn_next" />
-
-
-    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

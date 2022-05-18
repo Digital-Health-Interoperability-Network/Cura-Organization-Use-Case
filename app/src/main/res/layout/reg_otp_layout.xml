@@ -30,25 +30,60 @@
             android:id="@+id/otp_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
             android:inputType="number"
             android:layout_gravity="center"
-            android:itemBackground="@color/custom_color"
-            android:textColor="@android:color/white"
-            app:itemCount="4"
-            app:lineColor="@color/custom_color"
-            app:viewType="line"
-            tools:ignore="MissingClass" />
-
-        <TextView
-            android:id="@+id/sign_up_otp_count_down"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/otp_resend_message"
-            android:layout_margin="@dimen/margin_midi"
+            android:layout_margin="@dimen/margin_mini"
             android:padding="@dimen/padding_midi"
-            android:textColor="@color/black"/>
+            android:itemBackground="@color/lighter_grey"
+            android:textColor="@color/custom_color"
+            app:itemCount="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sign_up_otp_message"
+            app:lineColor="@color/custom_color"
+            app:viewType="none" />
+
+<!--        <com.mukesh.OtpView-->
+<!--            android:id="@+id/otp_view"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="72dp"-->
+<!--            android:hint="@string/otp_input_text"-->
+<!--            android:inputType="number"-->
+<!--            android:itemBackground="@color/custom_color"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textColorHint="#000000"-->
+<!--            app:itemCount="4"-->
+<!--            app:lineColor="@color/custom_color"-->
+<!--            app:viewType="line" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/margin_mini"
+            android:padding="@dimen/padding_mini"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/otp_resend_message" />
+
+            <TextView
+                android:id="@+id/sign_up_otp_count_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                tools:text="00:00"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"

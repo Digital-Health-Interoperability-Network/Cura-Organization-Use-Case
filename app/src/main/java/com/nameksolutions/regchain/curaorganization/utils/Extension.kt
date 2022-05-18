@@ -9,6 +9,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.graphics.drawable.toDrawable
 import com.nameksolutions.regchain.curaorganization.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 //toast function
@@ -33,6 +35,7 @@ fun <A : Activity> Activity.startNewActivity(activity: Class<A>) {
 //common function to handle enabling the views (buttons)
 fun View.enable(enabled: Boolean) {
     isEnabled = enabled
+    isClickable = enabled
     alpha = if (enabled) 1f else 0.5f
 }
 
@@ -47,6 +50,17 @@ fun Context.showProgressDialog(): Dialog {
         it.setCanceledOnTouchOutside(false)
         return it
     }
+}
+
+//function to change milliseconds to date format
+fun getDate(milliSeconds: Long?, dateFormat: String?): String? {
+    // Create a DateFormatter object for displaying date in specified format.
+    val formatter = SimpleDateFormat(dateFormat)
+
+    // Create a calendar object that will convert the date and time value in milliseconds to date.
+    val calendar: Calendar? = Calendar.getInstance()
+    calendar?.setTimeInMillis(milliSeconds!!)
+    return formatter.format(calendar?.getTime())
 }
 //
 //fun Context.showProgressDialog() {

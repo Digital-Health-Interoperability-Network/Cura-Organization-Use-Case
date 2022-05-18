@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_reg"
+    app:startDestination="@id/regDetails">
+
+    <fragment
+        android:id="@+id/regDetails"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.registration.RegDetails"
+        android:label="fragment_reg_details"
+        tools:layout="@layout/fragment_reg_details" >
+        <action
+            android:id="@+id/action_regDetails_to_regAddress"
+            app:destination="@id/regAddress" />
+    </fragment>
+    <fragment
+        android:id="@+id/regAddress"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.registration.RegAddress"
+        android:label="fragment_reg_address"
+        tools:layout="@layout/fragment_reg_address" >
+        <action
+            android:id="@+id/action_regAddress_to_regRegistryIdentifiers"
+            app:destination="@id/regRegistryIdentifiers" />
+        <action
+            android:id="@+id/action_regAddress_to_regDetails"
+            app:destination="@id/regDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/regRegistryIdentifiers"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.registration.RegRegistryIdentifiers"
+        android:label="fragment_reg_registry_identifers"
+        tools:layout="@layout/fragment_reg_registry_identifers" >
+        <action
+            android:id="@+id/action_regRegistryIdentifiers_to_regDaysOfOperation"
+            app:destination="@id/regDaysOfOperation" />
+        <action
+            android:id="@+id/action_regRegistryIdentifiers_to_regAddress"
+            app:destination="@id/regAddress" />
+    </fragment>
+    <fragment
+        android:id="@+id/regDaysOfOperation"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.registration.RegDaysOfOperation"
+        android:label="fragment_reg_days_of_operation"
+        tools:layout="@layout/fragment_reg_days_of_operation" >
+        <action
+            android:id="@+id/action_regDaysOfOperation_to_regRegistryIdentifiers"
+            app:destination="@id/regRegistryIdentifiers" />
+    </fragment>
+    <fragment
+        android:id="@+id/signIn"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.SignIn"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
+</navigation>

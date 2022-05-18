@@ -3,31 +3,44 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.20520833333333333" />
         <entry key="app/src/main/res/drawable/ic_attention.xml" value="0.3655" />
         <entry key="app/src/main/res/drawable/ic_default_step.xml" value="0.3655" />
+        <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.141" />
         <entry key="app/src/main/res/layout-sw600dp-land/activity_main.xml" value="0.18" />
-        <entry key="app/src/main/res/layout-sw600dp-land/activity_reg.xml" value="0.21" />
-        <entry key="app/src/main/res/layout-sw600dp-land/fragment_reg_address.xml" value="0.1428280358598207" />
-        <entry key="app/src/main/res/layout-sw600dp-land/fragment_reg_days_of_operation.xml" value="0.18" />
-        <entry key="app/src/main/res/layout-sw600dp-land/fragment_reg_details.xml" value="0.1428280358598207" />
-        <entry key="app/src/main/res/layout-sw600dp-land/fragment_reg_registry_identifers.xml" value="0.1428280358598207" />
+        <entry key="app/src/main/res/layout-sw600dp-land/activity_reg.xml" value="0.33801717408274784" />
+        <entry key="app/src/main/res/layout-sw600dp-land/drop_down_item.xml" value="0.216015625" />
+        <entry key="app/src/main/res/layout-sw600dp-land/fragment_forgot_password.xml" value="0.9" />
+        <entry key="app/src/main/res/layout-sw600dp-land/fragment_reg_address.xml" value="0.67" />
+        <entry key="app/src/main/res/layout-sw600dp-land/fragment_reg_days_of_operation.xml" value="0.33" />
+        <entry key="app/src/main/res/layout-sw600dp-land/fragment_reg_details.xml" value="0.5" />
+        <entry key="app/src/main/res/layout-sw600dp-land/fragment_reg_registry_identifers.xml" value="0.43577620173364856" />
         <entry key="app/src/main/res/layout-sw600dp-land/fragment_register.xml" value="0.11119791666666666" />
+        <entry key="app/src/main/res/layout-sw600dp-land/fragment_reset_password.xml" value="0.216015625" />
+        <entry key="app/src/main/res/layout-sw600dp-land/fragment_sign_in.xml" value="0.1" />
         <entry key="app/src/main/res/layout-sw600dp-land/fragment_sing_in.xml" value="0.11119791666666666" />
         <entry key="app/src/main/res/layout-sw600dp-land/loading_progress_dialog.xml" value="0.1428280358598207" />
-        <entry key="app/src/main/res/layout-sw600dp-land/reg_otp_layout.xml" value="0.1428280358598207" />
+        <entry key="app/src/main/res/layout-sw600dp-land/reg_otp_layout.xml" value="0.47435897435897434" />
+        <entry key="app/src/main/res/layout-sw600dp-land/time_picker_dialog_layout.xml" value="0.67" />
         <entry key="app/src/main/res/layout-sw600dp/activity_main.xml" value="0.19427083333333334" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_reg.xml" value="0.2997007268063275" />
+        <entry key="app/src/main/res/layout/drop_down_item.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/fragment_cura.xml" value="0.30739632321504917" />
+        <entry key="app/src/main/res/layout/fragment_forgot_password.xml" value="0.2504528985507246" />
         <entry key="app/src/main/res/layout/fragment_personal_email_input.xml" value="0.3189397178281317" />
         <entry key="app/src/main/res/layout/fragment_reg_address.xml" value="0.2997007268063275" />
-        <entry key="app/src/main/res/layout/fragment_reg_days_of_operation.xml" value="0.2997007268063275" />
+        <entry key="app/src/main/res/layout/fragment_reg_days_of_operation.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_reg_details.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/fragment_reg_registry_identifers.xml" value="0.2997007268063275" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.3189397178281317" />
-        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.1464688675302967" />
+        <entry key="app/src/main/res/layout/fragment_reset_password.xml" value="0.2504528985507246" />
+        <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_step_view.xml" value="0.2997007268063275" />
         <entry key="app/src/main/res/layout/loading_progress_dialog.xml" value="0.1464688675302967" />
-        <entry key="app/src/main/res/layout/reg_otp_layout.xml" value="0.15587129126619306" />
+        <entry key="app/src/main/res/layout/reg_otp_layout.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/time_picker_dialog_layout.xml" value="0.25" />
       </map>
     </option>
   </component>

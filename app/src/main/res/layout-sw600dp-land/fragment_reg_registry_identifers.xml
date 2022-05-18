@@ -1,6 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".auth.registration.RegRegistryIdentifiers">
+
+    <TextView
+        android:id="@+id/txt_reg_id_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reg_registry_identifiers_title"
+        android:gravity="center"
+        android:padding="@dimen/padding_midi"
+        android:layout_margin="@dimen/margin_mini"
+        android:textColor="@color/custom_color"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/padding_mini"
+        android:layout_margin="@dimen/margin_midi"
+        android:padding="@dimen/padding_midi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_reg_id_title"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_reg_id_state_id"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_midi"
+                android:layout_margin="@dimen/margin_midi"
+                android:hint="@string/reg_id_state_id"
+                android:paddingTop="@dimen/padding_midi">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/reg_id_state_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:labelFor="@id/reg_id_state_id" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_reg_id_reg_no"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_midi"
+                android:layout_margin="@dimen/margin_midi"
+                android:hint="@string/reg_id_reg_no"
+                android:paddingTop="@dimen/padding_midi">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/reg_id_reg_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:labelFor="@id/reg_id_reg_no" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_layout_ownership_type"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_mini"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/custom_color">
+
+                <AutoCompleteTextView
+                    android:id="@+id/reg_ownership_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:hint="@string/reg_ownership_type"
+                    android:inputType="none"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_layout_ownership"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_mini"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/custom_color">
+
+                <AutoCompleteTextView
+                    android:id="@+id/reg_ownership"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:hint="@string/reg_ownership"
+                    android:inputType="none"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_layout_facility_level"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_mini"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/custom_color">
+
+                <AutoCompleteTextView
+                    android:id="@+id/reg_facility_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:hint="@string/reg_facility_level"
+                    android:inputType="none"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_layout_facility_level_option"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_mini"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/custom_color">
+
+                <AutoCompleteTextView
+                    android:id="@+id/reg_facility_level_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:hint="@string/reg_facility_level_option"
+                    android:inputType="none"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
