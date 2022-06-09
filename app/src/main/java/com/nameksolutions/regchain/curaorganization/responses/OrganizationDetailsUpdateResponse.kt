@@ -1,6 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
 data class OrganizationDetailsUpdateResponse(
-    val `data`: DataXXX,
+    val `data`: DataUpdatedOrganizationInfo,
     val status: String
 )

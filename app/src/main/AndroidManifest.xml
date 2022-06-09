@@ -16,7 +16,7 @@
             android:name=".home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".auth.registration.RegActivity"
+            android:name="com.nameksolutions.regchain.curaorganization.auth.ui.registration.RegActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

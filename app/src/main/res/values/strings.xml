@@ -55,13 +55,13 @@
     <string name="btn_prev">Prev</string>
     <string name="btn_next">Next</string>
     <string name="reg_days_of_operation_title">Enter Days of Operation</string>
-    <string name="cb_monday_text">Monday</string>
-    <string name="cb_sunday_text">Sunday</string>
-    <string name="cb_saturday_text">Saturday</string>
-    <string name="cb_friday_text">Friday</string>
-    <string name="cb_thursday_text">Thursday</string>
-    <string name="cb_wednesday_text">Wednesday</string>
-    <string name="cb_tuesday_text">Tuesday</string>
+    <string name="cb_monday_text">Mon</string>
+    <string name="cb_sunday_text">Sun</string>
+    <string name="cb_saturday_text">Sat</string>
+    <string name="cb_friday_text">Fri</string>
+    <string name="cb_thursday_text">Thurs</string>
+    <string name="cb_wednesday_text">Wed</string>
+    <string name="cb_tuesday_text">Tue</string>
     <string name="reg_open_time_hint">Open Time</string>
     <string name="reg_close_time_hint">Close Time</string>
     <string name="title_day_of_operation">Day</string>
@@ -90,6 +90,35 @@
     <string name="close_time_picker_title">Pick Close Time</string>
     <string name="time_picker_ok">OK</string>
     <string name="time_picker_cancel">CANCEL</string>
+    <string name="btn_personnel">Personnel</string>
+    <string name="btn_services">Services</string>
+    <string name="profile">Profile</string>
+    <string name="token">Token</string>
+    <string name="types_doctors">Doctors</string>
+    <string name="doctors_expand_arrow">Expand Doctors List</string>
+    <string name="nurses_title">Nurses</string>
+    <string name="nurses_expand_arrow">Expand Nurses List</string>
+    <string name="pharmacists_title">Pharmacists</string>
+    <string name="pharmacists_expand_arrow">Expand Pharmacists List</string>
+    <string name="Lab_tech_title">Laboratory Technicians</string>
+    <string name="lab_tech_expand_arrow">Expand Lab Tech List</string>
+    <string name="personnel_search_hint">Enter Personnel Name</string>
+    <string name="other_practitioners">Others</string>
+    <string name="Lab_scientist_title">Lab Scientists</string>
+    <string name="reg_practitioner_surname">Surname</string>
+    <string name="reg_practitioner_title">Title</string>
+    <string name="reg_practitioner_other_names">Other Names</string>
+    <string name="reg_practitioner_role">Practitioner Role(s)</string>
+    <string name="reg_practitioner_id_type">National Identification Type</string>
+    <string name="reg_practitioner_email">Practitioner Email</string>
+    <string name="practitioners_available_times_title">Available Times</string>
+    <string name="practitioners_available_times_expand_arrow">Practitoners Available Times Expand Arrow</string>
+    <string name="btn_practitioner_register">Register</string>
+    <string name="btn_practitioner_cancel">Cancel</string>
+    <string name="reg_practitioner_gender">Gender</string>
+    <string name="text_no_data">No Data</string>
+    <string name="text_column">:</string>
+    <string name="personnel_agg">%1$s, :,  %2$s</string>
 
 
     <string-array name="reg_steps">
@@ -168,6 +197,19 @@
         <item>Yobe</item>
         <item>Zamfara</item>
 
+    </string-array>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="name_prefixes">
+        <item>Mr</item>
+        <item>Mrs</item>
+        <item>Ms</item>
+        <item>Rev</item>
+        <item>Dr</item>
     </string-array>
 
 

@@ -56,26 +56,8 @@ class AuthViewModel(
         _otpVerification.value = repo.verifyOTP(email, otp)
     }
 
-//    fun createOrganization(
-//        name: String,
-//        alias: MutableList<String>,
-//        password: String,
-//        identifier: MutableList<Identifiers>,
-//        telecom: MutableList<HashMap<String, String>>,
-//        active: Boolean
-//    ) = viewModelScope.launch {
-//        _organizationCreation.value = Resource.Loading
-//        _organizationCreation.value =
-//            repo.createOrganization(name, alias, password, identifier, telecom, active)
-//    }
     fun createOrganization(
     createOrganizationRequest: CreateOrganizationRequest
-//        name: String,
-//        alias: MutableList<String>,
-//        password: String,
-//        identifier: MutableList<Identifiers>,
-//        telecom: MutableList<Telecom>,
-//        active: Boolean
     ) = viewModelScope.launch {
         _organizationCreation.value = Resource.Loading
         _organizationCreation.value =

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="fragmentHome"
+            type="com.nameksolutions.regchain.curaorganization.responses.LoginResponse" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".home.ui.HomeFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/action_bar_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/customToolBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:title="@{fragmentHome.data.organization.name.toString()}"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <ImageView
+            android:id="@+id/home_search_btn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="@dimen/margin_midi"
+            android:layout_marginEnd="16dp"
+            android:padding="@dimen/padding_mini"
+            app:layout_constraintBottom_toTopOf="@id/buttons_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/action_bar_home"
+            app:layout_constraintVertical_bias="0.054"
+            app:srcCompat="@drawable/ic_search" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/buttons_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_mini"
+            android:padding="@dimen/padding_mini"
+            app:cardElevation="@dimen/padding_mini"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/action_bar_home">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_personnel"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_corner"
+                        android:fontFamily="@font/roboto_bold"
+                        android:padding="@dimen/padding_mini"
+                        android:text="@string/btn_personnel"
+                        android:textSize="@dimen/sp24"
+                        app:icon="@drawable/ic_personnel"
+                        app:iconGravity="top"
+                        app:iconPadding="@dimen/padding_maxi"
+                        app:iconSize="64dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_services"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_corner"
+                        android:fontFamily="@font/roboto_bold"
+                        android:padding="@dimen/padding_mini"
+                        android:text="@string/btn_services"
+                        android:textSize="@dimen/sp24"
+                        app:icon="@drawable/ic_services"
+                        app:iconGravity="top"
+                        app:iconPadding="@dimen/padding_maxi"
+                        app:iconSize="64dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_profile"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_corner"
+                        android:fontFamily="@font/roboto_bold"
+                        android:padding="@dimen/padding_mini"
+                        android:text="@string/profile"
+                        android:textSize="@dimen/sp24"
+                        app:icon="@drawable/ic_hospital_sign"
+                        app:iconGravity="top"
+                        app:iconPadding="@dimen/padding_maxi"
+                        app:iconSize="64dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_token"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_corner"
+                        android:fontFamily="@font/roboto_bold"
+                        android:padding="@dimen/padding_mini"
+                        android:text="@string/token"
+                        android:textSize="@dimen/sp24"
+                        app:icon="@drawable/ic_token"
+                        app:iconGravity="top"
+                        app:iconPadding="@dimen/padding_maxi"
+                        app:iconSize="64dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

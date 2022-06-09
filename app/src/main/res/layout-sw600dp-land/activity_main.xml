@@ -37,7 +37,7 @@
             android:id="@+id/fragment_personal_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.nameksolutions.regchain.curaorganization.auth.PersonalEmailInput"
+            android:name="com.nameksolutions.regchain.curaorganization.auth.ui.PersonalEmailInput"
             tools:layout="@layout/fragment_personal_email_input"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="@dimen/margin_midi"

@@ -1,5 +1,7 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
 data class DataXX(
-    val organization: Organization
+    val _id: String,
+    val _personnel: List<Personnel>,
+    val organization: String
 )

@@ -5,6 +5,8 @@ import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationR
 import com.nameksolutions.regchain.curaorganization.requests.Identifiers
 import com.nameksolutions.regchain.curaorganization.requests.Telecom
 import com.nameksolutions.regchain.curaorganization.responses.*
+import com.nameksolutions.regchain.curaorganization.utils.Common.organizationRoute
+import com.nameksolutions.regchain.curaorganization.utils.Common.userRoute
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.*
@@ -17,19 +19,19 @@ interface AuthApi {
         get() = Gson()
 
     @FormUrlEncoded
-    @POST("users/signup")
+    @POST("$userRoute/signup")
     suspend fun signup(
         @Field("email") email: String
     ): SignUpResponse
 
     @FormUrlEncoded
-    @POST("users/resendotp")
+    @POST("$userRoute/resendotp")
     suspend fun resendOtp(
         @Field("email") email: String
     ): SignUpResponse
 
     @FormUrlEncoded
-    @POST("users/verifyotp")
+    @POST("$userRoute/verifyotp")
     suspend fun verifyOtp(
         @Field("email") email: String,
         @Field("otp") otp: String
@@ -38,7 +40,7 @@ interface AuthApi {
 
     //@FormUrlEncoded
     @Headers("Content-Type: application/json")
-    @POST("organization")
+    @POST(organizationRoute)
     suspend fun createOrganization(
         @Body createOrganization: CreateOrganizationRequest
     ): OrganizationCreationResponse
@@ -46,7 +48,7 @@ interface AuthApi {
 
     //@FormUrlEncoded
     @Headers("Content-Type: application/json")
-    @PATCH("organization")
+    @PATCH(organizationRoute)
     suspend fun addOrganizationDetails( //to be used when user wants to replace the data in the db
         @Body addOrganizationDetail: CreateOrganizationRequest
 //        @Field("name") name: String?,
@@ -61,14 +63,14 @@ interface AuthApi {
     ): OrganizationDetailsUpdateResponse
 
     @FormUrlEncoded
-    @POST("organization/login")
+    @POST("$organizationRoute/login")
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String
     ): LoginResponse
 
     @FormUrlEncoded
-    @PATCH("organization")
+    @PATCH(organizationRoute)
     suspend fun updateOrg(
         @Field("name") name: String,
         @Field("password") password: String,

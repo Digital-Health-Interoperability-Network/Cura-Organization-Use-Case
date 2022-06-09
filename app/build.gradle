@@ -9,6 +9,10 @@ plugins {
 android {
     compileSdk 32
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.nameksolutions.regchain.curaorganization"
         minSdk 23
@@ -21,6 +25,7 @@ android {
         multiDexEnabled true
 
     }
+
 
     buildTypes {
         release {
@@ -35,6 +40,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     buildFeatures {
         viewBinding = true
     }
@@ -83,6 +89,7 @@ dependencies {
     implementation 'com.hbb20:android-country-picker:0.0.7'
 //    implementation 'com.github.loukwn.StageStepBar:stagestepbar:'
     implementation 'com.shuhart.stepview:stepview:1.2.6'
+    implementation 'io.github.informramiz:nameinitialscircleimageview:1.6'
 
 //    implementation 'com.hbb20:AndroidCountryPicker:0.0.7'
 

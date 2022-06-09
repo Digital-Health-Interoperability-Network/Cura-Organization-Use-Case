@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_reg"
-    app:startDestination="@id/regDetails">
+    app:startDestination="@id/signIn">
 
     <fragment
         android:id="@+id/regDetails"
-        android:name="com.nameksolutions.regchain.curaorganization.auth.registration.RegDetails"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.registration.RegDetails"
         android:label="fragment_reg_details"
         tools:layout="@layout/fragment_reg_details" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/regAddress"
-        android:name="com.nameksolutions.regchain.curaorganization.auth.registration.RegAddress"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.registration.RegAddress"
         android:label="fragment_reg_address"
         tools:layout="@layout/fragment_reg_address" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/regRegistryIdentifiers"
-        android:name="com.nameksolutions.regchain.curaorganization.auth.registration.RegRegistryIdentifiers"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.registration.RegRegistryIdentifiers"
         android:label="fragment_reg_registry_identifers"
         tools:layout="@layout/fragment_reg_registry_identifers" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/regDaysOfOperation"
-        android:name="com.nameksolutions.regchain.curaorganization.auth.registration.RegDaysOfOperation"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.registration.RegDaysOfOperation"
         android:label="fragment_reg_days_of_operation"
         tools:layout="@layout/fragment_reg_days_of_operation" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/signIn"
-        android:name="com.nameksolutions.regchain.curaorganization.auth.SignIn"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.SignIn"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" />
 </navigation>

@@ -1,6 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_base">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_base"
+    app:startDestination="@id/homeFragment">
 
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nameksolutions.regchain.curaorganization.home.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_personnelFragment"
+            app:destination="@id/personnelFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_servicesFragment"
+            app:destination="@id/servicesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tokenFragment"
+            app:destination="@id/tokenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personnelFragment"
+        android:name="com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelFragment"
+        android:label="fragment_personnel"
+        tools:layout="@layout/fragment_personnel" >
+        <action
+            android:id="@+id/action_personnelFragment_to_newPersonnelFragment"
+            app:destination="@id/newPersonnelFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_personnelFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPersonnelFragment"
+        android:name="com.nameksolutions.regchain.curaorganization.home.personnel.NewPersonnelFragment"
+        android:label="fragment_new_personnel"
+        tools:layout="@layout/fragment_new_personnel" >
+        <action
+            android:id="@+id/action_newPersonnelFragment_to_personnelFragment"
+            app:destination="@id/personnelFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/servicesFragment"
+        android:name="com.nameksolutions.regchain.curaorganization.home.services.ServicesFragment"
+        android:label="ServicesFragment" >
+        <action
+            android:id="@+id/action_servicesFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.nameksolutions.regchain.curaorganization.home.profile.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tokenFragment"
+        android:name="com.nameksolutions.regchain.curaorganization.home.tokens.TokenFragment"
+        android:label="TokenFragment" >
+        <action
+            android:id="@+id/action_tokenFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

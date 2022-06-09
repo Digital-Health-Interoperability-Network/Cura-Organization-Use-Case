@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="18"
-    tools:context=".auth.registration.RegActivity">
+    tools:context=".auth.ui.registration.RegActivity">
 
     <!--    <com.baoyachi.stepview.HorizontalStepView-->
     <!--        android:id="@+id/step_view_horizontal"-->
@@ -80,7 +80,7 @@
 
     <!--    <fragment-->
     <!--        android:id="@+id/fragment_reg_address"-->
-    <!--        android:name="com.nameksolutions.regchain.curaorganization.auth.registration.RegAddress"-->
+    <!--        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.registration.RegAddress"-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="wrap_content"-->
     <!--        android:layout_margin="@dimen/margin_midi"-->

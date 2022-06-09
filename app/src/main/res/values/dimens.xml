@@ -2,4 +2,7 @@
 <resources>
     <dimen name="sp16">16sp</dimen>
     <dimen name="sp8">8sp</dimen>
+    <dimen name="sp24">24sp</dimen>
+    <dimen name="icon_width_height">25</dimen>
+    <dimen name="icon_text">12sp</dimen>
 </resources>
