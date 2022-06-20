@@ -48,7 +48,7 @@ class PersonnelFragment :
         super.onActivityCreated(savedInstanceState)
 
 //        getPractitionerRoleList()
-//        fetchAllPractitionersStats()
+        fetchAllPractitionersStats()
 //        fetchPractitioners("Doctor")
 //        for (role in Common.practitionerRolesList) {
 //            fetchPractitioners(role)
