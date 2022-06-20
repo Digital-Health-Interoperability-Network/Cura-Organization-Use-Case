@@ -41,16 +41,16 @@ class PersonnelViewModel(
         get() = _practitionerDetailsUpdate
 
     //fetch all practitioner Observer Variables
-    private val _allPractitionerDetails: MutableLiveData<Resource<AllPractitioner>> =
+    private val _allPractitionerDetails: MutableLiveData<Resource<FetchPractitionerResponse>> =
         MutableLiveData()
-    val allPractitionerDetails: LiveData<Resource<AllPractitioner>>
+    val allPractitionerDetails: LiveData<Resource<FetchPractitionerResponse>>
         get() = _allPractitionerDetails
 
 
     //fetch all practitioner by role Observer Variables
-    private val _allPractitionerByRoleDetails: MutableLiveData<Resource<List<NewPractitioner>>> =
+    private val _allPractitionerByRoleDetails: MutableLiveData<Resource<FetchPractitionerResponse>> =
         MutableLiveData()
-    val allPractitionerByRoleDetails: LiveData<Resource<List<NewPractitioner>>>
+    val allPractitionerByRoleDetails: LiveData<Resource<FetchPractitionerResponse>>
         get() = _allPractitionerByRoleDetails
 
     private val _practitionerRoleList: MutableLiveData<Resource<PractitionerRoleListResponse>> = MutableLiveData()

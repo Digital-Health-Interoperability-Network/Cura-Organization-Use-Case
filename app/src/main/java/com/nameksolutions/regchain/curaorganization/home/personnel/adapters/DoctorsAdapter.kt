@@ -11,8 +11,9 @@ import com.nameksolutions.regchain.curaorganization.databinding.ActivityHomeBind
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelDoctorsItemLayoutBinding
 import com.nameksolutions.regchain.curaorganization.responses.DataAllPractitioner
 import com.nameksolutions.regchain.curaorganization.responses.NewPractitioner
+import com.nameksolutions.regchain.curaorganization.responses.Practitoner
 
-class DoctorsAdapter: ListAdapter<NewPractitioner, DoctorsAdapter.DoctorsViewHolder>(DiffCallback()){
+class DoctorsAdapter: ListAdapter<Practitoner, DoctorsAdapter.DoctorsViewHolder>(DiffCallback()){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -36,14 +37,14 @@ class DoctorsAdapter: ListAdapter<NewPractitioner, DoctorsAdapter.DoctorsViewHol
 
     }
 
-    private fun createOnClickListener(doctor: NewPractitioner?): View.OnClickListener {
+    private fun createOnClickListener(doctor: Practitoner?): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
         }
     }
 
     class DoctorsViewHolder(private val binding: PersonnelDoctorsItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(listener: View.OnClickListener, itemData: NewPractitioner){
+        fun bind(listener: View.OnClickListener, itemData: Practitoner){
             binding.apply {
                 doctorsItemClickListener = listener
                 doctorsItem = itemData
@@ -51,14 +52,14 @@ class DoctorsAdapter: ListAdapter<NewPractitioner, DoctorsAdapter.DoctorsViewHol
             }
         }
     }
-    private class DiffCallback: DiffUtil.ItemCallback<NewPractitioner>(){
-        override fun areItemsTheSame(oldItem: NewPractitioner, newItem: NewPractitioner): Boolean {
+    private class DiffCallback: DiffUtil.ItemCallback<Practitoner>(){
+        override fun areItemsTheSame(oldItem: Practitoner, newItem: Practitoner): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: NewPractitioner,
-            newItem: NewPractitioner
+            oldItem: Practitoner,
+            newItem: Practitoner
         ): Boolean {
             return oldItem == newItem
         }

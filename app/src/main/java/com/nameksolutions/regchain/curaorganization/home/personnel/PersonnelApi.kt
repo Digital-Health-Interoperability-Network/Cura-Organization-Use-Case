@@ -31,14 +31,17 @@ interface PersonnelApi {
     @GET(personnelRoute)
     suspend fun getAllPersonnelStats(): PersonnelStatsResponse
 
+   // @GET(practitionerRoute)
+//    suspend fun getAllPractitioners(): AllPractitioner
+
     @GET(practitionerRoute)
-    suspend fun getAllPractitioners(): AllPractitioner
+    suspend fun getAllPractitioners(): FetchPractitionerResponse
 //
 //    @GET(practitionerRoute)
 //    suspend fun getOnePractitioner(id: String):
 
-    @GET(practitionerRoute)
-    suspend fun getPractitionersByRole(@Query("code") code: String): List<NewPractitioner>
+    @GET("$practitionerRoute/aggregates")
+    suspend fun getPractitionersByRole(@Query("code") code: String): FetchPractitionerResponse
 
 //    suspend fun getPractitionersByRole(code: String) = safeApiCall {
 //        api.getPractitionersByRole(code)

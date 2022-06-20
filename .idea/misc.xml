@@ -53,10 +53,11 @@
         <entry key="app/src/main/res/layout/loading_progress_dialog.xml" value="0.1464688675302967" />
         <entry key="app/src/main/res/layout/personnel_doctors_item_layout.xml" value="0.5551181102362205" />
         <entry key="app/src/main/res/layout/personnel_lab_scientists.xml" value="0.24161378059836808" />
+        <entry key="app/src/main/res/layout/personnel_lab_scientists_item_layout.xml" value="0.24161378059836808" />
         <entry key="app/src/main/res/layout/personnel_nurses_item_layout.xml" value="0.24161378059836808" />
         <entry key="app/src/main/res/layout/personnel_other_practitioners_item_layout.xml" value="0.24161378059836808" />
         <entry key="app/src/main/res/layout/personnel_pharmacists_item_layout.xml" value="0.24161378059836808" />
-        <entry key="app/src/main/res/layout/personnel_stats_layout_item.xml" value="0.5850622406639004" />
+        <entry key="app/src/main/res/layout/personnel_stats_layout_item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/reg_otp_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/time_picker_dialog_layout.xml" value="0.25" />
       </map>

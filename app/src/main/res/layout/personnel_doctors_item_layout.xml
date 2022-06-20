@@ -11,7 +11,7 @@
 
         <variable
             name="doctorsItem"
-            type="com.nameksolutions.regchain.curaorganization.responses.NewPractitioner" />
+            type="com.nameksolutions.regchain.curaorganization.responses.Practitoner" />
 
     </data>
 

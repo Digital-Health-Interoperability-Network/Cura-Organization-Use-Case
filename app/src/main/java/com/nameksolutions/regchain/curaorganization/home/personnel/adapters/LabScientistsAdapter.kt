@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelLabScientistsItemLayoutBinding
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelPharmacistsItemLayoutBinding
 import com.nameksolutions.regchain.curaorganization.responses.NewPractitioner
+import com.nameksolutions.regchain.curaorganization.responses.Practitoner
 
-class LabScientistsAdapter : ListAdapter<NewPractitioner, LabScientistsAdapter.LabScientistsViewHolder>(LabScientistsAdapter.DiffCallback()) {
+class LabScientistsAdapter : ListAdapter<Practitoner, LabScientistsAdapter.LabScientistsViewHolder>(LabScientistsAdapter.DiffCallback()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -27,22 +28,22 @@ class LabScientistsAdapter : ListAdapter<NewPractitioner, LabScientistsAdapter.L
         holder: LabScientistsAdapter.LabScientistsViewHolder,
         position: Int
     ) {
-        val nurse = getItem(position)
+        val labScientist = getItem(position)
         holder.apply {
-            bind(createOnClickListener(nurse), nurse)
-            itemView.tag = nurse
+            bind(createOnClickListener(labScientist), labScientist)
+            itemView.tag = labScientist
         }
 
     }
 
-    private fun createOnClickListener(doctor: NewPractitioner?): View.OnClickListener {
+    private fun createOnClickListener(labScientist: Practitoner?): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
         }
     }
 
     class LabScientistsViewHolder(private val binding: PersonnelLabScientistsItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(listener: View.OnClickListener, itemData: NewPractitioner){
+        fun bind(listener: View.OnClickListener, itemData: Practitoner){
             binding.apply {
                 labScientistItemClickListener = listener
                 labScientistItem = itemData
@@ -50,14 +51,14 @@ class LabScientistsAdapter : ListAdapter<NewPractitioner, LabScientistsAdapter.L
             }
         }
     }
-    private class DiffCallback: DiffUtil.ItemCallback<NewPractitioner>(){
-        override fun areItemsTheSame(oldItem: NewPractitioner, newItem: NewPractitioner): Boolean {
+    private class DiffCallback: DiffUtil.ItemCallback<Practitoner>(){
+        override fun areItemsTheSame(oldItem: Practitoner, newItem: Practitoner): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: NewPractitioner,
-            newItem: NewPractitioner
+            oldItem: Practitoner,
+            newItem: Practitoner
         ): Boolean {
             return oldItem == newItem
         }
