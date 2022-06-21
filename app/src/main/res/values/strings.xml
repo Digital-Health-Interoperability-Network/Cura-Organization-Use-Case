@@ -118,7 +118,9 @@
     <string name="reg_practitioner_gender">Gender</string>
     <string name="text_no_data">No Data</string>
     <string name="text_column">:</string>
-    <string name="personnel_agg">%1$s, :,  %2$s</string>
+    <string name="personnel_agg">%1$s :  %2$s</string>
+    <string name="personnel_stats">Personnel Statistics</string>
+    <string name="practitioner_email">Email</string>
 
 
     <string-array name="reg_steps">

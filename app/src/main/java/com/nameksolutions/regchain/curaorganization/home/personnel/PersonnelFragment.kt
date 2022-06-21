@@ -420,6 +420,7 @@ class PersonnelFragment :
                     hideProgress()
                     //populate the ui
                     val practitioners = it.value.data.practitoners
+                    Log.d(TAG, "fetchAllPractitioner: $practitioners")
                     val doctors = mutableListOf<Practitoner>()
                     val nurses = mutableListOf<Practitoner>()
                     val pharmacists = mutableListOf<Practitoner>()
@@ -461,6 +462,7 @@ class PersonnelFragment :
                             }
                         }
                     }
+                    Log.d(TAG, "fetchAllPractitionerDoctors: $doctors")
                     Log.d(TAG, "fetchAllPractitoner: $it")
                 }
                 is Resource.Failure -> {
@@ -507,10 +509,15 @@ class PersonnelFragment :
                     //show it in the recycler view
                     val testStat = it.value.data._personnel//.data._personnel
                     Log.d(TAG, "fetchAllPractitionersStatsTest: $testStat")
+                    val statsList = mutableListOf<Personnel>()
+                    for (stat in testStat){
+                        statsList.add(stat)
+                    }
 //                    Log.d(TAG, "fetchAllPractitionersStatsData: ${it.value .data}")
 //                    Log.d(TAG, "fetchAllPractitionersStatsPersonnel: ${it.value.data._personnel}")
 
-                    subscribeAllPractitionerStatsUI(testStat)
+                    Log.d(TAG, "fetchAllPractitionersStatsList: $statsList")
+                    subscribeAllPractitionerStatsUI(statsList)
 //                    val newalist = it.value.data._personnel
 
                 }

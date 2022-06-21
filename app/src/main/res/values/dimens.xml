@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="sp16">16sp</dimen>
+    <dimen name="sp18">18sp</dimen>
     <dimen name="sp8">8sp</dimen>
     <dimen name="sp24">24sp</dimen>
+    <dimen name="sp20">20sp</dimen>
     <dimen name="icon_width_height">25</dimen>
     <dimen name="icon_text">12sp</dimen>
+    <dimen name="icon_text_big">96sp</dimen>
 </resources>

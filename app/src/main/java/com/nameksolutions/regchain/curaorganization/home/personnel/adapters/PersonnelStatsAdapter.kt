@@ -27,13 +27,14 @@ class PersonnelStatsAdapter: ListAdapter<Personnel, PersonnelStatsAdapter.Person
     ) {
         val personnelStat = getItem(position)
         holder.apply {
+            bind(personnelStat)
             itemView.tag = personnelStat
         }
 
     }
 
     class PersonnelStatsViewHolder(private val binding: PersonnelStatsLayoutItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(listener: View.OnClickListener, itemData: Personnel){
+        fun bind(itemData: Personnel){
             binding.apply {
                 personnelStatsItem = itemData
                 executePendingBindings()
@@ -42,7 +43,7 @@ class PersonnelStatsAdapter: ListAdapter<Personnel, PersonnelStatsAdapter.Person
     }
     private class DiffCallback: DiffUtil.ItemCallback<Personnel>(){
         override fun areItemsTheSame(oldItem: Personnel, newItem: Personnel): Boolean {
-            return oldItem.roles == newItem.roles
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
