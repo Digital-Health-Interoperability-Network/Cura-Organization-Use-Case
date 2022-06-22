@@ -3,11 +3,13 @@ package com.nameksolutions.regchain.curaorganization.home.personnel.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelLabScientistsItemLayoutBinding
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelPharmacistsItemLayoutBinding
+import com.nameksolutions.regchain.curaorganization.home.personnel.ui.PersonnelFragmentDirections
 import com.nameksolutions.regchain.curaorganization.responses.NewPractitioner
 import com.nameksolutions.regchain.curaorganization.responses.Practitoner
 
@@ -36,9 +38,11 @@ class LabScientistsAdapter : ListAdapter<Practitoner, LabScientistsAdapter.LabSc
 
     }
 
-    private fun createOnClickListener(labScientist: Practitoner?): View.OnClickListener {
+    private fun createOnClickListener(labScientist: Practitoner): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
+            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem(labScientist)
+            it.findNavController().navigate(direction)
         }
     }
 
@@ -47,6 +51,8 @@ class LabScientistsAdapter : ListAdapter<Practitoner, LabScientistsAdapter.LabSc
             binding.apply {
                 labScientistItemClickListener = listener
                 labScientistItem = itemData
+//                val labScientistsNames = mutableListOf<String>(labScientistItem.name!!.given!![0].substring(0, 1), labScientistItem.name!!.family!!.substring(0, 1))
+//                labScientistIconText.text = "${labScientistsNames[0]}${labScientistsNames[1]}"
                 executePendingBindings()
             }
         }

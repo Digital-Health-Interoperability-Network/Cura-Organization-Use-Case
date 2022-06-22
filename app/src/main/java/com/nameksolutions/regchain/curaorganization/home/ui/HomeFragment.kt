@@ -17,6 +17,7 @@ import com.nameksolutions.regchain.curaorganization.databinding.FragmentPersonal
 import com.nameksolutions.regchain.curaorganization.home.HomeApi
 import com.nameksolutions.regchain.curaorganization.home.HomeRepo
 import com.nameksolutions.regchain.curaorganization.home.HomeViewModel
+import com.nameksolutions.regchain.curaorganization.utils.Common
 import com.nameksolutions.regchain.curaorganization.utils.snackbar
 
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, HomeRepo>() {
@@ -25,6 +26,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, HomeRepo>(
         super.onActivityCreated(savedInstanceState)
 
         with(binding){
+            customToolBar.title = Common.organizationName
             buttonPersonnel.setOnClickListener {
                 findNavController().navigate(R.id.action_homeFragment_to_personnelFragment)
             }

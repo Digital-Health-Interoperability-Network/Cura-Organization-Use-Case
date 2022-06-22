@@ -4,6 +4,7 @@ import kotlin.properties.Delegates
 
 object Common {
 
+    lateinit var organizationName: String
     var practitionerRolesList = listOf("Doctor",
         "Nurse",
         "Pharmacist",

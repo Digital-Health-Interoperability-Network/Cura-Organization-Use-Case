@@ -40,6 +40,7 @@ class SignIn : BaseFragment<AuthViewModel, FragmentSignInBinding, AuthRepo>() {
                     requireContext().toast("Log in Success")
                     lifecycleScope.launch {
                         viewModel.saveAuthToken(it.value.token)
+                        Common.organizationName = it.value.data.organization.name
                         Log.d(TAG, "onActivityCreated: ${it.value.token}")
                         requireActivity().startNewActivity(HomeActivity::class.java)
                     }

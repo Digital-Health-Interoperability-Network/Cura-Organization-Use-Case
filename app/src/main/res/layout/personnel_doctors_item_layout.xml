@@ -34,16 +34,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="10"
             android:padding="@dimen/padding_mini">
 
 
         <RelativeLayout
             android:id="@+id/doctor_icon_container"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_margin="@dimen/margin_midi"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -57,43 +60,55 @@
                 android:id="@+id/doctor_icon_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
                 android:textColor="@android:color/white"
+                android:text="@{doctorsItem.name.given[0].substring(0,1)}"
                 android:textSize="@dimen/icon_text"
                 tools:text="ER" />
         </RelativeLayout>
+<!--            var practitionerNames = mutableListOf<String>(args.currentPractitioner.name!!.given!![0].substring(0, 1), args.currentPractitioner.name!!.family!!.substring(0, 1))-->
+<!--            practitionerIconText.text = "${practitionerNames[0]}${practitionerNames[1]}"-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/doctor_name"
-            android:layout_width="wrap_content"
-            android:layout_height="18dp"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="12dp"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/sp16"
-            android:text="@{doctorsItem.name.text}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.031"
-            app:layout_constraintStart_toEndOf="@+id/doctor_icon_container"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Dr. Emma Emaa" />
 
-        <TextView
-            android:id="@+id/doctor_gender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/icon_text"
-            android:text="@{doctorsItem.gender}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.025"
-            app:layout_constraintStart_toEndOf="@+id/doctor_icon_container"
-            app:layout_constraintTop_toBottomOf="@+id/doctor_name"
-            tools:text="MSCSDD" />
+                <TextView
+                    android:id="@+id/doctor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp16"
+                    android:text="@{doctorsItem.name.text}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.031"
+                    app:layout_constraintStart_toEndOf="@+id/doctor_icon_container"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Dr. Emma Emaa" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/doctor_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/icon_text"
+                    android:text="@{doctorsItem.gender}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.025"
+                    app:layout_constraintStart_toEndOf="@+id/doctor_icon_container"
+                    app:layout_constraintTop_toBottomOf="@+id/doctor_name"
+                    tools:text="MSCSDD" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

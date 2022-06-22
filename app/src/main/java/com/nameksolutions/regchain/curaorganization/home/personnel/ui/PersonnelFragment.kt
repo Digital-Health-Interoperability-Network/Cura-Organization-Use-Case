@@ -1,4 +1,4 @@
-package com.nameksolutions.regchain.curaorganization.home.personnel
+package com.nameksolutions.regchain.curaorganization.home.personnel.ui
 
 import android.app.Dialog
 import android.os.Bundle
@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentPersonnelBinding
+import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelApi
+import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelRepo
+import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelViewModel
 import com.nameksolutions.regchain.curaorganization.home.personnel.adapters.*
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.responses.Personnel
@@ -432,7 +435,7 @@ class PersonnelFragment :
                             when (practitionerRole.code) {
                                 "Doctor" -> {
                                     if (practitionerRole.code == "Doctor")
-                                    doctors.add(practitioner)
+                                        doctors.add(practitioner)
                                     subscribeAllDoctorsUI(doctors)
                                     Log.d(TAG, "fetchAllPractitioner: Are Doctors")
                                 }
@@ -476,27 +479,27 @@ class PersonnelFragment :
         })
     }
 
-    private fun getPractitionerRoleList(){
-        viewModel.getPractitionerRolesList()
-        viewModel.practitionerRoleListResponse.observe(viewLifecycleOwner, Observer {
-            when(it){
-                is Resource.Success -> {
-                    hideProgress()
-                    requireView().snackbar("Roles Fetched")
-                    val fetchedPractitionerRoles = it.value.practitionerRolesList.listOfPractitionerRoles
-                    Log.d(Common.TAG, "getPractitionerRoleList: ${it.value.practitionerRolesList.listOfPractitionerRoles}")
-                    Common.practitionerRolesList = fetchedPractitionerRoles
-                }
-                is Resource.Failure -> {
-                    hideProgress()
-                    handleApiError(it){getPractitionerRoleList()}
-                }
-                is Resource.Loading -> {
-                    showProgress()
-                }
-            }
-        })
-    }
+//    private fun getPractitionerRoleList(){
+//        viewModel.getPractitionerRolesList()
+//        viewModel.practitionerRoleListResponse.observe(viewLifecycleOwner, Observer {
+//            when(it){
+//                is Resource.Success -> {
+//                    hideProgress()
+//                    requireView().snackbar("Roles Fetched")
+//                    val fetchedPractitionerRoles = it.value.practitionerRolesList.listOfPractitionerRoles
+//                    Log.d(Common.TAG, "getPractitionerRoleList: ${it.value.practitionerRolesList.listOfPractitionerRoles}")
+//                    Common.practitionerRolesList = fetchedPractitionerRoles
+//                }
+//                is Resource.Failure -> {
+//                    hideProgress()
+//                    handleApiError(it){getPractitionerRoleList()}
+//                }
+//                is Resource.Loading -> {
+//                    showProgress()
+//                }
+//            }
+//        })
+//    }
 
 
     private fun fetchAllPractitionersStats() {

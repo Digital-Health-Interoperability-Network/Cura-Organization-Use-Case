@@ -3,12 +3,14 @@ package com.nameksolutions.regchain.curaorganization.home.personnel.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nameksolutions.regchain.curaorganization.databinding.ActivityHomeBinding
 import com.nameksolutions.regchain.curaorganization.databinding.ActivityHomeBinding.bind
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelDoctorsItemLayoutBinding
+import com.nameksolutions.regchain.curaorganization.home.personnel.ui.PersonnelFragmentDirections
 import com.nameksolutions.regchain.curaorganization.responses.DataAllPractitioner
 import com.nameksolutions.regchain.curaorganization.responses.NewPractitioner
 import com.nameksolutions.regchain.curaorganization.responses.Practitoner
@@ -37,9 +39,11 @@ class DoctorsAdapter: ListAdapter<Practitoner, DoctorsAdapter.DoctorsViewHolder>
 
     }
 
-    private fun createOnClickListener(doctor: Practitoner?): View.OnClickListener {
+    private fun createOnClickListener(doctor: Practitoner): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
+            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem(doctor)
+            it.findNavController().navigate(direction)
         }
     }
 
@@ -48,6 +52,10 @@ class DoctorsAdapter: ListAdapter<Practitoner, DoctorsAdapter.DoctorsViewHolder>
             binding.apply {
                 doctorsItemClickListener = listener
                 doctorsItem = itemData
+//                val doctorNames = doctorsItem.name!!.given!![0].substring(0, 1)
+//                if (doctorNames != null){
+//                    doctorIconText.text = doctorNames[0].toString()
+//                }
                 executePendingBindings()
             }
         }

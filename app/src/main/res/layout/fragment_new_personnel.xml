@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".home.personnel.NewPersonnelFragment">
+    tools:context=".home.personnel.ui.NewPersonnelFragment">
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_new_practitioner_details"
         android:layout_width="match_parent"

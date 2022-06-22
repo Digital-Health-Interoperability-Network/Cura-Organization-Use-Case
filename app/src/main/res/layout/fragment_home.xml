@@ -34,8 +34,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:title="@{fragmentHome.data.organization.name.toString()}"
                     />
+<!--                app:title="@{fragmentHome.data.organization.name.toString()}"-->
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

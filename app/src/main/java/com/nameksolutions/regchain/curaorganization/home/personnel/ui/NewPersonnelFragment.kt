@@ -1,4 +1,4 @@
-package com.nameksolutions.regchain.curaorganization.home.personnel
+package com.nameksolutions.regchain.curaorganization.home.personnel.ui
 
 import android.app.Dialog
 import android.os.Bundle
@@ -17,6 +17,9 @@ import com.hbb20.CountryCodePicker
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentNewPersonnelBinding
+import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelApi
+import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelRepo
+import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelViewModel
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.requests.*
 import com.nameksolutions.regchain.curaorganization.utils.*
@@ -479,7 +482,7 @@ class NewPersonnelFragment :
                 )
 
                 val phone = telco.copy(
-                    system = "mobile",
+                    system = "phone",
                     rank = "${telecomRank++}",
                     value = newPractitionerPhoneNumber,
                     use = "official"
@@ -503,7 +506,8 @@ class NewPersonnelFragment :
                     family = newPractitionerSurName,
                     given = practitionerOtherNames,
                     prefix = practitionerNamePrefix,
-                    suffix = null
+                    suffix = null,
+                    use = "Official"
                 )
 
 
@@ -650,7 +654,7 @@ class NewPersonnelFragment :
         container: ViewGroup?
     ) = FragmentNewPersonnelBinding.inflate(inflater, container, false)
 
-    override fun getFragmentRepo(): PersonnelRepo{
+    override fun getFragmentRepo(): PersonnelRepo {
         val token = runBlocking { userprefs.authToken.first() }
         val api = remoteDataSource.buildApi(PersonnelApi::class.java, token)
         return PersonnelRepo(api, userprefs)
