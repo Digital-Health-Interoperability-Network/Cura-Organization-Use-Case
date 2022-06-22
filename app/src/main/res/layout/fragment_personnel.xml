@@ -6,22 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".home.personnel.ui.PersonnelFragment">
 
-    <TextView
-        android:id="@+id/text_personnel_organization_name"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/ll_tool_bar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:weightSum="10"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Organization Name" />
+        app:layout_constraintBottom_toTopOf="@id/ll_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/padding_mini"
+            android:padding="@dimen/padding_midi"
+            app:srcCompat="@drawable/ic_angle_left"
+            android:id="@+id/personnel_back_btn"/>
+
+        <TextView
+            android:id="@+id/text_personnel_organization_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:gravity="center"
+            android:layout_margin="@dimen/padding_mini"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Organization Name" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_search"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/padding_mini"
         android:orientation="horizontal"
@@ -30,7 +55,7 @@
         app:layout_constraintBottom_toTopOf="@id/card_statistics"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_personnel_organization_name">
+        app:layout_constraintTop_toBottomOf="@id/ll_tool_bar">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
@@ -49,13 +74,12 @@
             android:id="@+id/fab_add_practitioner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:clickable="true"
-            android:focusable="true"
-
-            android:backgroundTint="@color/custom_color"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_weight="2"
+            android:backgroundTint="@color/custom_color"
+            android:clickable="true"
+            android:focusable="true"
             app:srcCompat="@drawable/ic_add"
             tools:ignore="ContentDescription" />
 
@@ -194,16 +218,6 @@
                             android:orientation="horizontal"
                             android:visibility="visible"
                             android:weightSum="7">
-
-                            <TextView
-                                android:id="@+id/text_doctor_no_data"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="@dimen/padding_maxi"
-                                android:text="@string/text_no_data"
-                                android:textAlignment="center"
-                                android:textStyle="italic"
-                                android:visibility="gone" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rv_doctors"

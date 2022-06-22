@@ -7,24 +7,30 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentPractitionerItemBinding
 import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelApi
 import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelRepo
 import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelViewModel
+import com.nameksolutions.regchain.curaorganization.home.personnel.adapters.PractitionerAvailableTImeAdapter
+import com.nameksolutions.regchain.curaorganization.responses.AvailableTimeXX
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerItemBinding, PersonnelRepo>() {
 
     val args by navArgs<PractitionerItemArgs>()
+    val availableTimeAdapter = PractitionerAvailableTImeAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val practitionerRoles = args.currentPractitioner.practitionerRole
         val telecoms = args.currentPractitioner.telecom
+
 
 
         with(binding){
@@ -53,6 +59,31 @@ class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerIt
             }
 //            singlePractitionerEmail.text = args.currentPractitioner.telecom.toString() //find a way to fetch the 1st telecom element as email
 //            singlePractitionerPhoneNumber.text = args.currentPractitioner.telecom.toString()// find a way to fetch the 2nd telecom element as phone number
+            val listOfAvailableTimes = mutableListOf<AvailableTimeXX>()
+            val practitionerRoles = args.currentPractitioner.practitionerRole
+            for (role in practitionerRoles){
+                val availableTimes = role.availableTime
+                for (availableTime in availableTimes!!){
+                    listOfAvailableTimes.add(availableTime)
+                }
+
+            }
+
+
+            val practitionerAvailableTimeLayoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            rvSinglePractitionerAvailableTimes.adapter = availableTimeAdapter
+            rvSinglePractitionerAvailableTimes.layoutManager = practitionerAvailableTimeLayoutManager
+            rvSinglePractitionerAvailableTimes.addItemDecoration(
+                DividerItemDecoration(
+                    requireContext(), practitionerAvailableTimeLayoutManager.orientation
+                )
+            )
+
+
+            availableTimeAdapter.submitList(listOfAvailableTimes)
+
+
         }
 
     }

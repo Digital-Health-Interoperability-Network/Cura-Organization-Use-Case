@@ -52,7 +52,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="37dp"
                 android:layout_height="37dp"
                 android:src="@drawable/bg_circle" />
 
@@ -60,11 +60,12 @@
                 android:id="@+id/doctor_icon_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:padding="@dimen/padding_mini"
                 android:textColor="@android:color/white"
                 android:text="@{doctorsItem.name.given[0].substring(0,1)}"
                 android:textSize="@dimen/icon_text"
-                tools:text="ER" />
+                tools:text="E" />
         </RelativeLayout>
 <!--            var practitionerNames = mutableListOf<String>(args.currentPractitioner.name!!.given!![0].substring(0, 1), args.currentPractitioner.name!!.family!!.substring(0, 1))-->
 <!--            practitionerIconText.text = "${practitionerNames[0]}${practitionerNames[1]}"-->

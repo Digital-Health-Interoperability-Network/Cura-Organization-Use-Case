@@ -14,9 +14,10 @@
             android:padding="@dimen/padding_mini">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@color/custom_color"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="@dimen/padding_midi"
+                app:srcCompat="@drawable/ic_angle_left"
                 android:id="@+id/mock_back_btn"/>
 
             <RelativeLayout
@@ -48,7 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="@dimen/sp24"
-                android:textStyle="bold"
+                android:fontFamily="@font/roboto_black"
+                android:textColor="@color/black"
                 tools:text="Rah Rahman" />
 
             <TextView
@@ -57,20 +59,23 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="@dimen/sp24"
-                android:textStyle="bold"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/black"
                 tools:text="Doctor, Nurse, Pharmacist, Gate man" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_mini"
+                android:layout_margin="@dimen/padding_midi"
                 app:cardElevation="@dimen/padding_mini">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/padding_mini"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_midi">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -81,16 +86,18 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
                             android:layout_weight="2.5"
                             android:text="@string/gender_text"
-                            android:textSize="@dimen/sp24" />
+                            android:textSize="@dimen/sp20" />
 
                         <TextView
                             android:id="@+id/single_practitioner_gender"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="3.5"
-                            android:textSize="@dimen/sp24"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textSize="@dimen/sp20"
                             tools:text="Male" />
 
                     </LinearLayout>
@@ -106,14 +113,16 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2.5"
                             android:text="@string/practitioner_email"
-                            android:textSize="@dimen/sp24" />
+                            android:fontFamily="@font/roboto_regular"
+                            android:textSize="@dimen/sp20" />
 
                         <TextView
                             android:id="@+id/single_practitioner_email"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="3.5"
-                            android:textSize="@dimen/sp24"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textSize="@dimen/sp20"
                             tools:text="r@r.com" />
 
                     </LinearLayout>
@@ -129,6 +138,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2.5"
                             android:text="@string/sign_up_phone_number"
+                            android:fontFamily="@font/roboto_regular"
                             android:textSize="@dimen/sp20" />
 
                         <TextView
@@ -136,7 +146,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="3.5"
-                            android:textSize="@dimen/sp24"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textSize="@dimen/sp20"
                             tools:text="+234 812 435 3280" />
 
                     </LinearLayout>
@@ -145,7 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/practitioners_available_times_title"
-                        android:textSize="@dimen/sp24"
+                        android:textSize="@dimen/sp20"
                         android:layout_marginTop="@dimen/padding_midi"
                         android:textStyle="bold" />
 
