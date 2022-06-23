@@ -26,4 +26,4 @@ Some of the libraries used include:
 - Retrofit (https://square.github.io/retrofit/)
 - Android Room Persistence
 
-The software connects with [Back end] for backend functionalities and is still under development.
+The software connects with [https://github.com/Digital-Health-Interoperability-Network/organization-usecase] for backend functionalities and is still under development.
