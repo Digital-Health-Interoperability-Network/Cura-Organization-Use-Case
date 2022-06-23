@@ -35,6 +35,7 @@ abstract class BaseFragment<VM: BaseViewModel, B: ViewBinding, R: BaseRepo> : Fr
 
         lifecycleScope.launch {
             userprefs.authToken.first()
+            userprefs.organisationName.first()
         }
 
         binding = getFragmentBinding(inflater, container)

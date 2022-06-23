@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_auth"
+    app:startDestination="@id/personalEmailInput">
+
+    <fragment
+        android:id="@+id/signIn"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.SignIn"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
+    <fragment
+        android:id="@+id/personalEmailInput"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.PersonalEmailInput"
+        android:label="fragment_personal_email_input"
+        tools:layout="@layout/fragment_personal_email_input" />
+</navigation>

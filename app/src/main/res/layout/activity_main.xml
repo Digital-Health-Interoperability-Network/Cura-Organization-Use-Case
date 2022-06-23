@@ -6,16 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <fragment
-        android:id="@+id/fragment_personal_email"
+        android:id="@+id/activity_main_fragment_container_view"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.PersonalEmailInput"
-        tools:layout="@layout/fragment_personal_email_input"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="parent"
+        app:navGraph="@navigation/nav_auth" />
+
+
+
+<!--    <fragment-->
+<!--        android:id="@+id/fragment_personal_email"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.PersonalEmailInput"-->
+<!--        tools:layout="@layout/fragment_personal_email_input"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

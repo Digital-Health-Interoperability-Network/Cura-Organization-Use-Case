@@ -28,6 +28,18 @@ import kotlinx.coroutines.runBlocking
 import java.util.*
 import kotlin.collections.HashMap
 
+
+/*
+* This fragment class handles the input and registration of the organization days of operation details
+*
+* It collects the following organisation information and adds to the table in the database
+* The details collected in this class UI include:
+* - The Available Day
+* - The Available Day Open Time
+* - The Available Day Close Time
+*
+* */
+
 class RegDaysOfOperation :
     BaseFragment<AuthViewModel, FragmentRegDaysOfOperationBinding, AuthRepo>() {//,
     // View.OnClickListener {
@@ -147,7 +159,6 @@ class RegDaysOfOperation :
 
 
             }
-
             checkBoxTuesday.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
                     checkBoxTuesday.isChecked = true
@@ -182,7 +193,6 @@ class RegDaysOfOperation :
                 }
 
             }
-
             checkBoxWednesday.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) { //if it is not checked
                     checkBoxWednesday.isChecked = true
@@ -242,9 +252,8 @@ class RegDaysOfOperation :
 
 
                 }
-
-
-                checkBoxFriday.setOnCheckedChangeListener { buttonView, isChecked ->
+            }
+            checkBoxFriday.setOnCheckedChangeListener { buttonView, isChecked ->
                     if (isChecked) { //if it is not checked
                         checkBoxFriday.isChecked = true
                         layoutFriday!!.enable(true)
@@ -274,7 +283,7 @@ class RegDaysOfOperation :
 
                     }
                 }
-                checkBoxSaturday.setOnCheckedChangeListener { buttonView, isChecked ->
+            checkBoxSaturday.setOnCheckedChangeListener { buttonView, isChecked ->
                     if (isChecked) { //if it is not checked
                         checkBoxSaturday.isChecked = true
                         layoutSaturday!!.enable(true)
@@ -303,8 +312,7 @@ class RegDaysOfOperation :
 
                     }
                 }
-
-                checkBoxSunday.setOnCheckedChangeListener { buttonView, isChecked ->
+            checkBoxSunday.setOnCheckedChangeListener { buttonView, isChecked ->
                     if (isChecked) { //if it is not checked
                         checkBoxSunday.isChecked = true
                         layoutSunday!!.enable(true)
@@ -379,7 +387,6 @@ class RegDaysOfOperation :
 
 
         }
-    }
 
     private fun showTimePickerDialog(timeView: TextView) {
         val cal = Calendar.getInstance()

@@ -27,16 +27,42 @@ class UserPreferences(
         //)
     }
 
-    //function to fetch the stored email and put into a map with the key
+    //function to fetch the stored auth token and put into a map with the key
     val authToken: Flow<String?>
         get() = dataStore.data.map { preferences ->
             preferences[KEY_AUTH]
+        }
+
+    //function to fetch the stored value of of the app is being used for the 1st time
+    val isFirstTime: Flow<Boolean?>
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_IS_FIRST_TIME]
+        }
+
+    //function to fetch the stored organisation name and put into a map with the key
+    val organisationName: Flow<String?>
+        get() = dataStore.data.map { preferences ->
+            preferences[KEY_ORGANISATION_NAME]
         }
 
     //function to save the user's token using the already defined key
     suspend fun saveAuthToken(authToken: String) {
         dataStore.edit { preference ->
             preference[KEY_AUTH] = authToken
+        }
+    }
+
+    //function to save the value of of the app is being used for the 1st time
+    suspend fun saveIsFirstTime(isFirstTime: Boolean = true){
+        dataStore.edit { preference ->
+            preference[KEY_IS_FIRST_TIME] = isFirstTime
+        }
+    }
+
+    //function to save the organisation's name using the already defined key
+    suspend fun saveOrganisationName(organisationName: String) {
+        dataStore.edit { preference ->
+            preference[KEY_ORGANISATION_NAME] = organisationName
         }
     }
 
@@ -51,6 +77,8 @@ class UserPreferences(
     companion object {
         //        private val KEY_AUTH = stringPreferencesKey("key_auth")
         private val KEY_AUTH = preferencesKey<String>("key_auth")
+        private val KEY_IS_FIRST_TIME = preferencesKey<Boolean>("key_is_first_time")
+        private val KEY_ORGANISATION_NAME = preferencesKey<String>("key_organisation_name")
 //        private val KEY_EMAIL = preferencesKey<String>("key_email")
 //        private val KEY_GENDER = preferencesKey<String>("key_gender")
 //        private val KEY_GIVEN_NAME = preferencesKey<String>("key_given_name")

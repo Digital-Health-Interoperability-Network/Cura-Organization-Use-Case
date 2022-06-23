@@ -27,6 +27,24 @@ import com.nameksolutions.regchain.curaorganization.utils.*
 import com.nameksolutions.regchain.curaorganization.utils.Common.regStepCount
 import kotlinx.coroutines.launch
 
+/*
+* This fragment class handles the input and registration of the organization details
+*
+* It collects the following organisation information and creates a table in the database
+* The details collected in this class UI include:
+* - Organisation Name
+* - Organisation Alias Name
+* - Organisation National Identifier Document Type
+* - Organisation National Identifier Value
+* - Organisation Email
+* - Organisation Password
+* - Organisation Phone Number
+*
+* From the information, an account is created for the organisation using the email and password
+*
+*
+* */
+
 class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRepo>(),
     CountryCodePicker.OnCountryChangeListener {
 
@@ -173,19 +191,19 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
                     rank = "${telecomRank++}",
                     value = organizationEmail,
                     use = "official"
-                )//Telecom("email",  "${telecomRank++}", organizationEmail, "official" ) //as Objects//arrayListOf<String>("email","${telecomRank++}",organizationEmail,"Official")
+                )
                 val emailMap = mapOf(
                     "system" to "email",
                     "rank" to "${telecomRank++}",
                     "value" to organizationEmail,
                     "use" to "official"
-                )//arrayListOf<String>("email","${telecomRank++}",organizationEmail,"Official")
+                )
                 val phone = telco.copy(
                     system = "mobile",
                     rank = "${telecomRank++}",
                     value = organizationFullPhoneNumber,
                     use = "official"
-                )//Telecom("mobile", "${telecomRank++}",organizationFullPhoneNumber,"official") //as Objects
+                )
 
 
                 val emailGson = gson.toJsonTree(email) //as JSONObject
@@ -207,24 +225,8 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
                 val emailAsMap: Map<String, Any> = email.serializeToMap()
                 val phoneAsMap: Map<String, Any> = phone.serializeToMap()
 
-//                val phoneObject: Any = object {
-//                    val system = "mobile"
-//                    val rank = "${telecomRank++}"
-//                    val value = organizationFullPhoneNumber
-//                    val use = "Official"
-//
-//                }
-//                val emailObject: Any = object {
-//                    val system = "email"
-//                    val rank = "${telecomRank++}"
-//                    val value = organizationEmail
-//                    val use = "official"
-//
-//                }
-
 //                telecom.add(emailGson)
                 telecom.add(email)
-                Log.d(TAG, "performValidation: $phone")
 
 //                telecom.add(phoneGson)
                 telecom.add(phone)
@@ -240,27 +242,19 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
                     type = null,
                     address = null
                 )
-
-//                val newOrg = newOrganization.copy(
-//
-//                )
-
-//                val telcoEmail = TelecomMap.ModelMapper.from(email).serializeToMap()
-//                val telcoPhone = TelecomMap.ModelMapper.from(phone).serializeToMap()
-//                registerOrganization(organizationName, aliasName, organizationPassword, telecom, identifiers)
                 registerOrganization(newOrganization)
             }
         }
 
     }
 
+    /*
+    * this function registers the organisation
+    * It creates a new table for the organisation using the entered information
+    * It creates a new user account for the organisation with the email and password
+    * */
     private fun registerOrganization(newOrganization: CreateOrganizationRequest) {
 
-//        organizationName: String, aliasName: MutableList<String>, organizationPassword: String,
-//        telecom: MutableList<Telecom>,
-//        identifiers: MutableList<Identifiers>
-//    )
-        //    {
         Log.d(TAG, "registerOrganization: $telecom")
 //         viewModel.createOrganization(organizationName, aliasName, organizationPassword, identifiers, telecom, true )
         viewModel.createOrganization(newOrganization)
@@ -274,6 +268,9 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
                     requireContext().toast("Registration Success!!")
                     lifecycleScope.launch {
                         viewModel.saveAuthToken(it.value.token)
+                        viewModel.saveOrganisationName(it.value.data.organizationCreation.name)
+                        Common.organizationName = it.value.data.organizationCreation.name
+                        Log.d(TAG, "registerOrganization: ${it.value.token}")
                         regStepCount++
                         Log.d(TAG, "registerOrganizationRegStepCount: $regStepCount")
                         findNavController().navigate(R.id.action_regDetails_to_regAddress)

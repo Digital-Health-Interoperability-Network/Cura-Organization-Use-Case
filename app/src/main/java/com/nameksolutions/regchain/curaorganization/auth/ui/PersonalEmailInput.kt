@@ -25,6 +25,17 @@ import com.nameksolutions.regchain.curaorganization.utils.startNewActivity
 import kotlinx.android.synthetic.main.reg_otp_layout.view.*
 import java.util.*
 
+/**
+ * This fragment class contains the functions that handles the organization contact person personal
+ * email entry to send OTP.
+ *
+ * The OTP is now collected from entry in a bottom sheet, checked and if correct,
+ * navigates the user to the organization registration activity
+ *
+ * The OTP is set to be valid for a duration of 3 minutes
+ *
+ * **/
+
 class PersonalEmailInput :
     BaseFragment<AuthViewModel, FragmentPersonalEmailInputBinding, AuthRepo>() {
 

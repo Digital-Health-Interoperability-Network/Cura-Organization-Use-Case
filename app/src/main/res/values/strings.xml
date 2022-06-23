@@ -121,6 +121,8 @@
     <string name="personnel_agg">%1$s :  %2$s</string>
     <string name="personnel_stats">Personnel Statistics</string>
     <string name="practitioner_email">Email</string>
+    <string name="project_name">Cura</string>
+    <string name="project_use_case">Organisation</string>
 
 
     <string-array name="reg_steps">

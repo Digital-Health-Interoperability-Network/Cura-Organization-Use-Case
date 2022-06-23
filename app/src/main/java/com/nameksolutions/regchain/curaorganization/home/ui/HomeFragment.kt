@@ -19,12 +19,16 @@ import com.nameksolutions.regchain.curaorganization.home.HomeRepo
 import com.nameksolutions.regchain.curaorganization.home.HomeViewModel
 import com.nameksolutions.regchain.curaorganization.utils.Common
 import com.nameksolutions.regchain.curaorganization.utils.snackbar
+import kotlinx.coroutines.flow.first
 
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, HomeRepo>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        viewModel.saveIsFirstTime(false)
+
+        Common.organizationName = userprefs.organisationName.toString()
         with(binding){
             customToolBar.title = Common.organizationName
             buttonPersonnel.setOnClickListener {

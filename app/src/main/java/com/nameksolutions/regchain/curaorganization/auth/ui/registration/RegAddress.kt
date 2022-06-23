@@ -34,6 +34,24 @@ import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.util.*
 
+
+/*
+* This fragment class handles the input and registration of the organization address details
+*
+* It collects the following organisation information and adds to the table in the database
+* The details collected in this class UI include:
+* - Organisation Address Line 1
+* - Organisation Address Line 1 (Optional)
+* - Organisation Address City
+* - Organisation Address LGA
+* - Organisation Address State
+* - Organisation Address Postal Code
+* - Organisation Address Country
+* - Organisation Address Start Date
+*
+*
+* */
+
 class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRepo>() {
 
     private lateinit var organizationAddressLineOne: String
@@ -44,11 +62,7 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
     private lateinit var organizationAddressPostalCode: String
     private lateinit var organizationAddressCountry: String
     private lateinit var organizationAddressStartDate: String
-    private lateinit var organizationAddressCountryPicker: CountryCodePicker
     private lateinit var nextBtn: Button
-    private lateinit var prevBtn: Button
-
-    //var addressMap: HashMap<String, String> = hashMapOf()
 
     private var address: MutableList<AddressRequest> = mutableListOf()
 
@@ -107,6 +121,7 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
             nextBtn.setOnClickListener {
 
 
+                //collect the details from the UI
                 organizationAddressLineOne = regAddressAddressLine1.text.toString().trim()
                 organizationAddressLineTwo = regAddressAddressLine2.text.toString().trim()
                 organizationAddressCity = regAddressAddressCity.text.toString().trim()
@@ -165,6 +180,7 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
 //
 //    }
 
+    //this function performs data validation on the inputted data
     private fun performValidation() {
         with(binding) {
             //if organization address line 1 field is empty
@@ -208,12 +224,12 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
                 return
             } else {
 
+                //if the validation is passed...
+
                 val nowTime = System.currentTimeMillis()
                 val timeEdited = getDate(nowTime, "dd/MM/yyyy")
                 val period = Period(timeEdited!!, organizationAddressStartDate)
-//                val addressHapMap = hashMapOf("use" to  )
-                //val addressRequest = AddressRequest()
-//                val addressMap = hashMapOf("use" to "official", "city" to organizationAddressCity, "type" to "both", "district" to organizationAddressLGA, "state" to organizationAddressState, "country" to organizationAddressCountry, "period" to period)
+
                 val addressInstance = AddressRequest(
                     organizationAddressCity,
                     organizationAddressCountry,
@@ -240,18 +256,17 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
 
     }
 
+    //this function registers the organisation address to the database
     private fun addOrganizationAddress(newOrganizationAddress: CreateOrganizationRequest) {
         viewModel.addOrganizationDetails(newOrganizationAddress)
-        Log.d(TAG, "addOrganizationAddress: $address")
 
+        //perform the network operation using the view model
         viewModel.organizationDetailsUpdate.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
                     hideProgress()
-                    Log.d(TAG, "addOrganizationAddress: Registered Address")
                     //navigate to identifiers registration
                     regStepCount++
-                    Log.d(TAG, "registerOrganizationRegStepCount: $regStepCount")
                     findNavController().navigate(R.id.action_regAddress_to_regRegistryIdentifiers)
                 }
                 is Resource.Failure -> {
@@ -265,6 +280,7 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
         })
     }
 
+    //this function fetches the selected date from the calendar view and converts to string
     private fun updateStartDateInView() {
         val myFormat = "dd/MM/yyyy" // mention the format you need
         val sdf = SimpleDateFormat(myFormat, Locale.US)

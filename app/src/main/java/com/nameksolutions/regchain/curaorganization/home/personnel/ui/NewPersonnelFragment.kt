@@ -576,7 +576,7 @@ class NewPersonnelFragment :
                     hideProgress()
                     requireView().snackbar("Practitioner Details Entered")
                     //navigate to ??
-                    findNavController().navigate(R.id.action_personnelFragment_to_newPersonnelFragment)
+                    findNavController().navigate(R.id.action_newPersonnelFragment_to_personnelFragment)
                 }
                 is Resource.Failure -> {
                     hideProgress()

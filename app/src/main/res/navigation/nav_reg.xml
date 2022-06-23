@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_reg"
-    app:startDestination="@id/signIn">
+    app:startDestination="@id/regDetails">
 
     <fragment
         android:id="@+id/regDetails"
@@ -48,8 +48,8 @@
             app:destination="@id/regRegistryIdentifiers" />
     </fragment>
     <fragment
-        android:id="@+id/signIn"
-        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.SignIn"
-        android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" />
+        android:id="@+id/dummyFragment"
+        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.registration.DummyFragment"
+        android:label="fragment_dummy"
+        tools:layout="@layout/fragment_dummy" />
 </navigation>

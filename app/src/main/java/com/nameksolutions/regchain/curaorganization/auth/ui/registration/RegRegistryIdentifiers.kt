@@ -31,6 +31,25 @@ import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.util.*
 
+
+/*
+* This fragment class handles the input and registration of the organization registry identifiers details
+*
+* The registry identifiers details refer to the organisation information issued and recognised by the
+* local governmental body of the organisation
+*
+* It collects the following organisation information and adds to the table in the database
+* The details collected in this class UI include:
+* - Organisation State Unique ID
+* - Organisation Local Registration Number
+* - Organisation Ownership Type
+* - Organisation Ownership
+* - Organisation Facility Level
+* - Organisation Facility Level Option
+* - Organisation Start Date
+*
+* */
+
 class RegRegistryIdentifiers :
     BaseFragment<AuthViewModel, FragmentRegRegistryIdentifersBinding, AuthRepo>() {
 
@@ -130,6 +149,7 @@ class RegRegistryIdentifiers :
 
     }
 
+    //this function performs validation on the entered data
     private fun performValidation() {
         with(binding) {
             //if organization state unique id field is empty
@@ -173,7 +193,8 @@ class RegRegistryIdentifiers :
                     "Select Organization Facility Level Option"
                 return
             } else {
-                //registerUser(email, password)
+                //if the validation is passed...
+
                 val nowTime = System.currentTimeMillis().toLong()
                 val timeEdited = getDate(nowTime, "dd/MM/yyyy")
                 val regIDs = _RegIdentifiers(
@@ -192,13 +213,12 @@ class RegRegistryIdentifiers :
                     _registryIdentifier = regIDs
                 )
 
-                //address.add(addressGson)
-
                 addRegIDs(newOrganizationRegIDs)
             }
         }
     }
 
+    //this function registers the organisation local registry identifiers details to the database
     private fun addRegIDs(newOrganizationRegIDs: CreateOrganizationRequest) {
 
         viewModel.addOrganizationDetails(newOrganizationRegIDs)
