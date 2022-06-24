@@ -440,7 +440,8 @@ class RegDaysOfOperation :
             when (it) {
                 is Resource.Success -> {
                     hideProgress()
-                    Log.d(TAG, "sendHoursOfOperation: Days of operation added")
+                    Common.organizationName = it.value.data.updatedOrganization.name
+                    Log.d(TAG, "sendHoursOfOperation: ${Common.organizationName}")
                     requireActivity().startNewActivity(HomeActivity::class.java)
                 }
                 is Resource.Failure -> {

@@ -54,7 +54,7 @@ class RegActivity : AppCompatActivity() {
 
         val binding = ActivityRegBinding.inflate(layoutInflater)
        btnNext = binding.btnNext
-       btnPrev = binding.btnPrev
+//       btnPrev = binding.btnPrev
 
         val totalSteps = resources.getStringArray(R.array.reg_steps).size
 

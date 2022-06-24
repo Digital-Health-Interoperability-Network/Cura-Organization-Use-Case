@@ -268,8 +268,8 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
                     requireContext().toast("Registration Success!!")
                     lifecycleScope.launch {
                         viewModel.saveAuthToken(it.value.token)
-                        viewModel.saveOrganisationName(it.value.data.organizationCreation.name)
-                        Common.organizationName = it.value.data.organizationCreation.name
+//                        viewModel.saveOrganisationName(it.value.data.organizationCreation.name)
+//                        Common.organizationName = it.value.data.organizationCreation.name
                         Log.d(TAG, "registerOrganization: ${it.value.token}")
                         regStepCount++
                         Log.d(TAG, "registerOrganizationRegStepCount: $regStepCount")

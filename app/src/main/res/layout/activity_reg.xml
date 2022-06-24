@@ -1,130 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".auth.ui.registration.RegActivity">
 
 
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/ll_btns"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTop="parent">-->
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/activity_reg_fragment_container_view"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_reg" />
-
-<!--    </ScrollView>-->
-
-
-    <LinearLayout
-        android:id="@+id/ll_btns"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_reg_fragment_container_view">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_prev"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_midi"
-            android:layout_weight="1"
-            android:backgroundTint="@color/custom_color"
-            android:text="@string/btn_prev" />
+            android:orientation="vertical">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_next"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_midi"
-            android:layout_weight="1"
-            android:backgroundTint="@color/custom_color"
-            android:text="@string/btn_next" />
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/activity_reg_fragment_container_view"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_reg" />
 
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_btns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/activity_reg_fragment_container_view">
+
+<!--                <com.google.android.material.button.MaterialButton-->
+<!--                    android:id="@+id/btn_prev"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="@dimen/margin_midi"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:backgroundTint="@color/custom_color"-->
+<!--                    android:text="@string/btn_prev" />-->
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_next"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_midi"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/custom_color"
+                    android:text="@string/btn_next" />
 
 
+            </LinearLayout>
+
+        </LinearLayout>
 
 
-    <!--    <com.baoyachi.stepview.HorizontalStepView-->
-    <!--        android:id="@+id/step_view_horizontal"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        android:layout_margin="@dimen/margin_mini"-->
-    <!--        />-->
+        <!--    <com.baoyachi.stepview.HorizontalStepView-->
+        <!--        android:id="@+id/step_view_horizontal"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent"-->
+        <!--        android:layout_margin="@dimen/margin_mini"-->
+        <!--        />-->
 
-    <!--    <com.loukwn.stagestepbar.StageStepBar-->
-    <!--        android:id="@+id/stageStepBar"-->
-    <!--        android:layout_width="200dp"-->
-    <!--        android:layout_height="100dp"-->
-    <!--        android:layout_margin="@dimen/margin_mini"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:ssb_animationDuration="500"-->
-    <!--        app:ssb_stageStepConfig="5,5,5"-->
-    <!--        tools:ignore="MissingClass" />-->
+        <!--    <com.loukwn.stagestepbar.StageStepBar-->
+        <!--        android:id="@+id/stageStepBar"-->
+        <!--        android:layout_width="200dp"-->
+        <!--        android:layout_height="100dp"-->
+        <!--        android:layout_margin="@dimen/margin_mini"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent"-->
+        <!--        app:ssb_animationDuration="500"-->
+        <!--        app:ssb_stageStepConfig="5,5,5"-->
+        <!--        tools:ignore="MissingClass" />-->
 
-<!--    <com.shuhart.stepview.StepView-->
-<!--        android:id="@+id/step_view_potrait"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_weight="2"-->
-<!--        android:layout_margin="@dimen/margin_mini"-->
-<!--        android:padding="@dimen/padding_mini"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/activity_reg_fragment_container_view"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:sv_doneCircleColor="@color/completed_text_color"-->
-<!--        app:sv_doneCircleRadius="12dp"-->
-<!--        app:sv_doneStepLineColor="@color/completed_text_color"-->
-<!--        app:sv_doneStepMarkColor="@color/completed_text_color"-->
-<!--        app:sv_nextStepLineColor="@color/uncompleted_text_color"-->
-<!--        app:sv_nextTextColor="@color/uncompleted_text_color"-->
-<!--        app:sv_selectedCircleColor="@color/colorAccent"-->
-<!--        app:sv_selectedCircleRadius="12dp"-->
-<!--        app:sv_selectedStepNumberColor="@color/colorAccent"-->
-<!--        app:sv_selectedTextColor="@color/colorAccent"-->
-<!--        app:sv_stepLineWidth="1dp"-->
-<!--        app:sv_stepNumberTextSize="12sp"-->
-<!--        app:sv_stepPadding="4dp"-->
-<!--        app:sv_stepViewStyle="@style/StepView"-->
-<!--        app:sv_steps="@array/reg_steps"-->
-<!--        app:sv_typeface="@font/roboto_italic" />-->
+        <!--    <com.shuhart.stepview.StepView-->
+        <!--        android:id="@+id/step_view_potrait"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="0dp"-->
+        <!--        android:layout_weight="2"-->
+        <!--        android:layout_margin="@dimen/margin_mini"-->
+        <!--        android:padding="@dimen/padding_mini"-->
+        <!--        app:layout_constraintBottom_toTopOf="@id/activity_reg_fragment_container_view"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent"-->
+        <!--        app:sv_doneCircleColor="@color/completed_text_color"-->
+        <!--        app:sv_doneCircleRadius="12dp"-->
+        <!--        app:sv_doneStepLineColor="@color/completed_text_color"-->
+        <!--        app:sv_doneStepMarkColor="@color/completed_text_color"-->
+        <!--        app:sv_nextStepLineColor="@color/uncompleted_text_color"-->
+        <!--        app:sv_nextTextColor="@color/uncompleted_text_color"-->
+        <!--        app:sv_selectedCircleColor="@color/colorAccent"-->
+        <!--        app:sv_selectedCircleRadius="12dp"-->
+        <!--        app:sv_selectedStepNumberColor="@color/colorAccent"-->
+        <!--        app:sv_selectedTextColor="@color/colorAccent"-->
+        <!--        app:sv_stepLineWidth="1dp"-->
+        <!--        app:sv_stepNumberTextSize="12sp"-->
+        <!--        app:sv_stepPadding="4dp"-->
+        <!--        app:sv_stepViewStyle="@style/StepView"-->
+        <!--        app:sv_steps="@array/reg_steps"-->
+        <!--        app:sv_typeface="@font/roboto_italic" />-->
 
 
+        <!--    <fragment-->
+        <!--        android:id="@+id/fragment_reg_address"-->
+        <!--        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.registration.RegAddress"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_margin="@dimen/margin_midi"-->
+        <!--        android:padding="@dimen/padding_midi"-->
+        <!--        app:layout_constraintBottom_toTopOf="@id/ll_btns"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent"-->
+        <!--        tools:layout="@layout/fragment_reg_address" />-->
 
-    <!--    <fragment-->
-    <!--        android:id="@+id/fragment_reg_address"-->
-    <!--        android:name="com.nameksolutions.regchain.curaorganization.auth.ui.registration.RegAddress"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_margin="@dimen/margin_midi"-->
-    <!--        android:padding="@dimen/padding_midi"-->
-    <!--        app:layout_constraintBottom_toTopOf="@id/ll_btns"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        tools:layout="@layout/fragment_reg_address" />-->
+    </ScrollView>
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
