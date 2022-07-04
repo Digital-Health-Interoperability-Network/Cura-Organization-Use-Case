@@ -23,6 +23,7 @@
     <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ScrollView
+        android:id="@+id/fragment_details_sv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -203,6 +204,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:paddingTop="20dp"
+                        tools:overrideLibrary="com.hbb20.countrypicker"
                         app:ccp_contentColor="@color/custom_color"
                         app:ccp_countryPreference="NG,US,GH"
                         app:ccp_defaultNameCode="NG"
@@ -231,6 +233,8 @@
 
     </com.google.android.material.card.MaterialCardView>
 </ScrollView>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

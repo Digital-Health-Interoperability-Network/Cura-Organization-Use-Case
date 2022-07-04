@@ -64,7 +64,10 @@ class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerIt
             for (role in practitionerRoles){
                 val availableTimes = role.availableTime
                 for (availableTime in availableTimes!!){
-                    listOfAvailableTimes.add(availableTime)
+                    if (!availableTime.availableStartTime.isNullOrEmpty() || !availableTime.availableEndTime.isNullOrEmpty()){
+                        listOfAvailableTimes.add(availableTime)
+                    }
+
                 }
 
             }

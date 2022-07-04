@@ -9,10 +9,18 @@
         android:id="@+id/signIn"
         android:name="com.nameksolutions.regchain.curaorganization.auth.ui.SignIn"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signIn_to_personalEmailInput"
+            app:destination="@id/personalEmailInput" />
+    </fragment>
     <fragment
         android:id="@+id/personalEmailInput"
         android:name="com.nameksolutions.regchain.curaorganization.auth.ui.PersonalEmailInput"
         android:label="fragment_personal_email_input"
-        tools:layout="@layout/fragment_personal_email_input" />
+        tools:layout="@layout/fragment_personal_email_input" >
+        <action
+            android:id="@+id/action_personalEmailInput_to_signIn"
+            app:destination="@id/signIn" />
+    </fragment>
 </navigation>

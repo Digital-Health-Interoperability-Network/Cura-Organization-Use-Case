@@ -1,9 +1,8 @@
 package com.nameksolutions.regchain.curaorganization.home.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.auth.AuthApi
@@ -20,15 +19,19 @@ import com.nameksolutions.regchain.curaorganization.home.HomeViewModel
 import com.nameksolutions.regchain.curaorganization.utils.Common
 import com.nameksolutions.regchain.curaorganization.utils.snackbar
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, HomeRepo>() {
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        (activity as AppCompatActivity).setSupportActionBar(binding.customToolBar)
 
         viewModel.saveIsFirstTime(false)
 
-        Common.organizationName = userprefs.organisationName.toString()
+        runBlocking { Common.organizationName = userprefs.organisationName.first().toString() }
         with(binding){
             customToolBar.title = Common.organizationName
             buttonPersonnel.setOnClickListener {
@@ -48,6 +51,29 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, HomeRepo>(
             }
         }
 
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        setHasOptionsMenu(true)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.menu_logout -> {
+                logout()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun getViewModel() = HomeViewModel::class.java

@@ -57,6 +57,14 @@ class RegDaysOfOperation :
     lateinit var saturdayHours: String
     lateinit var sundayHours: String
 
+    var isMondayChecked: Boolean = false
+    var isTuesdayChecked: Boolean = false
+    var isWednesdayChecked: Boolean = false
+    var isThursdayChecked: Boolean = false
+    var isFridayChecked: Boolean = false
+    var isSaturdayChecked: Boolean = false
+    var isSundayChecked: Boolean = false
+
     lateinit var openHour: String
 
     private lateinit var nextBtn: Button
@@ -88,20 +96,6 @@ class RegDaysOfOperation :
             layoutSaturday!!.enable(false)
             layoutSunday!!.enable(false)
 
-            lateinit var mondayOpenTime: String
-            lateinit var mondayCloseTime: String
-            lateinit var tuesdayOpenTime: String
-            lateinit var tuesdayCloseTime: String
-            lateinit var wednesdayOpenTime: String
-            lateinit var wednesdayCloseTime: String
-            lateinit var thursdayOpenTime: String
-            lateinit var thursdayCloseTime: String
-            lateinit var fridayOpenTime: String
-            lateinit var fridayCloseTime: String
-            lateinit var saturdayOpenTime: String
-            lateinit var saturdayCloseTime: String
-            lateinit var sundayOpenTime: String
-            lateinit var sundayCloseTime: String
 
 
             checkBoxMonday.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -347,24 +341,40 @@ class RegDaysOfOperation :
 
                 nextBtn.setOnClickListener {
 
-                    hoursDaysOfOperation["Monday"] =
-                        "${regDooMondayOpen!!.text.toString()} - ${regDooMondayClose!!.text.toString()}"
-                    hoursDaysOfOperation["Tuesday"] =
-                        "${rooTuesdayOpen!!.text.toString()} - ${rooTuesdayClose!!.text.toString()}"
-                    hoursDaysOfOperation["Wednesday"] =
-                        "${rooWednesdayOpen!!.text.toString()} - ${rooWednesdayClose!!.text.toString()}"
-                    hoursDaysOfOperation["Thursday"] =
-                        "${rooThursdayOpen!!.text.toString()} - ${rooThursdayClose!!.text.toString()}"
-                    hoursDaysOfOperation["Friday"] =
-                        "${rooFridayOpen!!.text.toString()} - ${rooFridayClose!!.text.toString()}"
-                    hoursDaysOfOperation["Saturday"] =
-                        "${rooSaturdayOpen!!.text.toString()} - ${rooSaturdayClose!!.text.toString()}"
-                    hoursDaysOfOperation["Sunday"] =
-                        "${rooSundayOpen!!.text.toString()} - ${rooSundayClose!!.text.toString()}"
+                    if (checkBoxMonday.isChecked){
+                        hoursDaysOfOperation["Monday"] =
+                            "${regDooMondayOpen!!.text.toString()} - ${regDooMondayClose!!.text.toString()}"
+                    }
+                    if (checkBoxTuesday.isChecked){
+                        hoursDaysOfOperation["Tuesday"] =
+                            "${rooTuesdayOpen!!.text.toString()} - ${rooTuesdayClose!!.text.toString()}"
+                    }
+                    if (checkBoxWednesday.isChecked){
+                        hoursDaysOfOperation["Wednesday"] =
+                            "${rooWednesdayOpen!!.text.toString()} - ${rooWednesdayClose!!.text.toString()}"
+                    }
+                    if (checkBoxThursday.isChecked){
+                        hoursDaysOfOperation["Thursday"] =
+                            "${rooThursdayOpen!!.text.toString()} - ${rooThursdayClose!!.text.toString()}"
+                    }
+                    if (checkBoxFriday.isChecked){
+                        hoursDaysOfOperation["Friday"] =
+                            "${rooFridayOpen!!.text.toString()} - ${rooFridayClose!!.text.toString()}"
+                    }
+                    if (checkBoxSaturday.isChecked){
+                        hoursDaysOfOperation["Saturday"] =
+                            "${rooSaturdayOpen!!.text.toString()} - ${rooSaturdayClose!!.text.toString()}"
+                    }
+                    if (checkBoxSunday.isChecked){
+                        hoursDaysOfOperation["Sunday"] =
+                            "${rooSundayOpen!!.text.toString()} - ${rooSundayClose!!.text.toString()}"
+                    }
+
+
 
                     Log.d(TAG, "onActivityCreated: $hoursDaysOfOperation")
 //                hoursDaysOfOperation["Monday"] = "${regDooMondayOpen!!.text.toString()}-${regDooMondayClose!!.text.toString()}"
-                    if (hoursDaysOfOperation.isNullOrEmpty()) {
+                    if (hoursDaysOfOperation.isEmpty()) {
                         requireContext().toast("At least one day required")
                     } else {
 //                    val daysOfOperation = hoursDaysOfOperation.keys.toString()

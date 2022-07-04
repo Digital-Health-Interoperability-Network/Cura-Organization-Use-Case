@@ -1,21 +1,29 @@
 package com.nameksolutions.regchain.curaorganization.auth.ui
 
 import android.app.Dialog
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.nameksolutions.regchain.curaorganization.MainActivity
+import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.auth.AuthApi
 import com.nameksolutions.regchain.curaorganization.auth.AuthRepo
 import com.nameksolutions.regchain.curaorganization.auth.AuthViewModel
+import com.nameksolutions.regchain.curaorganization.auth.ui.registration.RegActivity
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentSignInBinding
 import com.nameksolutions.regchain.curaorganization.home.HomeActivity
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.utils.*
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 class SignIn : BaseFragment<AuthViewModel, FragmentSignInBinding, AuthRepo>() {
@@ -24,10 +32,8 @@ class SignIn : BaseFragment<AuthViewModel, FragmentSignInBinding, AuthRepo>() {
 
     val TAG = "EQUA"
 
-
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         //implement sign in
 
         binding.btnSignIn.enable(false)
@@ -43,6 +49,11 @@ class SignIn : BaseFragment<AuthViewModel, FragmentSignInBinding, AuthRepo>() {
                         viewModel.saveOrganisationName(it.value.data.organization.name)
                         Common.organizationName = it.value.data.organization.name
                         Log.d(TAG, "onActivityCreated: ${it.value.token}")
+
+//                        if (binding.cvLandscapeSignIn?.isVisible =
+
+//
+//                        }
                         requireActivity().startNewActivity(HomeActivity::class.java)
                     }
                 }
@@ -64,6 +75,11 @@ class SignIn : BaseFragment<AuthViewModel, FragmentSignInBinding, AuthRepo>() {
         binding.btnSignIn.setOnClickListener {
             login()
         }
+
+        binding.signinSignupPrompt!!.setOnClickListener {
+            findNavController().navigate(R.id.action_signIn_to_personalEmailInput)
+        }
+
     }
 
     private fun login() {

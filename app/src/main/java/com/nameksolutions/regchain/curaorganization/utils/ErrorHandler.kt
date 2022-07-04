@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.nameksolutions.regchain.curaorganization.auth.ui.SignIn
+import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.network.Resource
 
 
@@ -30,8 +31,8 @@ fun Fragment.handleApiError(failure: Resource.Failure, retry: (() -> Unit)? = nu
             if (this is SignIn) {
                 requireView().snackbar("Incorrect email or password")
             } else {
-                requireView().snackbar("Will do logout")
-                //(this as BaseFragment<*, *, *>).logout()
+//                requireView().snackbar("Will do logout")
+                (this as BaseFragment<*, *, *>).logout()
             }
         }
         else -> {

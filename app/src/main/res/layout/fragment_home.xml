@@ -14,33 +14,47 @@
         android:layout_height="match_parent"
         tools:context=".home.ui.HomeFragment">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/action_bar_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+<!--        <com.google.android.material.appbar.AppBarLayout-->
+<!--            android:id="@+id/action_bar_home"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/customToolBar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:elevation="4dp"
+                    app:menu="@menu/main_menu"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     />
-<!--                app:title="@{fragmentHome.data.organization.name.toString()}"-->
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                <ImageView-->
+<!--                    android:id="@+id/logout_btn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="@dimen/padding_mini"-->
+<!--                    android:padding="@dimen/padding_mini"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.903"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/customToolBar"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:srcCompat="@drawable/ic_sign_out" />-->
+                <!--                app:title="@{fragmentHome.data.organization.name.toString()}"-->
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
-        </com.google.android.material.appbar.AppBarLayout>
+<!--        </com.google.android.material.appbar.AppBarLayout>-->
 
 
         <com.google.android.material.card.MaterialCardView
@@ -53,7 +67,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/action_bar_home">
+            app:layout_constraintTop_toBottomOf="@+id/customToolBar">
 
             <LinearLayout
                 android:layout_width="match_parent"

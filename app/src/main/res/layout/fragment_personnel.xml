@@ -8,41 +8,41 @@
 
     <LinearLayout
         android:id="@+id/ll_tool_bar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:weightSum="10"
         app:layout_constrainedHeight="true"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/ll_search"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/personnel_back_btn"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_weight="1"
             android:layout_margin="@dimen/padding_mini"
+            android:layout_weight="1"
             android:padding="@dimen/padding_midi"
-            app:srcCompat="@drawable/ic_angle_left"
-            android:id="@+id/personnel_back_btn"/>
+            app:srcCompat="@drawable/ic_angle_left" />
 
         <TextView
             android:id="@+id/text_personnel_organization_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_mini"
             android:layout_weight="8"
             android:gravity="center"
-            android:layout_margin="@dimen/padding_mini"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:text="@string/btn_personnel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Organization Name" />
+            />
 
     </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/ll_search"
@@ -52,8 +52,8 @@
         android:orientation="horizontal"
         android:padding="@dimen/padding_mini"
         android:weightSum="10"
-        app:layout_constraintBottom_toTopOf="@id/card_statistics"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_tool_bar">
 
@@ -85,18 +85,18 @@
 
     </LinearLayout>
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/card_statistics"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_margin="@dimen/margin_mini"
+        android:layout_marginStart="@dimen/margin_mini"
+        android:layout_marginEnd="@dimen/margin_mini"
         android:padding="@dimen/padding_mini"
         app:cardElevation="@dimen/padding_mini"
+        app:layout_constraintBottom_toTopOf="@id/personnel_view_divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_search"
-        app:layout_constraintBottom_toTopOf="@id/personnel_view_divider">
+        app:layout_constraintTop_toBottomOf="@+id/ll_search">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,32 +132,33 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/custom_color"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_statistics"
-        app:layout_constraintBottom_toTopOf="@+id/card_practitioners"
         android:padding="@dimen/padding_midi"
         android:layout_marginTop="@dimen/margin_midi"
-        android:layout_marginBottom="@dimen/margin_midi"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_statistics" />
 
-    <com.google.android.material.card.MaterialCardView
+    <ScrollView
         android:id="@+id/card_practitioners"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_mini"
-        android:padding="@dimen/padding_mini"
-        app:cardElevation="@dimen/padding_mini"
+        android:layout_marginTop="@dimen/padding_mini"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/personnel_view_divider"
-        app:layout_constraintVertical_bias="0.149">
+        app:layout_constraintVertical_bias="0.131">
 
-        <ScrollView
+
+        <com.google.android.material.card.MaterialCardView
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_midi">
+            android:layout_margin="@dimen/margin_mini"
+            android:padding="@dimen/padding_mini"
+            app:cardElevation="@dimen/padding_mini">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -206,7 +207,7 @@
                                 android:backgroundTint="@color/white"
                                 android:contentDescription="@string/doctors_expand_arrow"
                                 android:padding="@dimen/padding_midi"
-                                android:src="@drawable/angle_up" />
+                                android:src="@drawable/angle_down" />
 
                         </LinearLayout>
 
@@ -216,14 +217,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:visibility="visible"
+                            android:visibility="gone"
                             android:weightSum="7">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rv_doctors"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:visibility="visible"
                                 tools:itemCount="3"
                                 tools:listitem="@layout/personnel_doctors_item_layout" />
 
@@ -547,10 +547,9 @@
             </LinearLayout>
 
 
-        </ScrollView>
+        </com.google.android.material.card.MaterialCardView>
 
-
-    </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,8 +8,10 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.mukesh.OnOtpCompletionListener
+import com.nameksolutions.regchain.curaorganization.MainActivity
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.auth.AuthApi
 import com.nameksolutions.regchain.curaorganization.auth.AuthRepo
@@ -47,6 +49,11 @@ class PersonalEmailInput :
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
+        binding.textSignIn.setOnClickListener {
+            findNavController().navigate(R.id.action_personalEmailInput_to_signIn)
+        }
 
         //disable the button until email has been entered
         binding.btnGetOtp.enable(false)

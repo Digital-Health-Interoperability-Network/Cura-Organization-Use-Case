@@ -13,19 +13,8 @@
         android:theme="@style/Theme.CuraOrganization"
         android:usesCleartextTraffic="true">
         <activity
+            android:screenOrientation="portrait"
             android:name=".SplashScreen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".home.HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".auth.ui.registration.RegActivity"
             android:exported="true">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
@@ -34,15 +23,31 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:name=".home.HomeActivity"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".auth.ui.registration.RegActivity"
+            android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:screenOrientation="portrait"
             android:name=".MainActivity"
             android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
     </application>
 

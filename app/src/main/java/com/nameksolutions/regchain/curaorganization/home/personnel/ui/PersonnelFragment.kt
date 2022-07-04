@@ -63,6 +63,10 @@ class PersonnelFragment :
             findNavController().navigate(R.id.action_personnelFragment_to_newPersonnelFragment)
         }
 
+        binding.personnelBackBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_personnelFragment_to_homeFragment)
+        }
+
 
         with(binding) {
             doctorsButton.setOnClickListener {

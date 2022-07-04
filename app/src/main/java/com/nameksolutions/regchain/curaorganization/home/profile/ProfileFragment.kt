@@ -1,11 +1,8 @@
 package com.nameksolutions.regchain.curaorganization.home.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentPersonnelBinding
 import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelRepo

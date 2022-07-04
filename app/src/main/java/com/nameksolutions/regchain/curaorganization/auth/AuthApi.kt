@@ -7,6 +7,7 @@ import com.nameksolutions.regchain.curaorganization.requests.Telecom
 import com.nameksolutions.regchain.curaorganization.responses.*
 import com.nameksolutions.regchain.curaorganization.utils.Common.organizationRoute
 import com.nameksolutions.regchain.curaorganization.utils.Common.userRoute
+import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.*
@@ -79,6 +80,8 @@ interface AuthApi {
         @Field("active") active: Boolean
     ): OtpVerifyResponse
 
+    @POST("$organizationRoute/logout")
+    suspend fun logout(): ResponseBody
 
 
 }

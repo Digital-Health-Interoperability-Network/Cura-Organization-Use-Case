@@ -33,7 +33,7 @@ class NewPersonnelFragment :
     CountryCodePicker.OnCountryChangeListener {
 
 
-    private lateinit var newPractitionerRole :String
+    private lateinit var newPractitionerRole: String
     private lateinit var newPractitionerSurName: String
     private lateinit var newPractitionerOtherNames: String
     private lateinit var newPractitionerNamePrefix: String
@@ -70,11 +70,8 @@ class NewPersonnelFragment :
     var hoursDaysOfOperation: HashMap<String, String> = hashMapOf()
 
 
-
-
     private var telecomRank = 0
     private var progressDialog: Dialog? = null
-
 
 
     val roleDelimiter = ","
@@ -85,7 +82,7 @@ class NewPersonnelFragment :
 
         //fetch practitioner roles from back end and add to list in common
 
-            getPractitionerRoleList()
+        getPractitionerRoleList()
 
         timePicker = TimePickerHelper(requireContext(), true, false)
 
@@ -106,33 +103,33 @@ class NewPersonnelFragment :
             regPractitionerGender.setAdapter(practitionerGenderArrayAdapter)
 
             val practitionerIdentifierArray = resources.getStringArray(R.array.id_types)
-            val practitionerIdentifierArrayAdapter = ArrayAdapter(requireContext(), R.layout.drop_down_item, practitionerIdentifierArray)
+            val practitionerIdentifierArrayAdapter =
+                ArrayAdapter(requireContext(), R.layout.drop_down_item, practitionerIdentifierArray)
             regPractitionerIdType.setAdapter(practitionerIdentifierArrayAdapter)
 
             practitionersAvailableTimesButton.setOnClickListener {
-                    // If the CardView is already expanded, set its visibility
-                    //  to gone and change the expand less icon to expand more.
-                    if (practitionersAvailableTimesHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewPractitionerAvailableTimes,
-                            AutoTransition()
-                        )
+                // If the CardView is already expanded, set its visibility
+                //  to gone and change the expand less icon to expand more.
+                if (practitionersAvailableTimesHideAbleView.visibility == View.VISIBLE) {
+                    TransitionManager.beginDelayedTransition(
+                        baseCardViewPractitionerAvailableTimes,
+                        AutoTransition()
+                    )
 
-                        practitionersAvailableTimesHideAbleView.visibility = View.GONE
-                        practitionersAvailableTimesButton.setImageResource(R.drawable.angle_down)
-                    } else {
-                        // If the CardView is not expanded, set its visibility
-                        // to visible and change the expand more icon to expand less.
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewPractitionerAvailableTimes,
-                            AutoTransition()
-                        )
-                        practitionersAvailableTimesHideAbleView.visibility = View.VISIBLE
-                        practitionersAvailableTimesButton.setImageResource(R.drawable.angle_up)
+                    practitionersAvailableTimesHideAbleView.visibility = View.GONE
+                    practitionersAvailableTimesButton.setImageResource(R.drawable.angle_down)
+                } else {
+                    // If the CardView is not expanded, set its visibility
+                    // to visible and change the expand more icon to expand less.
+                    TransitionManager.beginDelayedTransition(
+                        baseCardViewPractitionerAvailableTimes,
+                        AutoTransition()
+                    )
+                    practitionersAvailableTimesHideAbleView.visibility = View.VISIBLE
+                    practitionersAvailableTimesButton.setImageResource(R.drawable.angle_up)
 
 
-                    }
-
+                }
 
 
             }
@@ -169,14 +166,8 @@ class NewPersonnelFragment :
 
                         val closeMonTV = it as TextView
                         showTimePickerDialog(closeMonTV)
-                        availabilityMon = availTime.copy(
-                            availableStartTime = regPractitionerMondayOpen.text.toString().trim(),
-                            availableEndTime =  regPractitionerMondayClose.text.toString().trim(),
-                            daysOfWeek = "Mon"
-                        )
-                    }
 
-                    availableTime.add(availabilityMon)
+                    }
 
                 } else {
                     checkBoxPractitionerMonday.isChecked = false
@@ -184,16 +175,7 @@ class NewPersonnelFragment :
 
                 }
 
-//                availabilityMon = availTime.copy(
-//                    availableStartTime = regPractitionerMondayOpen.text.toString().trim(),
-//                    availableEndTime =  regPractitionerMondayClose.text.toString().trim(),
-//                    daysOfWeek = "Mon"
-//                )
-                //availableTime.add(availabilityThurs)
-
-
             }
-
             checkBoxPractitionerTuesday.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
                     checkBoxPractitionerTuesday.isChecked = true
@@ -209,14 +191,8 @@ class NewPersonnelFragment :
                     practitionerTuesdayClose.setOnClickListener {
                         val tueCloseTV = it as TextView
                         showTimePickerDialog(tueCloseTV)
-                        availabilityTue = availTime.copy(
-                            availableStartTime = practitionerTuesdayOpen.text.toString().trim(),
-                            availableEndTime =  practitionerTuesdayClose.text.toString().trim(),
-                            daysOfWeek = "Tue"
-                        )
-                    }
 
-                    availableTime.add(availabilityTue)
+                    }
 
 
                 } else {
@@ -225,16 +201,7 @@ class NewPersonnelFragment :
 
                 }
 
-//                availabilityTue = availTime.copy(
-//                    availableStartTime = practitionerTuesdayOpen.text.toString().trim(),
-//                    availableEndTime =  practitionerTuesdayClose.text.toString().trim(),
-//                    daysOfWeek = "Tue"
-//                )
-//                availableTime.add(availabilityTue)
-
-
             }
-
             checkBoxPractitionerWednesday.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) { //if it is not checked
                     checkBoxPractitionerWednesday.isChecked = true
@@ -253,11 +220,7 @@ class NewPersonnelFragment :
                     layoutPractitionerWednesday.enable(false)
                 }
 
-                availabilityWed = availTime.copy(
-                    availableStartTime = practitionerWednesdayOpen.text.toString().trim(),
-                    availableEndTime =  practitionerWednesdayClose.text.toString().trim(),
-                    daysOfWeek = "Wed"
-                )
+
                 //availableTime.add(availabilityWed)
             }
             checkBoxPractitionerThursday.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -278,14 +241,8 @@ class NewPersonnelFragment :
                     layoutPractitionerThursday.enable(false)
                 }
 
-                availabilityThurs = availTime.copy(
-                    availableStartTime = practitionerThursdayOpen.text.toString().trim(),
-                    availableEndTime =  practitionerThursdayClose.text.toString().trim(),
-                    daysOfWeek = "Thurs"
-                )
-                //availableTime.add(availabilityThurs)
-            }
 
+            }
             checkBoxPractitionerFriday.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) { //if it is not checked
                     checkBoxPractitionerFriday.isChecked = true
@@ -303,12 +260,6 @@ class NewPersonnelFragment :
                     checkBoxPractitionerFriday.isChecked = false
                     layoutPractitionerFriday.enable(false)
                 }
-                availabilityFri = availTime.copy(
-                    availableStartTime = practitionerFridayOpen.text.toString().trim(),
-                    availableEndTime =  practitionerFridayClose.text.toString().trim(),
-                    daysOfWeek = "Fri"
-                )
-                //availableTime.add(availabilityThurs)
 
             }
             checkBoxPractitionerSaturday.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -328,15 +279,8 @@ class NewPersonnelFragment :
                     checkBoxPractitionerSaturday.isChecked = false
                     layoutPractitionerSaturday.enable(false)
                 }
-                availabilitySat = availTime.copy(
-                    availableStartTime = practitionerSaturdayOpen.text.toString().trim(),
-                    availableEndTime =  practitionerSaturdayClose.text.toString().trim(),
-                    daysOfWeek = "Sat"
-                )
-                //availableTime.add(availabilityThurs)
 
             }
-
             checkBoxPractitionerSunday.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) { //if it is not checked
                     checkBoxPractitionerSunday.isChecked = true
@@ -354,20 +298,75 @@ class NewPersonnelFragment :
                     checkBoxPractitionerSunday.isChecked = false
                     layoutPractitionerSunday.enable(false)
                 }
-                availabilitySun = availTime.copy(
-                    availableStartTime = practitionerSundayOpen.text.toString().trim(),
-                    availableEndTime =  practitionerSundayClose.text.toString().trim(),
-                    daysOfWeek = "Sun"
-                )
-                //availableTime.add(availabilityThurs)
 
             }
 
+
+            btnPractitionerCancel.setOnClickListener {
+                findNavController().navigate(R.id.action_newPersonnelFragment_to_personnelFragment)
+            }
 
             btnPractitionerRegister.setOnClickListener {
                 newPractitionerCountryCodePicker.registerCarrierNumberEditText(
                     practitionerPhoneNumber
                 )
+
+                if (checkBoxPractitionerMonday.isChecked){
+                    availabilityMon = availTime.copy(
+                        availableStartTime = regPractitionerMondayOpen.text.toString().trim(),
+                        availableEndTime = regPractitionerMondayClose.text.toString().trim(),
+                        daysOfWeek = "Mon"
+                    )
+                    availableTime.add(availabilityMon)
+                }
+                if (checkBoxPractitionerTuesday.isChecked){
+                    availabilityTue = availTime.copy(
+                        availableStartTime = practitionerTuesdayOpen.text.toString().trim(),
+                        availableEndTime = practitionerTuesdayClose.text.toString().trim(),
+                        daysOfWeek = "Tue"
+                    )
+                    availableTime.add(availabilityTue)
+                }
+                if (checkBoxPractitionerWednesday.isChecked){
+                    availabilityWed = availTime.copy(
+                        availableStartTime = practitionerWednesdayOpen.text.toString().trim(),
+                        availableEndTime = practitionerWednesdayClose.text.toString().trim(),
+                        daysOfWeek = "Wed"
+                    )
+                    availableTime.add(availabilityWed)
+                }
+                if (checkBoxPractitionerThursday.isChecked){
+                    availabilityThurs = availTime.copy(
+                        availableStartTime = practitionerThursdayOpen.text.toString().trim(),
+                        availableEndTime = practitionerThursdayClose.text.toString().trim(),
+                        daysOfWeek = "Thurs"
+                    )
+                    availableTime.add(availabilityThurs)
+                }
+                if (checkBoxPractitionerFriday.isChecked){
+                    availabilityFri = availTime.copy(
+                        availableStartTime = practitionerFridayOpen.text.toString().trim(),
+                        availableEndTime = practitionerFridayClose.text.toString().trim(),
+                        daysOfWeek = "Fri"
+                    )
+                    availableTime.add(availabilityFri)
+                }
+                if (checkBoxPractitionerSaturday.isChecked){
+                    availabilitySat = availTime.copy(
+                        availableStartTime = practitionerSaturdayOpen.text.toString().trim(),
+                        availableEndTime = practitionerSaturdayClose.text.toString().trim(),
+                        daysOfWeek = "Sat"
+                    )
+                    availableTime.add(availabilitySat)
+                }
+                if (checkBoxPractitionerSunday.isChecked){
+                    availabilitySun = availTime.copy(
+                        availableStartTime = practitionerSundayOpen.text.toString().trim(),
+                        availableEndTime = practitionerSundayClose.text.toString().trim(),
+                        daysOfWeek = "Sun"
+                    )
+                    availableTime.add(availabilitySun)
+                }
 
                 newPractitionerNamePrefix = regPractitionerNamePrefix.text.toString().trim()
                 newPractitionerSurName = regPractitionerSurname.text.toString().trim()
@@ -384,12 +383,19 @@ class NewPersonnelFragment :
 //                newPractitionerRole =
 //                    Pattern.compile(roleDelimiter).split(regPractitionerRole.text.toString().trim())
 
-                availableTime = mutableListOf(availabilityMon, availabilityTue, availabilityWed, availabilityThurs, availabilityFri, availabilitySat, availabilitySun)
+//                availableTime = mutableListOf(
+//                    availabilityMon,
+//                    availabilityTue,
+//                    availabilityWed,
+//                    availabilityThurs,
+//                    availabilityFri,
+//                    availabilitySat,
+//                    availabilitySun
+//                )
                 Log.d(TAG, "onActivityCreated: $availableTime")
                 if (availableTime.isEmpty()) {
                     requireView().snackbar("At least one day required")
                 } else {
-
 
                     val practitionerRole = practRole.copy(
                         availableTime = availableTime,
@@ -401,6 +407,8 @@ class NewPersonnelFragment :
 //                        practitionerRole = listOf(practitionerRole)
 //                    )
 
+
+                    Log.d(TAG, "onActivityCreated: $practitionerRole")
                     performValidation(practitionerRole)
 
                 }
@@ -535,15 +543,19 @@ class NewPersonnelFragment :
         }
     }
 
-    private fun getPractitionerRoleList(){
+    private fun getPractitionerRoleList() {
         viewModel.getPractitionerRolesList()
-        viewModel.practitionerRoleListResponse.observe(viewLifecycleOwner, Observer { it->
-            when(it){
+        viewModel.practitionerRoleListResponse.observe(viewLifecycleOwner, Observer { it ->
+            when (it) {
                 is Resource.Success -> {
                     hideProgress()
                     requireView().snackbar("Roles Fetched")
-                     val fetchedPractitionerRoles = it.value.practitionerRolesList.listOfPractitionerRoles
-                    Log.d(TAG, "getPractitionerRoleList: ${it.value.practitionerRolesList.listOfPractitionerRoles}")
+                    val fetchedPractitionerRoles =
+                        it.value.practitionerRolesList.listOfPractitionerRoles
+                    Log.d(
+                        TAG,
+                        "getPractitionerRoleList: ${it.value.practitionerRolesList.listOfPractitionerRoles}"
+                    )
                     val practitionerRolesArrayAdapter =
                         ArrayAdapter(
                             requireContext(),
@@ -555,14 +567,13 @@ class NewPersonnelFragment :
                 }
                 is Resource.Failure -> {
                     hideProgress()
-                    handleApiError(it){getPractitionerRoleList()}
+                    handleApiError(it) { getPractitionerRoleList() }
                 }
                 is Resource.Loading -> {
                     showProgress()
                 }
             }
         })
-
 
 
     }
@@ -581,7 +592,7 @@ class NewPersonnelFragment :
                 is Resource.Failure -> {
                     hideProgress()
                     Log.d(TAG, "createNewPractitioner: $it")
-                    handleApiError(it){ createNewPractitioner(newPractitioner)}
+                    handleApiError(it) { createNewPractitioner(newPractitioner) }
                 }
                 is Resource.Loading -> {
                     showProgress()

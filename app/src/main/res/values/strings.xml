@@ -8,7 +8,8 @@
     <string name="sign_in_password">Password</string>
     <string name="sign_in_forgot_password">Forgot Password</string>
     <string name="sign_in_btn_txt">Sign In</string>
-    <string name="sign_in_create_account_prompt">Sign up</string>
+    <string name="sign_in_create_account_prompt_text">New to Cura? </string>
+    <string name="sign_in_sign_up_prompt">Sign up</string>
     <string name="forgot_password_intro_note">Oops!</string>
     <string name="reset_password_intro_note">almost done!</string>
     <string name="reset_password_sub_intro_note">Enter your new password</string>
@@ -123,6 +124,7 @@
     <string name="practitioner_email">Email</string>
     <string name="project_name">Cura</string>
     <string name="project_use_case">Organisation</string>
+    <string name="sign_up_already_user_text">"Already a user? "</string>
 
 
     <string-array name="reg_steps">

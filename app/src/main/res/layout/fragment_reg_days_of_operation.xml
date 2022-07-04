@@ -6,506 +6,509 @@
     android:layout_height="match_parent"
     tools:context=".auth.ui.registration.RegDaysOfOperation">
 
-<!--    <TextView-->
-<!--        android:id="@+id/txt_days_of_operation_title"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="@dimen/margin_mini"-->
-<!--        android:fontFamily="@font/roboto_bold"-->
-<!--        android:gravity="center"-->
-<!--        android:padding="@dimen/padding_midi"-->
-<!--        android:text="@string/reg_days_of_operation_title"-->
-<!--        android:textColor="@color/custom_color"-->
-<!--        android:textSize="24sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <TextView
+        android:id="@+id/txt_days_of_operation_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_mini"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:padding="@dimen/padding_midi"
+        android:text="@string/reg_days_of_operation_title"
+        android:textColor="@color/custom_color"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/padding_midi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/txt_days_of_operation_title"
+        app:layout_constraintVertical_bias="0.106">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_mini"
-        android:padding="@dimen/padding_mini"
-        app:cardElevation="@dimen/padding_mini"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_days_of_operation_title">
-
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_mini"
-                android:weightSum="16">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3.4"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="@string/title_day_of_operation"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5.5"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="@string/reg_open_time_hint"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5.5"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="@string/reg_close_time_hint"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-
-
-            </LinearLayout>
-
+            android:layout_margin="@dimen/padding_mini"
+            android:padding="@dimen/padding_midi"
+            app:cardElevation="@dimen/padding_mini"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_days_of_operation_title">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="16">
+                android:orientation="vertical">
 
-                <CheckBox
-                    android:id="@+id/checkBox_monday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_mini"
-                    android:layout_weight="2"
-                    android:padding="@dimen/padding_midi" />
 
                 <LinearLayout
-                    android:id="@+id/layout_monday"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="14"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_mini"
+                    android:weightSum="16">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/txt_mon"
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:fontFamily="@font/roboto_black"
-                        android:text="@string/cb_monday_text"
-                        android:textSize="18sp" />
+                        android:layout_weight="2" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/reg_doo_monday_open"
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:padding="@dimen/padding_midi"
-                        android:text="@string/reg_open_time_hint_short"
+                        android:layout_weight="3.4"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/title_day_of_operation"
                         android:textAlignment="center"
                         android:textSize="18sp" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/reg_doo_monday_close"
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_close_time_hint_short"
-                        android:padding="@dimen/padding_midi"
+                        android:layout_weight="5.5"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/reg_open_time_hint"
                         android:textAlignment="center"
                         android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5.5"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/reg_close_time_hint"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
 
                 </LinearLayout>
 
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="16">
-
-                <CheckBox
-                    android:id="@+id/checkBox_tuesday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_mini"
-                    android:layout_weight="2"
-                    android:padding="@dimen/padding_midi" />
-
                 <LinearLayout
-                    android:id="@+id/layout_tuesday"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="14"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="16">
 
-
-                    <com.google.android.material.textview.MaterialTextView
+                    <CheckBox
+                        android:id="@+id/checkBox_monday"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:fontFamily="@font/roboto_black"
-                        android:text="@string/cb_tuesday_text"
-                        android:textSize="18sp" />
+                        android:layout_weight="2"
+                        android:padding="@dimen/padding_midi" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_tuesday_open"
+                    <LinearLayout
+                        android:id="@+id/layout_monday"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_open_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
+                        android:layout_weight="14"
+                        android:orientation="horizontal">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_tuesday_close"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_close_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txt_mon"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:fontFamily="@font/roboto_black"
+                            android:text="@string/cb_monday_text"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/reg_doo_monday_open"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:padding="@dimen/padding_midi"
+                            android:text="@string/reg_open_time_hint_short"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/reg_doo_monday_close"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_close_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="16">
-
-                <CheckBox
-                    android:id="@+id/checkBox_wednesday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_mini"
-                    android:layout_weight="2"
-                    android:padding="@dimen/padding_midi" />
-
                 <LinearLayout
-                    android:id="@+id/layout_wednesday"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="14"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="16">
 
-
-                    <com.google.android.material.textview.MaterialTextView
+                    <CheckBox
+                        android:id="@+id/checkBox_tuesday"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:fontFamily="@font/roboto_black"
-                        android:text="@string/cb_wednesday_text"
-                        android:textSize="18sp" />
+                        android:layout_weight="2"
+                        android:padding="@dimen/padding_midi" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_wednesday_open"
+                    <LinearLayout
+                        android:id="@+id/layout_tuesday"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_open_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_wednesday_close"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_close_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="16">
-
-                <CheckBox
-                    android:id="@+id/checkBox_thursday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_mini"
-                    android:layout_weight="2"
-                    android:padding="@dimen/padding_midi" />
-
-                <LinearLayout
-                    android:id="@+id/layout_thursday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="14"
-                    android:orientation="horizontal">
+                        android:layout_weight="14"
+                        android:orientation="horizontal">
 
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:fontFamily="@font/roboto_black"
-                        android:text="@string/cb_thursday_text"
-                        android:textSize="18sp" />
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:fontFamily="@font/roboto_black"
+                            android:text="@string/cb_tuesday_text"
+                            android:textSize="18sp" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_thursday_open"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_open_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_tuesday_open"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_open_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_thursday_close"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_close_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_tuesday_close"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_close_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="16">
-
-                <CheckBox
-                    android:id="@+id/checkBox_friday"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_mini"
-                    android:layout_weight="2"
-                    android:padding="@dimen/padding_midi" />
+                    android:orientation="horizontal"
+                    android:weightSum="16">
+
+                    <CheckBox
+                        android:id="@+id/checkBox_wednesday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:layout_weight="2"
+                        android:padding="@dimen/padding_midi" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_wednesday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="14"
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:fontFamily="@font/roboto_black"
+                            android:text="@string/cb_wednesday_text"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_wednesday_open"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_open_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_wednesday_close"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_close_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/layout_friday"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="14"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="16">
 
-
-                    <com.google.android.material.textview.MaterialTextView
+                    <CheckBox
+                        android:id="@+id/checkBox_thursday"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:fontFamily="@font/roboto_black"
-                        android:text="@string/cb_friday_text"
-                        android:textSize="18sp" />
+                        android:layout_weight="2"
+                        android:padding="@dimen/padding_midi" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_friday_open"
+                    <LinearLayout
+                        android:id="@+id/layout_thursday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="14"
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:fontFamily="@font/roboto_black"
+                            android:text="@string/cb_thursday_text"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_thursday_open"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_open_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_thursday_close"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_close_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="16">
+
+                    <CheckBox
+                        android:id="@+id/checkBox_friday"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_open_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
+                        android:layout_weight="2"
+                        android:padding="@dimen/padding_midi" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_friday_close"
+                    <LinearLayout
+                        android:id="@+id/layout_friday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="14"
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:fontFamily="@font/roboto_black"
+                            android:text="@string/cb_friday_text"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_friday_open"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_open_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_friday_close"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_close_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="16">
+
+                    <CheckBox
+                        android:id="@+id/checkBox_saturday"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_close_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
+                        android:layout_weight="2"
+                        android:padding="@dimen/padding_midi" />
 
+                    <LinearLayout
+                        android:id="@+id/layout_saturday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="14"
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:fontFamily="@font/roboto_black"
+                            android:text="@string/cb_saturday_text"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_saturday_open"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_open_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_saturday_close"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_close_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="16">
+
+                    <CheckBox
+                        android:id="@+id/checkBox_sunday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:layout_weight="2"
+                        android:padding="@dimen/padding_midi" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_sunday"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="14"
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:fontFamily="@font/roboto_black"
+                            android:text="@string/cb_sunday_text"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_sunday_open"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_open_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/roo_sunday_close"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:layout_weight="4.5"
+                            android:background="@drawable/rounded_corner"
+                            android:hint="@string/reg_close_time_hint_short"
+                            android:padding="@dimen/padding_midi"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="16">
 
-                <CheckBox
-                    android:id="@+id/checkBox_saturday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_mini"
-                    android:layout_weight="2"
-                    android:padding="@dimen/padding_midi" />
-
-                <LinearLayout
-                    android:id="@+id/layout_saturday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="14"
-                    android:orientation="horizontal">
-
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:fontFamily="@font/roboto_black"
-                        android:text="@string/cb_saturday_text"
-                        android:textSize="18sp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_saturday_open"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_open_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_saturday_close"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_close_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="16">
-
-                <CheckBox
-                    android:id="@+id/checkBox_sunday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_mini"
-                    android:layout_weight="2"
-                    android:padding="@dimen/padding_midi" />
-
-                <LinearLayout
-                    android:id="@+id/layout_sunday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="14"
-                    android:orientation="horizontal">
-
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:fontFamily="@font/roboto_black"
-                        android:text="@string/cb_sunday_text"
-                        android:textSize="18sp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_sunday_open"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_open_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/roo_sunday_close"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:layout_weight="4.5"
-                        android:background="@drawable/rounded_corner"
-                        android:hint="@string/reg_close_time_hint_short"
-                        android:padding="@dimen/padding_midi"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
     </ScrollView>
 

@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import com.nameksolutions.regchain.curaorganization.MainActivity
+import com.nameksolutions.regchain.curaorganization.auth.AuthApi
 import com.nameksolutions.regchain.curaorganization.network.RemoteDataSource
 import com.nameksolutions.regchain.curaorganization.utils.UserPreferences
+import com.nameksolutions.regchain.curaorganization.utils.startNewActivity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -41,6 +44,15 @@ abstract class BaseFragment<VM: BaseViewModel, B: ViewBinding, R: BaseRepo> : Fr
         binding = getFragmentBinding(inflater, container)
 
         return binding.root
+    }
+
+    //logout function is in the base fragment to allow user logout from any fragment
+    fun logout() = lifecycleScope.launch {
+        val authToken = userprefs.authToken.first() //authToken retrieved to tell api 'who' to log out
+        val api = remoteDataSource.buildApi(AuthApi::class.java, authToken) //api instance
+        viewModel.logout(api)
+        userprefs.clear()
+        requireActivity().startNewActivity(MainActivity::class.java)
     }
 
     //this function will be called when we want to utilize viewBinding in any fragment

@@ -1,5 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.base
 
+import com.nameksolutions.regchain.curaorganization.auth.AuthApi
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -30,6 +31,10 @@ abstract class BaseRepo {
                 }
             }
         }
+    }
+
+    suspend fun logout(api: AuthApi) = safeApiCall {
+        api.logout()
     }
 
 

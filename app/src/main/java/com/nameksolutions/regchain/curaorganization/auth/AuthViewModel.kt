@@ -97,6 +97,6 @@ class AuthViewModel(
         repo.saveAuthToken(token)
     }
     fun saveOrganisationName(organisationName: String) = viewModelScope.launch {
-        repo.saveAuthToken(organisationName)
+        repo.saveOrganisationName(organisationName)
     }
 }

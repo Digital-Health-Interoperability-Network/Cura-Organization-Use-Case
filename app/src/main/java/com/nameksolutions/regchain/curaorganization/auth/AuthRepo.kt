@@ -72,7 +72,7 @@ class AuthRepo(
     }
 
     suspend fun saveOrganisationName(organisationName: String){
-        prefs.saveAuthToken(organisationName)
+        prefs.saveOrganisationName(organisationName)
     }
 
 }
