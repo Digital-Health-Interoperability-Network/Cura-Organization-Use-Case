@@ -62,6 +62,9 @@
         <action
             android:id="@+id/action_servicesFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_servicesFragment_to_newService"
+            app:destination="@id/newService" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -90,5 +93,14 @@
         <argument
             android:name="currentPractitioner"
             app:argType="com.nameksolutions.regchain.curaorganization.responses.Practitoner" />
+    </fragment>
+    <fragment
+        android:id="@+id/newService"
+        android:name="com.nameksolutions.regchain.curaorganization.home.services.ui.NewService"
+        android:label="fragment_new_service"
+        tools:layout="@layout/fragment_new_service" >
+        <action
+            android:id="@+id/action_newService_to_servicesFragment"
+            app:destination="@id/servicesFragment" />
     </fragment>
 </navigation>

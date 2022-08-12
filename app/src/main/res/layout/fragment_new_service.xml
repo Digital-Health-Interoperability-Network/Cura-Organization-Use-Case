@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.services.ui.NewService">
+
+    <ScrollView
+        android:id="@+id/scrollview_add_personnel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                tools:src="@drawable/ic_add"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="1dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_midi"
+                android:id="@+id/iv_new_service"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_new_practitioner_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_midi"
+                android:padding="@dimen/padding_midi"
+                app:cardElevation="@dimen/padding_mini"
+                app:layout_constraintBottom_toTopOf="@id/ll_btns"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                        <AutoCompleteTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/sp16"
+                            android:layout_marginStart="@dimen/padding_mini"
+                            android:hint="@string/new_service_category_hint"
+                            android:id="@+id/new_service_category_auto_complete_view"/>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_new_service_provided_by"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_mini"
+                        android:hint="@string/new_service_provided_by_hint"
+                        android:padding="@dimen/padding_mini">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/new_service_provided_by"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:labelFor="@id/new_service_provided_by" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_new_service_name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_mini"
+                        android:hint="@string/new_service_name_hint"
+                        android:padding="@dimen/padding_mini">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/new_service_name_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:labelFor="@id/new_service_name_view" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_new_service_comment"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_mini"
+                        android:hint="@string/new_service_comment_hint"
+                        android:padding="@dimen/padding_mini">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/new_service_comment_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:labelFor="@id/new_service_comment_view" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/text_input_layout_new_service_specialty"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/padding_mini"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxStrokeColor="@color/custom_color">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/new_service_specialty_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:hint="@string/new_service_specialty"
+                                android:inputType="none"
+                                android:paddingTop="20dp"
+                                android:paddingBottom="20dp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <TextView
+                        android:id="@+id/practitioners_available_times_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/padding_mini"
+                        android:text="@string/practitioners_available_times_title" />
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/base_card_view_new_service_available_times"
+                        style="@style/Base.CardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_mini"
+                        android:layout_marginEnd="@dimen/margin_mini"
+                        android:layout_marginBottom="@dimen/margin_mini"
+                        android:padding="@dimen/padding_midi">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_mini"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="12">
+
+
+                                <TextView
+                                    android:id="@+id/new_service_day"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.5"
+                                    android:text="@string/new_service_day_text"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/new_service_open_time"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.5"
+                                    android:text="@string/new_service_open_time_text"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/new_service_close_time"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.5"
+                                    android:text="@string/new_service_close_time_text"
+                                    android:textSize="18sp" />
+
+
+                                <ImageButton
+                                    android:id="@+id/new_service_available_times_button"
+                                    android:layout_width="0dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="0.5"
+                                    android:backgroundTint="@color/white"
+                                    android:contentDescription="@string/practitioners_available_times_expand_arrow"
+                                    android:padding="@dimen/padding_midi"
+                                    android:src="@drawable/angle_down" />
+
+                            </LinearLayout>
+
+
+                            <ScrollView
+                                android:id="@+id/new_service_available_times_hide_able_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="16">
+
+                                        <CheckBox
+                                            android:id="@+id/checkBox_new_service_monday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="@dimen/padding_mini" />
+
+                                        <LinearLayout
+                                            android:id="@+id/layout_new_service_monday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="14"
+                                            android:orientation="horizontal">
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/txt_new_service_mon"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="2.5"
+                                                android:fontFamily="@font/roboto_black"
+                                                android:text="@string/cb_monday_text"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_monday_open"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:padding="@dimen/padding_mini"
+                                                android:text="@string/reg_open_time_hint_short"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_monday_close"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_close_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                        </LinearLayout>
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="16">
+
+                                        <CheckBox
+                                            android:id="@+id/checkBox_new_service_tuesday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="@dimen/padding_mini" />
+
+                                        <LinearLayout
+                                            android:id="@+id/layout_new_service_tuesday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="14"
+                                            android:orientation="horizontal">
+
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="2.5"
+                                                android:fontFamily="@font/roboto_black"
+                                                android:text="@string/cb_tuesday_text"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_tuesday_open"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_open_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_tuesday_close"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_close_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                        </LinearLayout>
+
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="16">
+
+                                        <CheckBox
+                                            android:id="@+id/checkBox_new_service_wednesday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="@dimen/padding_mini" />
+
+                                        <LinearLayout
+                                            android:id="@+id/layout_new_service_wednesday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="14"
+                                            android:orientation="horizontal">
+
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="2.5"
+                                                android:fontFamily="@font/roboto_black"
+                                                android:text="@string/cb_wednesday_text"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_wednesday_open"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_open_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_wednesday_close"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_close_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="16">
+
+                                        <CheckBox
+                                            android:id="@+id/checkBox_new_service_thursday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            />
+
+                                        <LinearLayout
+                                            android:id="@+id/layout_new_service_thursday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="14"
+                                            android:orientation="horizontal">
+
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="2.5"
+                                                android:fontFamily="@font/roboto_black"
+                                                android:text="@string/cb_thursday_text"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_thursday_open"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_open_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_thursday_close"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_close_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="16">
+
+                                        <CheckBox
+                                            android:id="@+id/checkBox_new_service_friday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="@dimen/padding_mini" />
+
+                                        <LinearLayout
+                                            android:id="@+id/layout_new_service_friday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="14"
+                                            android:orientation="horizontal">
+
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="2.5"
+                                                android:fontFamily="@font/roboto_black"
+                                                android:text="@string/cb_friday_text"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_friday_open"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_open_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_friday_close"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_close_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="16">
+
+                                        <CheckBox
+                                            android:id="@+id/checkBox_new_service_saturday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="@dimen/padding_mini" />
+
+                                        <LinearLayout
+                                            android:id="@+id/layout_new_service_saturday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="14"
+                                            android:orientation="horizontal">
+
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="2.5"
+                                                android:fontFamily="@font/roboto_black"
+                                                android:text="@string/cb_saturday_text"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_saturday_open"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_open_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_saturday_close"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_close_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:weightSum="16">
+
+                                        <CheckBox
+                                            android:id="@+id/checkBox_new_service_sunday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="2"
+                                            android:padding="@dimen/padding_mini" />
+
+                                        <LinearLayout
+                                            android:id="@+id/layout_new_service_sunday"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="14"
+                                            android:orientation="horizontal">
+
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="2.5"
+                                                android:fontFamily="@font/roboto_black"
+                                                android:text="@string/cb_sunday_text"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_sunday_open"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_open_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                            <com.google.android.material.textview.MaterialTextView
+                                                android:id="@+id/new_service_sunday_close"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="4.5"
+                                                android:background="@drawable/rounded_corner"
+                                                android:hint="@string/reg_close_time_hint_short"
+                                                android:padding="@dimen/padding_mini"
+                                                android:textAlignment="center"
+                                                android:textSize="18sp" />
+
+                                        </LinearLayout>
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </ScrollView>
+
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:id="@+id/new_service_provision_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/padding_mini"
+                        android:text="@string/new_service_provision_text"
+                        />
+
+                    <RadioGroup
+                        android:id="@+id/new_service_provision_cost_radio_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_mini"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/new_service_provision_cost_option_free"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_service_provision_cost_option_free"
+                            android:onClick="radio_button_click"/>
+
+
+                        <RadioButton
+                            android:id="@+id/new_service_provision_cost_option_discount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_service_provision_cost_option_discount"
+                            android:onClick="radio_button_click"/>
+
+                        <RadioButton
+                            android:id="@+id/new_service_provision_cost_option_paid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/new_service_provision_cost_option_paid"
+                            android:onClick="radio_button_click"/>
+
+                    </RadioGroup>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_new_service_contact_email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_mini"
+                        android:hint="@string/new_service_contact_email"
+                        android:padding="@dimen/padding_mini">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/new_service_contact_email_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="textEmailAddress"
+                            android:labelFor="@id/new_service_contact_email_view" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_mini"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/padding_mini"
+                        android:weightSum="5">
+
+                        <com.hbb20.CountryCodePicker
+                            android:id="@+id/new_service_country_code_picker"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:paddingTop="20dp"
+                            app:ccp_contentColor="@color/custom_color"
+                            app:ccp_countryPreference="NG,US,GH"
+                            app:ccp_defaultNameCode="NG"
+                            app:ccp_hintExampleNumber="true"
+                            tools:overrideLibrary="com.hbb20.countrypicker" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/text_input_layout_new_service_contact_phone_number"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:hint="@string/new_service_contact_phone_number">
+
+                            <EditText
+                                android:id="@+id/new_service_contact_phone_number_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="phone"
+                                android:maxLength="13" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_new_service_eligibility"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_mini"
+                        android:hint="@string/new_service_eligibility"
+                        android:padding="@dimen/padding_mini">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/new_service_eligibility_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:labelFor="@id/new_service_eligibility_view" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <AutoCompleteTextView
+                            android:id="@+id/new_service_program_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:hint="@string/new_service_program"
+                            android:inputType="none"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_new_service_characteristics"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_mini"
+                        android:hint="@string/new_service_characteristics"
+                        android:padding="@dimen/padding_mini">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/new_service_characteristics_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:importantForAutofill="no"
+                            android:inputType="textPersonName"
+                            android:labelFor="@id/new_service_characteristics_view" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/padding_mini"
+                    android:weightSum="16">
+
+                    <CheckBox
+                        android:id="@+id/checkBox_new_service_appointment_required"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:padding="@dimen/padding_mini" />
+
+                    <TextView
+                        android:id="@+id/new_service_appointment_required_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="14"
+                        android:layout_marginStart="@dimen/padding_mini"
+                        android:text="@string/new_service_appointment_required_text"
+                        />
+
+                </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_new_service_referral_method"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/padding_mini"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxStrokeColor="@color/custom_color">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/new_service_referral_method_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:hint="@string/new_service_referral_method"
+                            android:inputType="none"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/padding_mini"
+                        android:textSize="16sp"
+                        android:hint="@string/new_service_communication"
+                        android:id="@+id/new_service_communication_auto_complete_view"/>
+
+
+
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/ll_btns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_mini"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_new_practitioner_details">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_new_service_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/custom_color"
+                    android:text="@string/btn_practitioner_cancel" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_new_service_register"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/custom_color"
+                    android:text="@string/btn_practitioner_register" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -125,6 +125,28 @@
     <string name="project_name">Cura</string>
     <string name="project_use_case">Organisation</string>
     <string name="sign_up_already_user_text">"Already a user? "</string>
+    <string name="services_search_hint">Service</string>
+    <string name="services_stats">Services Statistics</string>
+    <string name="new_service_category_hint">Service Category</string>
+    <string name="new_service_provided_by_hint">Service Provided By</string>
+    <string name="new_service_name_hint">Service Name</string>
+    <string name="new_service_comment_hint">Comment</string>
+    <string name="new_service_specialty">Service Specialty</string>
+    <string name="new_service_day_text">Day</string>
+    <string name="new_service_open_time_text">Open</string>
+    <string name="new_service_close_time_text">Close</string>
+    <string name="new_service_provision_text">Service Provision Cost</string>
+    <string name="new_service_provision_cost_option_free">Free</string>
+    <string name="new_service_provision_cost_option_discount">Discount</string>
+    <string name="new_service_provision_cost_option_paid">Paid</string>
+    <string name="new_service_contact_email">Service Contact Email</string>
+    <string name="new_service_contact_phone_number">Service Contact Phone Number</string>
+    <string name="new_service_eligibility">Requirement for Service</string>
+    <string name="new_service_program">Service Program</string>
+    <string name="new_service_characteristics">Service Features</string>
+    <string name="new_service_appointment_required_text">Appointment Required</string>
+    <string name="new_service_referral_method">Referral Method</string>
+    <string name="new_service_communication">Communication</string>
 
 
     <string-array name="reg_steps">
@@ -163,6 +185,148 @@
         <item>Driver License</item>
         <item>Permanent Voters Card</item>
     </string-array>
+
+    <string-array name="new_service_categories">
+        <item>Adoption</item>
+        <item>Aged Care</item>
+        <item>Allied Health</item>
+        <item>Alternative/Complementary Therapies</item>
+        <item>Child Care /Kindergarten</item>
+        <item>Child Development</item>
+        <item>Child Protection and Family Services</item>
+        <item>Community Health Care</item>
+        <item>Counselling</item>
+        <item>Crisis Line (GPAH use only)</item>
+        <item>Death Services</item>
+        <item>Dental</item>
+        <item>Disability Support</item>
+        <item>Drug/Alcohol</item>
+    </string-array>
+
+
+<!--    Code	Display-->
+<!--    408467006 	Adult mental illness-->
+<!--    394577000 	Anesthetics-->
+<!--    394578005 	Audiological medicine-->
+<!--    421661004 	Blood banking and transfusion medicine-->
+<!--    408462000 	Burns care-->
+<!--    394579002 	Cardiology-->
+<!--    394804000 	Clinical cytogenetics and molecular genetics-->
+<!--    394580004 	Clinical genetics-->
+<!--    394803006 	Clinical hematology-->
+<!--    408480009 	Clinical immunology-->
+<!--    408454008 	Clinical microbiology-->
+<!--    394809005 	Clinical neuro-physiology-->
+<!--    394592004 	Clinical oncology-->
+<!--    394600006 	Clinical pharmacology-->
+<!--    394601005 	Clinical physiology-->
+<!--    394581000 	Community medicine-->
+<!--    408478003 	Critical care medicine-->
+<!--    394812008 	Dental medicine specialties-->
+<!--    408444009 	Dental-General dental practice-->
+<!--    394582007 	Dermatology-->
+<!--    408475000 	Diabetic medicine-->
+<!--    410005002 	Dive medicine-->
+<!--    394583002 	Endocrinology-->
+<!--    419772000 	Family practice-->
+<!--    394584008 	Gastroenterology-->
+<!--    408443003 	General medical practice-->
+<!--    394802001 	General medicine-->
+<!--    394915009 	General pathology-->
+<!--    394814009 	General practice-->
+
+ <string-array name="new_service_specialties">
+     <item>Adult mental illness</item>
+     <item>Anesthetics</item>
+     <item>Audiological medicine</item>
+     <item>Blood banking and transfusion medicine</item>
+     <item>Burns care</item>
+     <item>Cardiology</item>
+     <item>Clinical cytogenetics and molecular genetics</item>
+     <item>Clinical genetics</item>
+     <item>Clinical hematology</item>
+     <item>Clinical immunology</item>
+     <item>Clinical microbiology</item>
+     <item>Clinical neuro-physiology</item>
+     <item>Clinical oncology</item>
+     <item>Clinical pharmacology</item>
+     <item>Clinical physiology</item>
+     <item>Community medicine</item>
+     <item>Critical care medicine</item>
+     <item>Dental medicine specialties</item>
+     <item>Dental-General dental practice</item>
+     <item>Dermatology</item>
+     <item>Diabetic medicine</item>
+     <item>Dive medicine</item>
+     <item>Endocrinology</item>
+     <item>Family practice</item>
+     <item>Gastroenterology</item>
+     <item>General medical practice</item>
+     <item>General medicine</item>
+     <item>General pathology</item>
+     <item>General practice</item>
+    </string-array>
+
+
+ <string-array name="new_service_programs">
+     <item>Acquired Brain Injury (ABI) Program</item>
+     <item>ABI Slow To Recover (ABI STR) Program</item>
+     <item>Access Programs</item>
+     <item>Adult and Further Education (ACFE) Program</item>
+     <item>Adult Day Activity and Support Services (ADASS) Program</item>
+     <item>Adult Day Care Program</item>
+     <item>ATSS (Adult Training Support Service)</item>
+     <item>Community Aged Care Packages (CACP)</item>
+     <item>Care Coordination and Supplementary Services (CCSS)</item>
+     <item>Cognitive Dementia Memory Service (CDAMS)</item>
+     <item>ChildFIRST</item>
+     <item>Children's Contact Services</item>
+     <item>Community Visitors Scheme</item>
+     <item>CPP (Community Partners Program)</item>
+     <item>Closing the Gap (CTG)</item>
+     <item>Coordinated Veterans' Care (CVC) Program</item>
+     <item>Day Program</item>
+     <item>Drop In Program</item>
+     <item>Early Years Program</item>
+     <item>Employee Assistance Program</item>
+     <item>Home And Community Care (HACC)</item>
+     <item>Hospital Admission Risk Program (HARP)</item>
+     <item>Hospital in the Home (HITH) Program</item>
+     <item>ICTP (Intensive Community Treatment Program)</item>
+     <item>IFSS (Intensive Family Support Program)</item>
+     <item>JPET (Job Placement, Education and Training)</item>
+     <item>Koori Juvenile Justice Program</item>
+     <item>Language Literacy and Numeracy Program</item>
+     <item>Life Skills Program</item>
+     <item>LMP (Lifestyle Modification Program)</item>
+     <item>MedsCheck Program</item>
+     <item>Methadone/Buprenorphine Program</item>
+     <item>National Disabilities Insurance Scheme (NDIS)</item>
+     <item>National Diabetes Services Scheme (NDSS)</item>
+     <item>Needle/Syringe Program</item>
+     <item>nPEP Program</item>
+     <item>Personal Support Program</item>
+     <item>Partners in Recovery (PIR) Program</item>
+     <item>Pre-employment Program</item>
+     <item>Reconnect Program</item>
+     <item>Sexual Abuse Counselling and Prevention Program (SACPP)</item>
+     <item>Social Support Programs</item>
+     <item>Supported Residential Service (SRS)</item>
+     <item>Tasmanian Aboriginal Centre (TAC)</item>
+     <item>Victim's Assistance Program</item>
+
+    </string-array>
+
+
+    <string-array name="id_communication">
+        <item>English</item>
+        <item>Igbo</item>
+        <item>Yoruba</item>
+        <item>Hausa</item>
+        <item>Spanish</item>
+        <item>French</item>
+    </string-array>
+
 
     <string-array name="states">
         <item>Abia</item>
