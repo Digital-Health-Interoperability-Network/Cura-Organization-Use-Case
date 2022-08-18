@@ -19,7 +19,7 @@ import com.nameksolutions.regchain.curaorganization.databinding.FragmentNewServi
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesApi
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesRepo
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesViewModel
-import com.nameksolutions.regchain.curaorganization.requests.AvailableTime
+import com.nameksolutions.regchain.curaorganization.requests.*
 import com.nameksolutions.regchain.curaorganization.utils.Common
 import com.nameksolutions.regchain.curaorganization.utils.TimePickerHelper
 import com.nameksolutions.regchain.curaorganization.utils.enable
@@ -33,6 +33,7 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
     lateinit var newServiceName: String
     lateinit var newServiceComment: String
     lateinit var newServiceSpecialty: String
+
     //lateinit var newServiceAvailableTime: String
     lateinit var newServiceProvisionCost: String
     lateinit var newServiceContactEmail: String
@@ -45,7 +46,23 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
     lateinit var newServiceReferralMethod: String
     lateinit var newServiceCommunication: String
 
+    private val telco = Telecom()
+    private val availTime = AvailableTime()
+    private val coding = Coding()
+    private val characteristic = Characteristic(listOf(coding))
+    private val eligibility = Eligibility(listOf(coding))
+    private val program = Program(listOf(coding))
+    private var speciality = Speciality(listOf(coding))
+    //private val specialityCoding = Speciality()
+
+
+    private var telecom: MutableList<Telecom> = mutableListOf()
     private var availableTime: MutableList<AvailableTime> = mutableListOf()
+    private var serviceCategoryList: MutableList<String> = mutableListOf()
+    private var serviceCharacteristicList: MutableList<Characteristic> = mutableListOf()
+    private var serviceCommunicationList: MutableList<String> = mutableListOf()
+    private var serviceEligibilityList: MutableList<Eligibility> = mutableListOf()
+    private var serviceProgramList: MutableList<Program> = mutableListOf()
 
     lateinit var timePicker: TimePickerHelper
     lateinit var openHour: String
@@ -57,8 +74,8 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
     private var availabilitySat: AvailableTime = AvailableTime()
     private var availabilitySun: AvailableTime = AvailableTime()
 
+    private var telecomRank = 0
     private var progressDialog: Dialog? = null
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -139,7 +156,10 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                                     monOpenTimeView.text.toString()
                                 }"
                             )
-                            Log.d(Common.TAG, "onActivityCreated: ${showTimePickerDialog(monOpenTimeView)}")
+                            Log.d(
+                                Common.TAG,
+                                "onActivityCreated: ${showTimePickerDialog(monOpenTimeView)}"
+                            )
                         }
 
                         Log.d(Common.TAG, "onActivityCreatedPost: ${newServiceMondayOpen.text}")
@@ -283,19 +303,30 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     }
 
                 }
+            }
 
-
-                btnNewServiceCancel.setOnClickListener {
-                    findNavController().navigate(R.id.action_newService_to_servicesFragment)
+            checkBoxNewServiceAppointmentRequired.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked) {
+                    checkBoxNewServiceAppointmentRequired.isChecked = true
+                    newServiceAppointmentRequired = true
                 }
+            }
+
+
+            btnNewServiceCancel.setOnClickListener {
+                findNavController().navigate(R.id.action_newService_to_servicesFragment)
+            }
 
 
 
 
 
-                newServiceCountryCodePicker.registerCarrierNumberEditText(
-                    newServiceContactPhoneNumberView
-                )
+            newServiceCountryCodePicker.registerCarrierNumberEditText(
+                newServiceContactPhoneNumberView
+            )
+
+
+            btnNewServiceRegister.setOnClickListener {
 
                 newServiceCategory = newServiceCategoryAutoCompleteView.text.toString().trim()
                 newServiceProviderName = newServiceProvidedBy.text.toString().trim()
@@ -317,16 +348,220 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                 newServiceCommunication =
                     newServiceCommunicationAutoCompleteView.text.toString().trim()
 
+
+                if (checkBoxNewServiceMonday.isChecked){
+                    availabilityMon = availTime.copy(
+                        availableStartTime = newServiceMondayOpen.text.toString().trim(),
+                        availableEndTime = newServiceMondayClose.text.toString().trim(),
+                        daysOfWeek = "Mon"
+                    )
+                    availableTime.add(availabilityMon)
+                }
+                if (checkBoxNewServiceTuesday.isChecked){
+                    availabilityTue = availTime.copy(
+                        availableStartTime = newServiceTuesdayOpen.text.toString().trim(),
+                        availableEndTime = newServiceTuesdayClose.text.toString().trim(),
+                        daysOfWeek = "Tue"
+                    )
+                    availableTime.add(availabilityTue)
+                }
+                if (checkBoxNewServiceWednesday.isChecked){
+                    availabilityWed = availTime.copy(
+                        availableStartTime = newServiceWednesdayOpen.text.toString().trim(),
+                        availableEndTime = newServiceWednesdayClose.text.toString().trim(),
+                        daysOfWeek = "Wed"
+                    )
+                    availableTime.add(availabilityWed)
+                }
+                if (checkBoxNewServiceThursday.isChecked){
+                    availabilityThurs = availTime.copy(
+                        availableStartTime = newServiceThursdayOpen.text.toString().trim(),
+                        availableEndTime = newServiceThursdayClose.text.toString().trim(),
+                        daysOfWeek = "Thurs"
+                    )
+                    availableTime.add(availabilityThurs)
+                }
+                if (checkBoxNewServiceFriday.isChecked){
+                    availabilityFri = availTime.copy(
+                        availableStartTime = newServiceFridayOpen.text.toString().trim(),
+                        availableEndTime = newServiceFridayClose.text.toString().trim(),
+                        daysOfWeek = "Fri"
+                    )
+                    availableTime.add(availabilityFri)
+                }
+                if (checkBoxNewServiceSaturday.isChecked){
+                    availabilitySat = availTime.copy(
+                        availableStartTime = newServiceSaturdayOpen.text.toString().trim(),
+                        availableEndTime = newServiceSaturdayClose.text.toString().trim(),
+                        daysOfWeek = "Sat"
+                    )
+                    availableTime.add(availabilitySat)
+                }
+                if (checkBoxNewServiceSunday.isChecked){
+                    availabilitySun = availTime.copy(
+                        availableStartTime = newServiceSundayOpen.text.toString().trim(),
+                        availableEndTime = newServiceSundayClose.text.toString().trim(),
+                        daysOfWeek = "Sun"
+                    )
+                    availableTime.add(availabilitySun)
+                }
+
+                val characteristicCoding = coding.copy(
+                    display = newServiceCharacteristics
+                )
+                val eligibilityCoding = coding.copy(
+                    display = newServiceEligibility
+                )
+                val programCoding = coding.copy(
+                    display = newServiceEligibility
+                )
+
+                val specialityCoding = coding.copy(
+                    display = newServiceSpecialty
+                )
+
+
+                val characteristic = characteristic.copy(
+                    coding = listOf(characteristicCoding)
+                )
+
+                val eligibility = eligibility.copy(
+                    coding = listOf(eligibilityCoding)
+                )
+
+                val program = program.copy(
+                    coding = listOf(programCoding)
+                )
+
+                serviceCategoryList.add(newServiceCategory)
+                serviceCharacteristicList.add(characteristic)
+                serviceCommunicationList.add(newServiceCommunication)
+                serviceEligibilityList.add(eligibility)
+                serviceProgramList.add(program)
+                speciality = Speciality(listOf(specialityCoding))
+
+
                 var id = newServiceProvisionCostRadioGroup.checkedRadioButtonId
                 if (id != -1) {
                     val radio = id
                 } else {
                     //show validation error
                 }
+                performValidation()
 
             }
 
         }
+
+    }
+
+    private fun performValidation() {
+
+        with(binding){
+            when {
+                newServiceCategory.isEmpty() -> {
+                    newServiceCategoryAutoCompleteView.error = "Field cannot be empty"
+                    newServiceCategoryAutoCompleteView.requestFocus()
+                }
+                newServiceProviderName.isEmpty() -> {
+                    textInputLayoutNewServiceProvidedBy.error = "Field cannot be empty"
+                    newServiceProvidedBy.requestFocus()
+                }
+                newServiceName.isEmpty() -> {
+                    textInputLayoutNewServiceName.error = "Field cannot be empty"
+                    newServiceNameView.requestFocus()
+                }
+                newServiceComment.isEmpty() -> {
+                    textInputLayoutNewServiceComment.error = "Field cannot be empty"
+                    newServiceCommentView.requestFocus()
+                }
+                newServiceSpecialty.isEmpty() -> {
+                    textInputLayoutNewServiceSpecialty.error = "Field cannot be empty"
+                    newServiceSpecialtyView.requestFocus()
+                }
+                newServiceContactEmail.isEmpty() -> {
+                    textInputLayoutNewServiceContactEmail.error = "Field cannot be empty"
+                    newServiceContactEmailView.requestFocus()
+                }
+                newServiceContactPhoneNumber.isEmpty() -> {
+                    textInputLayoutNewServiceContactPhoneNumber.error = "Field cannot be empty"
+                    newServiceContactPhoneNumberView.requestFocus()
+                }
+                newServiceEligibility.isEmpty() -> {
+                    textInputLayoutNewServiceEligibility.error = "Field cannot be empty"
+                    newServiceEligibilityView.requestFocus()
+                }
+                newServiceProgram.isEmpty() -> {
+                    newServiceProgramView.error = "Field cannot be empty"
+                    newServiceProgramView.requestFocus()
+                }
+                newServiceCharacteristics.isEmpty() -> {
+                    textInputLayoutNewServiceCharacteristics.error = "Field cannot be empty"
+                    newServiceCharacteristicsView.requestFocus()
+                }
+                newServiceReferralMethod.isEmpty() -> {
+                    textInputLayoutNewServiceReferralMethod.error = "Field cannot be empty"
+                    newServiceReferralMethodView.requestFocus()
+                }
+                newServiceCommunication.isEmpty() -> {
+                    newServiceCommunicationAutoCompleteView.error = "Field cannot be empty"
+                    newServiceCommunicationAutoCompleteView.requestFocus()
+                }
+                else -> {
+
+                    //all requirements are satisfied
+                    val email = telco.copy(
+                        system = "email",
+                        rank = "${telecomRank++}",
+                        value = newServiceContactEmail,
+                        use = "official"
+                    )
+
+                    val phone = telco.copy(
+                        system = "phone",
+                        rank = "${telecomRank++}",
+                        value = newServiceContactPhoneNumber,
+                        use = "official"
+                    )
+
+                    telecom.add(email)
+                    telecom.add(phone)
+
+
+
+                    val newServiceRequest = NewServiceRequest(
+                        active = true,
+                        appointmentRequired = newServiceAppointmentRequired,
+                        availabilityExceptions = "",
+                        availableTime = availableTime,
+                        category = serviceCategoryList,
+                        characteristics = serviceCharacteristicList,
+                        comment = newServiceComment,
+                        communication = serviceCommunicationList,
+                        eligibility = serviceEligibilityList,
+                        extraDetails = "",
+                        name = newServiceName,
+                        notAvailable = null,
+                        photo = "",
+                        program = serviceProgramList,
+                        providedBy = newServiceProviderName,
+                        //todo fix referral Method
+                        referralMethod = ,
+                        //todo fix service Provision Code
+                        serviceProvisionCode = ,
+                        speciality = speciality,
+                        telecom = telecom
+                    )
+
+                    createNewService()
+                }
+            }
+
+        }
+    }
+
+    private fun createNewService() {
+
     }
 
     // Get the selected radio button text using radio button on click listener

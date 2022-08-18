@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'kotlinx-serialization'
+    id "androidx.navigation.safeargs"
+
 }
 
 android {
@@ -81,8 +83,8 @@ dependencies {
     //UI
     implementation 'com.hbb20:ccp:2.5.4'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.0'
     implementation 'com.github.baoyachi:StepView:1.9'
     implementation 'com.anton46:stepsview:0.0.2'
