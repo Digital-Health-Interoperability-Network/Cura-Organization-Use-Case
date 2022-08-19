@@ -19,11 +19,9 @@ import com.nameksolutions.regchain.curaorganization.databinding.FragmentNewServi
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesApi
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesRepo
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesViewModel
+import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.requests.*
-import com.nameksolutions.regchain.curaorganization.utils.Common
-import com.nameksolutions.regchain.curaorganization.utils.TimePickerHelper
-import com.nameksolutions.regchain.curaorganization.utils.enable
-import com.nameksolutions.regchain.curaorganization.utils.showProgressDialog
+import com.nameksolutions.regchain.curaorganization.utils.*
 import java.util.*
 
 class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, ServicesRepo>(), CountryCodePicker.OnCountryChangeListener {
@@ -53,7 +51,8 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
     private val eligibility = Eligibility(listOf(coding))
     private val program = Program(listOf(coding))
     private var speciality = Speciality(listOf(coding))
-    //private val specialityCoding = Speciality()
+    private val referralMethod = ReferralMethod(listOf(coding))
+    private val serviceProvision = ServiceProvisionCode(listOf(coding))
 
 
     private var telecom: MutableList<Telecom> = mutableListOf()
@@ -62,6 +61,8 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
     private var serviceCharacteristicList: MutableList<Characteristic> = mutableListOf()
     private var serviceCommunicationList: MutableList<String> = mutableListOf()
     private var serviceEligibilityList: MutableList<Eligibility> = mutableListOf()
+    private var serviceReferralMethodList: MutableList<ReferralMethod> = mutableListOf()
+    private var serviceServiceProvisionCodeList: MutableList<ServiceProvisionCode> = mutableListOf()
     private var serviceProgramList: MutableList<Program> = mutableListOf()
 
     lateinit var timePicker: TimePickerHelper
@@ -420,6 +421,14 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     display = newServiceSpecialty
                 )
 
+                val referralMethodCoding = coding.copy(
+                    display = newServiceReferralMethod
+                )
+
+                val serviceProvisionCoding = coding.copy(
+                    display = newServiceProvisionCost
+                )
+
 
                 val characteristic = characteristic.copy(
                     coding = listOf(characteristicCoding)
@@ -433,13 +442,22 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     coding = listOf(programCoding)
                 )
 
+                val referralMethod = referralMethod.copy(
+                    coding = listOf(referralMethodCoding)
+                )
+
+                val serviceProvisionCode = serviceProvision.copy(
+                    coding = listOf(serviceProvisionCoding)
+                )
+
                 serviceCategoryList.add(newServiceCategory)
                 serviceCharacteristicList.add(characteristic)
                 serviceCommunicationList.add(newServiceCommunication)
                 serviceEligibilityList.add(eligibility)
                 serviceProgramList.add(program)
                 speciality = Speciality(listOf(specialityCoding))
-
+                serviceReferralMethodList.add(referralMethod)
+                serviceServiceProvisionCodeList.add(serviceProvisionCode)
 
                 var id = newServiceProvisionCostRadioGroup.checkedRadioButtonId
                 if (id != -1) {
@@ -545,23 +563,40 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                         photo = "",
                         program = serviceProgramList,
                         providedBy = newServiceProviderName,
-                        //todo fix referral Method
-                        referralMethod = ,
-                        //todo fix service Provision Code
-                        serviceProvisionCode = ,
+                        referralMethod = serviceReferralMethodList,
+                        serviceProvisionCode = serviceServiceProvisionCodeList,
                         speciality = speciality,
                         telecom = telecom
                     )
 
-                    createNewService()
+                    createNewService(newServiceRequest)
                 }
             }
 
         }
     }
 
-    private fun createNewService() {
+    private fun createNewService(newServiceRequest: NewServiceRequest) {
+        //todo: call api to create new service
+        viewModel.createHealthCareService(newServiceRequest)
+        viewModel.healthcareServiceCreationResponse.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            when(it){
+                is Resource.Success -> {
+                    hideProgress()
+                    requireView().snackbar("Service Created Successfully")
+                    findNavController().navigate(R.id.action_newService_to_servicesFragment)
 
+                }
+                is Resource.Failure -> {
+                    hideProgress()
+                    handleApiError(it) {createNewService(newServiceRequest)}
+                }
+                is Resource.Loading -> {
+                    showProgress()
+                }
+            }
+
+        })
     }
 
     // Get the selected radio button text using radio button on click listener

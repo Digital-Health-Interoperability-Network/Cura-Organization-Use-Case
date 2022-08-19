@@ -19,6 +19,10 @@ object Common {
     const val practitionerRoute = "practitioner"
     const val practitionerRoleRoute = "practitionerrole"
 
+
+    const val healthcareServicesRoute = "healthcare-services"
+
+
     const val TAG = "EQUA"
 
     val specialtiesMap = mapOf(

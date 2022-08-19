@@ -11,7 +11,7 @@ class RemoteDataSource {
 
 
     companion object {
-        private const val BASE_URL = "http://192.168.8.190/api/v1/"
+        private const val BASE_URL = "http://137.184.18.246/api/"
     }
 
     //generic function to create retrofit client
