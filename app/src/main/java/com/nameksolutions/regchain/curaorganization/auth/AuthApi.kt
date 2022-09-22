@@ -56,12 +56,16 @@ interface AuthApi {
 
     //route to create an organization address
     //this route is used for creating the organization address
-//    @Headers("Content-Type: application/json")
-//    @POST(organizationAddressRoute)
-//    suspend fun createOrganizationAddress(
-//        @Body createOrganization: CreateOrganizationAddressRequest
-//    ): OrganizationCreationResponse
+    @Headers("Content-Type: application/json")
+    @POST(organizationAddressRoute)
+    suspend fun createOrganizationAddress(
+        @Body createOrganization: CreateOrganizationAddressRequest
+    ): OrganizationPatchInfoResponse
 
+
+    // TODO: PATCH Organization Address Function
+
+    // TODO: DELETE Organization Address Function
 
     //route to edit an organisation information
     //this route is also used for the completing part of creating the organization
