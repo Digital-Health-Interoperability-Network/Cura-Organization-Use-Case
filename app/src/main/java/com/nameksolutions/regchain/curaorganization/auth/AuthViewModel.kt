@@ -6,13 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.nameksolutions.regchain.curaorganization.base.BaseViewModel
 import com.nameksolutions.regchain.curaorganization.network.Resource
-import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
-import com.nameksolutions.regchain.curaorganization.requests.Identifiers
-import com.nameksolutions.regchain.curaorganization.requests.Telecom
-import com.nameksolutions.regchain.curaorganization.requests._RegIdentifiers
 import com.nameksolutions.regchain.curaorganization.responses.*
 import kotlinx.coroutines.launch
-import org.json.JSONObject
 import java.util.*
 
 class AuthViewModel(

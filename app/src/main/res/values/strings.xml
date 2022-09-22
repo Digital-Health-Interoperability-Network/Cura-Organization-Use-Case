@@ -113,7 +113,7 @@
     <string name="reg_practitioner_id_type">National Identification Type</string>
     <string name="reg_practitioner_email">Practitioner Email</string>
     <string name="practitioners_available_times_title">Available Times</string>
-    <string name="practitioners_available_times_expand_arrow">Practitoners Available Times Expand Arrow</string>
+    <string name="practitioners_available_times_expand_arrow">Practitioners Available Times Expand Arrow</string>
     <string name="btn_practitioner_register">Register</string>
     <string name="btn_practitioner_cancel">Cancel</string>
     <string name="reg_practitioner_gender">Gender</string>
@@ -280,11 +280,11 @@
      <item>Care Coordination and Supplementary Services (CCSS)</item>
      <item>Cognitive Dementia Memory Service (CDAMS)</item>
      <item>ChildFIRST</item>
-     <item>Children's Contact Services</item>
+     <item>Children Contact Services</item>
      <item>Community Visitors Scheme</item>
      <item>CPP (Community Partners Program)</item>
      <item>Closing the Gap (CTG)</item>
-     <item>Coordinated Veterans' Care (CVC) Program</item>
+     <item>Coordinated Veterans Care (CVC) Program</item>
      <item>Day Program</item>
      <item>Drop In Program</item>
      <item>Early Years Program</item>
@@ -313,7 +313,7 @@
      <item>Social Support Programs</item>
      <item>Supported Residential Service (SRS)</item>
      <item>Tasmanian Aboriginal Centre (TAC)</item>
-     <item>Victim's Assistance Program</item>
+     <item>Victim Assistance Program</item>
 
     </string-array>
 

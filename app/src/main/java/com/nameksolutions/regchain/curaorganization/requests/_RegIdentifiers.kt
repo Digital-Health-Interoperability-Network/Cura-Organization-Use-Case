@@ -6,7 +6,7 @@ data class _RegIdentifiers(
     val facilityCode: String? = null,
     val facilityLevel: String? = null,
     val facilityName: String? = null,
-    val hoursOfOperation: HashMap<String, String> = hashMapOf(),
+    val hoursOfOperation: List<AvailableTime>? = null,
     val ownership: String? = null,
     val ownershipType: String? = null,
     val registrationNO: String? = null,

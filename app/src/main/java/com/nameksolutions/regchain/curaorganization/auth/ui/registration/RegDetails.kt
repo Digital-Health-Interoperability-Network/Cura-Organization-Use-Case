@@ -13,7 +13,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.gson.Gson
 import com.hbb20.CountryCodePicker
-import com.nameksolutions.regchain.curaorganization.MainActivity
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.auth.AuthApi
 import com.nameksolutions.regchain.curaorganization.auth.AuthRepo
@@ -21,9 +20,6 @@ import com.nameksolutions.regchain.curaorganization.auth.AuthViewModel
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentRegDetailsBinding
 import com.nameksolutions.regchain.curaorganization.network.Resource
-import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
-import com.nameksolutions.regchain.curaorganization.requests.Identifiers
-import com.nameksolutions.regchain.curaorganization.requests.Telecom
 import com.nameksolutions.regchain.curaorganization.utils.*
 import com.nameksolutions.regchain.curaorganization.utils.Common.regStepCount
 import kotlinx.coroutines.launch
@@ -189,7 +185,7 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
 //                val emailGson = gson.toJson(email)//.toString()
                 val email = telco.copy(
                     system = "email",
-                    rank = "${telecomRank++}",
+                    rank = telecomRank++,
                     value = organizationEmail,
                     use = "official"
                 )
@@ -201,7 +197,7 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
                 )
                 val phone = telco.copy(
                     system = "mobile",
-                    rank = "${telecomRank++}",
+                    rank = telecomRank++,
                     value = organizationFullPhoneNumber,
                     use = "official"
                 )
@@ -235,13 +231,12 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
                 aliasName.add(organizationAliasName)
 
                 val newOrganization: CreateOrganizationRequest = CreateOrganizationRequest(
-                    active = true,
                     identifier = identifiers,
                     name = organizationName,
                     password = organizationPassword,
                     telecom = telecom,
                     type = null,
-                    address = null
+                    address = null,
                 )
                 registerOrganization(newOrganization)
             }

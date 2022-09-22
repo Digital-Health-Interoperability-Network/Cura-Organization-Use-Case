@@ -1,16 +1,12 @@
 package com.nameksolutions.regchain.curaorganization.home.personnel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.nameksolutions.regchain.curaorganization.base.BaseViewModel
-import com.nameksolutions.regchain.curaorganization.home.HomeRepo
 import com.nameksolutions.regchain.curaorganization.network.Resource
-import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
 import com.nameksolutions.regchain.curaorganization.requests.PractitionerRequest
 import com.nameksolutions.regchain.curaorganization.responses.*
-import com.nameksolutions.regchain.curaorganization.utils.Common.TAG
 import kotlinx.coroutines.launch
 
 class PersonnelViewModel(

@@ -14,7 +14,8 @@ object Common {
 
     var regStepCount = 0
     const val userRoute = "users"
-    const val organizationRoute = "organization"
+    const val organizationRoute = "organizations"
+    const val organizationAddressRoute = "$organizationRoute/address"
     const val personnelRoute = "_personnel"
     const val practitionerRoute = "practitioner"
     const val practitionerRoleRoute = "practitionerrole"

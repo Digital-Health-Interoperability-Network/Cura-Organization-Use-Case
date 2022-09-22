@@ -1,11 +1,7 @@
 package com.nameksolutions.regchain.curaorganization.auth
 
 import com.nameksolutions.regchain.curaorganization.base.BaseRepo
-import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
-import com.nameksolutions.regchain.curaorganization.requests.Identifiers
-import com.nameksolutions.regchain.curaorganization.requests.Telecom
 import com.nameksolutions.regchain.curaorganization.utils.UserPreferences
-import org.json.JSONObject
 import java.util.*
 
 class AuthRepo(

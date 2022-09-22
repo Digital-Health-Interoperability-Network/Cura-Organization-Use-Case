@@ -530,14 +530,14 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     //all requirements are satisfied
                     val email = telco.copy(
                         system = "email",
-                        rank = "${telecomRank++}",
+                        rank = telecomRank++,
                         value = newServiceContactEmail,
                         use = "official"
                     )
 
                     val phone = telco.copy(
                         system = "phone",
-                        rank = "${telecomRank++}",
+                        rank = telecomRank++,
                         value = newServiceContactPhoneNumber,
                         use = "official"
                     )

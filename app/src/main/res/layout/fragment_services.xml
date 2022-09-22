@@ -94,7 +94,7 @@
             android:layout_marginEnd="@dimen/margin_mini"
             android:padding="@dimen/padding_mini"
             app:cardElevation="@dimen/padding_mini"
-            app:layout_constraintBottom_toTopOf="@id/personnel_view_divider"
+            app:layout_constraintBottom_toTopOf="@id/services_view_divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_search">
@@ -554,4 +554,3 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>

@@ -20,7 +20,6 @@ import com.nameksolutions.regchain.curaorganization.auth.AuthViewModel
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentRegRegistryIdentifersBinding
 import com.nameksolutions.regchain.curaorganization.network.Resource
-import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
 import com.nameksolutions.regchain.curaorganization.requests._RegIdentifiers
 import com.nameksolutions.regchain.curaorganization.utils.Common.regStepCount
 import com.nameksolutions.regchain.curaorganization.utils.getDate

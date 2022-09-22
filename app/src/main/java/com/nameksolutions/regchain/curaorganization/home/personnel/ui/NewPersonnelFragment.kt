@@ -484,14 +484,14 @@ class NewPersonnelFragment :
                 //all requirements are satisfied
                 val email = telco.copy(
                     system = "email",
-                    rank = "${telecomRank++}",
+                    rank = telecomRank++,
                     value = newPractitionerEmail,
                     use = "official"
                 )
 
                 val phone = telco.copy(
                     system = "phone",
-                    rank = "${telecomRank++}",
+                    rank = telecomRank++,
                     value = newPractitionerPhoneNumber,
                     use = "official"
                 )

@@ -5,9 +5,10 @@ data class TelecomMap(
     val rank: String = "",
     val value: String = "",
     val use: String = "Official"
-){
-    object ModelMapper {
-        fun from(telecom: Telecom) =
-            TelecomMap(telecom.system, telecom.rank, telecom.value, telecom.use)
-    }
-}
+)
+// {
+//    object ModelMapper {
+//        fun from(telecom: Telecom) =
+//            TelecomMap(telecom.system, telecom.rank, telecom.value, telecom.use)
+//    }
+//}
