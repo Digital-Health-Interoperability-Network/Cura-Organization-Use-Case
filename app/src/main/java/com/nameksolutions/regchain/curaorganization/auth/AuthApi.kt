@@ -39,13 +39,13 @@ interface AuthApi {
         @Field("otp") otp: String
     ): OtpVerifyResponse
 
-//    //route to create an organization
-//    //this route is used for creating the organization
-//    @Headers("Content-Type: application/json")
-//    @POST(organizationRoute)
-//    suspend fun createOrganization(
-//        @Body createOrganization: CreateOrganizationRequest
-//    ): OrganizationCreationResponse
+    //route to create an organization
+    //this route is used for creating the organization
+    @Headers("Content-Type: application/json")
+    @POST(organizationRoute)
+    suspend fun createOrganization(
+        @Body createOrganization: CreateOrganizationRequest
+    ): CreateOrganizationResponse
 
     // TODO: GET Organization Function
 
