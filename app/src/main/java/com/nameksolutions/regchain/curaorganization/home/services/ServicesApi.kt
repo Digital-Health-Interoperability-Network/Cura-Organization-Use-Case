@@ -1,8 +1,5 @@
 package com.nameksolutions.regchain.curaorganization.home.services
 
-import com.nameksolutions.regchain.curaorganization.requests.NewServiceRequest
-import com.nameksolutions.regchain.curaorganization.responses.NewServiceCreationResponse
-import com.nameksolutions.regchain.curaorganization.utils.Common
 import com.nameksolutions.regchain.curaorganization.utils.Common.healthcareServicesRoute
 import retrofit2.http.Body
 import retrofit2.http.POST

@@ -3,15 +3,10 @@ package com.nameksolutions.regchain.curaorganization.home.personnel.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.nameksolutions.regchain.curaorganization.databinding.PersonnelOtherPractitionersItemLayoutBinding
 import com.nameksolutions.regchain.curaorganization.databinding.SinglePractitionerAvailableTimeLayoutItemBinding
-import com.nameksolutions.regchain.curaorganization.home.personnel.ui.PersonnelFragmentDirections
-import com.nameksolutions.regchain.curaorganization.responses.AvailableTimeXX
-import com.nameksolutions.regchain.curaorganization.responses.Practitoner
 
 class PractitionerAvailableTImeAdapter : ListAdapter<AvailableTimeXX, PractitionerAvailableTImeAdapter.PractitionerAvailableTImeViewHolder>(PractitionerAvailableTImeAdapter.DiffCallback()) {
 

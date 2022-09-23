@@ -1,10 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.home.personnel
 
-import android.util.Log
 import com.nameksolutions.regchain.curaorganization.base.BaseRepo
-import com.nameksolutions.regchain.curaorganization.home.HomeApi
-import com.nameksolutions.regchain.curaorganization.requests.PractitionerRequest
-import com.nameksolutions.regchain.curaorganization.utils.Common.TAG
 import com.nameksolutions.regchain.curaorganization.utils.UserPreferences
 
 class PersonnelRepo(

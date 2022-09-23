@@ -20,8 +20,6 @@ import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelRepo
 import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelViewModel
 import com.nameksolutions.regchain.curaorganization.home.personnel.adapters.*
 import com.nameksolutions.regchain.curaorganization.network.Resource
-import com.nameksolutions.regchain.curaorganization.responses.Personnel
-import com.nameksolutions.regchain.curaorganization.responses.Practitoner
 import com.nameksolutions.regchain.curaorganization.utils.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking

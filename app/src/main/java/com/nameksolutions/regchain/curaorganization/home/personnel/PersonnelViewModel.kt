@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.nameksolutions.regchain.curaorganization.base.BaseViewModel
 import com.nameksolutions.regchain.curaorganization.network.Resource
-import com.nameksolutions.regchain.curaorganization.requests.PractitionerRequest
 import com.nameksolutions.regchain.curaorganization.responses.*
 import kotlinx.coroutines.launch
 

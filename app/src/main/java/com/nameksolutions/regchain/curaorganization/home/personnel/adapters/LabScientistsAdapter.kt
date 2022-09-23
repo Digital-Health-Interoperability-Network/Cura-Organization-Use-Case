@@ -8,10 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelLabScientistsItemLayoutBinding
-import com.nameksolutions.regchain.curaorganization.databinding.PersonnelPharmacistsItemLayoutBinding
 import com.nameksolutions.regchain.curaorganization.home.personnel.ui.PersonnelFragmentDirections
-import com.nameksolutions.regchain.curaorganization.responses.NewPractitioner
-import com.nameksolutions.regchain.curaorganization.responses.Practitoner
 
 class LabScientistsAdapter : ListAdapter<Practitoner, LabScientistsAdapter.LabScientistsViewHolder>(LabScientistsAdapter.DiffCallback()) {
 

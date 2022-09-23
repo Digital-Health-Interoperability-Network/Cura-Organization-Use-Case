@@ -1,18 +1,18 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
 data class RegistryIdentifier(
-    val EndDate: Any,
+    val EndDate: String,
     val _id: String,
+    val availableTime: List<AvailableTime>,
     val daysOfOperation: List<String>,
     val facilityCode: String,
     val facilityLevel: String,
     val facilityName: String,
-    val hoursOfOperation: HoursOfOperation,
     val licenseStatus: Boolean,
     val operationalStatus: Boolean,
     val ownership: String,
     val ownershipType: String,
     val registrationStatus: Boolean,
-    val startDate: Any,
+    val startDate: String,
     val stateUID: String
 )

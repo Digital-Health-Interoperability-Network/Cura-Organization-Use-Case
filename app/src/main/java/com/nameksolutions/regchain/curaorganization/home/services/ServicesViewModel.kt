@@ -4,12 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.nameksolutions.regchain.curaorganization.base.BaseViewModel
-import com.nameksolutions.regchain.curaorganization.home.HomeRepo
 import com.nameksolutions.regchain.curaorganization.network.Resource
-import com.nameksolutions.regchain.curaorganization.requests.NewServiceRequest
-import com.nameksolutions.regchain.curaorganization.requests.PractitionerRequest
-import com.nameksolutions.regchain.curaorganization.responses.NewServiceCreationResponse
-import com.nameksolutions.regchain.curaorganization.responses.PractitionerCreationResponse
 import kotlinx.coroutines.launch
 
 class ServicesViewModel(

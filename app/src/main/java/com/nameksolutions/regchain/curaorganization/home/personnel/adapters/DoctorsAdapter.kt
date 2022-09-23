@@ -7,13 +7,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.nameksolutions.regchain.curaorganization.databinding.ActivityHomeBinding
-import com.nameksolutions.regchain.curaorganization.databinding.ActivityHomeBinding.bind
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelDoctorsItemLayoutBinding
 import com.nameksolutions.regchain.curaorganization.home.personnel.ui.PersonnelFragmentDirections
-import com.nameksolutions.regchain.curaorganization.responses.DataAllPractitioner
-import com.nameksolutions.regchain.curaorganization.responses.NewPractitioner
-import com.nameksolutions.regchain.curaorganization.responses.Practitoner
 
 class DoctorsAdapter: ListAdapter<Practitoner, DoctorsAdapter.DoctorsViewHolder>(DiffCallback()){
     override fun onCreateViewHolder(

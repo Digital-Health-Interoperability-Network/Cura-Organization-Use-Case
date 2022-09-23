@@ -1,7 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.home.personnel
 
 
-import com.nameksolutions.regchain.curaorganization.requests.PractitionerRequest
 import com.nameksolutions.regchain.curaorganization.responses.*
 import com.nameksolutions.regchain.curaorganization.utils.Common.personnelRoute
 import com.nameksolutions.regchain.curaorganization.utils.Common.practitionerRoleRoute

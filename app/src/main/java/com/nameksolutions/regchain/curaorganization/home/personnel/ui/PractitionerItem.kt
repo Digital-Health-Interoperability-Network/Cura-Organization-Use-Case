@@ -1,7 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.home.personnel.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,6 @@ import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelApi
 import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelRepo
 import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelViewModel
 import com.nameksolutions.regchain.curaorganization.home.personnel.adapters.PractitionerAvailableTImeAdapter
-import com.nameksolutions.regchain.curaorganization.responses.AvailableTimeXX
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 

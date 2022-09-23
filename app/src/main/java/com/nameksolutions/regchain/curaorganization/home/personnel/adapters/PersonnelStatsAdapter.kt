@@ -1,13 +1,11 @@
 package com.nameksolutions.regchain.curaorganization.home.personnel.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelStatsLayoutItemBinding
-import com.nameksolutions.regchain.curaorganization.responses.Personnel
 
 class PersonnelStatsAdapter: ListAdapter<Personnel, PersonnelStatsAdapter.PersonnelStatsViewHolder>(DiffCallback()){
     override fun onCreateViewHolder(

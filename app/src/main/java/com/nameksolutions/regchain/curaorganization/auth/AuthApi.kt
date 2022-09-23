@@ -14,9 +14,6 @@ import java.util.*
 
 interface AuthApi {
 
-    val gson: Gson
-        get() = Gson()
-
     //Initial Email Entry for OTP Sending
     @FormUrlEncoded
     @POST("$userRoute/signup")
@@ -24,12 +21,16 @@ interface AuthApi {
         @Field("email") email: String
     ): SignUpResponse
 
+
+
     //Route to resend OTP
     @FormUrlEncoded
     @POST("$userRoute/resendotp")
     suspend fun resendOtp(
         @Field("email") email: String
     ): SignUpResponse
+
+
 
     //Route to verify the OTP
     @FormUrlEncoded
@@ -39,6 +40,8 @@ interface AuthApi {
         @Field("otp") otp: String
     ): OtpVerifyResponse
 
+
+
     //route to create an organization
     //this route is used for creating the organization
     @Headers("Content-Type: application/json")
@@ -46,6 +49,8 @@ interface AuthApi {
     suspend fun createOrganization(
         @Body createOrganization: CreateOrganizationRequest
     ): CreateOrganizationResponse
+
+
 
     // TODO: GET Organization Function
 
@@ -82,7 +87,7 @@ interface AuthApi {
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String
-    ): LoginResponse
+    ): OrganizationLoginResponse
 
 //    @FormUrlEncoded
 //    @PATCH(organizationRoute)

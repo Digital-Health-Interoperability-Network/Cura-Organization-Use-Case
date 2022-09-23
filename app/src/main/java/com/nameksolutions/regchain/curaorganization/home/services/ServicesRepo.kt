@@ -1,8 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.home.services
 
 import com.nameksolutions.regchain.curaorganization.base.BaseRepo
-import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelApi
-import com.nameksolutions.regchain.curaorganization.requests.NewServiceRequest
 import com.nameksolutions.regchain.curaorganization.utils.UserPreferences
 
 class ServicesRepo(
