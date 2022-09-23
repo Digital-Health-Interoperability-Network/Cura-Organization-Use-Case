@@ -5,5 +5,6 @@ data class CreateOrganizationRequest(
     val identifier: List<Identifier>,
     val name: String,
     val password: String,
-    val telecom: List<Telecom>
+    val telecom: List<Telecom>,
+    val _registryIdentifier: _RegIdentifiersRequest
 )

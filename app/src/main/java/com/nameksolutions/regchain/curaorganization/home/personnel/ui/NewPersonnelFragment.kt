@@ -347,7 +347,8 @@ class NewPersonnelFragment :
                     availabilityFri = availTime.copy(
                         availableStartTime = practitionerFridayOpen.text.toString().trim(),
                         availableEndTime = practitionerFridayClose.text.toString().trim(),
-                        daysOfWeek = "Fri"
+                        daysOfWeek = listOf("Fri"),
+                        allDay = true
                     )
                     availableTime.add(availabilityFri)
                 }

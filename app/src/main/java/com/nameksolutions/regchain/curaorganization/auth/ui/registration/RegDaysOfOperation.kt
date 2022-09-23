@@ -42,7 +42,6 @@ class RegDaysOfOperation :
     BaseFragment<AuthViewModel, FragmentRegDaysOfOperationBinding, AuthRepo>() {//,
     // View.OnClickListener {
 
-    var hoursOfOperation: HoursOfOperation = HoursOfOperation()
     var daysOfOperation = mutableListOf<String>()
 
     lateinit var timePicker: TimePickerHelper

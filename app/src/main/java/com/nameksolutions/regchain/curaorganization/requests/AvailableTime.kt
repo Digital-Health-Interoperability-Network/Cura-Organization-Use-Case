@@ -1,7 +1,8 @@
 package com.nameksolutions.regchain.curaorganization.requests
 
 data class AvailableTime(
-    val availableEndTime: String? = null,
-    val availableStartTime: String? = null,
-    val daysOfWeek: String? = null
+    val allDay: Boolean,
+    val availableEndTime: String,
+    val availableStartTime: String,
+    val daysOfWeek: List<String>
 )
