@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.nameksolutions.regchain.curaorganization.base.BaseViewModel
 import com.nameksolutions.regchain.curaorganization.network.Resource
+import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationAddressRequest
+import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
 import com.nameksolutions.regchain.curaorganization.responses.*
 import kotlinx.coroutines.launch
 import java.util.*
@@ -22,18 +24,23 @@ class AuthViewModel(
     val otpVerification: LiveData<Resource<OtpVerifyResponse>>
         get() = _otpVerification
 
-    private val _organizationCreation: MutableLiveData<Resource<OrganizationCreationResponse>> =
+    private val _organizationCreation: MutableLiveData<Resource<CreateOrganizationResponse>> =
         MutableLiveData()
-    val organizationCreationResponse: LiveData<Resource<OrganizationCreationResponse>>
+    val organizationCreationResponse: LiveData<Resource<CreateOrganizationResponse>>
         get() = _organizationCreation
+
+    private val _organizationAddressCreation: MutableLiveData<Resource<OrganizationPatchInfoResponse>> =
+        MutableLiveData()
+    val organizationAddressCreation: LiveData<Resource<OrganizationPatchInfoResponse>>
+        get() = _organizationAddressCreation
 
     private val _organizationDetailsUpdate: MutableLiveData<Resource<OrganizationDetailsUpdateResponse>> =
         MutableLiveData()
     val organizationDetailsUpdate: LiveData<Resource<OrganizationDetailsUpdateResponse>>
         get() = _organizationDetailsUpdate
 
-    private val _loginResponse: MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
-    val loginResponse: LiveData<Resource<LoginResponse>>
+    private val _loginResponse: MutableLiveData<Resource<OrganizationLoginResponse>> = MutableLiveData()
+    val loginResponse: LiveData<Resource<OrganizationLoginResponse>>
         get() = _loginResponse
 
     fun generateOtp(email: String) = viewModelScope.launch {
@@ -56,23 +63,23 @@ class AuthViewModel(
     ) = viewModelScope.launch {
         _organizationCreation.value = Resource.Loading
         _organizationCreation.value =
-            repo.createOrganization(createOrganizationRequest)//name, alias, password, identifier, telecom, active)
+            repo.createOrganization(createOrganizationRequest)
+    }
+
+    fun createOrganizationAddress(
+        createOrganizationAddress: CreateOrganizationAddressRequest
+    ) = viewModelScope.launch {
+        _organizationAddressCreation.value = Resource.Loading
+        _organizationAddressCreation.value =
+            repo.createOrganizationAddress(createOrganizationAddress)
     }
 
     fun addOrganizationDetails(
         addOrganizationDetails: CreateOrganizationRequest
-//        name: String? = "",
-//        alias: MutableList<String>? = mutableListOf(),
-//        password: String? = "",
-//        identifier: MutableList<Identifiers>? = mutableListOf(),
-//        telecom: MutableList<Telecom>? = mutableListOf(),
-//        active: Boolean? = true,
-//        address: MutableList<String>? = mutableListOf(),
-//        _regIdentifiers: String? = "",
     ) = viewModelScope.launch {
         _organizationDetailsUpdate.value = Resource.Loading
         _organizationDetailsUpdate.value =
-            repo.addOrganizationDetails(addOrganizationDetails)//name, alias, password, identifier, telecom, active, address, _regIdentifiers)
+            repo.addOrganizationDetails(addOrganizationDetails)
     }
 
     //this function will call the login api in the auth repository

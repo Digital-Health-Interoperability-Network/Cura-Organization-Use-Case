@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -20,6 +21,9 @@ import com.nameksolutions.regchain.curaorganization.auth.AuthViewModel
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentRegDetailsBinding
 import com.nameksolutions.regchain.curaorganization.network.Resource
+import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
+import com.nameksolutions.regchain.curaorganization.requests.Identifier
+import com.nameksolutions.regchain.curaorganization.requests.Telecom
 import com.nameksolutions.regchain.curaorganization.utils.*
 import com.nameksolutions.regchain.curaorganization.utils.Common.regStepCount
 import kotlinx.coroutines.launch
@@ -64,12 +68,9 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
     val gson = Gson()
 
 
-    private var identifiers: MutableList<Identifiers> = mutableListOf()
+    private var identifiers: MutableList<Identifier> = mutableListOf()
     private var telecom: MutableList<Telecom> = mutableListOf()
 
-    //    private var telecom:  MutableList<Any> = mutableListOf()
-//    private var telecom:  MutableList<HashMap<String, String>> = mutableListOf()
-//    private var telecom:  MutableList<Map<String, Any>> = mutableListOf()
     private var aliasName: MutableList<String> = mutableListOf()
     private val telco = Telecom()
 
@@ -77,13 +78,9 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
     private var progressDialog: Dialog? = null
 
     private val TAG = "EQUA"
-//    val identifiers: Identifiers()
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         with(binding) {
 
             val nationalIDTypeArray = resources.getStringArray(R.array.id_types)
@@ -119,12 +116,13 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
 
         }
 
-
     }
 
     private fun performValidation() {
 
         with(binding) {
+
+            // TODO: replicate the validation in sql app by making the error go away if satisfied
             //if organization name field is empty
             if (organizationName.isEmpty()) {
                 textInputLayoutRegOrganizationName.error = "Organization Name Required"
@@ -175,26 +173,19 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
 //                identifiers = mutableListOf<Identifiers>(getOldIdentifiers())
 
                 identifiers.add(
-                    Identifiers(
-                        "Official",
-                        organizationNationalIdentificationType,
-                        organizationNationalIdentificationValue
+                    Identifier(
+                        type = organizationNationalIdentificationType,
+                        value = organizationNationalIdentificationValue
                     )
                 )
 
-//                val emailGson = gson.toJson(email)//.toString()
                 val email = telco.copy(
                     system = "email",
                     rank = telecomRank++,
                     value = organizationEmail,
                     use = "official"
                 )
-                val emailMap = mapOf(
-                    "system" to "email",
-                    "rank" to "${telecomRank++}",
-                    "value" to organizationEmail,
-                    "use" to "official"
-                )
+
                 val phone = telco.copy(
                     system = "mobile",
                     rank = telecomRank++,
@@ -202,41 +193,18 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
                     use = "official"
                 )
 
-
-                val emailGson = gson.toJsonTree(email) //as JSONObject
-                val phoneGson = gson.toJson(phone) //as JSONObject
-
-//                val json = getJson()
-//                val phoneGson = Json.enc//JSONObject(phone)//Gson().fromJson(phone, Telecom::class.java)//.toString()
-
-                Log.d(TAG, "performValidation: $email")
-
-
-                val phoneMap = mapOf(
-                    "system" to "mobile",
-                    "rank" to "${telecomRank++}",
-                    "value" to organizationFullPhoneNumber,
-                    "use" to "Official"
-                )
-
-                val emailAsMap: Map<String, Any> = email.serializeToMap()
-                val phoneAsMap: Map<String, Any> = phone.serializeToMap()
-
-//                telecom.add(emailGson)
                 telecom.add(email)
 
-//                telecom.add(phoneGson)
                 telecom.add(phone)
 
                 aliasName.add(organizationAliasName)
 
-                val newOrganization: CreateOrganizationRequest = CreateOrganizationRequest(
+                val newOrganization = CreateOrganizationRequest(
+                    alias = aliasName,
                     identifier = identifiers,
                     name = organizationName,
                     password = organizationPassword,
-                    telecom = telecom,
-                    type = null,
-                    address = null,
+                    telecom = telecom
                 )
                 registerOrganization(newOrganization)
             }
@@ -252,9 +220,7 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
     private fun registerOrganization(newOrganization: CreateOrganizationRequest) {
 
         Log.d(TAG, "registerOrganization: $telecom")
-//         viewModel.createOrganization(organizationName, aliasName, organizationPassword, identifiers, telecom, true )
         viewModel.createOrganization(newOrganization)
-        Log.d(TAG, "registerOrganization: here")
 
         viewModel.organizationCreationResponse.observe(viewLifecycleOwner, Observer {
             when (it) {
@@ -264,19 +230,15 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
                     requireContext().toast("Registration Success!!")
                     lifecycleScope.launch {
                         viewModel.saveAuthToken(it.value.token)
-//                        viewModel.saveOrganisationName(it.value.data.organizationCreation.name)
-//                        Common.organizationName = it.value.data.organizationCreation.name
                         Log.d(TAG, "registerOrganization: ${it.value.token}")
                         regStepCount++
                         Log.d(TAG, "registerOrganizationRegStepCount: $regStepCount")
                         findNavController().navigate(R.id.action_regDetails_to_regAddress)
                     }
-//                    navController.navigate(R.id.action_regDetails_to_regAddress)
                 }
                 is Resource.Failure -> {
                     Log.d(TAG, "registerOrganization: Failed")
                     hideProgress()
-//                    handleApiError(it) {registerOrganization(organizationName, aliasName, organizationPassword, telecom, identifiers )}
                     handleApiError(it) { registerOrganization(newOrganization) }
                 }
                 is Resource.Loading -> {

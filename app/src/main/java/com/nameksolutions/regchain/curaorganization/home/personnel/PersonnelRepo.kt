@@ -7,27 +7,27 @@ class PersonnelRepo(
     private val api: PersonnelApi,
     private val prefs: UserPreferences
 ): BaseRepo() {
-
-    suspend fun getAllPersonnelStats() = safeApiCall {
-        api.getAllPersonnelStats()
-        //Log.d(TAG, "getAllPersonnelStats: ${api.getAllPersonnelStats()}")
-    }
-
-    suspend fun getAllPractitioners() = safeApiCall {
-        api.getAllPractitioners()
-    }
-
-    suspend fun getPractitionersByRole(code: String) = safeApiCall {
-        api.getPractitionersByRole(code)
-    }
-
-    suspend fun getPractitionerRolesList() = safeApiCall {
-        api.getPractitionerRolesList()
-    }
-
-    suspend fun createPractitioner(createPractitioner: PractitionerRequest) = safeApiCall {
-        api.createPractitioner(createPractitioner)
-    }
+//
+//    suspend fun getAllPersonnelStats() = safeApiCall {
+//        api.getAllPersonnelStats()
+//        //Log.d(TAG, "getAllPersonnelStats: ${api.getAllPersonnelStats()}")
+//    }
+//
+//    suspend fun getAllPractitioners() = safeApiCall {
+//        api.getAllPractitioners()
+//    }
+//
+//    suspend fun getPractitionersByRole(code: String) = safeApiCall {
+//        api.getPractitionersByRole(code)
+//    }
+//
+//    suspend fun getPractitionerRolesList() = safeApiCall {
+//        api.getPractitionerRolesList()
+//    }
+//
+//    suspend fun createPractitioner(createPractitioner: PractitionerRequest) = safeApiCall {
+//        api.createPractitioner(createPractitioner)
+//    }
 
 //    suspend fun getOnePractitioner(id: String) = safeApiCall {
 //        api.getOnePractitioner(id)

@@ -1,6 +1,8 @@
 package com.nameksolutions.regchain.curaorganization.auth
 
 import com.nameksolutions.regchain.curaorganization.base.BaseRepo
+import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationAddressRequest
+import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
 import com.nameksolutions.regchain.curaorganization.utils.UserPreferences
 import java.util.*
 
@@ -21,41 +23,23 @@ class AuthRepo(
         api.verifyOtp(email, otp)
     }
 
-//    suspend fun createOrganization(
-//        name: String,
-//        alias: MutableList<String>,
-//        password: String,
-//        identifier: MutableList<Identifiers>,
-//        telecom: MutableList<HashMap<String, String>>,
-//        active: Boolean
-//    ) = safeApiCall {
-//        api.createOrganization(name, alias, password, identifier, telecom, active)
-//    }
-//
     suspend fun createOrganization(
     createOrganizationRequest: CreateOrganizationRequest
-//        name: String,
-//        alias: MutableList<String>,
-//        password: String,
-//        identifier: MutableList<Identifiers>,
-//        telecom: MutableList<Telecom>?,
-//        active: Boolean
+//
     ) = safeApiCall {
-        api.createOrganization(createOrganizationRequest)//, alias, password, identifier, telecom, active)
+        api.createOrganization(createOrganizationRequest)
+    }
+
+    suspend fun createOrganizationAddress(
+        createOrganizationAddress: CreateOrganizationAddressRequest
+    ) = safeApiCall {
+        api.createOrganizationAddress(createOrganizationAddress)
     }
 
     suspend fun addOrganizationDetails(
-        addOrganizationDetails: CreateOrganizationRequest
-//        name: String?,
-//        alias: MutableList<String>?,
-//        password: String?,
-//        identifier: MutableList<Identifiers>?,
-//        telecom: MutableList<Telecom>?,
-//        active: Boolean?,
-//        address: MutableList<String>?,
-//        _regIdentifiers: String?,
+        addOrganizationDetail: CreateOrganizationRequest
     ) = safeApiCall {
-        api.addOrganizationDetails(addOrganizationDetails)//name, alias, password, identifier, telecom, active, address, _regIdentifiers)
+        api.addOrganizationDetails(addOrganizationDetail)
     }
 
     suspend fun login(

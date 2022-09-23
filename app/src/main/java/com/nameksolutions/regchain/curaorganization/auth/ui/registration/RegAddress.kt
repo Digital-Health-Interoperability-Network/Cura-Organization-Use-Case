@@ -20,6 +20,8 @@ import com.nameksolutions.regchain.curaorganization.auth.AuthViewModel
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentRegAddressBinding
 import com.nameksolutions.regchain.curaorganization.network.Resource
+import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationAddressRequest
+import com.nameksolutions.regchain.curaorganization.requests.Period
 import com.nameksolutions.regchain.curaorganization.utils.Common.regStepCount
 import com.nameksolutions.regchain.curaorganization.utils.getDate
 import com.nameksolutions.regchain.curaorganization.utils.handleApiError
@@ -50,7 +52,7 @@ import java.util.*
 class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRepo>() {
 
     private lateinit var organizationAddressLineOne: String
-    private var organizationAddressLineTwo: String? = ""
+    private var organizationAddressLineTwo: String = ""
     private lateinit var organizationAddressCity: String
     private lateinit var organizationAddressLGA: String
     private lateinit var organizationAddressState: String
@@ -60,7 +62,7 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
 
     private lateinit var nextBtn: Button
 
-    private var address: MutableList<AddressRequest> = mutableListOf()
+    private var address: MutableList<CreateOrganizationAddressRequest> = mutableListOf()
 
 
     private val gson = Gson()
@@ -149,33 +151,6 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
 
     }
 
-//    private fun setupCountryPickerView(): String {
-////        val countryPicker = findViewById<CountryPickerView>(R.id.countryPicker)
-//
-//        with(binding){
-//            lateinit var country: String
-//            // Modify CPViewConfig if you need. Access cpViewConfig through `cpViewHelper`
-//            countryPicker!!.cpViewHelper.cpViewConfig.viewTextGenerator = { cpCountry: CPCountry ->
-//                "${cpCountry.name} (${cpCountry.alpha2})"
-//            }
-//            // make sure to refresh view once view configuration is changed
-//            countryPicker.cpViewHelper.refreshView()
-//
-//            // Modify CPDialogConfig if you need. Access cpDialogConfig through `countryPicker.cpViewHelper`
-//            // countryPicker.cpViewHelper.cpDialogConfig.
-//
-//            // Modify CPListConfig if you need. Access cpListConfig through `countryPicker.cpViewHelper`
-//            // countryPicker.cpViewHelper.cpListConfig.
-//
-//            // Modify CPRowConfig if you need. Access cpRowConfig through `countryPicker.cpViewHelper`
-//            // countryPicker.cpViewHelper.cpRowConfig.
-//        }
-//
-//        return
-//
-//
-//    }
-
     //this function performs data validation on the inputted data
     private fun performValidation() {
         with(binding) {
@@ -226,29 +201,22 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
                 val timeEdited = getDate(nowTime, "dd/MM/yyyy")
                 val period = Period(timeEdited!!, organizationAddressStartDate)
 
-                val addressInstance = AddressRequest(
-                    organizationAddressCity,
-                    organizationAddressCountry,
-                    organizationAddressLGA,
-                    period,
-                    organizationAddressState,
-                    "both",
-                    "official",
+                val addressInstance = CreateOrganizationAddressRequest(
+                    city = organizationAddressCity,
+                    country = organizationAddressCountry,
+                    district = organizationAddressLGA,
+                    period = period,
+                    state = organizationAddressState,
+                    type = "both",
+                    use = "official",
                     line = listOf(organizationAddressLineOne, organizationAddressLineTwo),
                     postalCode = organizationAddressPostalCode,
                     text = "$organizationAddressLineOne $organizationAddressLineTwo, $organizationAddressCity, $organizationAddressLGA, $organizationAddressStartDate, $organizationAddressCountry"
                 )
 
-
-//                val addressGson = gson.toJson(addressInstance).toString()
-//                val addressGson = gson.toJson(addressMap).toString()
                 address.add(addressInstance)
 
-                val newOrganizationAddress: CreateOrganizationRequest = CreateOrganizationRequest(
-                    address = address
-                )
-
-                addOrganizationAddress(newOrganizationAddress)
+                addOrganizationAddress(addressInstance)
 
             }
         }
@@ -256,11 +224,11 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
     }
 
     //this function registers the organisation address to the database
-    private fun addOrganizationAddress(newOrganizationAddress: CreateOrganizationRequest) {
-        viewModel.addOrganizationDetails(newOrganizationAddress)
+    private fun addOrganizationAddress(newOrganizationAddress: CreateOrganizationAddressRequest) {
+        viewModel.createOrganizationAddress(newOrganizationAddress)
 
         //perform the network operation using the view model
-        viewModel.organizationDetailsUpdate.observe(viewLifecycleOwner, Observer {
+        viewModel.organizationAddressCreation.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
                     hideProgress()

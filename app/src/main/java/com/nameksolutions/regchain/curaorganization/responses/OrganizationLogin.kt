@@ -6,7 +6,7 @@ data class OrganizationLogin(
     val _personnel: String,
     val _registryIdentifier: RegistryIdentifier,
     val active: Boolean,
-    val address: List<Addres>,
+    val address: List<Address>,
     val alias: List<String>,
     val identifier: List<Identifier>,
     val name: String,

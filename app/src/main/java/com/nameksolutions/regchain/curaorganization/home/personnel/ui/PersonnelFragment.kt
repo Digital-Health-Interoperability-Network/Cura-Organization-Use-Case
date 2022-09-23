@@ -49,13 +49,13 @@ class PersonnelFragment :
         super.onActivityCreated(savedInstanceState)
 
 //        getPractitionerRoleList()
-        fetchAllPractitionersStats()
+//        fetchAllPractitionersStats()
 //        fetchPractitioners("Doctor")
 //        for (role in Common.practitionerRolesList) {
 //            fetchPractitioners(role)
 //        }
         
-        fetchAllPractitioner()
+//        fetchAllPractitioner()
 
         binding.fabAddPractitioner.setOnClickListener {
             findNavController().navigate(R.id.action_personnelFragment_to_newPersonnelFragment)
@@ -417,69 +417,69 @@ class PersonnelFragment :
 
     }
 
-    private fun fetchAllPractitioner() {
-        viewModel.getAllPractitioners()
-        viewModel.allPractitionerDetails.observe(viewLifecycleOwner, Observer { 
-            when(it){
-                is Resource.Success -> {
-                    hideProgress()
-                    //populate the ui
-                    val practitioners = it.value.data.practitoners
-                    Log.d(TAG, "fetchAllPractitioner: $practitioners")
-                    val doctors = mutableListOf<Practitoner>()
-                    val nurses = mutableListOf<Practitoner>()
-                    val pharmacists = mutableListOf<Practitoner>()
-                    val labScientists = mutableListOf<Practitoner>()
-                    val otherPractitioners = mutableListOf<Practitoner>()
-                    for (practitioner in practitioners){
-                        val practitionerRoles = practitioner.practitionerRole
-                        for (practitionerRole in practitionerRoles){
-                            when (practitionerRole.code) {
-                                "Doctor" -> {
-                                    if (practitionerRole.code == "Doctor")
-                                        doctors.add(practitioner)
-                                    subscribeAllDoctorsUI(doctors)
-                                    Log.d(TAG, "fetchAllPractitioner: Are Doctors")
-                                }
-                                "Nurse" -> {
-                                    if (practitionerRole.code == "Nurse")
-                                        nurses.add(practitioner)
-                                    subscribeAllNursesUI(nurses)
-                                    Log.d(TAG, "fetchAllPractitioner: Are Nurses")
-                                }
-                                "Pharmacist" -> {
-                                    if (practitionerRole.code == "Pharmacist")
-                                        pharmacists.add(practitioner)
-                                    subscribeAllPharmacistsUI(pharmacists)
-                                    Log.d(TAG, "fetchAllPractitioner: Are Pharmacists")
-                                }
-                                "Lab Scientist" -> {
-                                    if (practitionerRole.code == "Lab Scientist")
-                                        labScientists.add(practitioner)
-                                    subscribeAllLabTechsUI(labScientists)
-                                    Log.d(TAG, "fetchAllPractitioner: Are Lab Scientists")
-                                }
-                                else -> {
-                                    otherPractitioners.add(practitioner)
-                                    subscribeAllOtherUI(otherPractitioners)
-                                    Log.d(TAG, "fetchAllPractitioner: Are Other Practitioners")
-                                }
-                            }
-                        }
-                    }
-                    Log.d(TAG, "fetchAllPractitionerDoctors: $doctors")
-                    Log.d(TAG, "fetchAllPractitoner: $it")
-                }
-                is Resource.Failure -> {
-                    hideProgress()
-                    Log.d(TAG, "fetchAllPractitoner: $it")
-                }
-                is Resource.Loading -> {
-                    showProgress()
-                }
-            }
-        })
-    }
+//    private fun fetchAllPractitioner() {
+//        viewModel.getAllPractitioners()
+//        viewModel.allPractitionerDetails.observe(viewLifecycleOwner, Observer {
+//            when(it){
+//                is Resource.Success -> {
+//                    hideProgress()
+//                    //populate the ui
+//                    val practitioners = it.value.data.practitoners
+//                    Log.d(TAG, "fetchAllPractitioner: $practitioners")
+//                    val doctors = mutableListOf<Practitoner>()
+//                    val nurses = mutableListOf<Practitoner>()
+//                    val pharmacists = mutableListOf<Practitoner>()
+//                    val labScientists = mutableListOf<Practitoner>()
+//                    val otherPractitioners = mutableListOf<Practitoner>()
+//                    for (practitioner in practitioners){
+//                        val practitionerRoles = practitioner.practitionerRole
+//                        for (practitionerRole in practitionerRoles){
+//                            when (practitionerRole.code) {
+//                                "Doctor" -> {
+//                                    if (practitionerRole.code == "Doctor")
+//                                        doctors.add(practitioner)
+//                                    subscribeAllDoctorsUI(doctors)
+//                                    Log.d(TAG, "fetchAllPractitioner: Are Doctors")
+//                                }
+//                                "Nurse" -> {
+//                                    if (practitionerRole.code == "Nurse")
+//                                        nurses.add(practitioner)
+//                                    subscribeAllNursesUI(nurses)
+//                                    Log.d(TAG, "fetchAllPractitioner: Are Nurses")
+//                                }
+//                                "Pharmacist" -> {
+//                                    if (practitionerRole.code == "Pharmacist")
+//                                        pharmacists.add(practitioner)
+//                                    subscribeAllPharmacistsUI(pharmacists)
+//                                    Log.d(TAG, "fetchAllPractitioner: Are Pharmacists")
+//                                }
+//                                "Lab Scientist" -> {
+//                                    if (practitionerRole.code == "Lab Scientist")
+//                                        labScientists.add(practitioner)
+//                                    subscribeAllLabTechsUI(labScientists)
+//                                    Log.d(TAG, "fetchAllPractitioner: Are Lab Scientists")
+//                                }
+//                                else -> {
+//                                    otherPractitioners.add(practitioner)
+//                                    subscribeAllOtherUI(otherPractitioners)
+//                                    Log.d(TAG, "fetchAllPractitioner: Are Other Practitioners")
+//                                }
+//                            }
+//                        }
+//                    }
+//                    Log.d(TAG, "fetchAllPractitionerDoctors: $doctors")
+//                    Log.d(TAG, "fetchAllPractitoner: $it")
+//                }
+//                is Resource.Failure -> {
+//                    hideProgress()
+//                    Log.d(TAG, "fetchAllPractitoner: $it")
+//                }
+//                is Resource.Loading -> {
+//                    showProgress()
+//                }
+//            }
+//        })
+//    }
 
 //    private fun getPractitionerRoleList(){
 //        viewModel.getPractitionerRolesList()
@@ -504,149 +504,149 @@ class PersonnelFragment :
 //    }
 
 
-    private fun fetchAllPractitionersStats() {
-        viewModel.getAllPersonnelStats()
-        viewModel.practitionerStats.observe(viewLifecycleOwner, Observer {
-            Log.d(TAG, "fetchAllPractitionersStatsPre: ${it.toString()}")
-            when(it){
-                is Resource.Success -> {
-                    hideProgress()
-                    //show it in the recycler view
-                    val testStat = it.value.data._personnel//.data._personnel
-                    Log.d(TAG, "fetchAllPractitionersStatsTest: $testStat")
-                    val statsList = mutableListOf<Personnel>()
-                    for (stat in testStat){
-                        statsList.add(stat)
-                    }
-//                    Log.d(TAG, "fetchAllPractitionersStatsData: ${it.value .data}")
-//                    Log.d(TAG, "fetchAllPractitionersStatsPersonnel: ${it.value.data._personnel}")
-
-                    Log.d(TAG, "fetchAllPractitionersStatsList: $statsList")
-                    subscribeAllPractitionerStatsUI(statsList)
-//                    val newalist = it.value.data._personnel
-
-                }
-                is Resource.Failure -> {
-                    hideProgress()
-                    Log.d(TAG, "fetchAllPractitionersStats: $it")
-
-                    handleApiError(it) {fetchAllPractitionersStats()}
-                }
-                is Resource.Loading -> {
-                    showProgress()
-                }
-            }
-        })
-    }
-
-
-    private fun fetchPractitioners(code: String) {
-        viewModel.getPractitionersByRole(code)
-        viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is Resource.Success -> {
-                    hideProgress()
-//                    if (it.value.data.practitoners.isNotEmpty()) {
-//                        populate the ui
-                    val practitioners = it.value.data.practitoners
-                    for (practitioner in practitioners){
-                        val practitionerRoles = practitioner.practitionerRole
-                        for (practitionerRole in practitionerRoles){
-                            when (practitionerRole.code) {
-                                "Doctor" -> {
-                                    subscribeAllDoctorsUI(practitioners)
-                                }
-                                "Nurse" -> {
-                                    subscribeAllNursesUI(practitioners)
-                                }
-                                "Pharmacist" -> {
-                                    subscribeAllPharmacistsUI(practitioners)
-                                }
-                                "Lab Scientist" -> {
-                                    subscribeAllLabTechsUI(practitioners)
-                                }
-                                else -> {
-                                    subscribeAllOtherUI(practitioners)
-                                }
-                            }
-                        }
-                    }
+//    private fun fetchAllPractitionersStats() {
+//        viewModel.getAllPersonnelStats()
+//        viewModel.practitionerStats.observe(viewLifecycleOwner, Observer {
+//            Log.d(TAG, "fetchAllPractitionersStatsPre: ${it.toString()}")
+//            when(it){
+//                is Resource.Success -> {
+//                    hideProgress()
+//                    //show it in the recycler view
+//                    val testStat = it.value.data._personnel//.data._personnel
+//                    Log.d(TAG, "fetchAllPractitionersStatsTest: $testStat")
+//                    val statsList = mutableListOf<Personnel>()
+//                    for (stat in testStat){
+//                        statsList.add(stat)
+//                    }
+////                    Log.d(TAG, "fetchAllPractitionersStatsData: ${it.value .data}")
+////                    Log.d(TAG, "fetchAllPractitionersStatsPersonnel: ${it.value.data._personnel}")
 //
-                }
-                is Resource.Failure -> {
-                    hideProgress()
-                    Log.d(TAG, "fetchPractitioners: $it")
-                    handleApiError(it) { viewModel.getPractitionersByRole(code) }
-                }
-                is Resource.Loading -> {
-                    showProgress()
-                }
-            }
-        })
-    }
-
-    private fun subscribeAllPractitionerStatsUI(value: List<Personnel>) {
-        Log.d(TAG, "subscribeAllPractitionerStatsUI: $value.")
-        personnelStatsAdapter.submitList(value)
-    }
-
-    private fun subscribeAllOtherUI(value: List<Practitoner>) {
-        if (value.isNotEmpty()) {
-            binding.rvOtherPractitioner.visible(true)
-            otherPractitionersAdapter.submitList(value)
-        } else {
-            binding.rvOtherPractitioner.visible(false)
-            binding.textOtherPractitionerNoData.visible(false)
-        }
-
-    }
-
-    private fun subscribeAllLabTechsUI(value: List<Practitoner>) {
-        if (value.isNotEmpty()) {
-            binding.rvLabTechs.visible(true)
-            labScientistsAdapter.submitList(value)
-        } else {
-            binding.rvLabTechs.visible(false)
-            binding.textLabScientistNoData.visible(false)
-        }
-
-    }
-
-    private fun subscribeAllPharmacistsUI(value: List<Practitoner>) {
-        if (value.isNotEmpty()) {
-            binding.rvPharmacists.visible(true)
-            pharmacistsAdapter.submitList(value)
-        } else {
-            binding.rvPharmacists.visible(false)
-            binding.textPharmacistNoData.visible(false)
-        }
+//                    Log.d(TAG, "fetchAllPractitionersStatsList: $statsList")
+//                    subscribeAllPractitionerStatsUI(statsList)
+////                    val newalist = it.value.data._personnel
+//
+//                }
+//                is Resource.Failure -> {
+//                    hideProgress()
+//                    Log.d(TAG, "fetchAllPractitionersStats: $it")
+//
+//                    handleApiError(it) {fetchAllPractitionersStats()}
+//                }
+//                is Resource.Loading -> {
+//                    showProgress()
+//                }
+//            }
+//        })
+//    }
 
 
-    }
-
-    private fun subscribeAllNursesUI(value: List<Practitoner>) {
-        if (value.isNotEmpty()) {
-            binding.rvNurses.visible(true)
-            nursesAdapter.submitList(value)
-        } else {
-            binding.rvNurses.visible(false)
-            binding.textNursesNoData.visible(false)
-        }
-
-
-    }
-
-    private fun subscribeAllDoctorsUI(practitoners: List<Practitoner>) {
+//    private fun fetchPractitioners(code: String) {
+//        viewModel.getPractitionersByRole(code)
+//        viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer {
+//            when (it) {
+//                is Resource.Success -> {
+//                    hideProgress()
+////                    if (it.value.data.practitoners.isNotEmpty()) {
+////                        populate the ui
+//                    val practitioners = it.value.data.practitoners
+//                    for (practitioner in practitioners){
+//                        val practitionerRoles = practitioner.practitionerRole
+//                        for (practitionerRole in practitionerRoles){
+//                            when (practitionerRole.code) {
+//                                "Doctor" -> {
+//                                    subscribeAllDoctorsUI(practitioners)
+//                                }
+//                                "Nurse" -> {
+//                                    subscribeAllNursesUI(practitioners)
+//                                }
+//                                "Pharmacist" -> {
+//                                    subscribeAllPharmacistsUI(practitioners)
+//                                }
+//                                "Lab Scientist" -> {
+//                                    subscribeAllLabTechsUI(practitioners)
+//                                }
+//                                else -> {
+//                                    subscribeAllOtherUI(practitioners)
+//                                }
+//                            }
+//                        }
+//                    }
+////
+//                }
+//                is Resource.Failure -> {
+//                    hideProgress()
+//                    Log.d(TAG, "fetchPractitioners: $it")
+//                    handleApiError(it) { viewModel.getPractitionersByRole(code) }
+//                }
+//                is Resource.Loading -> {
+//                    showProgress()
+//                }
+//            }
+//        })
+//    }
+//
+//    private fun subscribeAllPractitionerStatsUI(value: List<Personnel>) {
+//        Log.d(TAG, "subscribeAllPractitionerStatsUI: $value.")
+//        personnelStatsAdapter.submitList(value)
+//    }
+//
+//    private fun subscribeAllOtherUI(value: List<Practitoner>) {
 //        if (value.isNotEmpty()) {
-//            binding.rvDoctors.visible(true)
-        Log.d(TAG, "subscribeAllDoctorsUI: $practitoners")
-            doctorsAdapter.submitList(practitoners)
+//            binding.rvOtherPractitioner.visible(true)
+//            otherPractitionersAdapter.submitList(value)
 //        } else {
-//            binding.rvDoctors.visible(false)
-//            binding.textDoctorNoData.visible(false)
+//            binding.rvOtherPractitioner.visible(false)
+//            binding.textOtherPractitionerNoData.visible(false)
 //        }
+//
+//    }
+//
+//    private fun subscribeAllLabTechsUI(value: List<Practitoner>) {
+//        if (value.isNotEmpty()) {
+//            binding.rvLabTechs.visible(true)
+//            labScientistsAdapter.submitList(value)
+//        } else {
+//            binding.rvLabTechs.visible(false)
+//            binding.textLabScientistNoData.visible(false)
+//        }
+//
+//    }
+//
+//    private fun subscribeAllPharmacistsUI(value: List<Practitoner>) {
+//        if (value.isNotEmpty()) {
+//            binding.rvPharmacists.visible(true)
+//            pharmacistsAdapter.submitList(value)
+//        } else {
+//            binding.rvPharmacists.visible(false)
+//            binding.textPharmacistNoData.visible(false)
+//        }
+//
+//
+//    }
+//
+//    private fun subscribeAllNursesUI(value: List<Practitoner>) {
+//        if (value.isNotEmpty()) {
+//            binding.rvNurses.visible(true)
+//            nursesAdapter.submitList(value)
+//        } else {
+//            binding.rvNurses.visible(false)
+//            binding.textNursesNoData.visible(false)
+//        }
+//
+//
+//    }
 
-    }
+//    private fun subscribeAllDoctorsUI(practitoners: List<Practitoner>) {
+////        if (value.isNotEmpty()) {
+////            binding.rvDoctors.visible(true)
+//        Log.d(TAG, "subscribeAllDoctorsUI: $practitoners")
+//            doctorsAdapter.submitList(practitoners)
+////        } else {
+////            binding.rvDoctors.visible(false)
+////            binding.textDoctorNoData.visible(false)
+////        }
+//
+//    }
 
 
     private fun showProgress() {

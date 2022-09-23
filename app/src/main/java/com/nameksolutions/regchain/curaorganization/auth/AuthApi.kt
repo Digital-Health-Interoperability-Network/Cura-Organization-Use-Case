@@ -64,7 +64,7 @@ interface AuthApi {
     @Headers("Content-Type: application/json")
     @POST(organizationAddressRoute)
     suspend fun createOrganizationAddress(
-        @Body createOrganization: CreateOrganizationAddressRequest
+        @Body createOrganizationAddress: CreateOrganizationAddressRequest
     ): OrganizationPatchInfoResponse
 
 

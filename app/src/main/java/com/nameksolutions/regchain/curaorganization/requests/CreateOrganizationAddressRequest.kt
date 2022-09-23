@@ -1,13 +1,14 @@
 package com.nameksolutions.regchain.curaorganization.requests
 
 data class CreateOrganizationAddressRequest(
-    val city: String,
-    val district: String,
-    val line: List<String>,
-    val period: Period,
-    val postalCode: String,
-    val state: String,
-    val text: String,
-    val type: String,
-    val use: String
+    val city: String? = null,
+    val district: String? = null,
+    val line: List<String>? = null,
+    val period: Period? = null,
+    val postalCode: String? = null,
+    val state: String? = null,
+    val text: String? = null,
+    val type: String? = null,
+    val use: String? = null,
+    val country: String? = null
 )

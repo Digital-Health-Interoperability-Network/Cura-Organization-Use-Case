@@ -9,36 +9,36 @@ import retrofit2.http.*
 
 
 interface PersonnelApi {
-
-
-    @GET("$practitionerRoleRoute/roles")
-    suspend fun getPractitionerRolesList(): PractitionerRoleListResponse
-
-    @POST(practitionerRoute)
-    suspend fun createPractitioner(@Body createPractitioner: PractitionerRequest): PractitionerCreationResponse
-
-//    //@FormUrlEncoded
-//    @Headers("Content-Type: application/json")
-//    @POST(Common.organizationRoute)
-//    suspend fun createOrganization(
-//        @Body createOrganization: CreateOrganizationRequest
-//    ): OrganizationCreationResponse
-
-
-    @GET(personnelRoute)
-    suspend fun getAllPersonnelStats(): PersonnelStatsResponse
-
-   // @GET(practitionerRoute)
-//    suspend fun getAllPractitioners(): AllPractitioner
-
-    @GET(practitionerRoute)
-    suspend fun getAllPractitioners(): FetchPractitionerResponse
+//
+//
+//    @GET("$practitionerRoleRoute/roles")
+//    suspend fun getPractitionerRolesList(): PractitionerRoleListResponse
+//
+//    @POST(practitionerRoute)
+//    suspend fun createPractitioner(@Body createPractitioner: PractitionerRequest): PractitionerCreationResponse
+//
+////    //@FormUrlEncoded
+////    @Headers("Content-Type: application/json")
+////    @POST(Common.organizationRoute)
+////    suspend fun createOrganization(
+////        @Body createOrganization: CreateOrganizationRequest
+////    ): OrganizationCreationResponse
+//
+//
+//    @GET(personnelRoute)
+//    suspend fun getAllPersonnelStats(): PersonnelStatsResponse
+//
+//   // @GET(practitionerRoute)
+////    suspend fun getAllPractitioners(): AllPractitioner
 //
 //    @GET(practitionerRoute)
-//    suspend fun getOnePractitioner(id: String):
-
-    @GET("$practitionerRoute/aggregates")
-    suspend fun getPractitionersByRole(@Query("code") code: String): FetchPractitionerResponse
+//    suspend fun getAllPractitioners(): FetchPractitionerResponse
+////
+////    @GET(practitionerRoute)
+////    suspend fun getOnePractitioner(id: String):
+//
+//    @GET("$practitionerRoute/aggregates")
+//    suspend fun getPractitionersByRole(@Query("code") code: String): FetchPractitionerResponse
 
 //    suspend fun getPractitionersByRole(code: String) = safeApiCall {
 //        api.getPractitionersByRole(code)
