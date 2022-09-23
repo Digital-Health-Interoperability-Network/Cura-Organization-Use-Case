@@ -20,6 +20,8 @@ import com.nameksolutions.regchain.curaorganization.auth.AuthViewModel
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentRegRegistryIdentifersBinding
 import com.nameksolutions.regchain.curaorganization.network.Resource
+import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
+import com.nameksolutions.regchain.curaorganization.requests._RegIdentifiersRequest
 import com.nameksolutions.regchain.curaorganization.utils.Common.regStepCount
 import com.nameksolutions.regchain.curaorganization.utils.getDate
 import com.nameksolutions.regchain.curaorganization.utils.handleApiError
@@ -68,12 +70,8 @@ class RegRegistryIdentifiers :
 
     private val TAG = "EQUA"
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-//        regStepCount = +1
-//        (requireActivity() as RegActivity).currentRegStep = 2
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
             val ownershipTypeArray = resources.getStringArray(R.array.ownership_type)
@@ -195,7 +193,8 @@ class RegRegistryIdentifiers :
 
                 val nowTime = System.currentTimeMillis().toLong()
                 val timeEdited = getDate(nowTime, "dd/MM/yyyy")
-                val regIDs = _RegIdentifiers(
+                val regIDs = _RegIdentifiersRequest(
+                    // TODO: we will still discuss about how to add the missing fields
                     EndDate = timeEdited,
                     facilityLevel = organizationFacilityLevel,
                     ownership = organizationOwnership,
@@ -205,9 +204,7 @@ class RegRegistryIdentifiers :
                     stateUID = organizationStateUniqueId
                 )
 
-                val regIDsGson = gson.toJson(regIDs).toString()
-
-                val newOrganizationRegIDs: CreateOrganizationRequest = CreateOrganizationRequest(
+                val newOrganizationRegIDs = CreateOrganizationRequest(
                     _registryIdentifier = regIDs
                 )
 

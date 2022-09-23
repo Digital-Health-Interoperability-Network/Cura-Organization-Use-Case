@@ -72,13 +72,11 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
 
     private val TAG = "EQUA"
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
 
         nextBtn = (requireActivity() as RegActivity).btnNext
-//        regStepCount = (requireActivity() as RegActivity).currentRegStep
 
         with(binding) {
 
@@ -147,6 +145,7 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
             }
 
         }
+
 
 
     }
