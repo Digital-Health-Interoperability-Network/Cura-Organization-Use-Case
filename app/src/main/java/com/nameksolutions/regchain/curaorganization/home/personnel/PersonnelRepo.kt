@@ -7,11 +7,10 @@ class PersonnelRepo(
     private val api: PersonnelApi,
     private val prefs: UserPreferences
 ): BaseRepo() {
-//
-//    suspend fun getAllPersonnelStats() = safeApiCall {
-//        api.getAllPersonnelStats()
-//        //Log.d(TAG, "getAllPersonnelStats: ${api.getAllPersonnelStats()}")
-//    }
+
+    suspend fun getAllPersonnelStats() = safeApiCall {
+        api.getAllPersonnelStats()
+    }
 //
 //    suspend fun getAllPractitioners() = safeApiCall {
 //        api.getAllPractitioners()

@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+<!--    <data>-->
 
-        <variable
-            name="otherPractitionersItemClickListener"
-            type="android.view.View.OnClickListener" />
+<!--        <variable-->
+<!--            name="otherPractitionersItemClickListener"-->
+<!--            type="android.view.View.OnClickListener" />-->
 
-        <variable
-            name="otherPractitionersItem"
-            type="com.nameksolutions.regchain.curaorganization.responses.Practitoner" />
+<!--        <variable-->
+<!--            name="otherPractitionersItem"-->
+<!--            type="com.nameksolutions.regchain.curaorganization.responses.Practitoner" />-->
 
-    </data>
+<!--    </data>-->
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,83 +21,83 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_mini">
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_mini"
-            android:onClick="@{otherPractitionersItemClickListener}"
-            android:padding="@dimen/padding_mini"
-            app:cardElevation="@dimen/padding_mini"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="@dimen/margin_mini"-->
+<!--            android:onClick="@{otherPractitionersItemClickListener}"-->
+<!--            android:padding="@dimen/padding_mini"-->
+<!--            app:cardElevation="@dimen/padding_mini"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="@dimen/padding_mini">
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:padding="@dimen/padding_mini">-->
 
 
-                <RelativeLayout
-                    android:id="@+id/other_practitioners_icon_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin_midi"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/other_practitioners_icon_container"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="@dimen/margin_midi"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="37dp"
-                        android:src="@drawable/bg_circle" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="37dp"-->
+<!--                        android:src="@drawable/bg_circle" />-->
 
-                    <TextView
-                        android:id="@+id/other_practitioners_icon_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/icon_text"
-                        android:fontFamily="@font/roboto_regular"
-                        tools:text="ER" />
-                </RelativeLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/other_practitioners_icon_text"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerInParent="true"-->
+<!--                        android:textColor="@android:color/white"-->
+<!--                        android:textSize="@dimen/icon_text"-->
+<!--                        android:fontFamily="@font/roboto_regular"-->
+<!--                        tools:text="ER" />-->
+<!--                </RelativeLayout>-->
 
-                <TextView
-                    android:id="@+id/other_practitioners_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="12dp"
-                    android:text="@{otherPractitionersItem.name.text}"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/sp24"
-                    android:fontFamily="@font/roboto_regular"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.031"
-                    app:layout_constraintStart_toEndOf="@+id/other_practitioners_icon_container"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Dr. Emma Emaa" />
+<!--                <TextView-->
+<!--                    android:id="@+id/other_practitioners_name"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:layout_marginTop="12dp"-->
+<!--                    android:text="@{otherPractitionersItem.name.text}"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:textSize="@dimen/sp24"-->
+<!--                    android:fontFamily="@font/roboto_regular"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.031"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/other_practitioners_icon_container"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    tools:text="Dr. Emma Emaa" />-->
 
-                <TextView
-                    android:id="@+id/pharmacist_gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="8dp"
-                    android:text="@{otherPractitionersItem.gender}"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/sp16"
-                    android:fontFamily="@font/roboto_regular"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.025"
-                    app:layout_constraintStart_toEndOf="@+id/other_practitioners_icon_container"
-                    app:layout_constraintTop_toBottomOf="@+id/other_practitioners_name"
-                    tools:text="MSCSDD" />
+<!--                <TextView-->
+<!--                    android:id="@+id/pharmacist_gender"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="@{otherPractitionersItem.gender}"-->
+<!--                    android:textColor="@android:color/black"-->
+<!--                    android:textSize="@dimen/sp16"-->
+<!--                    android:fontFamily="@font/roboto_regular"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.025"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/other_practitioners_icon_container"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/other_practitioners_name"-->
+<!--                    tools:text="MSCSDD" />-->
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-        </com.google.android.material.card.MaterialCardView>
+<!--        </com.google.android.material.card.MaterialCardView>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

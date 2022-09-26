@@ -6,7 +6,7 @@
     <data>
         <variable
             name="fragmentHome"
-            type="com.nameksolutions.regchain.curaorganization.responses.LoginResponse" />
+            type="com.nameksolutions.regchain.curaorganization.responses.OrganizationLoginResponse" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:elevation="4dp"
+                    app:title="@{fragmentHome.organization.name}"
                     app:menu="@menu/main_menu"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

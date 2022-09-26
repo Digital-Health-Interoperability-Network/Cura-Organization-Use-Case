@@ -5,9 +5,9 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface ServicesApi {
-
-    @POST(healthcareServicesRoute)
-    suspend fun createHealthCareService(@Body newServiceRequest: NewServiceRequest): NewServiceCreationResponse
+//
+//    @POST(healthcareServicesRoute)
+//    suspend fun createHealthCareService(@Body newServiceRequest: NewServiceRequest): NewServiceCreationResponse
 
 
 }

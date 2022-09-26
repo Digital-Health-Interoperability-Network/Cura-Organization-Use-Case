@@ -17,11 +17,11 @@ class PersonnelViewModel(
 //    val practitionerStats: LiveData<Resource<List<Personnel>>>
 //    get() = _practitionerStats
 ////
-////
-//    //fetch all practitioner statistics
-//    private val _practitionerStats: MutableLiveData<Resource<PersonnelStatsResponse>> = MutableLiveData()
-//    val practitionerStats: LiveData<Resource<PersonnelStatsResponse>>
-//    get() = _practitionerStats
+//
+    //fetch all practitioner statistics
+    private val _practitionerStats: MutableLiveData<Resource<GetPersonnelStatsResponse>> = MutableLiveData()
+    val practitionerStats: LiveData<Resource<GetPersonnelStatsResponse>>
+    get() = _practitionerStats
 //
 //    //create Practitioner Observer Variables
 //    private val _practitionerCreation: MutableLiveData<Resource<PractitionerCreationResponse>> =
@@ -59,13 +59,13 @@ class PersonnelViewModel(
 //
 ////    = = = = = = = = = = = = = = = FUNCTIONS TO FETCH FROM REPO  = = = = = = = = = = = = = = = = =
 //
-//
-//    //function to fetch all practitioner stats
-//    fun getAllPersonnelStats() = viewModelScope.launch {
-//        _practitionerStats.value = Resource.Loading
-//        _practitionerStats.value = repo.getAllPersonnelStats()
-//    }
-//
+
+    //function to fetch all practitioner stats
+    fun getAllPersonnelStats() = viewModelScope.launch {
+        _practitionerStats.value = Resource.Loading
+        _practitionerStats.value = repo.getAllPersonnelStats()
+    }
+
 //    //function to create a new practitioner
 //    fun createPractitioner(
 //        createPractitionerRequest: PractitionerRequest

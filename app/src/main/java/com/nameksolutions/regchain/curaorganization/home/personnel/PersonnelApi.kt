@@ -16,17 +16,9 @@ interface PersonnelApi {
 //
 //    @POST(practitionerRoute)
 //    suspend fun createPractitioner(@Body createPractitioner: PractitionerRequest): PractitionerCreationResponse
-//
-////    //@FormUrlEncoded
-////    @Headers("Content-Type: application/json")
-////    @POST(Common.organizationRoute)
-////    suspend fun createOrganization(
-////        @Body createOrganization: CreateOrganizationRequest
-////    ): OrganizationCreationResponse
-//
-//
-//    @GET(personnelRoute)
-//    suspend fun getAllPersonnelStats(): PersonnelStatsResponse
+
+    @GET(personnelRoute)
+    suspend fun getAllPersonnelStats(): GetPersonnelStatsResponse
 //
 //   // @GET(practitionerRoute)
 ////    suspend fun getAllPractitioners(): AllPractitioner

@@ -11,22 +11,22 @@ class ServicesViewModel(
     private val repo: ServicesRepo
 ) : BaseViewModel(repo)  {
 
-
-    //create Practitioner Observer Variables
-    private val _healthcareServiceCreation: MutableLiveData<Resource<NewServiceCreationResponse>> =
-        MutableLiveData()
-    val healthcareServiceCreationResponse: LiveData<Resource<NewServiceCreationResponse>>
-        get() = _healthcareServiceCreation
-
-
-
-    //function to create a new practitioner
-    fun createHealthCareService(
-        newServiceRequest: NewServiceRequest
-    ) = viewModelScope.launch {
-        _healthcareServiceCreation.value = Resource.Loading
-        _healthcareServiceCreation.value =
-            repo.createHealthCareService(newServiceRequest)
-    }
+//
+//    //create Practitioner Observer Variables
+//    private val _healthcareServiceCreation: MutableLiveData<Resource<NewServiceCreationResponse>> =
+//        MutableLiveData()
+//    val healthcareServiceCreationResponse: LiveData<Resource<NewServiceCreationResponse>>
+//        get() = _healthcareServiceCreation
+//
+//
+//
+//    //function to create a new practitioner
+//    fun createHealthCareService(
+//        newServiceRequest: NewServiceRequest
+//    ) = viewModelScope.launch {
+//        _healthcareServiceCreation.value = Resource.Loading
+//        _healthcareServiceCreation.value =
+//            repo.createHealthCareService(newServiceRequest)
+//    }
 
 }

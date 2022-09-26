@@ -38,28 +38,26 @@ class SignIn : BaseFragment<AuthViewModel, FragmentSignInBinding, AuthRepo>() {
 
         binding.btnSignIn.enable(false)
 
-        viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
-            when (it) {
+        viewModel.loginResponse.observe(viewLifecycleOwner, Observer { response ->
+            when (response) {
                 is Resource.Success -> {
                     hideProgress()
                     //viewModel.saveUserProfile(it.value) used to save values in database
                     requireContext().toast("Log in Success")
                     lifecycleScope.launch {
-                        viewModel.saveAuthToken(it.value.token)
-                        viewModel.saveOrganisationName(it.value.data.organization.name)
-                        Common.organizationName = it.value.data.organization.name
-                        Log.d(TAG, "onActivityCreated: ${it.value.token}")
+                        viewModel.saveAuthToken(response.value.token)
+                        viewModel.saveOrganisationName(response.value.organization.name)
+                        Common.organizationName = response.value.organization.name
+                        Log.d(TAG, "onViewCreated: Common name= ${Common.organizationName}")
+                        Log.d(TAG, "onViewCreated: response name= ${response.value.organization.name}")
+                        Log.d(TAG, "onActivityCreated: ${response.value.token}")
 
-//                        if (binding.cvLandscapeSignIn?.isVisible =
-
-//
-//                        }
                         requireActivity().startNewActivity(HomeActivity::class.java)
                     }
                 }
                 is Resource.Failure -> {
                     hideProgress()
-                    handleApiError(it) { login() }
+                    handleApiError(response) { login() }
                 } //snack bar action to retry login
                 is Resource.Loading -> showProgress()
 

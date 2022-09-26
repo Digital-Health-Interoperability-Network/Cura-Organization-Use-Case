@@ -1,6 +1,7 @@
 package com.nameksolutions.regchain.curaorganization.home.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
@@ -23,6 +24,7 @@ import kotlinx.coroutines.runBlocking
 
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, HomeRepo>() {
 
+    val TAG = "EQUA"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,8 +36,14 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, HomeRepo>(
         runBlocking { Common.organizationName = userprefs.organisationName.first().toString() }
         with(binding){
             customToolBar.title = Common.organizationName
+            Log.d(TAG, "onViewCreated: tool bar title = ${customToolBar.title}")
+            Log.d(TAG, "onViewCreated: common title = ${Common.organizationName}")
+            Log.d(TAG, "onViewCreated: data store title = ${        runBlocking {userprefs.organisationName.first().toString() }
+            }")
+
             buttonPersonnel.setOnClickListener {
-                findNavController().navigate(R.id.action_homeFragment_to_personnelFragment)
+                requireView().snackbar("Personnel Clicked!")
+                //findNavController().navigate(R.id.action_homeFragment_to_personnelFragment)
             }
 
             buttonServices.setOnClickListener {

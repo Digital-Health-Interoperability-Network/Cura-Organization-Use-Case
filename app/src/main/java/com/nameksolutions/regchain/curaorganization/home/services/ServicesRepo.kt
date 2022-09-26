@@ -7,8 +7,8 @@ class ServicesRepo(
     private val api: ServicesApi,
     private val prefs: UserPreferences
 ): BaseRepo() {
-
-    suspend fun createHealthCareService(newServiceRequest: NewServiceRequest) = safeApiCall {
-        api.createHealthCareService(newServiceRequest)
-    }
+//
+//    suspend fun createHealthCareService(newServiceRequest: NewServiceRequest) = safeApiCall {
+//        api.createHealthCareService(newServiceRequest)
+//    }
 }

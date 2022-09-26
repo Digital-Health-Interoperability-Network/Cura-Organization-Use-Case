@@ -36,386 +36,386 @@ class PersonnelFragment :
         "Lab Scientist",
         "-Doctor,-Nurse,-Pharmacist,-Lab Scientist"
     )
+//
+//    private val doctorsAdapter = DoctorsAdapter()
+//    private val nursesAdapter = NursesAdapter()
+//    private val pharmacistsAdapter = PharmacistsAdapter()
+//    private val labScientistsAdapter = LabScientistsAdapter()
+//    private val otherPractitionersAdapter = OtherPractitionersAdapter()
+//    private val personnelStatsAdapter = PersonnelStatsAdapter()
 
-    private val doctorsAdapter = DoctorsAdapter()
-    private val nursesAdapter = NursesAdapter()
-    private val pharmacistsAdapter = PharmacistsAdapter()
-    private val labScientistsAdapter = LabScientistsAdapter()
-    private val otherPractitionersAdapter = OtherPractitionersAdapter()
-    private val personnelStatsAdapter = PersonnelStatsAdapter()
 
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-//        getPractitionerRoleList()
-//        fetchAllPractitionersStats()
-//        fetchPractitioners("Doctor")
-//        for (role in Common.practitionerRolesList) {
-//            fetchPractitioners(role)
+//    override fun onActivityCreated(savedInstanceState: Bundle?) {
+//        super.onActivityCreated(savedInstanceState)
+//
+////        getPractitionerRoleList()
+////        fetchAllPractitionersStats()
+////        fetchPractitioners("Doctor")
+////        for (role in Common.practitionerRolesList) {
+////            fetchPractitioners(role)
+////        }
+//
+////        fetchAllPractitioner()
+//
+//        binding.fabAddPractitioner.setOnClickListener {
+//            findNavController().navigate(R.id.action_personnelFragment_to_newPersonnelFragment)
 //        }
-        
-//        fetchAllPractitioner()
-
-        binding.fabAddPractitioner.setOnClickListener {
-            findNavController().navigate(R.id.action_personnelFragment_to_newPersonnelFragment)
-        }
-
-        binding.personnelBackBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_personnelFragment_to_homeFragment)
-        }
-
-
-        with(binding) {
-            doctorsButton.setOnClickListener {
-                // If the CardView is already expanded, set its visibility
-                //  to gone and change the expand less icon to expand more.
-                if (doctorsHideAbleView.visibility == View.VISIBLE) {
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewDoctors,
-                        AutoTransition()
-                    )
-
-                    doctorsHideAbleView.visibility = View.GONE
-                    doctorsButton.setImageResource(R.drawable.angle_down)
-                } else {
-                    // If the CardView is not expanded, set its visibility
-                    // to visible and change the expand more icon to expand less.
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewDoctors,
-                        AutoTransition()
-                    )
-                    doctorsHideAbleView.visibility = View.VISIBLE
-                    doctorsButton.setImageResource(R.drawable.angle_up)
-
-                    if (nursesHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewNurses,
-                            AutoTransition()
-                        )
-                        nursesHideAbleView.visibility = View.GONE
-                        nursesButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (pharmacistsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewPharmacists,
-                            AutoTransition()
-                        )
-                        pharmacistsHideAbleView.visibility = View.GONE
-                        pharmacistsButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (labTechsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewLabTechs,
-                            AutoTransition()
-                        )
-                        labTechsHideAbleView.visibility = View.GONE
-                        labTechButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (otherPractitionerHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewOtherPractitioner,
-                            AutoTransition()
-                        )
-                        otherPractitionerHideAbleView.visibility = View.GONE
-                        otherPractitionerButton.setImageResource(R.drawable.angle_down)
-                    }
-                }
-
-            }
-            nursesButton.setOnClickListener {
-                // If the CardView is already expanded, set its visibility
-                //  to gone and change the expand less icon to expand more.
-                if (nursesHideAbleView.visibility == View.VISIBLE) {
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewNurses,
-                        AutoTransition()
-                    )
-
-                    nursesHideAbleView.visibility = View.GONE
-                    nursesButton.setImageResource(R.drawable.angle_down)
-                } else {
-                    // If the CardView is not expanded, set its visibility
-                    // to visible and change the expand more icon to expand less.
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewNurses,
-                        AutoTransition()
-                    )
-                    nursesHideAbleView.visibility = View.VISIBLE
-                    nursesButton.setImageResource(R.drawable.angle_up)
-
-                    if (doctorsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewDoctors,
-                            AutoTransition()
-                        )
-                        doctorsHideAbleView.visibility = View.GONE
-                        doctorsButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (pharmacistsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewPharmacists,
-                            AutoTransition()
-                        )
-                        pharmacistsHideAbleView.visibility = View.GONE
-                        pharmacistsButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (labTechsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewLabTechs,
-                            AutoTransition()
-                        )
-                        labTechsHideAbleView.visibility = View.GONE
-                        labTechButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (otherPractitionerHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewOtherPractitioner,
-                            AutoTransition()
-                        )
-                        otherPractitionerHideAbleView.visibility = View.GONE
-                        otherPractitionerButton.setImageResource(R.drawable.angle_down)
-                    }
-                }
-
-            }
-            pharmacistsButton.setOnClickListener {
-                // If the CardView is already expanded, set its visibility
-                //  to gone and change the expand less icon to expand more.
-                if (pharmacistsHideAbleView.visibility == View.VISIBLE) {
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewPharmacists,
-                        AutoTransition()
-                    )
-
-                    pharmacistsHideAbleView.visibility = View.GONE
-                    pharmacistsButton.setImageResource(R.drawable.angle_down)
-                } else {
-                    // If the CardView is not expanded, set its visibility
-                    // to visible and change the expand more icon to expand less.
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewPharmacists,
-                        AutoTransition()
-                    )
-                    pharmacistsHideAbleView.visibility = View.VISIBLE
-                    pharmacistsButton.setImageResource(R.drawable.angle_up)
-
-                    if (nursesHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewNurses,
-                            AutoTransition()
-                        )
-                        nursesHideAbleView.visibility = View.GONE
-                        nursesButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (doctorsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewDoctors,
-                            AutoTransition()
-                        )
-                        doctorsHideAbleView.visibility = View.GONE
-                        doctorsButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (labTechsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewLabTechs,
-                            AutoTransition()
-                        )
-                        labTechsHideAbleView.visibility = View.GONE
-                        labTechButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (otherPractitionerHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewOtherPractitioner,
-                            AutoTransition()
-                        )
-                        otherPractitionerHideAbleView.visibility = View.GONE
-                        otherPractitionerButton.setImageResource(R.drawable.angle_down)
-                    }
-                }
-
-            }
-            labTechButton.setOnClickListener {
-                // If the CardView is already expanded, set its visibility
-                //  to gone and change the expand less icon to expand more.
-                if (labTechsHideAbleView.visibility == View.VISIBLE) {
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewLabTechs,
-                        AutoTransition()
-                    )
-
-                    labTechsHideAbleView.visibility = View.GONE
-                    labTechButton.setImageResource(R.drawable.angle_down)
-                } else {
-                    // If the CardView is not expanded, set its visibility
-                    // to visible and change the expand more icon to expand less.
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewLabTechs,
-                        AutoTransition()
-                    )
-                    labTechsHideAbleView.visibility = View.VISIBLE
-                    labTechButton.setImageResource(R.drawable.angle_up)
-
-                    if (nursesHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewNurses,
-                            AutoTransition()
-                        )
-                        nursesHideAbleView.visibility = View.GONE
-                        nursesButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (pharmacistsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewPharmacists,
-                            AutoTransition()
-                        )
-                        pharmacistsHideAbleView.visibility = View.GONE
-                        pharmacistsButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (doctorsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewDoctors,
-                            AutoTransition()
-                        )
-                        doctorsHideAbleView.visibility = View.GONE
-                        doctorsButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (otherPractitionerHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewOtherPractitioner,
-                            AutoTransition()
-                        )
-                        otherPractitionerHideAbleView.visibility = View.GONE
-                        otherPractitionerButton.setImageResource(R.drawable.angle_down)
-                    }
-                }
-
-            }
-            otherPractitionerButton.setOnClickListener {
-                // If the CardView is already expanded, set its visibility
-                //  to gone and change the expand less icon to expand more.
-                if (otherPractitionerHideAbleView.visibility == View.VISIBLE) {
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewOtherPractitioner,
-                        AutoTransition()
-                    )
-
-                    otherPractitionerHideAbleView.visibility = View.GONE
-                    otherPractitionerButton.setImageResource(R.drawable.angle_down)
-                } else {
-                    // If the CardView is not expanded, set its visibility
-                    // to visible and change the expand more icon to expand less.
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewOtherPractitioner,
-                        AutoTransition()
-                    )
-                    otherPractitionerHideAbleView.visibility = View.VISIBLE
-                    otherPractitionerButton.setImageResource(R.drawable.angle_up)
-
-                    if (nursesHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewNurses,
-                            AutoTransition()
-                        )
-                        nursesHideAbleView.visibility = View.GONE
-                        nursesButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (pharmacistsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewPharmacists,
-                            AutoTransition()
-                        )
-                        pharmacistsHideAbleView.visibility = View.GONE
-                        pharmacistsButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (labTechsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewLabTechs,
-                            AutoTransition()
-                        )
-                        labTechsHideAbleView.visibility = View.GONE
-                        labTechButton.setImageResource(R.drawable.angle_down)
-                    }
-                    if (doctorsHideAbleView.visibility == View.VISIBLE) {
-                        TransitionManager.beginDelayedTransition(
-                            baseCardViewDoctors,
-                            AutoTransition()
-                        )
-                        doctorsHideAbleView.visibility = View.GONE
-                        doctorsButton.setImageResource(R.drawable.angle_down)
-                    }
-                }
-
-            }
-        }
-
-        with(binding) {
-            val personnelStatsLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            val doctorsLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            val nursesLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            val pharmacistsLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            val labTechLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            val otherPractitionerLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-
-            rvPersonnelStats.adapter = personnelStatsAdapter
-            rvDoctors.adapter = doctorsAdapter
-            rvNurses.adapter = nursesAdapter
-            rvPharmacists.adapter = pharmacistsAdapter
-            rvLabTechs.adapter = labScientistsAdapter
-            rvOtherPractitioner.adapter = otherPractitionersAdapter
-
-            rvPersonnelStats.layoutManager = personnelStatsLayoutManager
-            rvDoctors.layoutManager = doctorsLayoutManager
-            rvNurses.layoutManager = nursesLayoutManager
-            rvPharmacists.layoutManager = pharmacistsLayoutManager
-            rvLabTechs.layoutManager = labTechLayoutManager
-            rvOtherPractitioner.layoutManager = otherPractitionerLayoutManager
-
-            rvPersonnelStats.addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(), personnelStatsLayoutManager.orientation
-                )
-            )
-
-            rvDoctors.addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(), doctorsLayoutManager.orientation
-                )
-            )
-
-            rvNurses.addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(), nursesLayoutManager.orientation
-                )
-            )
-
-            rvPharmacists.addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(), pharmacistsLayoutManager.orientation
-                )
-            )
-
-            rvLabTechs.addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(), labTechLayoutManager.orientation
-                )
-            )
-
-            rvOtherPractitioner.addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(), otherPractitionerLayoutManager.orientation
-                )
-            )
-
-        }
-
-    }
+//
+//        binding.personnelBackBtn.setOnClickListener {
+//            findNavController().navigate(R.id.action_personnelFragment_to_homeFragment)
+//        }
+//
+//
+//        with(binding) {
+//            doctorsButton.setOnClickListener {
+//                // If the CardView is already expanded, set its visibility
+//                //  to gone and change the expand less icon to expand more.
+//                if (doctorsHideAbleView.visibility == View.VISIBLE) {
+//                    TransitionManager.beginDelayedTransition(
+//                        baseCardViewDoctors,
+//                        AutoTransition()
+//                    )
+//
+//                    doctorsHideAbleView.visibility = View.GONE
+//                    doctorsButton.setImageResource(R.drawable.angle_down)
+//                } else {
+//                    // If the CardView is not expanded, set its visibility
+//                    // to visible and change the expand more icon to expand less.
+//                    TransitionManager.beginDelayedTransition(
+//                        baseCardViewDoctors,
+//                        AutoTransition()
+//                    )
+//                    doctorsHideAbleView.visibility = View.VISIBLE
+//                    doctorsButton.setImageResource(R.drawable.angle_up)
+//
+//                    if (nursesHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewNurses,
+//                            AutoTransition()
+//                        )
+//                        nursesHideAbleView.visibility = View.GONE
+//                        nursesButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (pharmacistsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewPharmacists,
+//                            AutoTransition()
+//                        )
+//                        pharmacistsHideAbleView.visibility = View.GONE
+//                        pharmacistsButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (labTechsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewLabTechs,
+//                            AutoTransition()
+//                        )
+//                        labTechsHideAbleView.visibility = View.GONE
+//                        labTechButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (otherPractitionerHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewOtherPractitioner,
+//                            AutoTransition()
+//                        )
+//                        otherPractitionerHideAbleView.visibility = View.GONE
+//                        otherPractitionerButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                }
+//
+//            }
+//            nursesButton.setOnClickListener {
+//                // If the CardView is already expanded, set its visibility
+//                //  to gone and change the expand less icon to expand more.
+//                if (nursesHideAbleView.visibility == View.VISIBLE) {
+//                    TransitionManager.beginDelayedTransition(
+//                        baseCardViewNurses,
+//                        AutoTransition()
+//                    )
+//
+//                    nursesHideAbleView.visibility = View.GONE
+//                    nursesButton.setImageResource(R.drawable.angle_down)
+//                } else {
+//                    // If the CardView is not expanded, set its visibility
+//                    // to visible and change the expand more icon to expand less.
+//                    TransitionManager.beginDelayedTransition(
+//                        baseCardViewNurses,
+//                        AutoTransition()
+//                    )
+//                    nursesHideAbleView.visibility = View.VISIBLE
+//                    nursesButton.setImageResource(R.drawable.angle_up)
+//
+//                    if (doctorsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewDoctors,
+//                            AutoTransition()
+//                        )
+//                        doctorsHideAbleView.visibility = View.GONE
+//                        doctorsButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (pharmacistsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewPharmacists,
+//                            AutoTransition()
+//                        )
+//                        pharmacistsHideAbleView.visibility = View.GONE
+//                        pharmacistsButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (labTechsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewLabTechs,
+//                            AutoTransition()
+//                        )
+//                        labTechsHideAbleView.visibility = View.GONE
+//                        labTechButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (otherPractitionerHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewOtherPractitioner,
+//                            AutoTransition()
+//                        )
+//                        otherPractitionerHideAbleView.visibility = View.GONE
+//                        otherPractitionerButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                }
+//
+//            }
+//            pharmacistsButton.setOnClickListener {
+//                // If the CardView is already expanded, set its visibility
+//                //  to gone and change the expand less icon to expand more.
+//                if (pharmacistsHideAbleView.visibility == View.VISIBLE) {
+//                    TransitionManager.beginDelayedTransition(
+//                        baseCardViewPharmacists,
+//                        AutoTransition()
+//                    )
+//
+//                    pharmacistsHideAbleView.visibility = View.GONE
+//                    pharmacistsButton.setImageResource(R.drawable.angle_down)
+//                } else {
+//                    // If the CardView is not expanded, set its visibility
+//                    // to visible and change the expand more icon to expand less.
+//                    TransitionManager.beginDelayedTransition(
+//                        baseCardViewPharmacists,
+//                        AutoTransition()
+//                    )
+//                    pharmacistsHideAbleView.visibility = View.VISIBLE
+//                    pharmacistsButton.setImageResource(R.drawable.angle_up)
+//
+//                    if (nursesHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewNurses,
+//                            AutoTransition()
+//                        )
+//                        nursesHideAbleView.visibility = View.GONE
+//                        nursesButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (doctorsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewDoctors,
+//                            AutoTransition()
+//                        )
+//                        doctorsHideAbleView.visibility = View.GONE
+//                        doctorsButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (labTechsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewLabTechs,
+//                            AutoTransition()
+//                        )
+//                        labTechsHideAbleView.visibility = View.GONE
+//                        labTechButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (otherPractitionerHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewOtherPractitioner,
+//                            AutoTransition()
+//                        )
+//                        otherPractitionerHideAbleView.visibility = View.GONE
+//                        otherPractitionerButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                }
+//
+//            }
+//            labTechButton.setOnClickListener {
+//                // If the CardView is already expanded, set its visibility
+//                //  to gone and change the expand less icon to expand more.
+//                if (labTechsHideAbleView.visibility == View.VISIBLE) {
+//                    TransitionManager.beginDelayedTransition(
+//                        baseCardViewLabTechs,
+//                        AutoTransition()
+//                    )
+//
+//                    labTechsHideAbleView.visibility = View.GONE
+//                    labTechButton.setImageResource(R.drawable.angle_down)
+//                } else {
+//                    // If the CardView is not expanded, set its visibility
+//                    // to visible and change the expand more icon to expand less.
+//                    TransitionManager.beginDelayedTransition(
+//                        baseCardViewLabTechs,
+//                        AutoTransition()
+//                    )
+//                    labTechsHideAbleView.visibility = View.VISIBLE
+//                    labTechButton.setImageResource(R.drawable.angle_up)
+//
+//                    if (nursesHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewNurses,
+//                            AutoTransition()
+//                        )
+//                        nursesHideAbleView.visibility = View.GONE
+//                        nursesButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (pharmacistsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewPharmacists,
+//                            AutoTransition()
+//                        )
+//                        pharmacistsHideAbleView.visibility = View.GONE
+//                        pharmacistsButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (doctorsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewDoctors,
+//                            AutoTransition()
+//                        )
+//                        doctorsHideAbleView.visibility = View.GONE
+//                        doctorsButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (otherPractitionerHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewOtherPractitioner,
+//                            AutoTransition()
+//                        )
+//                        otherPractitionerHideAbleView.visibility = View.GONE
+//                        otherPractitionerButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                }
+//
+//            }
+//            otherPractitionerButton.setOnClickListener {
+//                // If the CardView is already expanded, set its visibility
+//                //  to gone and change the expand less icon to expand more.
+//                if (otherPractitionerHideAbleView.visibility == View.VISIBLE) {
+//                    TransitionManager.beginDelayedTransition(
+//                        baseCardViewOtherPractitioner,
+//                        AutoTransition()
+//                    )
+//
+//                    otherPractitionerHideAbleView.visibility = View.GONE
+//                    otherPractitionerButton.setImageResource(R.drawable.angle_down)
+//                } else {
+//                    // If the CardView is not expanded, set its visibility
+//                    // to visible and change the expand more icon to expand less.
+//                    TransitionManager.beginDelayedTransition(
+//                        baseCardViewOtherPractitioner,
+//                        AutoTransition()
+//                    )
+//                    otherPractitionerHideAbleView.visibility = View.VISIBLE
+//                    otherPractitionerButton.setImageResource(R.drawable.angle_up)
+//
+//                    if (nursesHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewNurses,
+//                            AutoTransition()
+//                        )
+//                        nursesHideAbleView.visibility = View.GONE
+//                        nursesButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (pharmacistsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewPharmacists,
+//                            AutoTransition()
+//                        )
+//                        pharmacistsHideAbleView.visibility = View.GONE
+//                        pharmacistsButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (labTechsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewLabTechs,
+//                            AutoTransition()
+//                        )
+//                        labTechsHideAbleView.visibility = View.GONE
+//                        labTechButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                    if (doctorsHideAbleView.visibility == View.VISIBLE) {
+//                        TransitionManager.beginDelayedTransition(
+//                            baseCardViewDoctors,
+//                            AutoTransition()
+//                        )
+//                        doctorsHideAbleView.visibility = View.GONE
+//                        doctorsButton.setImageResource(R.drawable.angle_down)
+//                    }
+//                }
+//
+//            }
+//        }
+//
+//        with(binding) {
+//            val personnelStatsLayoutManager =
+//                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//            val doctorsLayoutManager =
+//                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//            val nursesLayoutManager =
+//                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//            val pharmacistsLayoutManager =
+//                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//            val labTechLayoutManager =
+//                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//            val otherPractitionerLayoutManager =
+//                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//
+//            rvPersonnelStats.adapter = personnelStatsAdapter
+//            rvDoctors.adapter = doctorsAdapter
+//            rvNurses.adapter = nursesAdapter
+//            rvPharmacists.adapter = pharmacistsAdapter
+//            rvLabTechs.adapter = labScientistsAdapter
+//            rvOtherPractitioner.adapter = otherPractitionersAdapter
+//
+//            rvPersonnelStats.layoutManager = personnelStatsLayoutManager
+//            rvDoctors.layoutManager = doctorsLayoutManager
+//            rvNurses.layoutManager = nursesLayoutManager
+//            rvPharmacists.layoutManager = pharmacistsLayoutManager
+//            rvLabTechs.layoutManager = labTechLayoutManager
+//            rvOtherPractitioner.layoutManager = otherPractitionerLayoutManager
+//
+//            rvPersonnelStats.addItemDecoration(
+//                DividerItemDecoration(
+//                    requireContext(), personnelStatsLayoutManager.orientation
+//                )
+//            )
+//
+//            rvDoctors.addItemDecoration(
+//                DividerItemDecoration(
+//                    requireContext(), doctorsLayoutManager.orientation
+//                )
+//            )
+//
+//            rvNurses.addItemDecoration(
+//                DividerItemDecoration(
+//                    requireContext(), nursesLayoutManager.orientation
+//                )
+//            )
+//
+//            rvPharmacists.addItemDecoration(
+//                DividerItemDecoration(
+//                    requireContext(), pharmacistsLayoutManager.orientation
+//                )
+//            )
+//
+//            rvLabTechs.addItemDecoration(
+//                DividerItemDecoration(
+//                    requireContext(), labTechLayoutManager.orientation
+//                )
+//            )
+//
+//            rvOtherPractitioner.addItemDecoration(
+//                DividerItemDecoration(
+//                    requireContext(), otherPractitionerLayoutManager.orientation
+//                )
+//            )
+//
+//        }
+//
+//    }
 
 //    private fun fetchAllPractitioner() {
 //        viewModel.getAllPractitioners()
