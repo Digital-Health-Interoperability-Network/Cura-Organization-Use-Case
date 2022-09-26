@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavHostController
 import androidx.navigation.fragment.findNavController
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.auth.AuthApi
@@ -42,8 +43,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, HomeRepo>(
             }")
 
             buttonPersonnel.setOnClickListener {
-                requireView().snackbar("Personnel Clicked!")
-                //findNavController().navigate(R.id.action_homeFragment_to_personnelFragment)
+//                requireView().snackbar("Personnel Clicked!")
+                findNavController().navigate(R.id.action_homeFragment_to_personnelFragment)
             }
 
             buttonServices.setOnClickListener {

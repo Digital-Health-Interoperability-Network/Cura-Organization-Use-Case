@@ -10,9 +10,9 @@
         android:name="com.nameksolutions.regchain.curaorganization.home.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
-<!--        <action-->
-<!--            android:id="@+id/action_homeFragment_to_personnelFragment"-->
-<!--            app:destination="@id/personnelFragment" />-->
+        <action
+            android:id="@+id/action_homeFragment_to_personnelFragment"
+            app:destination="@id/personnelFragment" />
 <!--        <action-->
 <!--            android:id="@+id/action_homeFragment_to_servicesFragment"-->
 <!--            app:destination="@id/servicesFragment" />-->
