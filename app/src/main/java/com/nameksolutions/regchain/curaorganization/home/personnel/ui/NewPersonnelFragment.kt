@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.MultiAutoCompleteTextView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -48,12 +49,14 @@ class NewPersonnelFragment :
     private lateinit var newPractitionerCountryCodePicker: CountryCodePicker
     private lateinit var newPractitionerIdentifierValue: String
     private lateinit var newPractitionerIdentifierType: String
+    private lateinit var newPractitionerRoleCommunication: String
+
 
     lateinit var practitionerPhoneNumberCode: String
 
     private val telco = TelecomRequest()
     private val idfier = IdentifierRequest()
-//    private val practRole = PractitionerRole()
+    private val practitionerRole = PractitionerRoleRequest()
     private val availTime = AvailableTimeRequest()
 
     private var identifiers: MutableList<IdentifierRequest> = mutableListOf()
@@ -62,6 +65,7 @@ class NewPersonnelFragment :
     private var availableTime: MutableList<AvailableTimeRequest> = mutableListOf()
     private var practitionerNamePrefix = mutableListOf<String>()
     private var practitionerOtherNames = mutableListOf<String>()
+    private var practitionerRoleCommunication = mutableListOf<String>()
 
     lateinit var timePicker: TimePickerHelper
     lateinit var openHour: String
@@ -85,8 +89,9 @@ class NewPersonnelFragment :
         super.onViewCreated(view, savedInstanceState)
 
         //fetch practitioner roles from back end and add to list in common
-
         getPractitionerRoleList()
+
+        //todo fetch the list of communication
 
         timePicker = TimePickerHelper(requireContext(), true, false)
 
@@ -110,6 +115,12 @@ class NewPersonnelFragment :
             val practitionerIdentifierArrayAdapter =
                 ArrayAdapter(requireContext(), R.layout.drop_down_item, practitionerIdentifierArray)
             regPractitionerIdType.setAdapter(practitionerIdentifierArrayAdapter)
+
+            val practitionerRoleCommunicationArray = resources.getStringArray(R.array.id_types)
+            val practitionerRoleCommunicationArrayAdapter =
+                ArrayAdapter(requireContext(), R.layout.drop_down_item, practitionerRoleCommunicationArray)
+            regPractitionerRoleCommunication.setAdapter(practitionerRoleCommunicationArrayAdapter)
+            regPractitionerRoleCommunication.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
 
             practitionersAvailableTimesButton.setOnClickListener {
                 // If the CardView is already expanded, set its visibility
@@ -384,50 +395,20 @@ class NewPersonnelFragment :
                 newPractitionerCountryCodePicker.setOnCountryChangeListener(this@NewPersonnelFragment)
                 newPractitionerPhoneNumber = newPractitionerCountryCodePicker.fullNumberWithPlus
                 newPractitionerRole = regPractitionerRole.text.toString().trim()
+                newPractitionerRoleCommunication = regPractitionerRoleCommunication.text.toString().trim()
 
-//                newPractitionerRole =
-//                    Pattern.compile(roleDelimiter).split(regPractitionerRole.text.toString().trim())
+                performValidation(practitionerRole)
 
-//                availableTime = mutableListOf(
-//                    availabilityMon,
-//                    availabilityTue,
-//                    availabilityWed,
-//                    availabilityThurs,
-//                    availabilityFri,
-//                    availabilitySat,
-//                    availabilitySun
-//                )
                 Log.d(TAG, "onActivityCreated: $availableTime")
-                if (availableTime.isEmpty()) {
-                    requireView().snackbar("At least one day required")
-                } else {
-//
-//                    val practitionerRole = practRole.copy(
-//                        availableTime = availableTime,
-//                        code = newPractitionerRole,
-//                        specialty = null
-//                    )
-
-                    val practitionerRoleRequest = PractitionerRole(
-                        practitionerRole = listOf(practitionerRole)
-                    )
-
-
-//                    Log.d(TAG, "onActivityCreated: $practitionerRole")
-//                    performValidation(practitionerRole)
-
-                }
 
             }
 
         }
 
-
-
     }
 
 
-    private fun performValidation(practitionerRoleRequest: PractitionerRole) {
+    private fun performValidation(practitionerRole: PractitionerRoleRequest) {
         with(binding) {
             //if new practitioner name prefix field is empty
             if (newPractitionerNamePrefix.isEmpty()) {
@@ -487,7 +468,16 @@ class NewPersonnelFragment :
                 textInputLayoutNewPractitionerPhoneNumber.error =
                     "Practitioner Phone Number Required"
                 return
+            }  //if new practitioner role communication prefix field is empty
+            if (newPractitionerRoleCommunication.isEmpty()) {
+                textInputLayoutPractitionerRoleCommunication.error =
+                    "At leLeast One Language Required"
+                return
+            }
+            if (availableTime.isEmpty()) {
+                requireView().snackbar("At least one day required")
             } else {
+
                 //all requirements are satisfied
                 val email = telco.copy(
                     system = "email",
@@ -509,34 +499,34 @@ class NewPersonnelFragment :
                     value = newPractitionerIdentifierValue
                 )
 
-
-
                 telecom.add(email)
                 telecom.add(phone)
                 identifiers.add(identity)
                 practitionerNamePrefix.add(newPractitionerNamePrefix)
                 practitionerOtherNames.add(newPractitionerOtherNames)
 
-                val name = NameRequest(
+            val practitionerRole = practitionerRole.copy(
+                availableTime = availableTime,
+                code = listOf(newPractitionerRole),
+            )
+
+
+            val name = NameRequest(
                     family = newPractitionerSurName,
                     given = practitionerOtherNames,
                     prefix = practitionerNamePrefix,
-                    suffix = null,
+                    suffix = listOf(),
                     use = "Official"
                 )
+                val newPractitionerRoleCommunicationArray = newPractitionerRoleCommunication.split("\\s*,\\s*")
 
-
-                val newPractitioner = PractitionerRequest(
-                    active = true,
-                    address = null,
-                    birthDate = null,
-                    communication = null,
+                val newPractitioner = CreatePractitionerRequest(
+                    communication = newPractitionerRoleCommunicationArray,
                     gender = newPractitionerGender,
                     identifier = identifiers,
                     name = name,
                     telecom = telecom,
-                    qualification = null,
-                    practitionerRole = mutableListOf(practitionerRoleRequest)
+                    practitionerRoles = mutableListOf(practitionerRole)
                 )
 
                 createNewPractitioner(newPractitioner)
@@ -552,16 +542,16 @@ class NewPersonnelFragment :
 
     private fun getPractitionerRoleList() {
         viewModel.getPractitionerRolesList()
-        viewModel.practitionerRoleListResponse.observe(viewLifecycleOwner, Observer { it ->
-            when (it) {
+        viewModel.practitionerRoleListResponse.observe(viewLifecycleOwner, Observer { response ->
+            when (response) {
                 is Resource.Success -> {
                     hideProgress()
                     requireView().snackbar("Roles Fetched")
                     val fetchedPractitionerRoles =
-                        it.value.practitionerRolesList.listOfPractitionerRoles
+                        response.value.listOfPractitionerRoles
                     Log.d(
                         TAG,
-                        "getPractitionerRoleList: ${it.value.practitionerRolesList.listOfPractitionerRoles}"
+                        "getPractitionerRoleList: ${response.value.listOfPractitionerRoles}"
                     )
                     val practitionerRolesArrayAdapter =
                         ArrayAdapter(
@@ -574,7 +564,7 @@ class NewPersonnelFragment :
                 }
                 is Resource.Failure -> {
                     hideProgress()
-                    handleApiError(it) { getPractitionerRoleList() }
+                    handleApiError(response) { getPractitionerRoleList() }
                 }
                 is Resource.Loading -> {
                     showProgress()
@@ -585,7 +575,7 @@ class NewPersonnelFragment :
 
     }
 
-    private fun createNewPractitioner(newPractitioner: PractitionerRequest) {
+    private fun createNewPractitioner(newPractitioner: CreatePractitionerRequest) {
 
         viewModel.createPractitioner(newPractitioner)
         viewModel.practitionerCreationResponse.observe(viewLifecycleOwner, Observer {

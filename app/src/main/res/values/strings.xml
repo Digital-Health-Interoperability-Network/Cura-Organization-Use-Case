@@ -147,6 +147,7 @@
     <string name="new_service_appointment_required_text">Appointment Required</string>
     <string name="new_service_referral_method">Referral Method</string>
     <string name="new_service_communication">Communication</string>
+    <string name="reg_practitioner_role_communication">Communication Language(s)</string>
 
 
     <string-array name="reg_steps">

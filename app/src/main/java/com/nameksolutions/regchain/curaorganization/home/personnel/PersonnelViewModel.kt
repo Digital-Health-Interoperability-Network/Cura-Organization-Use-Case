@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.nameksolutions.regchain.curaorganization.base.BaseViewModel
 import com.nameksolutions.regchain.curaorganization.network.Resource
+import com.nameksolutions.regchain.curaorganization.requests.CreatePractitionerRequest
 import com.nameksolutions.regchain.curaorganization.responses.*
 import kotlinx.coroutines.launch
 
@@ -23,11 +24,11 @@ class PersonnelViewModel(
     val practitionerStats: LiveData<Resource<GetPersonnelStatsResponse>>
     get() = _practitionerStats
 //
-//    //create Practitioner Observer Variables
-//    private val _practitionerCreation: MutableLiveData<Resource<PractitionerCreationResponse>> =
-//        MutableLiveData()
-//    val practitionerCreationResponse: LiveData<Resource<PractitionerCreationResponse>>
-//        get() = _practitionerCreation
+    //create Practitioner Observer Variables
+    private val _practitionerCreation: MutableLiveData<Resource<PractitionerCreationResponse>> =
+        MutableLiveData()
+    val practitionerCreationResponse: LiveData<Resource<PractitionerCreationResponse>>
+        get() = _practitionerCreation
 //
 //    //create Practitioner Observer Variables
 //    private val _practitionerDetailsUpdate: MutableLiveData<Resource<PractitionerCreationResponse>> =
@@ -73,15 +74,15 @@ class PersonnelViewModel(
     }
 
 
-//    //function to create a new practitioner
-//    fun createPractitioner(
-//        createPractitionerRequest: PractitionerRequest
-//    ) = viewModelScope.launch {
-//        _practitionerCreation.value = Resource.Loading
-//        _practitionerCreation.value =
-//            repo.createPractitioner(createPractitionerRequest)
-//    }
-//
+    //function to create a new practitioner
+    fun createPractitioner(
+        createPractitionerRequest: CreatePractitionerRequest
+    ) = viewModelScope.launch {
+        _practitionerCreation.value = Resource.Loading
+        _practitionerCreation.value =
+            repo.createPractitioner(createPractitionerRequest)
+    }
+
 ////    fun updatePractitioner(
 ////        addPractitionerDetails: PractitionerRequest
 ////    ) = viewModelScope.launch {
