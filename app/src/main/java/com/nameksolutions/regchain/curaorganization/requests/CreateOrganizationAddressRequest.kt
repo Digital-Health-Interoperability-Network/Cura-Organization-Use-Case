@@ -4,7 +4,7 @@ data class CreateOrganizationAddressRequest(
     val city: String? = null,
     val district: String? = null,
     val line: List<String>? = null,
-    val period: Period? = null,
+    val period: PeriodRequest? = null,
     val postalCode: String? = null,
     val state: String? = null,
     val text: String? = null,

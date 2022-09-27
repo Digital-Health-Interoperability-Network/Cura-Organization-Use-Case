@@ -1,6 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.requests
 
-data class AvailableTime(
+data class AvailableTimeRequest(
     val allDay: Boolean? = null,
     val availableEndTime: String? = null,
     val availableStartTime: String? = null,

@@ -1,11 +1,11 @@
 package com.nameksolutions.regchain.curaorganization.requests
 
 data class CreatePractitionerRequest(
-    val address: List<Address>,
+    val address: List<AddressRequest>,
     val birthDate: String,
     val communication: List<String>,
     val gender: String,
-    val identifier: List<Identifier>,
-    val name: Name,
-    val telecom: List<Telecom>
+    val identifier: List<IdentifierRequest>,
+    val name: NameRequest,
+    val telecom: List<TelecomRequest>
 )

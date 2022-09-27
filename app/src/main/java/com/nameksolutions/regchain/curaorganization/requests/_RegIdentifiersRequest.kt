@@ -2,7 +2,7 @@ package com.nameksolutions.regchain.curaorganization.requests
 
 data class _RegIdentifiersRequest(
     val EndDate: String? = null,
-    val availableTime: List<AvailableTime>? = null,
+    val availableTime: List<AvailableTimeRequest>? = null,
     val daysOfOperation: List<String>? = null,
     val facilityCode: String? = null,
     val facilityLevel: String? = null,

@@ -1,6 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.requests
 
-data class Name(
+data class NameRequest(
     val family: String,
     val given: List<String>,
     val prefix: List<String>,

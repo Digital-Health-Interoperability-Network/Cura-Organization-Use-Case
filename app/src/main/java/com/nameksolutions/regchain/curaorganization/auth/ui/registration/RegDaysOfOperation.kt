@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.Observer
-import com.google.gson.Gson
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.auth.AuthApi
 import com.nameksolutions.regchain.curaorganization.auth.AuthRepo
@@ -46,18 +45,18 @@ class RegDaysOfOperation :
     lateinit var timePicker: TimePickerHelper
 
     lateinit var openHour: String
-    private val availTime = AvailableTime()
+    private val availTime = AvailableTimeRequest()
     private val _regIdentifiers = _RegIdentifiersRequest()
-    private var availableTime: MutableList<AvailableTime> = mutableListOf()
+    private var availableTime: MutableList<AvailableTimeRequest> = mutableListOf()
     private lateinit var nextBtn: Button
 
-    private var availabilityMon: AvailableTime = AvailableTime()
-    private var availabilityTue: AvailableTime = AvailableTime()
-    private var availabilityWed: AvailableTime = AvailableTime()
-    private var availabilityThurs: AvailableTime = AvailableTime()
-    private var availabilityFri: AvailableTime = AvailableTime()
-    private var availabilitySat: AvailableTime = AvailableTime()
-    private var availabilitySun: AvailableTime = AvailableTime()
+    private var availabilityMon: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityTue: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityWed: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityThurs: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityFri: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilitySat: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilitySun: AvailableTimeRequest = AvailableTimeRequest()
 
     var hoursDaysOfOperation: HashMap<String, String> = hashMapOf()
 

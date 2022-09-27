@@ -1,25 +1,16 @@
 package com.nameksolutions.regchain.curaorganization.home.services.ui
 
 import android.app.Dialog
-import android.os.Bundle
-import android.transition.AutoTransition
-import android.transition.TransitionManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.RadioGroup
 import android.widget.TextView
-import androidx.navigation.fragment.findNavController
 import com.hbb20.CountryCodePicker
-import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentNewServiceBinding
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesApi
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesRepo
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesViewModel
-import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.requests.*
 import com.nameksolutions.regchain.curaorganization.utils.*
 import java.util.*
@@ -67,13 +58,13 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
 
     lateinit var timePicker: TimePickerHelper
     lateinit var openHour: String
-    private var availabilityMon: AvailableTime = AvailableTime()
-    private var availabilityTue: AvailableTime = AvailableTime()
-    private var availabilityWed: AvailableTime = AvailableTime()
-    private var availabilityThurs: AvailableTime = AvailableTime()
-    private var availabilityFri: AvailableTime = AvailableTime()
-    private var availabilitySat: AvailableTime = AvailableTime()
-    private var availabilitySun: AvailableTime = AvailableTime()
+    private var availabilityMon: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityTue: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityWed: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityThurs: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityFri: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilitySat: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilitySun: AvailableTimeRequest = AvailableTimeRequest()
 
     private var telecomRank = 0
     private var progressDialog: Dialog? = null

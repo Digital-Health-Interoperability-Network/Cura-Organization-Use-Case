@@ -51,27 +51,27 @@ class NewPersonnelFragment :
 
     lateinit var practitionerPhoneNumberCode: String
 
-    private val telco = Telecom()
-    private val idfier = Identifier()
+    private val telco = TelecomRequest()
+    private val idfier = IdentifierRequest()
 //    private val practRole = PractitionerRole()
-    private val availTime = AvailableTime()
+    private val availTime = AvailableTimeRequest()
 
-    private var identifiers: MutableList<Identifier> = mutableListOf()
-    private var telecom: MutableList<Telecom> = mutableListOf()
+    private var identifiers: MutableList<IdentifierRequest> = mutableListOf()
+    private var telecom: MutableList<TelecomRequest> = mutableListOf()
 //    private var practitionerRoles: MutableList<PractitionerRole> = mutableListOf()
-    private var availableTime: MutableList<AvailableTime> = mutableListOf()
+    private var availableTime: MutableList<AvailableTimeRequest> = mutableListOf()
     private var practitionerNamePrefix = mutableListOf<String>()
     private var practitionerOtherNames = mutableListOf<String>()
 
     lateinit var timePicker: TimePickerHelper
     lateinit var openHour: String
-    private var availabilityMon: AvailableTime = AvailableTime()
-    private var availabilityTue: AvailableTime = AvailableTime()
-    private var availabilityWed: AvailableTime = AvailableTime()
-    private var availabilityThurs: AvailableTime = AvailableTime()
-    private var availabilityFri: AvailableTime = AvailableTime()
-    private var availabilitySat: AvailableTime = AvailableTime()
-    private var availabilitySun: AvailableTime = AvailableTime()
+    private var availabilityMon: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityTue: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityWed: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityThurs: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilityFri: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilitySat: AvailableTimeRequest = AvailableTimeRequest()
+    private var availabilitySun: AvailableTimeRequest = AvailableTimeRequest()
     var hoursDaysOfOperation: HashMap<String, String> = hashMapOf()
 
 
@@ -517,7 +517,7 @@ class NewPersonnelFragment :
                 practitionerNamePrefix.add(newPractitionerNamePrefix)
                 practitionerOtherNames.add(newPractitionerOtherNames)
 
-                val name = Name(
+                val name = NameRequest(
                     family = newPractitionerSurName,
                     given = practitionerOtherNames,
                     prefix = practitionerNamePrefix,

@@ -22,8 +22,8 @@ import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentRegDetailsBinding
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
-import com.nameksolutions.regchain.curaorganization.requests.Identifier
-import com.nameksolutions.regchain.curaorganization.requests.Telecom
+import com.nameksolutions.regchain.curaorganization.requests.IdentifierRequest
+import com.nameksolutions.regchain.curaorganization.requests.TelecomRequest
 import com.nameksolutions.regchain.curaorganization.utils.*
 import com.nameksolutions.regchain.curaorganization.utils.Common.regStepCount
 import kotlinx.coroutines.launch
@@ -68,11 +68,11 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
     val gson = Gson()
 
 
-    private var identifiers: MutableList<Identifier> = mutableListOf()
-    private var telecom: MutableList<Telecom> = mutableListOf()
+    private var identifiers: MutableList<IdentifierRequest> = mutableListOf()
+    private var telecom: MutableList<TelecomRequest> = mutableListOf()
 
     private var aliasName: MutableList<String> = mutableListOf()
-    private val telco = Telecom()
+    private val telco = TelecomRequest()
 
     private var telecomRank = 1
     private var progressDialog: Dialog? = null
@@ -173,7 +173,7 @@ class RegDetails : BaseFragment<AuthViewModel, FragmentRegDetailsBinding, AuthRe
 //                identifiers = mutableListOf<Identifiers>(getOldIdentifiers())
 
                 identifiers.add(
-                    Identifier(
+                    IdentifierRequest(
                         type = organizationNationalIdentificationType,
                         value = organizationNationalIdentificationValue
                     )

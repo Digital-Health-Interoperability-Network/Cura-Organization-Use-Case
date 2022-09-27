@@ -21,7 +21,7 @@ import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentRegAddressBinding
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationAddressRequest
-import com.nameksolutions.regchain.curaorganization.requests.Period
+import com.nameksolutions.regchain.curaorganization.requests.PeriodRequest
 import com.nameksolutions.regchain.curaorganization.utils.Common.regStepCount
 import com.nameksolutions.regchain.curaorganization.utils.getDate
 import com.nameksolutions.regchain.curaorganization.utils.handleApiError
@@ -198,7 +198,7 @@ class RegAddress : BaseFragment<AuthViewModel, FragmentRegAddressBinding, AuthRe
 
                 val nowTime = System.currentTimeMillis()
                 val timeEdited = getDate(nowTime, "dd/MM/yyyy")
-                val period = Period(timeEdited!!, organizationAddressStartDate)
+                val period = PeriodRequest(timeEdited!!, organizationAddressStartDate)
 
                 val addressInstance = CreateOrganizationAddressRequest(
                     city = organizationAddressCity,
