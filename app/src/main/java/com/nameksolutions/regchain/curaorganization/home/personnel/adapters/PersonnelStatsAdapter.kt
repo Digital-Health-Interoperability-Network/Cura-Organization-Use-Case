@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelStatsLayoutItemBinding
-import com.nameksolutions.regchain.curaorganization.responses.Personnel
+import com.nameksolutions.regchain.curaorganization.responses.PersonnelResponse
 
-class PersonnelStatsAdapter: ListAdapter<Personnel, PersonnelStatsAdapter.PersonnelStatsViewHolder>(DiffCallback()){
+class PersonnelStatsAdapter: ListAdapter<PersonnelResponse, PersonnelStatsAdapter.PersonnelStatsViewHolder>(DiffCallback()){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -33,21 +33,21 @@ class PersonnelStatsAdapter: ListAdapter<Personnel, PersonnelStatsAdapter.Person
     }
 
     class PersonnelStatsViewHolder(private val binding: PersonnelStatsLayoutItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(itemData: Personnel){
+        fun bind(itemData: PersonnelResponse){
             binding.apply {
                 personnelStatsItem = itemData
                 executePendingBindings()
             }
         }
     }
-    private class DiffCallback: DiffUtil.ItemCallback<Personnel>(){
-        override fun areItemsTheSame(oldItem: Personnel, newItem: Personnel): Boolean {
+    private class DiffCallback: DiffUtil.ItemCallback<PersonnelResponse>(){
+        override fun areItemsTheSame(oldItem: PersonnelResponse, newItem: PersonnelResponse): Boolean {
             return oldItem.role == newItem.role
         }
 
         override fun areContentsTheSame(
-            oldItem: Personnel,
-            newItem: Personnel
+            oldItem: PersonnelResponse,
+            newItem: PersonnelResponse
         ): Boolean {
             return oldItem == newItem
         }

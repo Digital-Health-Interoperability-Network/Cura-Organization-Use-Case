@@ -1,6 +1,7 @@
 package com.nameksolutions.regchain.curaorganization.home.personnel
 
 
+import com.nameksolutions.regchain.curaorganization.requests.CreatePractitionerRequest
 import com.nameksolutions.regchain.curaorganization.responses.*
 import com.nameksolutions.regchain.curaorganization.utils.Common.personnelRoute
 import com.nameksolutions.regchain.curaorganization.utils.Common.practitionerRoleRoute
@@ -10,12 +11,14 @@ import retrofit2.http.*
 
 interface PersonnelApi {
 //
-//
-//    @GET("$practitionerRoleRoute/roles")
-//    suspend fun getPractitionerRolesList(): PractitionerRoleListResponse
-//
-//    @POST(practitionerRoute)
-//    suspend fun createPractitioner(@Body createPractitioner: PractitionerRequest): PractitionerCreationResponse
+
+    @GET("$practitionerRoleRoute/roles")
+    suspend fun getPractitionerRolesList(): PractitionerRolesResponse
+
+    @POST(practitionerRoute)
+    suspend fun createPractitioner(
+        @Body createPractitioner: CreatePractitionerRequest
+    ): CreatePractitionerResponse
 
     @GET(personnelRoute)
     suspend fun getAllPersonnelStats(): GetPersonnelStatsResponse

@@ -1,5 +1,5 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
-data class DataOTPVerifyMessage(
+data class DataOTPVerifyMessageResponse(
     val message: String
 )

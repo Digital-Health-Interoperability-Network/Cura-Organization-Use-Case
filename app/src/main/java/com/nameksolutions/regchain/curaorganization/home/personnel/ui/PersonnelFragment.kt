@@ -20,7 +20,7 @@ import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelRepo
 import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelViewModel
 import com.nameksolutions.regchain.curaorganization.home.personnel.adapters.*
 import com.nameksolutions.regchain.curaorganization.network.Resource
-import com.nameksolutions.regchain.curaorganization.responses.Personnel
+import com.nameksolutions.regchain.curaorganization.responses.PersonnelResponse
 import com.nameksolutions.regchain.curaorganization.utils.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -522,7 +522,7 @@ class PersonnelFragment :
                     //show it in the recycler view
                     val testStat = it.value._personnel
                     Log.d(TAG, "fetchAllPractitionersStatsTest: $testStat")
-                    val statsList = mutableListOf<Personnel>()
+                    val statsList = mutableListOf<PersonnelResponse>()
                     for (stat in testStat){
                         statsList.add(stat)
                     }
@@ -589,7 +589,7 @@ class PersonnelFragment :
 //        })
 //    }
 
-    private fun subscribeAllPractitionerStatsUI(value: List<Personnel>) {
+    private fun subscribeAllPractitionerStatsUI(value: List<PersonnelResponse>) {
         Log.d(TAG, "subscribeAllPractitionerStatsUI: $value.")
         personnelStatsAdapter.submitList(value)
     }

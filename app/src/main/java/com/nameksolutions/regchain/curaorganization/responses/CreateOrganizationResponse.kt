@@ -1,6 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
 data class CreateOrganizationResponse(
-    val organization: OrganizationCreate,
+    val organization: OrganizationCreateResponse,
     val token: String
 )

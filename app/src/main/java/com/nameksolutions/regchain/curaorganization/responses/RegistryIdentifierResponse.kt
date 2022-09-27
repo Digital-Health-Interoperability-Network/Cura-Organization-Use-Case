@@ -1,9 +1,9 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
-data class RegistryIdentifier(
+data class RegistryIdentifierResponse(
     val EndDate: String,
     val _id: String,
-    val availableTime: List<AvailableTime>,
+    val availableTime: List<AvailableTimeResponse>,
     val daysOfOperation: List<String>,
     val facilityCode: String,
     val facilityLevel: String,

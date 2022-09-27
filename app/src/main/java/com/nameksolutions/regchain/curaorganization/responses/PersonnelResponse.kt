@@ -1,6 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
-data class Personnel(
+data class PersonnelResponse(
     val aggregates: Int,
     val role: String
 )

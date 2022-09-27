@@ -1,14 +1,16 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
-data class OrganizationLogin(
+data class PractitionerResponse(
     val __v: Int,
     val _id: String,
     val _personnel: String,
-    val _registryIdentifier: RegistryIdentifierResponse,
-    val active: Boolean,
     val address: List<AddressResponse>,
-    val alias: List<String>,
+    val birthDate: String,
+    val communication: List<String>,
+    val gender: String,
+    val id: String,
     val identifier: List<IdentifierResponse>,
-    val name: String,
+    val name: NameResponse,
+    val qualification: List<Any>,
     val telecom: List<TelecomResponse>
 )

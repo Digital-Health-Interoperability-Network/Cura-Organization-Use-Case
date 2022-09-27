@@ -1,10 +1,12 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
-data class Telecom(
+data class IdentifierResponse(
     val _id: String,
-    val active: Boolean,
-    val rank: Int,
+    val assigner: String,
+    val partOf: String,
+    val period: PeriodResponse,
     val system: String,
+    val type: String,
     val use: String,
     val value: String
 )

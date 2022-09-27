@@ -1,6 +1,7 @@
 package com.nameksolutions.regchain.curaorganization.home.personnel
 
 import com.nameksolutions.regchain.curaorganization.base.BaseRepo
+import com.nameksolutions.regchain.curaorganization.requests.CreatePractitionerRequest
 import com.nameksolutions.regchain.curaorganization.utils.UserPreferences
 
 class PersonnelRepo(
@@ -23,10 +24,10 @@ class PersonnelRepo(
 //    suspend fun getPractitionerRolesList() = safeApiCall {
 //        api.getPractitionerRolesList()
 //    }
-//
-//    suspend fun createPractitioner(createPractitioner: PractitionerRequest) = safeApiCall {
-//        api.createPractitioner(createPractitioner)
-//    }
+
+    suspend fun createPractitioner(createPractitioner: CreatePractitionerRequest) = safeApiCall {
+        api.createPractitioner(createPractitioner)
+    }
 
 //    suspend fun getOnePractitioner(id: String) = safeApiCall {
 //        api.getOnePractitioner(id)

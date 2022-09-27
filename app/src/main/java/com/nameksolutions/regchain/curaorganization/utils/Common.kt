@@ -17,8 +17,8 @@ object Common {
     const val organizationRoute = "organizations"
     const val organizationAddressRoute = "$organizationRoute/addresses"
     const val personnelRoute = "_personnels"
-    const val practitionerRoute = "practitioner"
-    const val practitionerRoleRoute = "practitionerrole"
+    const val practitionerRoute = "practitioners"
+    const val practitionerRoleRoute = "practitioner-roles"
 
 
     const val healthcareServicesRoute = "healthcare-services"

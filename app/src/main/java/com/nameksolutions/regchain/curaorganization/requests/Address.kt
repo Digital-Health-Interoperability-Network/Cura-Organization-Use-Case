@@ -1,7 +1,6 @@
-package com.nameksolutions.regchain.curaorganization.responses
+package com.nameksolutions.regchain.curaorganization.requests
 
 data class Address(
-    val _id: String,
     val city: String,
     val district: String,
     val line: List<String>,

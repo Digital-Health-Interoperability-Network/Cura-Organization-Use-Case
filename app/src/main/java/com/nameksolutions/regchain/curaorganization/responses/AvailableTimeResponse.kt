@@ -1,6 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
-data class AvailableTime(
+data class AvailableTimeResponse(
     val _id: String,
     val allDay: Boolean,
     val availableEndTime: String,
