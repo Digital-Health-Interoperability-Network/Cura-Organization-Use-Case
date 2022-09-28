@@ -8,6 +8,6 @@
 
 package com.nameksolutions.regchain.curaorganization.responses
 
-data class PractitionerRolesResponse(
+data class PractitionerRolesGetResponse(
     val listOfPractitionerRoles: List<String>
 )

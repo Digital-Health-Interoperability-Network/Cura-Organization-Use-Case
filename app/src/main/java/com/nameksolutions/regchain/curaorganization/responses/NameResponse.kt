@@ -1,6 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
-data class Name(
+data class NameResponse(
     val _id: String,
     val family: String,
     val given: List<String>,

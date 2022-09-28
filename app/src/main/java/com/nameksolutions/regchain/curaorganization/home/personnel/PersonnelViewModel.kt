@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.nameksolutions.regchain.curaorganization.base.BaseViewModel
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.requests.CreatePractitionerRequest
+import com.nameksolutions.regchain.curaorganization.requests.PractitionerRoleRequest
 import com.nameksolutions.regchain.curaorganization.responses.*
 import kotlinx.coroutines.launch
 
@@ -25,10 +26,16 @@ class PersonnelViewModel(
     get() = _practitionerStats
 //
     //create Practitioner Observer Variables
-    private val _practitionerCreation: MutableLiveData<Resource<PractitionerCreationResponse>> =
+    private val _practitionerCreation: MutableLiveData<Resource<CreatePractitionerResponse>> =
         MutableLiveData()
-    val practitionerCreationResponse: LiveData<Resource<PractitionerCreationResponse>>
+    val practitionerCreationResponse: LiveData<Resource<CreatePractitionerResponse>>
         get() = _practitionerCreation
+//
+    //create Practitioner Observer Variables
+    private val _practitionerRoleCreation: MutableLiveData<Resource<PractitionerRoleCreateResponse>> =
+        MutableLiveData()
+    val practitionerRoleCreationResponse: LiveData<Resource<PractitionerRoleCreateResponse>>
+        get() = _practitionerRoleCreation
 //
 //    //create Practitioner Observer Variables
 //    private val _practitionerDetailsUpdate: MutableLiveData<Resource<PractitionerCreationResponse>> =
@@ -49,8 +56,8 @@ class PersonnelViewModel(
 //    val allPractitionerByRoleDetails: LiveData<Resource<FetchPractitionerResponse>>
 //        get() = _allPractitionerByRoleDetails
 
-    private val _practitionerRoleList: MutableLiveData<Resource<PractitionerRolesResponse>> = MutableLiveData()
-    val practitionerRoleListResponse: LiveData<Resource<PractitionerRolesResponse>>
+    private val _practitionerRoleList: MutableLiveData<Resource<PractitionerRolesGetResponse>> = MutableLiveData()
+    val practitionerRoleListResponse: LiveData<Resource<PractitionerRolesGetResponse>>
     get() = _practitionerRoleList
 //
 //
@@ -81,6 +88,16 @@ class PersonnelViewModel(
         _practitionerCreation.value = Resource.Loading
         _practitionerCreation.value =
             repo.createPractitioner(createPractitionerRequest)
+    }
+
+    //function to create a new practitioner role
+    fun createPractitionerRole(
+        practitionerId: String,
+        practitionerRoleRequest: PractitionerRoleRequest
+    ) = viewModelScope.launch {
+        _practitionerRoleCreation.value = Resource.Loading
+        _practitionerRoleCreation.value =
+            repo.createPractitionerRole(practitionerId, practitionerRoleRequest)
     }
 
 ////    fun updatePractitioner(

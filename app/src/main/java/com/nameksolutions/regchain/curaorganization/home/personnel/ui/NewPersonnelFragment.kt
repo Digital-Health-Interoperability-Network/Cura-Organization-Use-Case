@@ -39,43 +39,30 @@ class NewPersonnelFragment :
     CountryCodePicker.OnCountryChangeListener {
 
 
-    private lateinit var newPractitionerRole: String
     private lateinit var newPractitionerSurName: String
     private lateinit var newPractitionerOtherNames: String
     private lateinit var newPractitionerNamePrefix: String
     private lateinit var newPractitionerGender: String
+    private lateinit var newPractitionerRoleCommunication: String
     private lateinit var newPractitionerPhoneNumber: String
     private lateinit var newPractitionerEmail: String
     private lateinit var newPractitionerCountryCodePicker: CountryCodePicker
     private lateinit var newPractitionerIdentifierValue: String
     private lateinit var newPractitionerIdentifierType: String
-    private lateinit var newPractitionerRoleCommunication: String
 
 
     lateinit var practitionerPhoneNumberCode: String
 
     private val telco = TelecomRequest()
     private val idfier = IdentifierRequest()
-    private val practitionerRole = PractitionerRoleRequest()
-    private val availTime = AvailableTimeRequest()
 
     private var identifiers: MutableList<IdentifierRequest> = mutableListOf()
     private var telecom: MutableList<TelecomRequest> = mutableListOf()
+    private var practitionerRoleCommunication = mutableListOf<String>()
 //    private var practitionerRoles: MutableList<PractitionerRole> = mutableListOf()
-    private var availableTime: MutableList<AvailableTimeRequest> = mutableListOf()
     private var practitionerNamePrefix = mutableListOf<String>()
     private var practitionerOtherNames = mutableListOf<String>()
-    private var practitionerRoleCommunication = mutableListOf<String>()
 
-    lateinit var timePicker: TimePickerHelper
-    lateinit var openHour: String
-    private var availabilityMon: AvailableTimeRequest = AvailableTimeRequest()
-    private var availabilityTue: AvailableTimeRequest = AvailableTimeRequest()
-    private var availabilityWed: AvailableTimeRequest = AvailableTimeRequest()
-    private var availabilityThurs: AvailableTimeRequest = AvailableTimeRequest()
-    private var availabilityFri: AvailableTimeRequest = AvailableTimeRequest()
-    private var availabilitySat: AvailableTimeRequest = AvailableTimeRequest()
-    private var availabilitySun: AvailableTimeRequest = AvailableTimeRequest()
     var hoursDaysOfOperation: HashMap<String, String> = hashMapOf()
 
 
@@ -89,13 +76,8 @@ class NewPersonnelFragment :
         super.onViewCreated(view, savedInstanceState)
 
         //fetch practitioner roles from back end and add to list in common
-        getPractitionerRoleList()
 
         //todo fetch the list of communication
-
-        timePicker = TimePickerHelper(requireContext(), true, false)
-
-
 
 
         with(binding) {
@@ -119,202 +101,9 @@ class NewPersonnelFragment :
             val practitionerRoleCommunicationArray = resources.getStringArray(R.array.id_types)
             val practitionerRoleCommunicationArrayAdapter =
                 ArrayAdapter(requireContext(), R.layout.drop_down_item, practitionerRoleCommunicationArray)
-            regPractitionerRoleCommunication.setAdapter(practitionerRoleCommunicationArrayAdapter)
-            regPractitionerRoleCommunication.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
+            regPractitionerCommunication.setAdapter(practitionerRoleCommunicationArrayAdapter)
+            regPractitionerCommunication.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
 
-            practitionersAvailableTimesButton.setOnClickListener {
-                // If the CardView is already expanded, set its visibility
-                //  to gone and change the expand less icon to expand more.
-                if (practitionersAvailableTimesHideAbleView.visibility == View.VISIBLE) {
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewPractitionerAvailableTimes,
-                        AutoTransition()
-                    )
-
-                    practitionersAvailableTimesHideAbleView.visibility = View.GONE
-                    practitionersAvailableTimesButton.setImageResource(R.drawable.angle_down)
-                } else {
-                    // If the CardView is not expanded, set its visibility
-                    // to visible and change the expand more icon to expand less.
-                    TransitionManager.beginDelayedTransition(
-                        baseCardViewPractitionerAvailableTimes,
-                        AutoTransition()
-                    )
-                    practitionersAvailableTimesHideAbleView.visibility = View.VISIBLE
-                    practitionersAvailableTimesButton.setImageResource(R.drawable.angle_up)
-
-
-                }
-
-
-            }
-
-            layoutPractitionerMonday.enable(false)
-            layoutPractitionerTuesday.enable(false)
-            layoutPractitionerWednesday.enable(false)
-            layoutPractitionerThursday.enable(false)
-            layoutPractitionerFriday.enable(false)
-            layoutPractitionerSaturday.enable(false)
-            layoutPractitionerSunday.enable(false)
-
-            checkBoxPractitionerMonday.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked) {
-                    checkBoxPractitionerMonday.isChecked = true
-                    layoutPractitionerMonday.enable(true)
-                    //fetch Monday times in a function and return the values
-                    regPractitionerMondayOpen.setOnClickListener {
-                        val monOpenTimeView = it as TextView
-                        showTimePickerDialog(monOpenTimeView)
-
-                        Log.d(
-                            TAG, "onActivityCreated: ${
-                                monOpenTimeView.text.toString()
-                            }"
-                        )
-                        Log.d(TAG, "onActivityCreated: ${showTimePickerDialog(monOpenTimeView)}")
-                    }
-
-                    Log.d(TAG, "onActivityCreatedPost: ${regPractitionerMondayOpen.text}")
-
-
-                    regPractitionerMondayClose.setOnClickListener {
-
-                        val closeMonTV = it as TextView
-                        showTimePickerDialog(closeMonTV)
-
-                    }
-
-                } else {
-                    checkBoxPractitionerMonday.isChecked = false
-                    layoutPractitionerMonday.enable(false)
-
-                }
-
-            }
-            checkBoxPractitionerTuesday.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked) {
-                    checkBoxPractitionerTuesday.isChecked = true
-                    layoutPractitionerTuesday.enable(true)
-                    //fetch Tuesday times in a function and return the values
-
-                    practitionerTuesdayOpen.setOnClickListener {
-
-                        val tueOpenTV = it as TextView
-                        showTimePickerDialog(tueOpenTV)
-
-                    }
-                    practitionerTuesdayClose.setOnClickListener {
-                        val tueCloseTV = it as TextView
-                        showTimePickerDialog(tueCloseTV)
-
-                    }
-
-
-                } else {
-                    checkBoxPractitionerTuesday.isChecked = false
-                    layoutPractitionerTuesday.enable(false)
-
-                }
-
-            }
-            checkBoxPractitionerWednesday.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked) { //if it is not checked
-                    checkBoxPractitionerWednesday.isChecked = true
-                    layoutPractitionerWednesday.enable(true)
-                    //fetch Wednesday times in a function and return the values
-                    practitionerWednesdayOpen.setOnClickListener {
-                        val wedOpenTV = it as TextView
-                        showTimePickerDialog(wedOpenTV)
-                    }
-                    practitionerWednesdayClose.setOnClickListener {
-                        val wedCloseTV = it as TextView
-                        showTimePickerDialog(wedCloseTV)
-                    }
-                } else {
-                    checkBoxPractitionerWednesday.isChecked = false
-                    layoutPractitionerWednesday.enable(false)
-                }
-
-
-                //availableTime.add(availabilityWed)
-            }
-            checkBoxPractitionerThursday.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked) { //if it is not checked
-                    checkBoxPractitionerThursday.isChecked = true
-                    layoutPractitionerThursday.enable(true)
-                    //fetch Thursday times in a function and return the values
-                    practitionerThursdayOpen.setOnClickListener {
-                        val thursOpenTV = it as TextView
-                        showTimePickerDialog(thursOpenTV)
-                    }
-                    practitionerThursdayClose.setOnClickListener {
-                        val thursCloseTV = it as TextView
-                        showTimePickerDialog(thursCloseTV)
-                    }
-                } else {
-                    checkBoxPractitionerThursday.isChecked = false
-                    layoutPractitionerThursday.enable(false)
-                }
-
-
-            }
-            checkBoxPractitionerFriday.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked) { //if it is not checked
-                    checkBoxPractitionerFriday.isChecked = true
-                    layoutPractitionerFriday.enable(true)
-                    //fetch Friday times in a function and return the values
-                    practitionerFridayOpen.setOnClickListener {
-                        val friOpenTV = it as TextView
-                        showTimePickerDialog(friOpenTV)
-                    }
-                    practitionerFridayClose.setOnClickListener {
-                        val friCloseTV = it as TextView
-                        showTimePickerDialog(friCloseTV)
-                    }
-                } else {
-                    checkBoxPractitionerFriday.isChecked = false
-                    layoutPractitionerFriday.enable(false)
-                }
-
-            }
-            checkBoxPractitionerSaturday.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked) { //if it is not checked
-                    checkBoxPractitionerSaturday.isChecked = true
-                    layoutPractitionerSaturday.enable(true)
-                    //fetch Saturday times in a function and return the values
-                    practitionerSaturdayOpen.setOnClickListener {
-                        val satOpenTV = it as TextView
-                        showTimePickerDialog(satOpenTV)
-                    }
-                    practitionerSaturdayClose.setOnClickListener {
-                        val satCloseTV = it as TextView
-                        showTimePickerDialog(satCloseTV)
-                    }
-                } else {
-                    checkBoxPractitionerSaturday.isChecked = false
-                    layoutPractitionerSaturday.enable(false)
-                }
-
-            }
-            checkBoxPractitionerSunday.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked) { //if it is not checked
-                    checkBoxPractitionerSunday.isChecked = true
-                    layoutPractitionerSunday.enable(true)
-                    //fetch Sunday times in a function and return the values
-                    practitionerSundayOpen.setOnClickListener {
-                        val sunOpenTV = it as TextView
-                        showTimePickerDialog(sunOpenTV)
-                    }
-                    practitionerSundayClose.setOnClickListener {
-                        val sunCloseTV = it as TextView
-                        showTimePickerDialog(sunCloseTV)
-                    }
-                } else {
-                    checkBoxPractitionerSunday.isChecked = false
-                    layoutPractitionerSunday.enable(false)
-                }
-
-            }
 
 
             btnPractitionerCancel.setOnClickListener {
@@ -326,63 +115,6 @@ class NewPersonnelFragment :
                     practitionerPhoneNumber
                 )
 
-                if (checkBoxPractitionerMonday.isChecked){
-                    availabilityMon = availTime.copy(
-                        availableStartTime = regPractitionerMondayOpen.text.toString().trim(),
-                        availableEndTime = regPractitionerMondayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Mon")
-                    )
-                    availableTime.add(availabilityMon)
-                }
-                if (checkBoxPractitionerTuesday.isChecked){
-                    availabilityTue = availTime.copy(
-                        availableStartTime = practitionerTuesdayOpen.text.toString().trim(),
-                        availableEndTime = practitionerTuesdayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Tue")
-                    )
-                    availableTime.add(availabilityTue)
-                }
-                if (checkBoxPractitionerWednesday.isChecked){
-                    availabilityWed = availTime.copy(
-                        availableStartTime = practitionerWednesdayOpen.text.toString().trim(),
-                        availableEndTime = practitionerWednesdayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Wed")
-                    )
-                    availableTime.add(availabilityWed)
-                }
-                if (checkBoxPractitionerThursday.isChecked){
-                    availabilityThurs = availTime.copy(
-                        availableStartTime = practitionerThursdayOpen.text.toString().trim(),
-                        availableEndTime = practitionerThursdayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Thurs")
-                    )
-                    availableTime.add(availabilityThurs)
-                }
-                if (checkBoxPractitionerFriday.isChecked){
-                    availabilityFri = availTime.copy(
-                        availableStartTime = practitionerFridayOpen.text.toString().trim(),
-                        availableEndTime = practitionerFridayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Fri"),
-                        allDay = true
-                    )
-                    availableTime.add(availabilityFri)
-                }
-                if (checkBoxPractitionerSaturday.isChecked){
-                    availabilitySat = availTime.copy(
-                        availableStartTime = practitionerSaturdayOpen.text.toString().trim(),
-                        availableEndTime = practitionerSaturdayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Sat")
-                    )
-                    availableTime.add(availabilitySat)
-                }
-                if (checkBoxPractitionerSunday.isChecked){
-                    availabilitySun = availTime.copy(
-                        availableStartTime = practitionerSundayOpen.text.toString().trim(),
-                        availableEndTime = practitionerSundayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Sun")
-                    )
-                    availableTime.add(availabilitySun)
-                }
 
                 newPractitionerNamePrefix = regPractitionerNamePrefix.text.toString().trim()
                 newPractitionerSurName = regPractitionerSurname.text.toString().trim()
@@ -394,12 +126,11 @@ class NewPersonnelFragment :
                 newPractitionerEmail = regPractitionerEmail.text.toString().trim()
                 newPractitionerCountryCodePicker.setOnCountryChangeListener(this@NewPersonnelFragment)
                 newPractitionerPhoneNumber = newPractitionerCountryCodePicker.fullNumberWithPlus
-                newPractitionerRole = regPractitionerRole.text.toString().trim()
-                newPractitionerRoleCommunication = regPractitionerRoleCommunication.text.toString().trim()
 
-                performValidation(practitionerRole)
+                newPractitionerRoleCommunication = regPractitionerCommunication.text.toString().trim()
 
-                Log.d(TAG, "onActivityCreated: $availableTime")
+
+                performValidation()
 
             }
 
@@ -408,18 +139,12 @@ class NewPersonnelFragment :
     }
 
 
-    private fun performValidation(practitionerRole: PractitionerRoleRequest) {
+    private fun performValidation() {
         with(binding) {
             //if new practitioner name prefix field is empty
             if (newPractitionerNamePrefix.isEmpty()) {
                 textInputLayoutNamePrefix.error = "Practitioner Title Required"
                 regPractitionerNamePrefix.requestFocus()
-                return
-            }
-            //if new practitioner role field is empty
-            if (newPractitionerRole.isEmpty()) {
-                textInputLayoutPractitionerRole.error = "Practitioner Role Required"
-                regPractitionerRole.requestFocus()
                 return
             }
             //if new practitioner surname field is empty
@@ -468,15 +193,13 @@ class NewPersonnelFragment :
                 textInputLayoutNewPractitionerPhoneNumber.error =
                     "Practitioner Phone Number Required"
                 return
-            }  //if new practitioner role communication prefix field is empty
+            }
+            //if new practitioner role communication field is empty
             if (newPractitionerRoleCommunication.isEmpty()) {
-                textInputLayoutPractitionerRoleCommunication.error =
+                textInputLayoutPractitionerCommunication.error =
                     "At leLeast One Language Required"
                 return
-            }
-            if (availableTime.isEmpty()) {
-                requireView().snackbar("At least one day required")
-            } else {
+            }else {
 
                 //all requirements are satisfied
                 val email = telco.copy(
@@ -505,11 +228,6 @@ class NewPersonnelFragment :
                 practitionerNamePrefix.add(newPractitionerNamePrefix)
                 practitionerOtherNames.add(newPractitionerOtherNames)
 
-            val practitionerRole = practitionerRole.copy(
-                availableTime = availableTime,
-                code = listOf(newPractitionerRole),
-            )
-
 
             val name = NameRequest(
                     family = newPractitionerSurName,
@@ -518,78 +236,44 @@ class NewPersonnelFragment :
                     suffix = listOf(),
                     use = "Official"
                 )
-                val newPractitionerRoleCommunicationArray = newPractitionerRoleCommunication.split("\\s*,\\s*")
+
+                val newPractitionerCommunicationArray = newPractitionerRoleCommunication.split("\\s*,\\s*")
+
 
                 val newPractitioner = CreatePractitionerRequest(
-                    communication = newPractitionerRoleCommunicationArray,
                     gender = newPractitionerGender,
                     identifier = identifiers,
                     name = name,
                     telecom = telecom,
-                    practitionerRoles = mutableListOf(practitionerRole)
+                    communication = newPractitionerCommunicationArray
                 )
+
+
 
                 createNewPractitioner(newPractitioner)
 
                 Log.d(TAG, "performValidation: $newPractitioner")
 
-                // TODO: send practitioner role
-//                sendPractitionerRole(practitionerRoleRequest)
-
             }
         }
     }
 
-    private fun getPractitionerRoleList() {
-        viewModel.getPractitionerRolesList()
-        viewModel.practitionerRoleListResponse.observe(viewLifecycleOwner, Observer { response ->
-            when (response) {
-                is Resource.Success -> {
-                    hideProgress()
-                    requireView().snackbar("Roles Fetched")
-                    val fetchedPractitionerRoles =
-                        response.value.listOfPractitionerRoles
-                    Log.d(
-                        TAG,
-                        "getPractitionerRoleList: ${response.value.listOfPractitionerRoles}"
-                    )
-                    val practitionerRolesArrayAdapter =
-                        ArrayAdapter(
-                            requireContext(),
-                            R.layout.drop_down_item,
-                            fetchedPractitionerRoles
-                        )
-                    binding.regPractitionerRole.setAdapter(practitionerRolesArrayAdapter)
-
-                }
-                is Resource.Failure -> {
-                    hideProgress()
-                    handleApiError(response) { getPractitionerRoleList() }
-                }
-                is Resource.Loading -> {
-                    showProgress()
-                }
-            }
-        })
-
-
-    }
 
     private fun createNewPractitioner(newPractitioner: CreatePractitionerRequest) {
 
         viewModel.createPractitioner(newPractitioner)
-        viewModel.practitionerCreationResponse.observe(viewLifecycleOwner, Observer {
-            when (it) {
+        viewModel.practitionerCreationResponse.observe(viewLifecycleOwner, Observer { response ->
+            when (response) {
                 is Resource.Success -> {
                     hideProgress()
                     requireView().snackbar("Practitioner Details Entered")
-                    //navigate to ??
-                    findNavController().navigate(R.id.action_newPersonnelFragment_to_personnelFragment)
+                    val navToRoleCreation = NewPersonnelFragmentDirections.actionNewPersonnelFragmentToNewPractitionerRoleFragment(response.value.practitioner)
+                    findNavController().navigate(navToRoleCreation)
                 }
                 is Resource.Failure -> {
                     hideProgress()
-                    Log.d(TAG, "createNewPractitioner: $it")
-                    handleApiError(it) { createNewPractitioner(newPractitioner) }
+                    Log.d(TAG, "createNewPractitioner: $response")
+                    handleApiError(response) { createNewPractitioner(newPractitioner) }
                 }
                 is Resource.Loading -> {
                     showProgress()
@@ -600,50 +284,6 @@ class NewPersonnelFragment :
 
     }
 
-    private fun showTimePickerDialog(timeView: TextView) {
-        val cal = Calendar.getInstance()
-        val h = cal.get(Calendar.HOUR_OF_DAY)
-        val m = cal.get(Calendar.MINUTE)
-
-
-        var hourTime = ""
-        var minTime = ""
-        var am_pm = ""
-
-
-        val testVar = timePicker.showDialog(h, m, object : TimePickerHelper.Callback {
-            override fun onTimeSelected(hourOfDay: Int, minute: Int) {
-                var hourOfDay = hourOfDay
-                //AM_PM decider logic
-                when {
-                    hourOfDay == 0 -> {
-                        hourOfDay += 12
-                        am_pm = "AM"
-                    }
-                    hourOfDay == 12 -> am_pm = "PM"
-                    hourOfDay > 12 -> {
-                        hourOfDay -= 12
-                        am_pm = "PM"
-                    }
-                    else -> am_pm = "AM"
-                }
-                val hourStr = if (hourOfDay < 10)
-                    "0${hourOfDay}" else "${hourOfDay}"
-                val minuteStr = if (minute < 10)
-                    "0${minute}" else "${minute}"
-
-                hourTime = hourStr
-                minTime = minuteStr
-
-                timeView.text = "${hourStr}:${minuteStr}$am_pm"
-
-                openHour = "${hourStr}:${minuteStr}"
-
-            }
-
-        })
-        return testVar
-    }
 
 
     private fun showProgress() {

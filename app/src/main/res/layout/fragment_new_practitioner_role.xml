@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2022.
+  ~ Richard Uzor
+  ~ For Namek Solutions Limited,
+  ~ Abuja, FCT.
+  ~ Nigeria
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".home.personnel.ui.NewPractitionerRoleFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="@dimen/margin_midi"
+        android:fontFamily="@font/open_dyslexic_alta_bold"
+        android:text="@string/practitioner_role_title"
+        android:textAlignment="center"
+        android:textSize="@dimen/sp24" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/practitioner_role_description"
+        android:textAlignment="center"
+        android:textSize="@dimen/sp16" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_new_practitioner_role_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/margin_mini"
+        android:padding="@dimen/padding_midi"
+        app:cardElevation="@dimen/padding_mini">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textview_new_practitioner_role_practitioner_name"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="@dimen/margin_mini"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"
+                android:textSize="@dimen/sp24"
+                tools:text="Rah Rahman" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_practitioner_role"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_mini"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/custom_color">
+
+                <MultiAutoCompleteTextView
+                    android:id="@+id/reg_practitioner_role"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:hint="@string/reg_practitioner_role"
+                    android:inputType="none"
+                    android:completionThreshold="1"
+                    android:paddingBottom="8dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_practitioner_role_speciality"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_mini"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/custom_color">
+
+                <MultiAutoCompleteTextView
+                    android:id="@+id/reg_practitioner_role_specialty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:hint="@string/reg_practitioner_role_specialty"
+                    android:inputType="none"
+                    android:completionThreshold="1"
+                    android:paddingBottom="8dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/base_card_view_practitioner_available_times"
+                style="@style/Base.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_mini"
+                android:layout_marginEnd="@dimen/margin_mini"
+                android:layout_marginBottom="@dimen/margin_mini"
+                android:padding="@dimen/padding_midi">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="6">
+
+                        <TextView
+                            android:id="@+id/practitioners_available_times_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            android:fontFamily="@font/roboto_black"
+                            android:text="@string/practitioners_available_times_title"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/practitioners_available_times_button"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:backgroundTint="@color/white"
+                            android:contentDescription="@string/practitioners_available_times_expand_arrow"
+                            android:padding="@dimen/padding_midi"
+                            android:src="@drawable/angle_down" />
+
+                    </LinearLayout>
+
+
+                    <ScrollView
+                        android:id="@+id/practitioners_available_times_hide_able_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/padding_mini"
+                                android:weightSum="16">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3.4"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="@string/title_day_of_operation"
+                                    android:textAlignment="center"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5.5"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="@string/reg_open_time_hint"
+                                    android:textAlignment="center"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="5.5"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="@string/reg_close_time_hint"
+                                    android:textAlignment="center"
+                                    android:textSize="18sp" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="16">
+
+                                <CheckBox
+                                    android:id="@+id/checkBox_practitioner_monday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/margin_mini"
+                                    android:layout_weight="2"
+                                    android:padding="@dimen/padding_midi" />
+
+                                <LinearLayout
+                                    android:id="@+id/layout_practitioner_monday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="14"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/txt_practitioner_mon"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:fontFamily="@font/roboto_black"
+                                        android:text="@string/cb_monday_text"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/reg_practitioner_monday_open"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:padding="@dimen/padding_midi"
+                                        android:text="@string/reg_open_time_hint_short"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/reg_practitioner_monday_close"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_close_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="16">
+
+                                <CheckBox
+                                    android:id="@+id/checkBox_practitioner_tuesday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/margin_mini"
+                                    android:layout_weight="2"
+                                    android:padding="@dimen/padding_midi" />
+
+                                <LinearLayout
+                                    android:id="@+id/layout_practitioner_tuesday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="14"
+                                    android:orientation="horizontal">
+
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:fontFamily="@font/roboto_black"
+                                        android:text="@string/cb_tuesday_text"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_tuesday_open"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_open_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_tuesday_close"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_close_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="16">
+
+                                <CheckBox
+                                    android:id="@+id/checkBox_practitioner_wednesday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/margin_mini"
+                                    android:layout_weight="2"
+                                    android:padding="@dimen/padding_midi" />
+
+                                <LinearLayout
+                                    android:id="@+id/layout_practitioner_wednesday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="14"
+                                    android:orientation="horizontal">
+
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:fontFamily="@font/roboto_black"
+                                        android:text="@string/cb_wednesday_text"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_wednesday_open"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_open_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_wednesday_close"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_close_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="16">
+
+                                <CheckBox
+                                    android:id="@+id/checkBox_practitioner_thursday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/margin_mini"
+                                    android:layout_weight="2"
+                                    android:padding="@dimen/padding_midi" />
+
+                                <LinearLayout
+                                    android:id="@+id/layout_practitioner_thursday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="14"
+                                    android:orientation="horizontal">
+
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:fontFamily="@font/roboto_black"
+                                        android:text="@string/cb_thursday_text"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_thursday_open"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_open_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_thursday_close"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_close_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="16">
+
+                                <CheckBox
+                                    android:id="@+id/checkBox_practitioner_friday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/margin_mini"
+                                    android:layout_weight="2"
+                                    android:padding="@dimen/padding_midi" />
+
+                                <LinearLayout
+                                    android:id="@+id/layout_practitioner_friday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="14"
+                                    android:orientation="horizontal">
+
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:fontFamily="@font/roboto_black"
+                                        android:text="@string/cb_friday_text"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_friday_open"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_open_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_friday_close"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_close_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="16">
+
+                                <CheckBox
+                                    android:id="@+id/checkBox_practitioner_saturday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/margin_mini"
+                                    android:layout_weight="2"
+                                    android:padding="@dimen/padding_midi" />
+
+                                <LinearLayout
+                                    android:id="@+id/layout_practitioner_saturday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="14"
+                                    android:orientation="horizontal">
+
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:fontFamily="@font/roboto_black"
+                                        android:text="@string/cb_saturday_text"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_saturday_open"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_open_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_saturday_close"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_close_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="16">
+
+                                <CheckBox
+                                    android:id="@+id/checkBox_practitioner_sunday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/margin_mini"
+                                    android:layout_weight="2"
+                                    android:padding="@dimen/padding_midi" />
+
+                                <LinearLayout
+                                    android:id="@+id/layout_practitioner_sunday"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="14"
+                                    android:orientation="horizontal">
+
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:fontFamily="@font/roboto_black"
+                                        android:text="@string/cb_sunday_text"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_sunday_open"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_open_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/practitioner_sunday_close"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/margin_mini"
+                                        android:layout_weight="4.5"
+                                        android:background="@drawable/rounded_corner"
+                                        android:hint="@string/reg_close_time_hint_short"
+                                        android:padding="@dimen/padding_midi"
+                                        android:textAlignment="center"
+                                        android:textSize="18sp" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_practitioner_role_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_margin="@dimen/margin_mini"
+            android:backgroundTint="@color/custom_color"
+            android:text="@string/btn_practitioner_role_register" />
+
+</LinearLayout>

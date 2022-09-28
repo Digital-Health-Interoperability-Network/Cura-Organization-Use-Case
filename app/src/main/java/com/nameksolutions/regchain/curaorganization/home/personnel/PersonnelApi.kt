@@ -2,6 +2,7 @@ package com.nameksolutions.regchain.curaorganization.home.personnel
 
 
 import com.nameksolutions.regchain.curaorganization.requests.CreatePractitionerRequest
+import com.nameksolutions.regchain.curaorganization.requests.PractitionerRoleRequest
 import com.nameksolutions.regchain.curaorganization.responses.*
 import com.nameksolutions.regchain.curaorganization.utils.Common.personnelRoute
 import com.nameksolutions.regchain.curaorganization.utils.Common.practitionerRoleRoute
@@ -13,7 +14,7 @@ interface PersonnelApi {
 //
 
     @GET("$practitionerRoleRoute/roles")
-    suspend fun getPractitionerRolesList(): PractitionerRolesResponse
+    suspend fun getPractitionerRolesList(): PractitionerRolesGetResponse
 
     @POST(practitionerRoute)
     suspend fun createPractitioner(
@@ -22,6 +23,11 @@ interface PersonnelApi {
 
     @GET(personnelRoute)
     suspend fun getAllPersonnelStats(): GetPersonnelStatsResponse
+
+    @POST("$practitionerRoute/{practitionerId}/$practitionerRoleRoute")
+    suspend fun createPractitionerRole(@Path("practitionerId") practitionerId: String,
+                                       @Body practitionerRoleRequest: PractitionerRoleRequest
+    ): PractitionerRoleCreateResponse
 //
 //   // @GET(practitionerRoute)
 ////    suspend fun getAllPractitioners(): AllPractitioner

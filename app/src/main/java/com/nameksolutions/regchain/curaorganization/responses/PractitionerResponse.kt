@@ -1,5 +1,9 @@
 package com.nameksolutions.regchain.curaorganization.responses
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class PractitionerResponse(
     val __v: Int,
     val _id: String,
@@ -13,4 +17,4 @@ data class PractitionerResponse(
     val name: NameResponse,
     val qualification: List<Any>,
     val telecom: List<TelecomResponse>
-)
+): Parcelable
