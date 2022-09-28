@@ -33,6 +33,7 @@ import com.nameksolutions.regchain.curaorganization.utils.Common.TAG
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import java.util.*
+
 //
 class NewPersonnelFragment :
     BaseFragment<PersonnelViewModel, FragmentNewPersonnelBinding, PersonnelRepo>(),
@@ -59,7 +60,8 @@ class NewPersonnelFragment :
     private var identifiers: MutableList<IdentifierRequest> = mutableListOf()
     private var telecom: MutableList<TelecomRequest> = mutableListOf()
     private var practitionerRoleCommunication = mutableListOf<String>()
-//    private var practitionerRoles: MutableList<PractitionerRole> = mutableListOf()
+
+    //    private var practitionerRoles: MutableList<PractitionerRole> = mutableListOf()
     private var practitionerNamePrefix = mutableListOf<String>()
     private var practitionerOtherNames = mutableListOf<String>()
 
@@ -100,7 +102,11 @@ class NewPersonnelFragment :
 
             val practitionerRoleCommunicationArray = resources.getStringArray(R.array.id_types)
             val practitionerRoleCommunicationArrayAdapter =
-                ArrayAdapter(requireContext(), R.layout.drop_down_item, practitionerRoleCommunicationArray)
+                ArrayAdapter(
+                    requireContext(),
+                    R.layout.drop_down_item,
+                    practitionerRoleCommunicationArray
+                )
             regPractitionerCommunication.setAdapter(practitionerRoleCommunicationArrayAdapter)
             regPractitionerCommunication.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
 
@@ -127,7 +133,8 @@ class NewPersonnelFragment :
                 newPractitionerCountryCodePicker.setOnCountryChangeListener(this@NewPersonnelFragment)
                 newPractitionerPhoneNumber = newPractitionerCountryCodePicker.fullNumberWithPlus
 
-                newPractitionerRoleCommunication = regPractitionerCommunication.text.toString().trim()
+                newPractitionerRoleCommunication =
+                    regPractitionerCommunication.text.toString().trim()
 
 
                 performValidation()
@@ -199,7 +206,7 @@ class NewPersonnelFragment :
                 textInputLayoutPractitionerCommunication.error =
                     "At leLeast One Language Required"
                 return
-            }else {
+            } else {
 
                 //all requirements are satisfied
                 val email = telco.copy(
@@ -229,7 +236,7 @@ class NewPersonnelFragment :
                 practitionerOtherNames.add(newPractitionerOtherNames)
 
 
-            val name = NameRequest(
+                val name = NameRequest(
                     family = newPractitionerSurName,
                     given = practitionerOtherNames,
                     prefix = practitionerNamePrefix,
@@ -237,7 +244,8 @@ class NewPersonnelFragment :
                     use = "Official"
                 )
 
-                val newPractitionerCommunicationArray = newPractitionerRoleCommunication.split("\\s*,\\s*")
+                val newPractitionerCommunicationArray =
+                    newPractitionerRoleCommunication.split("\\s*,\\s*")
 
 
                 val newPractitioner = CreatePractitionerRequest(
@@ -267,7 +275,12 @@ class NewPersonnelFragment :
                 is Resource.Success -> {
                     hideProgress()
                     requireView().snackbar("Practitioner Details Entered")
-                    val navToRoleCreation = NewPersonnelFragmentDirections.actionNewPersonnelFragmentToNewPractitionerRoleFragment(response.value.practitioner)
+                    val navToRoleCreation =
+                        NewPersonnelFragmentDirections.actionNewPersonnelFragmentToNewPractitionerRoleFragment(
+                            response.value.practitioner.id,
+                            response.value.practitioner.name.given[0],
+                            response.value.practitioner.name.family
+                        )
                     findNavController().navigate(navToRoleCreation)
                 }
                 is Resource.Failure -> {
@@ -283,7 +296,6 @@ class NewPersonnelFragment :
         })
 
     }
-
 
 
     private fun showProgress() {
@@ -307,7 +319,8 @@ class NewPersonnelFragment :
         val api = remoteDataSource.buildApi(PersonnelApi::class.java, token)
         return PersonnelRepo(api, userprefs)
     }
-//
+
+    //
 //
     override fun onCountrySelected() {
         practitionerPhoneNumberCode = binding.newPractitionerCountryCodePicker.selectedCountryCode

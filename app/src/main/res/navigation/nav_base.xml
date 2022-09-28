@@ -63,12 +63,18 @@
         android:name="com.nameksolutions.regchain.curaorganization.home.personnel.ui.NewPractitionerRoleFragment"
         android:label="fragment_new_practitioner_role"
         tools:layout="@layout/fragment_new_practitioner_role" >
-        <argument
-            android:name="practitionerInfo"
-            app:argType="com.nameksolutions.regchain.curaorganization.responses.PractitionerResponse" />
         <action
             android:id="@+id/action_newPractitionerRoleFragment_to_personnelFragment"
             app:destination="@id/personnelFragment" />
+        <argument
+            android:name="practitionerId"
+            app:argType="string" />
+        <argument
+            android:name="practitionerSurName"
+            app:argType="string" />
+        <argument
+            android:name="practitionerFirstName"
+            app:argType="string" />
     </fragment>
     <!--    <fragment-->
 <!--        android:id="@+id/servicesFragment"-->

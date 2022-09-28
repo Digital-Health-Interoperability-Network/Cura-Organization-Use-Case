@@ -48,6 +48,8 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
     private lateinit var newPractitionerRole: String
     private lateinit var newPractitionerRoleSpecialty: String
 
+    private lateinit var fetchedPractitionerRoles: List<String>
+
     lateinit var practitionerId: String
 
     private val practitionerRole = PractitionerRoleRequest()
@@ -70,12 +72,11 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val practitionerName = "${args.practitionerInfo.name.given} ${args.practitionerInfo.name.given[1]}"
-        practitionerId = args.practitionerInfo.id
+        val practitionerName = "${args.practitionerFirstName} ${args.practitionerSurName}"
+        practitionerId = args.practitionerId
         getPractitionerRoleList()
 
-
-        timePicker = TimePickerHelper(requireContext(), true, false)
+        timePicker = TimePickerHelper(requireContext(), true, isSpinnerType = true)
 
         with(binding){
 
@@ -350,16 +351,14 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                 newPractitionerRole = regPractitionerRole.text.toString().trim()
                 newPractitionerRoleSpecialty = regPractitionerRoleSpecialty.text.toString().trim()
 
-                performValidation(practitionerRole)
+                performValidation()
 
 
             }
 
-
-
         }
     }
-    private fun performValidation(practitionerRole: PractitionerRoleRequest) {
+    private fun performValidation() {
         with(binding) {
             //if new practitioner role field is empty
             if (newPractitionerRole.isEmpty()) {
@@ -387,8 +386,6 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                 )
 
 
-
-
                 createNewPractitionerRole(practitionerRole)
 
             }
@@ -403,7 +400,7 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                 is Resource.Success -> {
                     hideProgress()
                     requireView().snackbar("Practitioner Details Entered")
-                    val navToRoleCreated = NewPersonnelFragmentDirections.actionNewPersonnelFragmentToPersonnelFragment()
+                    val navToRoleCreated = NewPractitionerRoleFragmentDirections.actionNewPractitionerRoleFragmentToPersonnelFragment()
                     findNavController().navigate(navToRoleCreated)
                 }
                 is Resource.Failure -> {
@@ -427,18 +424,13 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                 is Resource.Success -> {
                     hideProgress()
                     requireView().snackbar("Roles Fetched")
-                    val fetchedPractitionerRoles =
+                    fetchedPractitionerRoles =
                         response.value.listOfPractitionerRoles
                     Log.d(
                         Common.TAG,
                         "getPractitionerRoleList: ${response.value.listOfPractitionerRoles}"
                     )
-                    val practitionerRolesArrayAdapter =
-                        ArrayAdapter(
-                            requireContext(),
-                            R.layout.drop_down_item,
-                            fetchedPractitionerRoles
-                        )
+
                     binding.regPractitionerRole.setAdapter(practitionerRolesArrayAdapter)
 
                 }
