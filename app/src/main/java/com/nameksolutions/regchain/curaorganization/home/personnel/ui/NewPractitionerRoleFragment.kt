@@ -41,7 +41,8 @@ import kotlinx.coroutines.runBlocking
 import java.util.*
 
 
-class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNewPractitionerRoleBinding, PersonnelRepo>() {
+class NewPractitionerRoleFragment :
+    BaseFragment<PersonnelViewModel, FragmentNewPractitionerRoleBinding, PersonnelRepo>() {
 
     val args by navArgs<NewPractitionerRoleFragmentArgs>()
 
@@ -78,7 +79,7 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
 
         timePicker = TimePickerHelper(requireContext(), true, isSpinnerType = true)
 
-        with(binding){
+        with(binding) {
 
             textviewNewPractitionerRolePractitionerName.text = practitionerName
 
@@ -89,7 +90,18 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                     R.layout.drop_down_item,
                     practitionerRolesSpecialtyArray
                 )
-            binding.regPractitionerRole.setAdapter(practitionerRolesSpecialtyArrayAdapter)
+            binding.regPractitionerRoleSpecialty.setAdapter(practitionerRolesSpecialtyArrayAdapter)
+
+            val practitionerRolesArray = fetchedPractitionerRoles
+            val practitionerRolesArrayAdapter =
+                ArrayAdapter(
+                    requireContext(),
+                    R.layout.drop_down_item,
+                    practitionerRolesArray
+                )
+
+            binding.regPractitionerRole.setAdapter(practitionerRolesArrayAdapter)
+
 
 
             practitionersAvailableTimesButton.setOnClickListener {
@@ -141,7 +153,10 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                                 monOpenTimeView.text.toString()
                             }"
                         )
-                        Log.d(Common.TAG, "onActivityCreated: ${showTimePickerDialog(monOpenTimeView)}")
+                        Log.d(
+                            Common.TAG,
+                            "onActivityCreated: ${showTimePickerDialog(monOpenTimeView)}"
+                        )
                     }
 
                     Log.d(Common.TAG, "onActivityCreatedPost: ${regPractitionerMondayOpen.text}")
@@ -289,7 +304,7 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
             btnPractitionerRoleRegister.setOnClickListener {
 
 
-                if (checkBoxPractitionerMonday.isChecked){
+                if (checkBoxPractitionerMonday.isChecked) {
                     availabilityMon = availTime.copy(
                         availableStartTime = regPractitionerMondayOpen.text.toString().trim(),
                         availableEndTime = regPractitionerMondayClose.text.toString().trim(),
@@ -297,7 +312,7 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                     )
                     availableTime.add(availabilityMon)
                 }
-                if (checkBoxPractitionerTuesday.isChecked){
+                if (checkBoxPractitionerTuesday.isChecked) {
                     availabilityTue = availTime.copy(
                         availableStartTime = practitionerTuesdayOpen.text.toString().trim(),
                         availableEndTime = practitionerTuesdayClose.text.toString().trim(),
@@ -305,7 +320,7 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                     )
                     availableTime.add(availabilityTue)
                 }
-                if (checkBoxPractitionerWednesday.isChecked){
+                if (checkBoxPractitionerWednesday.isChecked) {
                     availabilityWed = availTime.copy(
                         availableStartTime = practitionerWednesdayOpen.text.toString().trim(),
                         availableEndTime = practitionerWednesdayClose.text.toString().trim(),
@@ -313,7 +328,7 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                     )
                     availableTime.add(availabilityWed)
                 }
-                if (checkBoxPractitionerThursday.isChecked){
+                if (checkBoxPractitionerThursday.isChecked) {
                     availabilityThurs = availTime.copy(
                         availableStartTime = practitionerThursdayOpen.text.toString().trim(),
                         availableEndTime = practitionerThursdayClose.text.toString().trim(),
@@ -321,7 +336,7 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                     )
                     availableTime.add(availabilityThurs)
                 }
-                if (checkBoxPractitionerFriday.isChecked){
+                if (checkBoxPractitionerFriday.isChecked) {
                     availabilityFri = availTime.copy(
                         availableStartTime = practitionerFridayOpen.text.toString().trim(),
                         availableEndTime = practitionerFridayClose.text.toString().trim(),
@@ -330,7 +345,7 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                     )
                     availableTime.add(availabilityFri)
                 }
-                if (checkBoxPractitionerSaturday.isChecked){
+                if (checkBoxPractitionerSaturday.isChecked) {
                     availabilitySat = availTime.copy(
                         availableStartTime = practitionerSaturdayOpen.text.toString().trim(),
                         availableEndTime = practitionerSaturdayClose.text.toString().trim(),
@@ -338,7 +353,7 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                     )
                     availableTime.add(availabilitySat)
                 }
-                if (checkBoxPractitionerSunday.isChecked){
+                if (checkBoxPractitionerSunday.isChecked) {
                     availabilitySun = availTime.copy(
                         availableStartTime = practitionerSundayOpen.text.toString().trim(),
                         availableEndTime = practitionerSundayClose.text.toString().trim(),
@@ -358,6 +373,7 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
 
         }
     }
+
     private fun performValidation() {
         with(binding) {
             //if new practitioner role field is empty
@@ -375,7 +391,8 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                 requireView().snackbar("At least one day required")
             } else {
 
-                val newPractitionerRoleSpecialtyArray = newPractitionerRoleSpecialty.split("\\s*,\\s*")
+                val newPractitionerRoleSpecialtyArray =
+                    newPractitionerRoleSpecialty.split("\\s*,\\s*")
                 val newPractitionerRoleArray = newPractitionerRole.split("\\s*,\\s*")
 
 
@@ -395,12 +412,13 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
     private fun createNewPractitionerRole(practitionerRole: PractitionerRoleRequest) {
 
         viewModel.createPractitionerRole(practitionerId, practitionerRole)
-        viewModel.practitionerCreationResponse.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.practitionerRoleCreationResponse.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
                 is Resource.Success -> {
                     hideProgress()
                     requireView().snackbar("Practitioner Details Entered")
-                    val navToRoleCreated = NewPractitionerRoleFragmentDirections.actionNewPractitionerRoleFragmentToPersonnelFragment()
+                    val navToRoleCreated =
+                        NewPractitionerRoleFragmentDirections.actionNewPractitionerRoleFragmentToPersonnelFragment()
                     findNavController().navigate(navToRoleCreated)
                 }
                 is Resource.Failure -> {
@@ -431,7 +449,6 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
                         "getPractitionerRoleList: ${response.value.listOfPractitionerRoles}"
                     )
 
-                    binding.regPractitionerRole.setAdapter(practitionerRolesArrayAdapter)
 
                 }
                 is Resource.Failure -> {
@@ -492,8 +509,6 @@ class NewPractitionerRoleFragment : BaseFragment<PersonnelViewModel, FragmentNew
         })
         return testVar
     }
-
-
 
 
     private fun showProgress() {

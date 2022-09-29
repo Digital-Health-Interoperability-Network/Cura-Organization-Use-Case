@@ -50,11 +50,11 @@ class PersonnelViewModel(
 //        get() = _allPractitionerDetails
 //
 //
-//    //fetch all practitioner by role Observer Variables
-//    private val _allPractitionerByRoleDetails: MutableLiveData<Resource<FetchPractitionerResponse>> =
-//        MutableLiveData()
-//    val allPractitionerByRoleDetails: LiveData<Resource<FetchPractitionerResponse>>
-//        get() = _allPractitionerByRoleDetails
+    //fetch all practitioner by role Observer Variables
+    private val _allPractitionerByRoleDetails: MutableLiveData<Resource<GetPractitionersResponse>> =
+        MutableLiveData()
+    val allPractitionerByRoleDetails: LiveData<Resource<GetPractitionersResponse>>
+        get() = _allPractitionerByRoleDetails
 
     private val _practitionerRoleList: MutableLiveData<Resource<PractitionerRolesGetResponse>> = MutableLiveData()
     val practitionerRoleListResponse: LiveData<Resource<PractitionerRolesGetResponse>>
@@ -114,10 +114,10 @@ class PersonnelViewModel(
 //            repo.getAllPractitioners()
 //    }
 //
-//    fun getPractitionersByRole(code: String) = viewModelScope.launch {
-//        _allPractitionerByRoleDetails.value = Resource.Loading
-//        _allPractitionerByRoleDetails.value = repo.getPractitionersByRole(code)
-//    }
+    fun getPractitionersByRole(code: String) = viewModelScope.launch {
+        _allPractitionerByRoleDetails.value = Resource.Loading
+        _allPractitionerByRoleDetails.value = repo.getPractitionersByRole(code)
+    }
 //
 
 }

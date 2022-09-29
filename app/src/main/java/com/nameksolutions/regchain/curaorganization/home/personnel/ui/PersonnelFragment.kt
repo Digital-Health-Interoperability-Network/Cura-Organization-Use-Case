@@ -38,11 +38,11 @@ class PersonnelFragment :
         "-Doctor,-Nurse,-Pharmacist,-Lab Scientist"
     )
 //
-//    private val doctorsAdapter = DoctorsAdapter()
-//    private val nursesAdapter = NursesAdapter()
-//    private val pharmacistsAdapter = PharmacistsAdapter()
-//    private val labScientistsAdapter = LabScientistsAdapter()
-//    private val otherPractitionersAdapter = OtherPractitionersAdapter()
+    private val doctorsAdapter = DoctorsAdapter()
+    private val nursesAdapter = NursesAdapter()
+    private val pharmacistsAdapter = PharmacistsAdapter()
+    private val labScientistsAdapter = LabScientistsAdapter()
+    private val otherPractitionersAdapter = OtherPractitionersAdapter()
     private val personnelStatsAdapter = PersonnelStatsAdapter()
 
 
@@ -357,11 +357,11 @@ class PersonnelFragment :
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
             rvPersonnelStats.adapter = personnelStatsAdapter
-//            rvDoctors.adapter = doctorsAdapter
-//            rvNurses.adapter = nursesAdapter
-//            rvPharmacists.adapter = pharmacistsAdapter
-//            rvLabTechs.adapter = labScientistsAdapter
-//            rvOtherPractitioner.adapter = otherPractitionersAdapter
+            rvDoctors.adapter = doctorsAdapter
+            rvNurses.adapter = nursesAdapter
+            rvPharmacists.adapter = pharmacistsAdapter
+            rvLabTechs.adapter = labScientistsAdapter
+            rvOtherPractitioner.adapter = otherPractitionersAdapter
 
             rvPersonnelStats.layoutManager = personnelStatsLayoutManager
 //            rvDoctors.layoutManager = doctorsLayoutManager
