@@ -21,6 +21,7 @@ import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelView
 import com.nameksolutions.regchain.curaorganization.home.personnel.adapters.*
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.responses.PersonnelResponse
+import com.nameksolutions.regchain.curaorganization.responses.PractitionerResponse
 import com.nameksolutions.regchain.curaorganization.utils.*
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -356,73 +357,62 @@ class PersonnelFragment :
             val otherPractitionerLayoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-            rvPersonnelStats.adapter = personnelStatsAdapter
-            rvDoctors.adapter = doctorsAdapter
-            rvNurses.adapter = nursesAdapter
-            rvPharmacists.adapter = pharmacistsAdapter
-            rvLabTechs.adapter = labScientistsAdapter
-            rvOtherPractitioner.adapter = otherPractitionersAdapter
-
-            rvPersonnelStats.layoutManager = personnelStatsLayoutManager
-//            rvDoctors.layoutManager = doctorsLayoutManager
-//            rvNurses.layoutManager = nursesLayoutManager
-//            rvPharmacists.layoutManager = pharmacistsLayoutManager
-//            rvLabTechs.layoutManager = labTechLayoutManager
-//            rvOtherPractitioner.layoutManager = otherPractitionerLayoutManager
-
-            rvPersonnelStats.addItemDecoration(
+            rvPersonnelStats.apply {
+                adapter = personnelStatsAdapter
+                layoutManager = personnelStatsLayoutManager
+                addItemDecoration(
+                    DividerItemDecoration(
+                        requireContext(), personnelStatsLayoutManager.orientation
+                    )
+                )
+            }
+            rvDoctors.apply {
+                adapter = doctorsAdapter
+                rvDoctors.layoutManager = doctorsLayoutManager
+                addItemDecoration(
+                    DividerItemDecoration(
+                        requireContext(), doctorsLayoutManager.orientation
+                    )
+                )
+            }
+            rvNurses.apply {
+                adapter = nursesAdapter
+                rvNurses.layoutManager = nursesLayoutManager
+                addItemDecoration(
+                    DividerItemDecoration(
+                        requireContext(), nursesLayoutManager.orientation
+                    )
+                )
+            }
+            rvPharmacists.apply {
+                adapter = pharmacistsAdapter
+                rvPharmacists.layoutManager = pharmacistsLayoutManager
+                addItemDecoration(
+                    DividerItemDecoration(
+                        requireContext(), pharmacistsLayoutManager.orientation
+                    )
+                )
+            }
+            rvLabTechs.apply {
+                adapter = labScientistsAdapter
+                rvLabTechs.layoutManager = labTechLayoutManager
+                addItemDecoration(
                 DividerItemDecoration(
-                    requireContext(), personnelStatsLayoutManager.orientation
+                    requireContext(), labTechLayoutManager.orientation
                 )
             )
 
-//            rvDoctors.addItemDecoration(
-//                DividerItemDecoration(
-//                    requireContext(), doctorsLayoutManager.orientation
-//                )
-//            )
-//
-//            rvNurses.addItemDecoration(
-//                DividerItemDecoration(
-//                    requireContext(), nursesLayoutManager.orientation
-//                )
-//            )
-//
-//            rvPharmacists.addItemDecoration(
-//                DividerItemDecoration(
-//                    requireContext(), pharmacistsLayoutManager.orientation
-//                )
-//            )
-//
-//            rvLabTechs.addItemDecoration(
-//                DividerItemDecoration(
-//                    requireContext(), labTechLayoutManager.orientation
-//                )
-//            )
-//
-//            rvOtherPractitioner.addItemDecoration(
-//                DividerItemDecoration(
-//                    requireContext(), otherPractitionerLayoutManager.orientation
-//                )
-//            )
-
+            }
+            rvOtherPractitioner.apply {
+                adapter = otherPractitionersAdapter
+                rvOtherPractitioner.layoutManager = otherPractitionerLayoutManager
+                addItemDecoration(
+                DividerItemDecoration(
+                    requireContext(), otherPractitionerLayoutManager.orientation
+                )
+            )
+            }
         }
-
-
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-//        binding.fabAddPractitioner.setOnClickListener {
-//            findNavController().navigate(R.id.action_personnelFragment_to_newPersonnelFragment)
-//        }
-//
-//        binding.personnelBackBtn.setOnClickListener {
-//            findNavController().navigate(R.id.action_personnelFragment_to_homeFragment)
-//        }
-
-
     }
 
 //    private fun fetchAllPractitioner() {
@@ -489,29 +479,6 @@ class PersonnelFragment :
 //        })
 //    }
 
-//    private fun getPractitionerRoleList(){
-//        viewModel.getPractitionerRolesList()
-//        viewModel.practitionerRoleListResponse.observe(viewLifecycleOwner, Observer {
-//            when(it){
-//                is Resource.Success -> {
-//                    hideProgress()
-//                    requireView().snackbar("Roles Fetched")
-//                    val fetchedPractitionerRoles = it.value.practitionerRolesList.listOfPractitionerRoles
-//                    Log.d(Common.TAG, "getPractitionerRoleList: ${it.value.practitionerRolesList.listOfPractitionerRoles}")
-//                    Common.practitionerRolesList = fetchedPractitionerRoles
-//                }
-//                is Resource.Failure -> {
-//                    hideProgress()
-//                    handleApiError(it){getPractitionerRoleList()}
-//                }
-//                is Resource.Loading -> {
-//                    showProgress()
-//                }
-//            }
-//        })
-//    }
-
-
     private fun fetchAllPractitionersStats() {
         viewModel.getAllPersonnelStats()
         viewModel.practitionerStats.observe(viewLifecycleOwner, Observer {
@@ -544,113 +511,107 @@ class PersonnelFragment :
     }
 
 
-//    private fun fetchPractitioners(code: String) {
-//        viewModel.getPractitionersByRole(code)
-//        viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer {
-//            when (it) {
-//                is Resource.Success -> {
-//                    hideProgress()
-////                    if (it.value.data.practitoners.isNotEmpty()) {
-////                        populate the ui
-//                    val practitioners = it.value.data.practitoners
-//                    for (practitioner in practitioners){
-//                        val practitionerRoles = practitioner.practitionerRole
-//                        for (practitionerRole in practitionerRoles){
-//                            when (practitionerRole.code) {
-//                                "Doctor" -> {
-//                                    subscribeAllDoctorsUI(practitioners)
-//                                }
-//                                "Nurse" -> {
-//                                    subscribeAllNursesUI(practitioners)
-//                                }
-//                                "Pharmacist" -> {
-//                                    subscribeAllPharmacistsUI(practitioners)
-//                                }
-//                                "Lab Scientist" -> {
-//                                    subscribeAllLabTechsUI(practitioners)
-//                                }
-//                                else -> {
-//                                    subscribeAllOtherUI(practitioners)
-//                                }
-//                            }
-//                        }
-//                    }
-////
-//                }
-//                is Resource.Failure -> {
-//                    hideProgress()
-//                    Log.d(TAG, "fetchPractitioners: $it")
-//                    handleApiError(it) { viewModel.getPractitionersByRole(code) }
-//                }
-//                is Resource.Loading -> {
-//                    showProgress()
-//                }
-//            }
-//        })
-//    }
+    private fun fetchPractitioners(code: String) {
+        viewModel.getPractitionersByRole(code)
+        viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Success -> {
+                    hideProgress()
+//                    if (it.value.data.practitoners.isNotEmpty()) {
+//                        populate the ui
+                    val practitioners = it.value.practitioners
+                    for (practitioner in practitioners){
+                        val practitionerRoles = practitioner.practitionerRoles
+                        for (practitionerRole in practitionerRoles){
+                            if (practitionerRole.code.contains("Doctor")){
+                                subscribeAllDoctorsUI(practitioners)
+                            } else if (practitionerRole.code.contains("Nurse")){
+                                subscribeAllNursesUI(practitioners)
+                            } else if (practitionerRole.code.contains("Pharmacist")){
+                                subscribeAllPharmacistsUI(practitioners)
+                            } else if (practitionerRole.code.contains("Lab Scientist")){
+                                subscribeAllLabTechsUI(practitioners)
+                            } else{
+                                    subscribeAllOtherUI(practitioners)
+                                }
+                        }
+                    }
+//
+                }
+                is Resource.Failure -> {
+                    hideProgress()
+                    Log.d(TAG, "fetchPractitioners: $it")
+                    handleApiError(it) { viewModel.getPractitionersByRole(code) }
+                }
+                is Resource.Loading -> {
+                    showProgress()
+                }
+            }
+        })
+    }
 
     private fun subscribeAllPractitionerStatsUI(value: List<PersonnelResponse>) {
         Log.d(TAG, "subscribeAllPractitionerStatsUI: $value.")
         personnelStatsAdapter.submitList(value)
     }
-//
-//    private fun subscribeAllOtherUI(value: List<Practitoner>) {
-//        if (value.isNotEmpty()) {
-//            binding.rvOtherPractitioner.visible(true)
-//            otherPractitionersAdapter.submitList(value)
-//        } else {
-//            binding.rvOtherPractitioner.visible(false)
-//            binding.textOtherPractitionerNoData.visible(false)
-//        }
-//
-//    }
-//
-//    private fun subscribeAllLabTechsUI(value: List<Practitoner>) {
-//        if (value.isNotEmpty()) {
-//            binding.rvLabTechs.visible(true)
-//            labScientistsAdapter.submitList(value)
-//        } else {
-//            binding.rvLabTechs.visible(false)
-//            binding.textLabScientistNoData.visible(false)
-//        }
-//
-//    }
-//
-//    private fun subscribeAllPharmacistsUI(value: List<Practitoner>) {
-//        if (value.isNotEmpty()) {
-//            binding.rvPharmacists.visible(true)
-//            pharmacistsAdapter.submitList(value)
-//        } else {
-//            binding.rvPharmacists.visible(false)
-//            binding.textPharmacistNoData.visible(false)
-//        }
-//
-//
-//    }
-//
-//    private fun subscribeAllNursesUI(value: List<Practitoner>) {
-//        if (value.isNotEmpty()) {
-//            binding.rvNurses.visible(true)
-//            nursesAdapter.submitList(value)
-//        } else {
-//            binding.rvNurses.visible(false)
-//            binding.textNursesNoData.visible(false)
-//        }
-//
-//
-//    }
-//
-//    private fun subscribeAllDoctorsUI(practitoners: List<Practitoner>) {
-////        if (value.isNotEmpty()) {
-////            binding.rvDoctors.visible(true)
-//        Log.d(TAG, "subscribeAllDoctorsUI: $practitoners")
-//            doctorsAdapter.submitList(practitoners)
-////        } else {
-////            binding.rvDoctors.visible(false)
-////            binding.textDoctorNoData.visible(false)
-////        }
-//
-//    }
+
+    private fun subscribeAllOtherUI(value: List<PractitionerResponse>) {
+        if (value.isNotEmpty()) {
+            binding.rvOtherPractitioner.visible(true)
+            otherPractitionersAdapter.submitList(value)
+        } else {
+            binding.rvOtherPractitioner.visible(false)
+            binding.textOtherPractitionerNoData.visible(false)
+        }
+
+    }
+
+    private fun subscribeAllLabTechsUI(labTechs: List<PractitionerResponse>) {
+        if (labTechs.isNotEmpty()) {
+            binding.rvLabTechs.visible(true)
+            labScientistsAdapter.submitList(labTechs)
+        } else {
+            binding.rvLabTechs.visible(false)
+            binding.textLabScientistNoData.visible(false)
+        }
+
+    }
+
+    private fun subscribeAllPharmacistsUI(pharmacists: List<PractitionerResponse>) {
+        if (pharmacists.isNotEmpty()) {
+            binding.rvPharmacists.visible(true)
+            pharmacistsAdapter.submitList(pharmacists)
+        } else {
+            binding.rvPharmacists.visible(false)
+            binding.textPharmacistNoData.visible(false)
+        }
+
+
+    }
+
+    private fun subscribeAllNursesUI(nurses: List<PractitionerResponse>) {
+        if (nurses.isNotEmpty()) {
+            binding.rvNurses.visible(true)
+            nursesAdapter.submitList(nurses)
+        } else {
+            binding.rvNurses.visible(false)
+            binding.textNursesNoData.visible(false)
+        }
+
+
+    }
+
+    private fun subscribeAllDoctorsUI(doctors: List<PractitionerResponse>) {
+        if (doctors.isNotEmpty()) {
+            binding.rvDoctors.visible(true)
+        Log.d(TAG, "subscribeAllDoctorsUI: $doctors")
+            doctorsAdapter.submitList(doctors)
+        } else {
+            binding.rvDoctors.visible(false)
+            binding.textDoctorsNoData.visible(false)
+        }
+
+    }
 
 
     private fun showProgress() {

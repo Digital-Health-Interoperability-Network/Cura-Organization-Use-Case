@@ -56,14 +56,14 @@ class DoctorsAdapter: ListAdapter<PractitionerResponse, DoctorsAdapter.DoctorsVi
             }
         }
     }
-    private class DiffCallback: DiffUtil.ItemCallback<Practitoner>(){
-        override fun areItemsTheSame(oldItem: Practitoner, newItem: Practitoner): Boolean {
+    private class DiffCallback: DiffUtil.ItemCallback<PractitionerResponse>(){
+        override fun areItemsTheSame(oldItem: PractitionerResponse, newItem: PractitionerResponse): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: Practitoner,
-            newItem: Practitoner
+            oldItem: PractitionerResponse,
+            newItem: PractitionerResponse
         ): Boolean {
             return oldItem == newItem
         }

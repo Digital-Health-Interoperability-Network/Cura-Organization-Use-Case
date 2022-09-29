@@ -17,5 +17,6 @@ data class PractitionerResponse(
     val identifier: @RawValue List<IdentifierResponse>,
     val name: @RawValue NameResponse,
     val qualification: @RawValue List<Any>,
-    val telecom: @RawValue List<TelecomResponse>
+    val telecom: @RawValue List<TelecomResponse>,
+    val practitionerRoles: List<PractitionerRole>
 ): Parcelable
