@@ -7,47 +7,47 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.nameksolutions.regchain.curaorganization.databinding.PersonnelDoctorsItemLayoutBinding
+import com.nameksolutions.regchain.curaorganization.databinding.PractitionersItemLayoutBinding
 import com.nameksolutions.regchain.curaorganization.home.personnel.ui.PersonnelFragmentDirections
 import com.nameksolutions.regchain.curaorganization.responses.PractitionerResponse
 
-class DoctorsAdapter: ListAdapter<PractitionerResponse, DoctorsAdapter.DoctorsViewHolder>(DiffCallback()){
+class PractitionersAdapter: ListAdapter<PractitionerResponse, PractitionersAdapter.PractitionersViewHolder>(DiffCallback()){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): DoctorsAdapter.DoctorsViewHolder {
-        return DoctorsViewHolder(
-            PersonnelDoctorsItemLayoutBinding.inflate(
+    ): PractitionersAdapter.PractitionersViewHolder {
+        return PractitionersViewHolder(
+            PractitionersItemLayoutBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
     }
 
     override fun onBindViewHolder(
-        holder: DoctorsAdapter.DoctorsViewHolder,
+        holder: PractitionersAdapter.PractitionersViewHolder,
         position: Int
     ) {
-        val doctor = getItem(position)
+        val practitioner = getItem(position)
         holder.apply {
-            bind(createOnClickListener(doctor), doctor)
-            itemView.tag = doctor
+            bind(createOnClickListener(practitioner), practitioner)
+            itemView.tag = practitioner
         }
 
     }
 
-    private fun createOnClickListener(doctor: PractitionerResponse): View.OnClickListener {
+    private fun createOnClickListener(practitioner: PractitionerResponse): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
-//            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem(doctor)
-//            it.findNavController().navigate(direction)
+            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(practitioner)
+            it.findNavController().navigate(direction)
         }
     }
 
-    class DoctorsViewHolder(private val binding: PersonnelDoctorsItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
+    class PractitionersViewHolder(private val binding: PractitionersItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(listener: View.OnClickListener, itemData: PractitionerResponse){
             binding.apply {
-                doctorsItemClickListener = listener
-                doctorsItem = itemData
+                practitionersItemClickListener = listener
+                practitionersItem = itemData
 //                val doctorNames = doctorsItem.name!!.given!![0].substring(0, 1)
 //                if (doctorNames != null){
 //                    doctorIconText.text = doctorNames[0].toString()

@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
-import com.nameksolutions.regchain.curaorganization.databinding.ActivityRegBinding
 import com.nameksolutions.regchain.curaorganization.databinding.ActivitySplashScreenBinding
 import com.nameksolutions.regchain.curaorganization.utils.UserPreferences
 import com.nameksolutions.regchain.curaorganization.utils.startNewActivity

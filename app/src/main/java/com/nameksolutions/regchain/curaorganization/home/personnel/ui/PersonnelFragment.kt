@@ -39,11 +39,11 @@ class PersonnelFragment :
         "-Doctor,-Nurse,-Pharmacist,-Lab Scientist"
     )
 //
-    private val doctorsAdapter = DoctorsAdapter()
-    private val nursesAdapter = NursesAdapter()
-    private val pharmacistsAdapter = PharmacistsAdapter()
-    private val labScientistsAdapter = LabScientistsAdapter()
-    private val otherPractitionersAdapter = OtherPractitionersAdapter()
+    private val practitionersAdapter = PractitionersAdapter()
+    private val nursesAdapter = PractitionersAdapter()
+    private val pharmacistsAdapter = PractitionersAdapter()
+    private val labScientistsAdapter = PractitionersAdapter()
+    private val otherPractitionersAdapter = PractitionersAdapter()
     private val personnelStatsAdapter = PersonnelStatsAdapter()
 
 
@@ -51,6 +51,7 @@ class PersonnelFragment :
         super.onViewCreated(view, savedInstanceState)
 
         fetchAllPractitionersStats()
+        fetchPractitioners("")
 
         with(binding) {
 
@@ -346,15 +347,7 @@ class PersonnelFragment :
         with(binding) {
             val personnelStatsLayoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            val doctorsLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            val nursesLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            val pharmacistsLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            val labTechLayoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            val otherPractitionerLayoutManager =
+            val practitionersLayoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
             rvPersonnelStats.apply {
@@ -367,48 +360,52 @@ class PersonnelFragment :
                 )
             }
             rvDoctors.apply {
-                adapter = doctorsAdapter
-                rvDoctors.layoutManager = doctorsLayoutManager
+                adapter = practitionersAdapter
+                rvDoctors.layoutManager = practitionersLayoutManager
                 addItemDecoration(
                     DividerItemDecoration(
-                        requireContext(), doctorsLayoutManager.orientation
+                        requireContext(), practitionersLayoutManager.orientation
                     )
                 )
             }
             rvNurses.apply {
-                adapter = nursesAdapter
-                rvNurses.layoutManager = nursesLayoutManager
+                adapter = practitionersAdapter
+                rvNurses.layoutManager = practitionersLayoutManager
                 addItemDecoration(
                     DividerItemDecoration(
-                        requireContext(), nursesLayoutManager.orientation
+                        requireContext(), practitionersLayoutManager.orientation
                     )
                 )
             }
             rvPharmacists.apply {
-                adapter = pharmacistsAdapter
-                rvPharmacists.layoutManager = pharmacistsLayoutManager
+                adapter = practitionersAdapter
+                rvPharmacists.layoutManager = practitionersLayoutManager
                 addItemDecoration(
                     DividerItemDecoration(
-                        requireContext(), pharmacistsLayoutManager.orientation
+                        requireContext(),
+                        practitionersLayoutManager.orientation
                     )
                 )
             }
             rvLabTechs.apply {
-                adapter = labScientistsAdapter
-                rvLabTechs.layoutManager = labTechLayoutManager
+                adapter = practitionersAdapter
+                rvLabTechs.layoutManager = practitionersLayoutManager
                 addItemDecoration(
                 DividerItemDecoration(
-                    requireContext(), labTechLayoutManager.orientation
+                    requireContext(),
+                    practitionersLayoutManager.orientation
                 )
             )
 
             }
             rvOtherPractitioner.apply {
-                adapter = otherPractitionersAdapter
-                rvOtherPractitioner.layoutManager = otherPractitionerLayoutManager
+                adapter = practitionersAdapter
+                rvOtherPractitioner.layoutManager = practitionersLayoutManager
+
                 addItemDecoration(
                 DividerItemDecoration(
-                    requireContext(), otherPractitionerLayoutManager.orientation
+                    requireContext(), practitionersLayoutManager
+                        .orientation
                 )
             )
             }
@@ -511,7 +508,7 @@ class PersonnelFragment :
     }
 
 
-    private fun fetchPractitioners(code: String) {
+    private fun fetchPractitioners(code: String?) {
         viewModel.getPractitionersByRole(code)
         viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer {
             when (it) {
@@ -519,10 +516,13 @@ class PersonnelFragment :
                     hideProgress()
 //                    if (it.value.data.practitoners.isNotEmpty()) {
 //                        populate the ui
+                    //fetch all practitioner list
                     val practitioners = it.value.practitioners
                     for (practitioner in practitioners){
+                        //fetch the list of roles in for each practitioner
                         val practitionerRoles = practitioner.practitionerRoles
                         for (practitionerRole in practitionerRoles){
+                            //check the role of each practitioner
                             if (practitionerRole.code.contains("Doctor")){
                                 subscribeAllDoctorsUI(practitioners)
                             } else if (practitionerRole.code.contains("Nurse")){
@@ -557,7 +557,7 @@ class PersonnelFragment :
     private fun subscribeAllOtherUI(value: List<PractitionerResponse>) {
         if (value.isNotEmpty()) {
             binding.rvOtherPractitioner.visible(true)
-            otherPractitionersAdapter.submitList(value)
+            practitionersAdapter.submitList(value)
         } else {
             binding.rvOtherPractitioner.visible(false)
             binding.textOtherPractitionerNoData.visible(false)
@@ -568,7 +568,7 @@ class PersonnelFragment :
     private fun subscribeAllLabTechsUI(labTechs: List<PractitionerResponse>) {
         if (labTechs.isNotEmpty()) {
             binding.rvLabTechs.visible(true)
-            labScientistsAdapter.submitList(labTechs)
+            practitionersAdapter.submitList(labTechs)
         } else {
             binding.rvLabTechs.visible(false)
             binding.textLabScientistNoData.visible(false)
@@ -579,7 +579,7 @@ class PersonnelFragment :
     private fun subscribeAllPharmacistsUI(pharmacists: List<PractitionerResponse>) {
         if (pharmacists.isNotEmpty()) {
             binding.rvPharmacists.visible(true)
-            pharmacistsAdapter.submitList(pharmacists)
+            practitionersAdapter.submitList(pharmacists)
         } else {
             binding.rvPharmacists.visible(false)
             binding.textPharmacistNoData.visible(false)
@@ -591,7 +591,7 @@ class PersonnelFragment :
     private fun subscribeAllNursesUI(nurses: List<PractitionerResponse>) {
         if (nurses.isNotEmpty()) {
             binding.rvNurses.visible(true)
-            nursesAdapter.submitList(nurses)
+            practitionersAdapter.submitList(nurses)
         } else {
             binding.rvNurses.visible(false)
             binding.textNursesNoData.visible(false)
@@ -604,7 +604,7 @@ class PersonnelFragment :
         if (doctors.isNotEmpty()) {
             binding.rvDoctors.visible(true)
         Log.d(TAG, "subscribeAllDoctorsUI: $doctors")
-            doctorsAdapter.submitList(doctors)
+            practitionersAdapter.submitList(doctors)
         } else {
             binding.rvDoctors.visible(false)
             binding.textDoctorsNoData.visible(false)

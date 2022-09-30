@@ -27,7 +27,7 @@ class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerIt
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val practitionerRoles = args.currentPractitioner.practitionerRoles//.currentPractitioner.practitionerRole
+        val practitionerRoles = args.currentPractitioner.practitionerRoles
         val telecoms = args.currentPractitioner.telecom
 
 
@@ -45,9 +45,9 @@ class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerIt
             for (role in practitionerRoles){
                 txtPractitionerRoles.append(role.code.toString())
             }
-//            txtPractitionerRoles.text = args.currentPractitioner.practitionerRole.toString()//find a way to fetch the lists and append
+
             singlePractitionerGender.text = args.currentPractitioner.gender
-            for (telecom in telecoms!!){
+            for (telecom in telecoms){
                 if (telecom.system == "email"){
                     singlePractitionerEmail.text = telecom.value
                 }
@@ -57,8 +57,6 @@ class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerIt
                     singlePractitionerPhoneNumber.text = telecom.value
                 }
             }
-//            singlePractitionerEmail.text = args.currentPractitioner.telecom.toString() //find a way to fetch the 1st telecom element as email
-//            singlePractitionerPhoneNumber.text = args.currentPractitioner.telecom.toString()// find a way to fetch the 2nd telecom element as phone number
             val listOfAvailableTimes = mutableListOf<AvailableTime>()
             val practitionerRoles = args.currentPractitioner.practitionerRoles
             for (role in practitionerRoles){

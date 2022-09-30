@@ -39,7 +39,7 @@ interface PersonnelApi {
 ////    suspend fun getOnePractitioner(id: String):
 
     @GET("$practitionerRoute/")
-    suspend fun getPractitionersByRole(@Query("code") code: String): GetPractitionersResponse
+    suspend fun getPractitionersByRole(@Query("code") code: String?): GetPractitionersResponse
 
 //    suspend fun getPractitionersByRole(code: String) = safeApiCall {
 //        api.getPractitionersByRole(code)

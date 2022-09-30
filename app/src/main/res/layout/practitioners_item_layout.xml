@@ -6,11 +6,11 @@
     <data>
 
         <variable
-            name="doctorsItemClickListener"
+            name="practitionersItemClickListener"
             type="android.view.View.OnClickListener" />
 
         <variable
-            name="doctorsItem"
+            name="practitionersItem"
             type="com.nameksolutions.regchain.curaorganization.responses.PractitionerResponse" />
 
     </data>
@@ -28,7 +28,7 @@
         app:cardElevation="@dimen/padding_mini"
         android:layout_margin="@dimen/margin_mini"
         android:padding="@dimen/padding_mini"
-        android:onClick="@{doctorsItemClickListener}"
+        android:onClick="@{practitionersItemClickListener}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
 
 
         <RelativeLayout
-            android:id="@+id/doctor_icon_container"
+            android:id="@+id/practitioner_icon_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -57,13 +57,13 @@
                 android:src="@drawable/bg_circle" />
 
             <TextView
-                android:id="@+id/doctor_icon_text"
+                android:id="@+id/practitioners_icon_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/roboto_regular"
                 android:padding="@dimen/padding_mini"
-                android:text="@{doctorsItem.name.given[0].substring(0,1)}"
+                android:text="@{practitionersItem.name.given[0].substring(0,1)}"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/icon_text"
                 tools:text="E" />
@@ -85,10 +85,10 @@
                     android:layout_marginTop="12dp"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/sp24"
-                    android:text="@{@string/personnel_agg(doctorsItem.name.given[1], doctorsItem.name.family) }"
+                    android:text="@{@string/personnel_agg(practitionersItem.name.given[1], practitionersItem.name.family) }"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.031"
-                    app:layout_constraintStart_toEndOf="@+id/doctor_icon_container"
+                    app:layout_constraintStart_toEndOf="@+id/practitioner_icon_container"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Dr. Emma Emaa" />
 
@@ -100,10 +100,10 @@
                     android:layout_marginTop="8dp"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/sp16"
-                    android:text="@{doctorsItem.gender}"
+                    android:text="@{practitionersItem.gender}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.025"
-                    app:layout_constraintStart_toEndOf="@+id/doctor_icon_container"
+                    app:layout_constraintStart_toEndOf="@+id/practitioner_icon_container"
                     app:layout_constraintTop_toBottomOf="@+id/doctor_name"
                     tools:text="MSCSDD" />
 

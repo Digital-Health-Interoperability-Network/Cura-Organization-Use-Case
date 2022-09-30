@@ -18,7 +18,7 @@ class PersonnelRepo(
 //        api.getAllPractitioners()
 //    }
 
-    suspend fun getPractitionersByRole(code: String) = safeApiCall {
+    suspend fun getPractitionersByRole(code: String?) = safeApiCall {
         api.getPractitionersByRole(code)
     }
 

@@ -12,6 +12,7 @@ import com.nameksolutions.regchain.curaorganization.utils.Common.TAG
 import com.nameksolutions.regchain.curaorganization.utils.UserPreferences
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

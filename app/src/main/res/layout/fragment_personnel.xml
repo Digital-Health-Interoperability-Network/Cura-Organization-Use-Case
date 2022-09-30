@@ -236,7 +236,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 tools:itemCount="3"
-                                tools:listitem="@layout/personnel_doctors_item_layout" />
+                                tools:listitem="@layout/practitioners_item_layout" />
 
                         </LinearLayout>
 
@@ -313,7 +313,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 tools:itemCount="3"
-                                tools:listitem="@layout/personnel_doctors_item_layout" />
+                                tools:listitem="@layout/practitioners_item_layout" />
 
 
                         </LinearLayout>
@@ -391,7 +391,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 tools:itemCount="3"
-                                tools:listitem="@layout/personnel_doctors_item_layout" />
+                                tools:listitem="@layout/practitioners_item_layout" />
 
                         </LinearLayout>
 
@@ -469,7 +469,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 tools:itemCount="3"
-                                tools:listitem="@layout/personnel_doctors_item_layout" />
+                                tools:listitem="@layout/practitioners_item_layout" />
 
                         </LinearLayout>
 
@@ -546,7 +546,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 tools:itemCount="3"
-                                tools:listitem="@layout/personnel_doctors_item_layout" />
+                                tools:listitem="@layout/practitioners_item_layout" />
 
                         </LinearLayout>
 
