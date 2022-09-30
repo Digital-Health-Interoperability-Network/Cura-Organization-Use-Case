@@ -38,9 +38,9 @@
         <action
             android:id="@+id/action_personnelFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
-<!--        <action-->
-<!--            android:id="@+id/action_personnelFragment_to_practitionerItem"-->
-<!--            app:destination="@id/practitionerItem" />-->
+        <action
+            android:id="@+id/action_personnelFragment_to_practitionerItem2"
+            app:destination="@id/practitionerItem" />
     </fragment>
     <fragment
         android:id="@+id/newPersonnelFragment"
@@ -103,18 +103,18 @@
 <!--            android:id="@+id/action_tokenFragment_to_homeFragment"-->
 <!--            app:destination="@id/homeFragment" />-->
 <!--    </fragment>-->
-<!--    <fragment-->
-<!--        android:id="@+id/practitionerItem"-->
-<!--        android:name="com.nameksolutions.regchain.curaorganization.home.personnel.ui.PractitionerItem"-->
-<!--        android:label="fragment_practitioner_item"-->
-<!--        tools:layout="@layout/fragment_practitioner_item" >-->
-<!--        <action-->
-<!--            android:id="@+id/action_practitionerItem_to_personnelFragment"-->
-<!--            app:destination="@id/personnelFragment" />-->
-<!--        <argument-->
-<!--            android:name="currentPractitioner"-->
-<!--            app:argType="com.nameksolutions.regchain.curaorganization.responses.Practitoner" />-->
-<!--    </fragment>-->
+    <fragment
+        android:id="@+id/practitionerItem"
+        android:name="com.nameksolutions.regchain.curaorganization.home.personnel.ui.PractitionerItem"
+        android:label="fragment_practitioner_item"
+        tools:layout="@layout/fragment_practitioner_item" >
+        <action
+            android:id="@+id/action_practitionerItem_to_personnelFragment"
+            app:destination="@id/personnelFragment" />
+        <argument
+            android:name="currentPractitioner"
+            app:argType="com.nameksolutions.regchain.curaorganization.responses.PractitionerResponse" />
+    </fragment>
 <!--    <fragment-->
 <!--        android:id="@+id/newService"-->
 <!--        android:name="com.nameksolutions.regchain.curaorganization.home.services.ui.NewService"-->

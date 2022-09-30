@@ -28,8 +28,8 @@
                 android:layout_margin="@dimen/margin_midi">
 
                 <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/bg_circle" />
 
                 <TextView
@@ -37,7 +37,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/icon_text_big"
                     tools:text="RR" />
@@ -49,8 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="@dimen/sp24"
-                android:fontFamily="@font/roboto_black"
-                android:textColor="@color/black"
+                android:textStyle="bold"
                 tools:text="Rah Rahman" />
 
             <TextView
@@ -58,8 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="@dimen/sp24"
-                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/sp18"
                 android:textColor="@color/black"
                 tools:text="Doctor, Nurse, Pharmacist, Gate man" />
 
@@ -81,6 +78,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:padding="@dimen/padding_mini"
                         android:weightSum="6">
 
                         <TextView
@@ -89,7 +87,7 @@
                             android:fontFamily="@font/roboto_regular"
                             android:layout_weight="2.5"
                             android:text="@string/gender_text"
-                            android:textSize="@dimen/sp20" />
+                            android:textSize="@dimen/sp18" />
 
                         <TextView
                             android:id="@+id/single_practitioner_gender"
@@ -97,7 +95,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="3.5"
                             android:fontFamily="@font/roboto_regular"
-                            android:textSize="@dimen/sp20"
+                            android:textSize="@dimen/sp18"
                             tools:text="Male" />
 
                     </LinearLayout>
@@ -106,6 +104,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:padding="@dimen/padding_mini"
                         android:weightSum="6">
 
                         <TextView
@@ -114,7 +113,7 @@
                             android:layout_weight="2.5"
                             android:text="@string/practitioner_email"
                             android:fontFamily="@font/roboto_regular"
-                            android:textSize="@dimen/sp20" />
+                            android:textSize="@dimen/sp18" />
 
                         <TextView
                             android:id="@+id/single_practitioner_email"
@@ -122,7 +121,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="3.5"
                             android:fontFamily="@font/roboto_regular"
-                            android:textSize="@dimen/sp20"
+                            android:textSize="@dimen/sp18"
                             tools:text="r@r.com" />
 
                     </LinearLayout>
@@ -131,6 +130,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:padding="@dimen/padding_mini"
                         android:weightSum="6">
 
                         <TextView
@@ -139,7 +139,7 @@
                             android:layout_weight="2.5"
                             android:text="@string/sign_up_phone_number"
                             android:fontFamily="@font/roboto_regular"
-                            android:textSize="@dimen/sp20" />
+                            android:textSize="@dimen/sp18" />
 
                         <TextView
                             android:id="@+id/single_practitioner_phone_number"
@@ -147,7 +147,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="3.5"
                             android:fontFamily="@font/roboto_regular"
-                            android:textSize="@dimen/sp20"
+                            android:textSize="@dimen/sp18"
                             tools:text="+234 812 435 3280" />
 
                     </LinearLayout>
@@ -156,9 +156,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/practitioners_available_times_title"
-                        android:textSize="@dimen/sp20"
+                        android:textSize="@dimen/sp18"
                         android:layout_marginTop="@dimen/padding_midi"
-                        android:textStyle="bold" />
+                        android:textColor="@color/black" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"

@@ -551,7 +551,6 @@ class PersonnelFragment :
     }
 
     private fun subscribeAllPractitionerStatsUI(value: List<PersonnelResponse>) {
-        Log.d(TAG, "subscribeAllPractitionerStatsUI: $value.")
         personnelStatsAdapter.submitList(value)
     }
 

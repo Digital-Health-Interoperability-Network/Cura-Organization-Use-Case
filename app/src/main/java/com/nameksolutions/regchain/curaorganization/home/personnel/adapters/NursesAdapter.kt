@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nameksolutions.regchain.curaorganization.databinding.PersonnelNursesItemLayoutBinding
+import com.nameksolutions.regchain.curaorganization.home.personnel.ui.PersonnelFragmentDirections
+import com.nameksolutions.regchain.curaorganization.responses.PractitionerResponse
 
-class NursesAdapter: ListAdapter<Practitoner, NursesAdapter.NursesViewHolder>(NursesAdapter.DiffCallback()) {
+class NursesAdapter: ListAdapter<PractitionerResponse, NursesAdapter.NursesViewHolder>(NursesAdapter.DiffCallback()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -34,7 +36,7 @@ class NursesAdapter: ListAdapter<Practitoner, NursesAdapter.NursesViewHolder>(Nu
 
     }
 
-    private fun createOnClickListener(nurse: Practitoner): View.OnClickListener {
+    private fun createOnClickListener(nurse: PractitionerResponse): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
             val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem(nurse)
