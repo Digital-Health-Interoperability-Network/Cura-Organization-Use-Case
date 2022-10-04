@@ -73,13 +73,18 @@ class NewPractitionerRoleFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val practitionerName = "${args.practitionerFirstName} ${args.practitionerSurName}"
-        practitionerId = args.practitionerId
         getPractitionerRoleList()
 
-        timePicker = TimePickerHelper(requireContext(), true, isSpinnerType = true)
 
+    }
+
+    private fun beginEntry() {
         with(binding) {
+            val practitionerName = "${args.practitionerFirstName} ${args.practitionerSurName}"
+            practitionerId = args.practitionerId
+
+            timePicker = TimePickerHelper(requireContext(), true, isSpinnerType = true)
+
 
             textviewNewPractitionerRolePractitionerName.text = practitionerName
 
@@ -449,6 +454,7 @@ class NewPractitionerRoleFragment :
                         "getPractitionerRoleList: ${response.value.listOfPractitionerRoles}"
                     )
 
+                    beginEntry()
 
                 }
                 is Resource.Failure -> {

@@ -40,45 +40,6 @@ class HomeActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
 
-//        val destination = if (binding.actionBarHomeLand?.isVisible == true) R.id.personnelFragment else R.id.homeFragment
-//        val destination =  R.id.personnelFragment
-//        val userPrefs = UserPreferences(this)
-//        userPrefs.isFirstTime.asLiveData().observe(this, Observer {
-//             if (it == true) graph.setStartDestination(R.id.personalEmailInput) else graph.setStartDestination(R.id.signIn)
-//            val destination = if (it != true) R.id.signIn else R.id.personalEmailInput
-//            Log.d(Common.TAG, "onCreate Is First Time: $it")
-//            graph.setStartDestination(destination)
-//            navController.graph = graph
-//            val options = NavOptions.Builder()
-//                .setPopUpTo(R.id.personalEmailInput, true)
-//                .build()
-//
-//            findNavController().
-//            navigate(nextDestination, null, options)
-//
-//            findNavController().navigate(nextDestination, null, options)
-//            navController.setGraph(graph, intent.extras)
-
-//        })
-
-
-        with(binding){
-            if (actionBarHomeLand?.isVisible == true){
-
-                buttonPersonnel?.setOnClickListener {
-                    openMainFragment(personnelFragment)
-                }
-                buttonServices?.setOnClickListener {
-                    openMainFragment(servicesFragment)
-                }
-                buttonProfile?.setOnClickListener {
-                    openMainFragment(profileFragment)
-                }
-                buttonToken?.setOnClickListener {
-                    openMainFragment(tokenFragment)
-                }
-            }
-        }
 
         setContentView(binding.root)
 

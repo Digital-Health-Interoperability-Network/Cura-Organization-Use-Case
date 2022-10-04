@@ -370,7 +370,7 @@ class PersonnelFragment :
             }
             rvNurses.apply {
                 adapter = practitionersAdapter
-                rvNurses.layoutManager = practitionersLayoutManager
+                rvNurses.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 addItemDecoration(
                     DividerItemDecoration(
                         requireContext(), practitionersLayoutManager.orientation
@@ -379,7 +379,7 @@ class PersonnelFragment :
             }
             rvPharmacists.apply {
                 adapter = practitionersAdapter
-                rvPharmacists.layoutManager = practitionersLayoutManager
+                rvPharmacists.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 addItemDecoration(
                     DividerItemDecoration(
                         requireContext(),
@@ -389,7 +389,7 @@ class PersonnelFragment :
             }
             rvLabTechs.apply {
                 adapter = practitionersAdapter
-                rvLabTechs.layoutManager = practitionersLayoutManager
+                rvLabTechs.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 addItemDecoration(
                 DividerItemDecoration(
                     requireContext(),
@@ -400,7 +400,7 @@ class PersonnelFragment :
             }
             rvOtherPractitioner.apply {
                 adapter = practitionersAdapter
-                rvOtherPractitioner.layoutManager = practitionersLayoutManager
+                rvOtherPractitioner.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
                 addItemDecoration(
                 DividerItemDecoration(

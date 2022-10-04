@@ -60,7 +60,7 @@ class RegActivity : AppCompatActivity() {
 
 //        Common.regStepCount = currentRegStep
 
-        mIsDualPane = binding.stepLayoutLand?.visibility == View.VISIBLE
+//        mIsDualPane = binding.stepLayoutLand?.visibility == View.VISIBLE
 
 //        if (mIsDualPane){ // in tablet mode
 //
