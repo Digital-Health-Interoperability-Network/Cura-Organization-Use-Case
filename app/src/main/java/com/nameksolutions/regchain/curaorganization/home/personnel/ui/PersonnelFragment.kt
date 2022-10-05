@@ -38,7 +38,8 @@ class PersonnelFragment :
         "Lab Scientist",
         "-Doctor,-Nurse,-Pharmacist,-Lab Scientist"
     )
-//
+
+    //
     private val practitionersAdapter = PractitionersAdapter()
     private val nursesAdapter = PractitionersAdapter()
     private val pharmacistsAdapter = PractitionersAdapter()
@@ -370,7 +371,8 @@ class PersonnelFragment :
             }
             rvNurses.apply {
                 adapter = practitionersAdapter
-                rvNurses.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                rvNurses.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 addItemDecoration(
                     DividerItemDecoration(
                         requireContext(), practitionersLayoutManager.orientation
@@ -379,7 +381,8 @@ class PersonnelFragment :
             }
             rvPharmacists.apply {
                 adapter = practitionersAdapter
-                rvPharmacists.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                rvPharmacists.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 addItemDecoration(
                     DividerItemDecoration(
                         requireContext(),
@@ -389,25 +392,27 @@ class PersonnelFragment :
             }
             rvLabTechs.apply {
                 adapter = practitionersAdapter
-                rvLabTechs.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                rvLabTechs.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
                 addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(),
-                    practitionersLayoutManager.orientation
+                    DividerItemDecoration(
+                        requireContext(),
+                        practitionersLayoutManager.orientation
+                    )
                 )
-            )
 
             }
             rvOtherPractitioner.apply {
                 adapter = practitionersAdapter
-                rvOtherPractitioner.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+                rvOtherPractitioner.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
                 addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(), practitionersLayoutManager
-                        .orientation
+                    DividerItemDecoration(
+                        requireContext(), practitionersLayoutManager
+                            .orientation
+                    )
                 )
-            )
             }
         }
     }
@@ -480,14 +485,14 @@ class PersonnelFragment :
         viewModel.getAllPersonnelStats()
         viewModel.practitionerStats.observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "fetchAllPractitionersStatsPre: ${it.toString()}")
-            when(it){
+            when (it) {
                 is Resource.Success -> {
                     hideProgress()
                     //show it in the recycler view
                     val testStat = it.value._personnel
                     Log.d(TAG, "fetchAllPractitionersStatsTest: $testStat")
                     val statsList = mutableListOf<PersonnelResponse>()
-                    for (stat in testStat){
+                    for (stat in testStat) {
                         statsList.add(stat)
                     }
                     Log.d(TAG, "fetchAllPractitionersStatsList: $statsList")
@@ -498,7 +503,7 @@ class PersonnelFragment :
                     hideProgress()
                     Log.d(TAG, "fetchAllPractitionersStats: $it")
 
-                    handleApiError(it) {fetchAllPractitionersStats()}
+                    handleApiError(it) { fetchAllPractitionersStats() }
                 }
                 is Resource.Loading -> {
                     showProgress()
@@ -514,34 +519,49 @@ class PersonnelFragment :
             when (it) {
                 is Resource.Success -> {
                     hideProgress()
-//                    if (it.value.data.practitoners.isNotEmpty()) {
+                    if (it.value.practitioners.isNotEmpty()) {
 //                        populate the ui
-                    //fetch all practitioner list
-                    val practitioners = it.value.practitioners
-                    for (practitioner in practitioners){
-                        //fetch the list of roles in for each practitioner
-                        val practitionerRoles = practitioner.practitionerRoles
-                        for (practitionerRole in practitionerRoles){
-                            //check the role of each practitioner
-                            if (practitionerRole.code.contains("Doctor")){
-                                val doctors = listOf(practitioner)
-                                subscribeAllDoctorsUI(doctors)
-                            }
-                            if (practitionerRole.code.contains("Nurse")){
-                                val nurses = listOf(practitioner)
-                                subscribeAllNursesUI(nurses)
-                            }
-                            if (practitionerRole.code.contains("Pharmacist")){
-                                val pharmacists = listOf(practitioner)
-                                subscribeAllPharmacistsUI(pharmacists)
-                            }
-                            if (practitionerRole.code.contains("Lab Scientist")){
-                                val labScientists = listOf(practitioner)
-                                subscribeAllLabTechsUI(labScientists)
-                            } else{
-                                    subscribeAllOtherUI(listOf(practitioner))
+                        //fetch all practitioner list
+                        val practitioners = it.value.practitioners
+                        val doctors = mutableListOf<PractitionerResponse>()
+                        val nurses = mutableListOf<PractitionerResponse>()
+                        val pharmacists = mutableListOf<PractitionerResponse>()
+                        val labScientists = mutableListOf<PractitionerResponse>()
+                        val otherPractitioners = mutableListOf<PractitionerResponse>()
+                        for (practitioner in practitioners) {
+                            //fetch the list of roles in for each practitioner
+                            val practitionerRoles = practitioner.practitionerRoles
+                            for (practitionerRole in practitionerRoles) {
+                                //check the role of each practitioner
+//                                if (practitionerRole.code.contains("Doctor")) {
+                                if ("Doctor" in practitionerRole.code){
+                                    doctors.add(practitioner)
+                                    Log.d(TAG, "fetchPractitioners doctors: $doctors")
+                                    subscribeAllDoctorsUI(doctors)
                                 }
+                                if (practitionerRole.code.contains("Nurse")) {
+                                    nurses.add(practitioner)
+                                    Log.d(TAG, "fetchPractitioners nurses: $nurses")
+                                    subscribeAllNursesUI(nurses)
+                                }
+                                if (practitionerRole.code.contains("Pharmacist")) {
+                                    pharmacists.add(practitioner)
+                                    Log.d(TAG, "fetchPractitioners pharmacists: $pharmacists")
+                                    subscribeAllPharmacistsUI(pharmacists)
+                                }
+                                if (practitionerRole.code.contains("Lab Scientist")) {
+                                    labScientists.add(practitioner)
+                                    Log.d(TAG, "fetch labScientists: $labScientists")
+                                    subscribeAllLabTechsUI(labScientists)
+                                } else {
+                                    otherPractitioners.add(practitioner)
+                                    subscribeAllOtherUI(otherPractitioners)
+                                }
+                            }
                         }
+                    }
+                    else{
+                        requireView().snackbar("No Practitioners Found!"){viewModel.getPractitionersByRole()}
                     }
 //
                 }
@@ -610,7 +630,7 @@ class PersonnelFragment :
     private fun subscribeAllDoctorsUI(doctors: List<PractitionerResponse>) {
         if (doctors.isNotEmpty()) {
             binding.rvDoctors.visible(true)
-        Log.d(TAG, "subscribeAllDoctorsUI: $doctors")
+            Log.d(TAG, "subscribeAllDoctorsUI: $doctors")
             practitionersAdapter.submitList(doctors)
         } else {
             binding.rvDoctors.visible(false)
