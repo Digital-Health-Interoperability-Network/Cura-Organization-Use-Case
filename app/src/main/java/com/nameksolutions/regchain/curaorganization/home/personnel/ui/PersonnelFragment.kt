@@ -51,7 +51,7 @@ class PersonnelFragment :
         super.onViewCreated(view, savedInstanceState)
 
         fetchAllPractitionersStats()
-        fetchPractitioners("")
+        fetchPractitioners()
 
         with(binding) {
 
@@ -524,15 +524,22 @@ class PersonnelFragment :
                         for (practitionerRole in practitionerRoles){
                             //check the role of each practitioner
                             if (practitionerRole.code.contains("Doctor")){
-                                subscribeAllDoctorsUI(practitioners)
-                            } else if (practitionerRole.code.contains("Nurse")){
-                                subscribeAllNursesUI(practitioners)
-                            } else if (practitionerRole.code.contains("Pharmacist")){
-                                subscribeAllPharmacistsUI(practitioners)
-                            } else if (practitionerRole.code.contains("Lab Scientist")){
-                                subscribeAllLabTechsUI(practitioners)
+                                val doctors = listOf(practitioner)
+                                subscribeAllDoctorsUI(doctors)
+                            }
+                            if (practitionerRole.code.contains("Nurse")){
+                                val nurses = listOf(practitioner)
+                                subscribeAllNursesUI(nurses)
+                            }
+                            if (practitionerRole.code.contains("Pharmacist")){
+                                val pharmacists = listOf(practitioner)
+                                subscribeAllPharmacistsUI(pharmacists)
+                            }
+                            if (practitionerRole.code.contains("Lab Scientist")){
+                                val labScientists = listOf(practitioner)
+                                subscribeAllLabTechsUI(labScientists)
                             } else{
-                                    subscribeAllOtherUI(practitioners)
+                                    subscribeAllOtherUI(listOf(practitioner))
                                 }
                         }
                     }
