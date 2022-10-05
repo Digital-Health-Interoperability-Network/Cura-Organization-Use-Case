@@ -114,9 +114,9 @@ class PersonnelViewModel(
 //            repo.getAllPractitioners()
 //    }
 //
-    fun getPractitionersByRole(code: String?) = viewModelScope.launch {
+    fun getPractitionersByRole() = viewModelScope.launch {
         _allPractitionerByRoleDetails.value = Resource.Loading
-        _allPractitionerByRoleDetails.value = repo.getPractitionersByRole(code)
+        _allPractitionerByRoleDetails.value = repo.getPractitionersByRole()
     }
 //
 

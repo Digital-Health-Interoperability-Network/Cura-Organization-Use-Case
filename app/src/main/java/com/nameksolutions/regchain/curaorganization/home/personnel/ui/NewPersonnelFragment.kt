@@ -100,7 +100,7 @@ class NewPersonnelFragment :
                 ArrayAdapter(requireContext(), R.layout.drop_down_item, practitionerIdentifierArray)
             regPractitionerIdType.setAdapter(practitionerIdentifierArrayAdapter)
 
-            val practitionerRoleCommunicationArray = resources.getStringArray(R.array.id_types)
+            val practitionerRoleCommunicationArray = resources.getStringArray(R.array.id_communication)
             val practitionerRoleCommunicationArrayAdapter =
                 ArrayAdapter(
                     requireContext(),

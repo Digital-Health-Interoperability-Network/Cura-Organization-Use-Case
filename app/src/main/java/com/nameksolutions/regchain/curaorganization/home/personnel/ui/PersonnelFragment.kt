@@ -508,8 +508,8 @@ class PersonnelFragment :
     }
 
 
-    private fun fetchPractitioners(code: String?) {
-        viewModel.getPractitionersByRole(code)
+    private fun fetchPractitioners() {
+        viewModel.getPractitionersByRole()
         viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
@@ -541,7 +541,7 @@ class PersonnelFragment :
                 is Resource.Failure -> {
                     hideProgress()
                     Log.d(TAG, "fetchPractitioners: $it")
-                    handleApiError(it) { viewModel.getPractitionersByRole(code) }
+                    handleApiError(it) { viewModel.getPractitionersByRole() }
                 }
                 is Resource.Loading -> {
                     showProgress()
