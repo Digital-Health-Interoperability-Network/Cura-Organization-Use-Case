@@ -16,103 +16,98 @@
     </data>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/padding_mini"
-    >
-
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="@dimen/padding_mini"
-        android:layout_margin="@dimen/margin_mini"
-        android:padding="@dimen/padding_mini"
-        android:onClick="@{practitionersItemClickListener}"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="@dimen/padding_mini">
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            android:padding="@dimen/padding_mini">
-
-
-        <RelativeLayout
-            android:id="@+id/practitioner_icon_container"
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="@dimen/margin_midi"
+            android:layout_margin="@dimen/margin_mini"
+            android:onClick="@{practitionersItemClickListener}"
+            android:padding="@dimen/padding_mini"
+            app:cardElevation="@dimen/padding_mini"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:layout_width="37dp"
-                android:layout_height="37dp"
-                android:src="@drawable/bg_circle" />
-
-            <TextView
-                android:id="@+id/practitioners_icon_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:fontFamily="@font/roboto_regular"
-                android:padding="@dimen/padding_mini"
-                android:text="@{practitionersItem.name.given[0].substring(0,1)}"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/icon_text"
-                tools:text="E" />
-        </RelativeLayout>
-<!--            var practitionerNames = mutableListOf<String>(args.currentPractitioner.name!!.given!![0].substring(0, 1), args.currentPractitioner.name!!.family!!.substring(0, 1))-->
-<!--            practitionerIconText.text = "${practitionerNames[0]}${practitionerNames[1]}"-->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="8"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_mini"
+                android:weightSum="10">
 
 
-                <TextView
-                    android:id="@+id/doctor_name"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/practitioner_icon_container"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:layout_marginTop="12dp"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/sp24"
-                    android:text="@{@string/personnel_agg(practitionersItem.name.given[1], practitionersItem.name.family) }"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.031"
-                    app:layout_constraintStart_toEndOf="@+id/practitioner_icon_container"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Dr. Emma Emaa" />
+                    android:layout_margin="@dimen/margin_mini"
+                    android:layout_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/doctor_gender"
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:layout_width="37dp"
+                        android:layout_height="37dp"
+                        android:src="@drawable/bg_circle" />
+
+                    <TextView
+                        android:id="@+id/practitioners_icon_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/roboto_regular"
+                        android:padding="@dimen/padding_mini"
+                        android:text="@{practitionersItem.name.given[0].substring(0,1)}"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/sp18"
+                        tools:text="E" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:layout_marginTop="8dp"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/sp16"
-                    android:text="@{practitionersItem.gender}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.025"
-                    app:layout_constraintStart_toEndOf="@+id/practitioner_icon_container"
-                    app:layout_constraintTop_toBottomOf="@+id/doctor_name"
-                    tools:text="MSCSDD" />
+                    android:layout_weight="8"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/doctor_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:text="@{@string/person_name(practitionersItem.name.given[0], practitionersItem.name.family) }"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/sp18"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.031"
+                        app:layout_constraintStart_toEndOf="@+id/practitioner_icon_container"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Dr. Emma Emaa" />
+
+                    <TextView
+                        android:id="@+id/doctor_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_mini"
+                        android:text="@{practitionersItem.gender}"
+                        android:textSize="@dimen/sp14"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/practitioner_icon_container"
+                        app:layout_constraintTop_toBottomOf="@+id/doctor_name"
+                        tools:text="Male" />
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
+        </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

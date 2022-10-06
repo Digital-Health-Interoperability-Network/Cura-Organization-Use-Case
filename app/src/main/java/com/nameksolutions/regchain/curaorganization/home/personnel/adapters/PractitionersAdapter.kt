@@ -48,10 +48,6 @@ class PractitionersAdapter: ListAdapter<PractitionerResponse, PractitionersAdapt
             binding.apply {
                 practitionersItemClickListener = listener
                 practitionersItem = itemData
-//                val doctorNames = doctorsItem.name!!.given!![0].substring(0, 1)
-//                if (doctorNames != null){
-//                    doctorIconText.text = doctorNames[0].toString()
-//                }
                 executePendingBindings()
             }
         }
