@@ -39,7 +39,7 @@ class LabScientistsAdapter : ListAdapter<PractitionerResponse, LabScientistsAdap
     private fun createOnClickListener(labScientist: PractitionerResponse): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
-            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(labScientist)
+            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(labScientist.id)
             it.findNavController().navigate(direction)
         }
     }

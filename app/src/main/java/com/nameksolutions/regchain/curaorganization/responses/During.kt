@@ -8,7 +8,11 @@
 
 package com.nameksolutions.regchain.curaorganization.responses
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class During(
-    val endTime: String,
-    val startTime: String
-)
+    val endTime: String = "",
+    val startTime: String = ""
+) : Parcelable

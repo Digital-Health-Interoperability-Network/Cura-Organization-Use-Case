@@ -39,7 +39,7 @@ class OtherPractitionersAdapter : ListAdapter<PractitionerResponse, OtherPractit
     private fun createOnClickListener(otherPractitioners: PractitionerResponse): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
-            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(otherPractitioners)
+            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(otherPractitioners.id)
             it.findNavController().navigate(direction)
         }
     }

@@ -8,8 +8,12 @@
 
 package com.nameksolutions.regchain.curaorganization.responses
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class NotAvailable(
-    val _id: String,
-    val description: String,
-    val during: During
-)
+    val _id: String = "",
+    val description: String = "",
+    val during: During? = null
+) : Parcelable

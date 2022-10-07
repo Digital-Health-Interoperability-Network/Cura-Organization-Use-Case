@@ -35,8 +35,8 @@ interface PersonnelApi {
 //    @GET(practitionerRoute)
 //    suspend fun getAllPractitioners(): FetchPractitionerResponse
 ////
-////    @GET(practitionerRoute)
-////    suspend fun getOnePractitioner(id: String):
+    @GET("$practitionerRoute/{practitionerId}")
+    suspend fun getOnePractitioner(@Path("practitionerId") id: String): PractitionerResponse
 
     @GET("$practitionerRoute/")
     suspend fun getPractitionersByRole(): GetPractitionersResponse

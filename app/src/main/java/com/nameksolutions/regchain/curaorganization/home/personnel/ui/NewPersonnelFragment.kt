@@ -278,7 +278,7 @@ class NewPersonnelFragment :
                     val navToRoleCreation =
                         NewPersonnelFragmentDirections.actionNewPersonnelFragmentToNewPractitionerRoleFragment(
                             response.value.practitioner.id,
-                            response.value.practitioner.name.given[0],
+                            response.value.practitioner.name!!.given[0],
                             response.value.practitioner.name.family
                         )
                     findNavController().navigate(navToRoleCreation)

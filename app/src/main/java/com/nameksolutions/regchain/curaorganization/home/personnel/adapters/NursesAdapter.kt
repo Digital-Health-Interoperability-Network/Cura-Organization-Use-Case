@@ -39,7 +39,7 @@ class NursesAdapter: ListAdapter<PractitionerResponse, NursesAdapter.NursesViewH
     private fun createOnClickListener(nurse: PractitionerResponse): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
-            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(nurse)
+            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(nurse.id)
             it.findNavController().navigate(direction)
         }
     }
@@ -47,12 +47,8 @@ class NursesAdapter: ListAdapter<PractitionerResponse, NursesAdapter.NursesViewH
     class NursesViewHolder(private val binding: PractitionersItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(listener: View.OnClickListener, itemData: PractitionerResponse){
             binding.apply {
-//                nursesItemClickListener = listener
-//                nursesItem = itemData
                 practitionersItemClickListener = listener
                 practitionersItem = itemData
-//                val nurseNames = mutableListOf<String>(nursesItem.name!!.given!![0].substring(0, 1), nursesItem.name!!.family!!.substring(0, 1))
-//                nurseIconText.text = "${nurseNames[0]}${nurseNames[1]}"
                 executePendingBindings()
             }
         }

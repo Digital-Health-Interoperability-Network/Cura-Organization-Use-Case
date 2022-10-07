@@ -37,12 +37,12 @@ class PersonnelViewModel(
     val practitionerRoleCreationResponse: LiveData<Resource<PractitionerRoleCreateResponse>>
         get() = _practitionerRoleCreation
 //
-//    //create Practitioner Observer Variables
-//    private val _practitionerDetailsUpdate: MutableLiveData<Resource<PractitionerCreationResponse>> =
-//        MutableLiveData()
-//    val practitionerDetailsUpdate: LiveData<Resource<PractitionerCreationResponse>>
-//        get() = _practitionerDetailsUpdate
-//
+//    //fetch Practitioner Observer Variables
+    private val _practitionerDetailsFetch: MutableLiveData<Resource<PractitionerResponse>> =
+        MutableLiveData()
+    val practitionerDetailsFetch: LiveData<Resource<PractitionerResponse>>
+        get() = _practitionerDetailsFetch
+
 //    //fetch all practitioner Observer Variables
 //    private val _allPractitionerDetails: MutableLiveData<Resource<FetchPractitionerResponse>> =
 //        MutableLiveData()
@@ -100,13 +100,13 @@ class PersonnelViewModel(
             repo.createPractitionerRole(practitionerId, practitionerRoleRequest)
     }
 
-////    fun updatePractitioner(
-////        addPractitionerDetails: PractitionerRequest
-////    ) = viewModelScope.launch {
-////        _practitionerDetailsUpdate.value = Resource.Loading
-////        _practitionerDetailsUpdate.value =
-////            repo.updatePractitioner(addPractitionerDetails)
-////    }
+    fun getOnePractitioner(
+        practitionerId: String,
+    ) = viewModelScope.launch {
+        _practitionerDetailsFetch.value = Resource.Loading
+        _practitionerDetailsFetch.value =
+            repo.getOnePractitioner(practitionerId)
+    }
 //
 //    fun getAllPractitioners() = viewModelScope.launch {
 //        _allPractitionerDetails.value = Resource.Loading

@@ -34,9 +34,9 @@ class PersonnelRepo(
                                        practitionerRoleRequest: PractitionerRoleRequest
     ) = safeApiCall { api.createPractitionerRole(practitionerId, practitionerRoleRequest) }
 
-//    suspend fun getOnePractitioner(id: String) = safeApiCall {
-//        api.getOnePractitioner(id)
-//    }
+    suspend fun getOnePractitioner(id: String) = safeApiCall {
+        api.getOnePractitioner(id)
+    }
 
 //    suspend fun updatePractitioner(createPractitioner: PractitionerRequest) = safeApiCall {
 //        api.updatePractitioner(createPractitioner)

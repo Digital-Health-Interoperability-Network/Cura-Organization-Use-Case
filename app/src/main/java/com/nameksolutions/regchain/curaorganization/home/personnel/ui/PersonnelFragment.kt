@@ -535,7 +535,7 @@ class PersonnelFragment :
                         for (practitioner in practitioners) {
                             //fetch the list of roles in for each practitioner
                             val practitionerRoles = practitioner.practitionerRoles
-                            for (practitionerRole in practitionerRoles) {
+                            for (practitionerRole in practitionerRoles!!) {
                                 //check the role of each practitioner
 //                                if (practitionerRole.code.contains("Doctor")) {
                                 if ("Doctor" in practitionerRole.code) {

@@ -7,16 +7,16 @@ import kotlinx.android.parcel.RawValue
 @Parcelize
 data class PractitionerResponse(
     val __v: Int,
-    val _id: String,
-    val _personnel: String,
-    val address: @RawValue List<AddressResponse>,
-    val birthDate: String,
-    val communication: List<String>,
-    val gender: String,
-    val id: String,
-    val identifier: @RawValue List<IdentifierResponse>,
-    val name: @RawValue NameResponse,
-    val qualification: @RawValue List<Any>,
+    val _id: String = "",
+    val _personnel: String = "",
+    val address: @RawValue List<AddressResponse>? = null,
+    val birthDate: String = "",
+    val communication: @RawValue List<String> = listOf<String>(),
+    val gender: String = "",
+    val id: String = "",
+    val identifier: @RawValue List<IdentifierResponse>? = null,
+    val name: @RawValue NameResponse? = null,
+    val qualification: @RawValue List<Any>? = null,
     val telecom: @RawValue List<TelecomResponse>,
-    val practitionerRoles: @RawValue List<PractitionerRole>
+    val practitionerRoles: List<PractitionerRole>
 ): Parcelable
