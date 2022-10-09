@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentServicesBinding
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
 class ServicesFragment : BaseFragment<ServicesViewModel, FragmentServicesBinding, ServicesRepo>() {
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
     }
 
@@ -24,6 +25,10 @@ class ServicesFragment : BaseFragment<ServicesViewModel, FragmentServicesBinding
         container: ViewGroup?
     ) = FragmentServicesBinding.inflate(inflater, container, false)
 
-    override fun getFragmentRepo() = ServicesRepo(remoteDataSource.buildApi(ServicesApi::class.java), userprefs)
+    override fun getFragmentRepo():ServicesRepo{
+        val token = runBlocking { userprefs.authToken.first() }
+        val api = remoteDataSource.buildApi(ServicesApi::class.java, token)
+        return ServicesRepo(api, userprefs)
+    }
 
 }

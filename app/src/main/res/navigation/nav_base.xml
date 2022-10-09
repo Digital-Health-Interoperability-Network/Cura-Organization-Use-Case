@@ -13,12 +13,12 @@
         <action
             android:id="@+id/action_homeFragment_to_personnelFragment"
             app:destination="@id/personnelFragment" />
-        <!--        <action-->
-        <!--            android:id="@+id/action_homeFragment_to_servicesFragment"-->
-        <!--            app:destination="@id/servicesFragment" />-->
-        <!--        <action-->
-        <!--            android:id="@+id/action_homeFragment_to_profileFragment"-->
-        <!--            app:destination="@id/profileFragment" />-->
+                <action
+                    android:id="@+id/action_homeFragment_to_servicesFragment"
+                    app:destination="@id/servicesFragment" />
+<!--                <action-->
+<!--                    android:id="@+id/action_homeFragment_to_profileFragment"-->
+<!--                    app:destination="@id/profileFragment" />-->
         <!--        <action-->
         <!--            android:id="@+id/action_homeFragment_to_tokenFragment"-->
         <!--            app:destination="@id/tokenFragment" />-->
