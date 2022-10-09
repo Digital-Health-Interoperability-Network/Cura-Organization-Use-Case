@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.baoyachi.stepview.VerticalStepView
+//import com.baoyachi.stepview.VerticalStepView
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentStepViewBinding
 

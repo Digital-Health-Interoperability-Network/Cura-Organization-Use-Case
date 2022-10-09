@@ -6,7 +6,7 @@ import kotlinx.android.parcel.RawValue
 
 @Parcelize
 data class PractitionerResponse(
-    val __v: Int,
+    val __v: Int? = 0,
     val _id: String = "",
     val _personnel: String = "",
     val address: @RawValue List<AddressResponse>? = null,

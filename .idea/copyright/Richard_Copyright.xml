@@ -1,6 +1,6 @@
 <component name="CopyrightManager">
   <copyright>
-    <option name="notice" value="Copyright (c) &amp;#36;originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;)&amp;#36;today.year. &#10;Richard Uzor" />
+    <option name="notice" value="Copyright (c) &amp;#36;originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;)&amp;#36;today.year. &#10;Richard Uzor&#10;For Namek Solutions Limited,&#10;Abuja, FCT.&#10;Nigeria" />
     <option name="myName" value="Richard Copyright" />
   </copyright>
 </component>

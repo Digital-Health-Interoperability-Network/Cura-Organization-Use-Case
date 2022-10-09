@@ -86,8 +86,8 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
     implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.0'
-    implementation 'com.github.baoyachi:StepView:1.9'
-    implementation 'com.anton46:stepsview:0.0.2'
+//    implementation 'com.github.baoyachi:StepView:1.9'
+//    implementation 'com.anton46:stepsview:0.0.2'
     implementation 'com.hbb20:android-country-picker:0.0.7'
 //    implementation 'com.github.loukwn.StageStepBar:stagestepbar:'
     implementation 'com.shuhart.stepview:stepview:1.2.6'
@@ -104,7 +104,7 @@ dependencies {
     implementation 'io.github.amrdeveloper:lottiedialog:1.0.0'
 
     //Chip Bottom Navigation
-    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.2.0'
+//    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.2.0'
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -114,21 +114,21 @@ dependencies {
     //Room Database
 //    def room_version = "2.3.0"
 //    def room_version = "2.4.0-rc01"
-    def room_version = "2.4.0-beta02"
+//    def room_version = "2.4.0-beta02"
 
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+//    implementation "androidx.room:room-runtime:$room_version"
+//    kapt "androidx.room:room-compiler:$room_version"
     // For Kotlin use kapt instead of annotationProcessor
 //    annotationProcessor "androidx.room:room-compiler:$room_version"
 
 //    implementation "androidx.room:room-coroutines:2.1.0-alpha04"
 
 
-    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+//    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
 //    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
-    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+//    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
 
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+//    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
 
 

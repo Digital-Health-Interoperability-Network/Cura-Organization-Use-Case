@@ -517,6 +517,7 @@ class PersonnelFragment :
     private fun fetchPractitioners() {
         viewModel.getPractitionersByRole()
         viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer {
+            Log.d(TAG, "fetchPractitioners: ${it.toString()}")
             when (it) {
                 is Resource.Success -> {
                     hideProgress()

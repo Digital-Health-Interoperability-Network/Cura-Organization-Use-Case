@@ -19,10 +19,7 @@ import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelRepo
 import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelViewModel
 import com.nameksolutions.regchain.curaorganization.home.personnel.adapters.PractitionerAvailableTImeAdapter
 import com.nameksolutions.regchain.curaorganization.network.Resource
-import com.nameksolutions.regchain.curaorganization.responses.AvailableTime
-import com.nameksolutions.regchain.curaorganization.responses.PersonnelResponse
-import com.nameksolutions.regchain.curaorganization.responses.PractitionerRole
-import com.nameksolutions.regchain.curaorganization.responses.TelecomResponse
+import com.nameksolutions.regchain.curaorganization.responses.*
 import com.nameksolutions.regchain.curaorganization.utils.Common.TAG
 import com.nameksolutions.regchain.curaorganization.utils.handleApiError
 import com.nameksolutions.regchain.curaorganization.utils.showProgressDialog
@@ -31,10 +28,10 @@ import kotlinx.coroutines.runBlocking
 
 class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerItemBinding, PersonnelRepo>() {
 
-    val args by navArgs<PractitionerItemArgs>()
-    val availableTimeAdapter = PractitionerAvailableTImeAdapter()
-    private var practitionerRoles = listOf<PractitionerRole>()
-    private var telecoms = listOf<TelecomResponse>()
+    private val args by navArgs<PractitionerItemArgs>()
+    private val availableTimeAdapter = PractitionerAvailableTImeAdapter()
+    private var practitionerRoles = listOf<PractitionerRoleX>()
+    private var telecoms = listOf<Telecom>()
     private var progressDialog: Dialog? = null
 
 
@@ -57,22 +54,22 @@ class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerIt
 
     private fun fetchPractitionerDetail(practitionerId: String) {
         viewModel.getOnePractitioner(practitionerId)
-        viewModel.practitionerDetailsFetch.observe(viewLifecycleOwner, Observer { response ->
-            Log.d(TAG, "fetchAllPractitionersStatsPre: ${response.toString()}")
+
+        viewModel.onePractitionerInfo.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
                 is Resource.Success -> {
                     hideProgress()
-
-                    val practitionerNames = mutableListOf<String>(response.value.name!!.given[0].substring(0, 1), response.value.name.family.substring(0, 1))
+                    Log.d(TAG, "fetchAllPractitionersStatsPre: ${response.value.toString()}")
+                    val practitionerNames = mutableListOf<String>(response.value.practitioner.name.given[0].substring(0, 1), response.value.practitioner.name.family.substring(0, 1))
                     binding.practitionerIconText.text = "${practitionerNames[0]}${practitionerNames[1]}"
-                    binding.txtPractitionerName.text = "${response.value.name.given[0]} ${response.value.name.family}"
-                    practitionerRoles = response.value.practitionerRoles
+                    binding.txtPractitionerName.text = "${response.value.practitioner.name.given[0]} ${response.value.practitioner.name.family}"
+                    practitionerRoles = response.value.practitioner.practitionerRoles
                     for (role in practitionerRoles){
                         binding.txtPractitionerRoles.append(role.code.toString())
                     }
 
-                    telecoms = response.value.telecom
-                    binding.singlePractitionerGender.text = response.value.gender
+                    telecoms = response.value.practitioner.telecom
+                    binding.singlePractitionerGender.text = response.value.practitioner.gender
                     for (telecom in telecoms){
                         if (telecom.system == "email"){
                             binding.singlePractitionerEmail.text = telecom.value
@@ -83,10 +80,10 @@ class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerIt
                             binding.singlePractitionerPhoneNumber.text = telecom.value
                         }
                     }
-                    val listOfAvailableTimes = mutableListOf<AvailableTime>()
+                    val listOfAvailableTimes = mutableListOf<AvailableTimeX>()
                     for (role in practitionerRoles){
                         val availableTimes = role.availableTime
-                        for (availableTime in availableTimes!!){
+                        for (availableTime in availableTimes){
                             if (availableTime.availableStartTime.isNotEmpty() || availableTime.availableEndTime.isNotEmpty()){
                                 listOfAvailableTimes.add(availableTime)
                             }

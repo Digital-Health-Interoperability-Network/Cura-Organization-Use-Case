@@ -11,7 +11,7 @@ import retrofit2.http.*
 
 
 interface PersonnelApi {
-//
+
 
     @GET("$practitionerRoleRoute/roles")
     suspend fun getPractitionerRolesList(): PractitionerRolesGetResponse
@@ -35,32 +35,14 @@ interface PersonnelApi {
 //    @GET(practitionerRoute)
 //    suspend fun getAllPractitioners(): FetchPractitionerResponse
 ////
-    @GET("$practitionerRoute/{practitionerId}")
-    suspend fun getOnePractitioner(@Path("practitionerId") id: String): PractitionerResponse
+    @GET("$practitionerRoute/{practitionerId}/")
+    suspend fun getOnePractitioner(@Path("practitionerId") id: String): SinglePractitioner
 
     @GET("$practitionerRoute/")
     suspend fun getPractitionersByRole(): GetPractitionersResponse
-//
-//    @GET("$practitionerRoute/")
-//    suspend fun getPractitionersByRole(@Query("code") code: String?): GetPractitionersResponse
 
-//    suspend fun getPractitionersByRole(code: String) = safeApiCall {
-//        api.getPractitionersByRole(code)
-//    }
-//
-//
-//    suspend fun getOnePractitioner(id: String) = safeApiCall {
-//        api.getOnePractitioner(id)
-//    }
-//
 //    suspend fun updatePractitioner(createPractitioner: PractitionerRequest) = safeApiCall {
 //        api.updatePractitioner(createPractitioner)
 //    }
-//
-//    personnelRoute
-//    practitionerRoute
-//    practitionerRoleRoute
-//
-
 
 }

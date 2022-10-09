@@ -6,7 +6,7 @@
 
         <variable
             name="availableTimeItem"
-            type="com.nameksolutions.regchain.curaorganization.responses.AvailableTime" />
+            type="com.nameksolutions.regchain.curaorganization.responses.AvailableTimeX" />
 
     </data>
 

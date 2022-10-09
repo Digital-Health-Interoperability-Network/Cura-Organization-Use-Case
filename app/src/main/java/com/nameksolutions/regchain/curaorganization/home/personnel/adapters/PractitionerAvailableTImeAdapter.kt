@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nameksolutions.regchain.curaorganization.databinding.SinglePractitionerAvailableTimeLayoutItemBinding
 import com.nameksolutions.regchain.curaorganization.responses.AvailableTime
+import com.nameksolutions.regchain.curaorganization.responses.AvailableTimeX
 
-class PractitionerAvailableTImeAdapter : ListAdapter<AvailableTime, PractitionerAvailableTImeAdapter.PractitionerAvailableTImeViewHolder>(PractitionerAvailableTImeAdapter.DiffCallback()) {
+class PractitionerAvailableTImeAdapter : ListAdapter<AvailableTimeX, PractitionerAvailableTImeAdapter.PractitionerAvailableTImeViewHolder>(PractitionerAvailableTImeAdapter.DiffCallback()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -34,7 +35,7 @@ class PractitionerAvailableTImeAdapter : ListAdapter<AvailableTime, Practitioner
 
     }
 
-    private fun createOnClickListener(otherPractitioners: AvailableTime): View.OnClickListener {
+    private fun createOnClickListener(otherPractitioners: AvailableTimeX): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
 //            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem(otherPractitioners)
@@ -43,7 +44,7 @@ class PractitionerAvailableTImeAdapter : ListAdapter<AvailableTime, Practitioner
     }
 
     class PractitionerAvailableTImeViewHolder(private val binding: SinglePractitionerAvailableTimeLayoutItemBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(listener: View.OnClickListener, itemData: AvailableTime){
+        fun bind(listener: View.OnClickListener, itemData: AvailableTimeX){
             binding.apply {
                 availableTimeItem = itemData
 //                val otherPractitionersNames = mutableListOf<String>(otherPractitionersItem.name!!.given!![0].substring(0, 1), otherPractitionersItem.name!!.family!!.substring(0, 1))
@@ -52,14 +53,14 @@ class PractitionerAvailableTImeAdapter : ListAdapter<AvailableTime, Practitioner
             }
         }
     }
-    private class DiffCallback: DiffUtil.ItemCallback<AvailableTime>(){
-        override fun areItemsTheSame(oldItem: AvailableTime, newItem: AvailableTime): Boolean {
+    private class DiffCallback: DiffUtil.ItemCallback<AvailableTimeX>(){
+        override fun areItemsTheSame(oldItem: AvailableTimeX, newItem: AvailableTimeX): Boolean {
             return oldItem._id == newItem._id
         }
 
         override fun areContentsTheSame(
-            oldItem: AvailableTime,
-            newItem: AvailableTime
+            oldItem: AvailableTimeX,
+            newItem: AvailableTimeX
         ): Boolean {
             return oldItem == newItem
         }
