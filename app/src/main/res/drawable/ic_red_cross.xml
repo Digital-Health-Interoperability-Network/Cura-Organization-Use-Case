@@ -1,0 +1,23 @@
+<!--
+  ~ Copyright (c) 2022.
+  ~ Richard Uzor
+  ~ For Namek Solutions Limited,
+  ~ Abuja, FCT.
+  ~ Nigeria
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="12dp"
+    android:height="12dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+  <path
+      android:pathData="M512,153.6l-153.6,0l0,-153.6l-204.8,0l0,153.6l-153.6,0l0,204.8l153.6,0l0,153.6l204.8,0l0,-153.6l153.6,0z"
+      android:fillColor="#D80027"/>
+  <path
+      android:pathData="M358.4,153.6l0,-153.6l-102.4,0l0,512l102.4,0l0,-153.6l153.6,0l0,-204.8z"
+      android:fillColor="#A2001D"/>
+  <path
+      android:pathData="M341.33,221.87l-51.2,0l0,-51.2l-68.27,0l0,51.2l-51.2,0l0,68.27l51.2,0l0,51.2l68.27,0l0,-51.2l51.2,0z"
+      android:fillColor="#FFFFFF"/>
+</vector>

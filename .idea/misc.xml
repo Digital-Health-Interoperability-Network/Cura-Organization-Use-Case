@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/drawable/ic_attention.xml" value="0.3655" />
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.365" />
         <entry key="app/src/main/res/drawable/ic_default_step.xml" value="0.3655" />
+        <entry key="app/src/main/res/drawable/ic_red_cross.xml" value="0.1675" />
         <entry key="app/src/main/res/drawable/plus-small_24.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/sign-out-alt_24.xml" value="0.295" />
@@ -41,6 +42,7 @@
         <entry key="app/src/main/res/layout/drop_down_item.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/fragment_cura.xml" value="0.30739632321504917" />
         <entry key="app/src/main/res/layout/fragment_forgot_password.xml" value="0.2504528985507246" />
+        <entry key="app/src/main/res/layout/fragment_health_care_services.xml" value="0.17588395285584768" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_new_personnel.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_new_practitioner_role.xml" value="0.25" />
@@ -55,7 +57,7 @@
         <entry key="app/src/main/res/layout/fragment_reg_registry_identifers.xml" value="0.2997007268063275" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.3189397178281317" />
         <entry key="app/src/main/res/layout/fragment_reset_password.xml" value="0.2504528985507246" />
-        <entry key="app/src/main/res/layout/fragment_services.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_services.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_services_home.xml" value="0.17588395285584768" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_step_view.xml" value="0.2997007268063275" />

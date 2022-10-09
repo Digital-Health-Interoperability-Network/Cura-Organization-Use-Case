@@ -10,4 +10,5 @@
     <dimen name="icon_text">24sp</dimen>
     <dimen name="icon_text_big">64sp</dimen>
     <dimen name="sp14">14sp</dimen>
+    <dimen name="sp12">12sp</dimen>
 </resources>

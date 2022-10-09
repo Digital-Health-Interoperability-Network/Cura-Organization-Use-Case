@@ -153,6 +153,22 @@
     <string name="practitioner_role_description">Fill in the roles of this practioner in your organization</string>
     <string name="btn_practitioner_role_register">Done</string>
     <string name="reg_practitioner_role_specialty">Practitioner Specialty(ies)</string>
+    <string name="available_services_title">Available Services</string>
+    <string name="txt_in_patient_service">In Patient Service</string>
+    <string name="txt_outpatient_service">Out Patient Service</string>
+    <string name="txt_onsite_lab_service">Onsite Laboratory Service</string>
+    <string name="txt_mortuary_service">Mortuary Service</string>
+    <string name="txt_medical_service">Medical Service</string>
+    <string name="txt_ambulance_service">Ambulance Service</string>
+    <string name="services_metrics_title">Services Metrics</string>
+    <string name="services_list_title">Services List</string>
+    <string name="txt_total_number_of_beds">Total no of beds</string>
+    <string name="txt_number_of_available_beds">No of available beds</string>
+    <string name="txt_surgical_service">Surgical Services</string>
+    <string name="txt_og_service">Obsterics and Gynecology Services</string>
+    <string name="txt_pediatrics_service">Pediatrics Services</string>
+    <string name="txt_dental_service">Dental Services</string>
+    <string name="txt_sc_service">Special Clinical Services</string>
 
 
     <string-array name="reg_steps">
