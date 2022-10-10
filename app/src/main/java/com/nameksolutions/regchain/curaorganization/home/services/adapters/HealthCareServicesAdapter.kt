@@ -11,10 +11,12 @@ package com.nameksolutions.regchain.curaorganization.home.services.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nameksolutions.regchain.curaorganization.databinding.HealthCareServiceItemLayoutBinding
+import com.nameksolutions.regchain.curaorganization.home.services.ui.ServicesHomeFragmentDirections
 import com.nameksolutions.regchain.curaorganization.responses.services.HealthcareService
 
 /**
@@ -47,7 +49,7 @@ class HealthCareServicesAdapter: ListAdapter<HealthcareService, HealthCareServic
     private fun createOnClickListener(healthCareService: HealthcareService): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
-            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(practitioner.id)
+            val direction = ServicesHomeFragmentDirections.actionServicesHomeFragmentToSingleHealthCareServiceFragment(healthCareService._id)
             it.findNavController().navigate(direction)
         }
     }

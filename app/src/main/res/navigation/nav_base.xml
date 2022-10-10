@@ -122,6 +122,9 @@
         <action
             android:id="@+id/action_servicesHomeFragment_to_newService"
             app:destination="@id/newService" />
+        <action
+            android:id="@+id/action_servicesHomeFragment_to_singleHealthCareServiceFragment"
+            app:destination="@id/singleHealthCareServiceFragment" />
     </fragment>
     <fragment
         android:id="@+id/healthCareServicesFragment"
@@ -139,6 +142,18 @@
         <action
             android:id="@+id/action_newService_to_servicesHomeFragment"
             app:destination="@id/servicesHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleHealthCareServiceFragment"
+        android:name="com.nameksolutions.regchain.curaorganization.home.services.ui.SingleHealthCareServiceFragment"
+        android:label="fragment_single_health_care_service"
+        tools:layout="@layout/fragment_single_health_care_service" >
+        <action
+            android:id="@+id/action_singleHealthCareServiceFragment_to_healthCareServicesFragment"
+            app:destination="@id/healthCareServicesFragment" />
+        <argument
+            android:name="healthcareServiceId"
+            app:argType="string" />
     </fragment>
     <!--    <fragment-->
     <!--        android:id="@+id/newService"-->
