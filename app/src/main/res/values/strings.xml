@@ -170,6 +170,8 @@
     <string name="txt_dental_service">Dental Services</string>
     <string name="txt_sc_service">Special Clinical Services</string>
     <string name="add_new_healthcare_service_fab">Add new Healthcare Service Button</string>
+    <string name="health_care_service_category_expand_arrowE">Expand Heathcare Service Category</string>
+    <string name="health_care_service_category_expand_arrow">Expand Healthcare Service Category</string>
 
 
     <string-array name="reg_steps">

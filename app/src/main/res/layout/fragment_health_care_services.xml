@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_midi"
             android:clipToPadding="false"
+            tools:listitem="@layout/health_care_service_item_layout"
             android:padding="@dimen/padding_mini" />
 
     </com.google.android.material.card.MaterialCardView>
