@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2022.
+  ~ Richard Uzor
+  ~ For Namek Solutions Limited,
+  ~ Abuja, FCT.
+  ~ Nigeria
+  -->
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="@dimen/padding_mini"
+    tools:context=".home.services.ui.SingleHealthCareServiceFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/padding_mini"
+        android:padding="@dimen/padding_mini">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="@dimen/padding_midi"
+            app:srcCompat="@drawable/ic_angle_left"
+            android:id="@+id/mock_back_btn"/>
+
+        <RelativeLayout
+            android:id="@+id/health_care_service_icon_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin_midi">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/bg_circle" />
+
+            <TextView
+                android:id="@+id/health_care_service_icon_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/icon_text_big"
+                tools:text="RR" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txt_health_care_service_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/sp24"
+            android:textStyle="bold"
+            tools:text="Rah Rahman" />
+
+        <TextView
+            android:id="@+id/txt_health_care_service_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/sp18"
+            android:textColor="@color/black"
+            tools:text="Doctor, Nurse, Pharmacist, Gate man" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_mini"
+            android:layout_margin="@dimen/padding_midi"
+            app:cardElevation="@dimen/padding_mini">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_mini"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_midi">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_mini"
+                    android:weightSum="6">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:layout_weight="2.5"
+                        android:text="@string/comment_text"
+                        android:textSize="@dimen/sp18" />
+
+                    <TextView
+                        android:id="@+id/health_care_service_comment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:textAlignment="viewStart"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18"
+                        tools:text="Male" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_mini"
+                    android:weightSum="6">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:text="@string/practitioner_email"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18" />
+
+                    <TextView
+                        android:id="@+id/health_care_service_email"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18"
+                        tools:text="r@r.com" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_mini"
+                    android:weightSum="6">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:text="@string/sign_up_phone_number"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18" />
+
+                    <TextView
+                        android:id="@+id/health_care_service_phone_number"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18"
+                        tools:text="+234 812 435 3280" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_mini"
+                    android:weightSum="6">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:text="@string/txt_communication"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18" />
+
+                    <TextView
+                        android:id="@+id/health_care_service_communication"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18"
+                        tools:text="+234 812 435 3280" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_mini"
+                    android:weightSum="6">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:text="@string/txt_appointment_required"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18" />
+
+                    <TextView
+                        android:id="@+id/health_care_service_appointment_required"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18"
+                        tools:text="+234 812 435 3280" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_mini"
+                    android:weightSum="6">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:text="@string/txt_characteristics"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18" />
+
+                    <TextView
+                        android:id="@+id/health_care_service_characteristics"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18"
+                        tools:text="+234 812 435 3280" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_mini"
+                    android:weightSum="6">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:text="@string/txt_eligibility"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18" />
+
+                    <TextView
+                        android:id="@+id/health_care_service_eligibility"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18"
+                        tools:text="+234 812 435 3280" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_mini"
+                    android:weightSum="6">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:text="@string/txt_provided_by"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18" />
+
+                    <TextView
+                        android:id="@+id/health_care_service_provided_by"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="@dimen/sp18"
+                        tools:text="+234 812 435 3280" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/practitioners_available_times_title"
+                    android:textSize="@dimen/sp18"
+                    android:layout_marginTop="@dimen/padding_midi"
+                    android:textColor="@color/black" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_mini"
+                    tools:listitem="@layout/single_practitioner_available_time_layout_item"
+                    tools:itemCount="3"
+                    android:id="@+id/rv_single_practitioner_available_times"/>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

@@ -60,6 +60,7 @@
         <entry key="app/src/main/res/layout/fragment_services.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_services_home.xml" value="0.17588395285584768" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_single_health_care_service.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_step_view.xml" value="0.2997007268063275" />
         <entry key="app/src/main/res/layout/fragment_token.xml" value="0.15006412997007268" />
         <entry key="app/src/main/res/layout/health_care_service_category_item_layout.xml" value="0.25" />

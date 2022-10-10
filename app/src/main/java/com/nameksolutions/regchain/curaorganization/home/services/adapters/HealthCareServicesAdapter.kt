@@ -47,8 +47,8 @@ class HealthCareServicesAdapter: ListAdapter<HealthcareService, HealthCareServic
     private fun createOnClickListener(healthCareService: HealthcareService): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
-//            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(practitioner.id)
-//            it.findNavController().navigate(direction)
+            val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(practitioner.id)
+            it.findNavController().navigate(direction)
         }
     }
 

@@ -172,6 +172,13 @@
     <string name="add_new_healthcare_service_fab">Add new Healthcare Service Button</string>
     <string name="health_care_service_category_expand_arrowE">Expand Heathcare Service Category</string>
     <string name="health_care_service_category_expand_arrow">Expand Healthcare Service Category</string>
+    <string name="comment_text">Comment</string>
+    <string name="txt_communication">Communication</string>
+    <string name="txt_appointment_required">Appointment Required</string>
+    <string name="txt_characteristics">Characteristics</string>
+    <string name="txt_eligibility">Eligibility</string>
+    <string name="txt_provided_byP">Provider</string>
+    <string name="txt_provided_by">Provider</string>
 
 
     <string-array name="reg_steps">
