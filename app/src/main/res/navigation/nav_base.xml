@@ -78,7 +78,7 @@
     </fragment>
     <!--    <fragment-->
     <!--        android:id="@+id/servicesFragment"-->
-    <!--        android:name="com.nameksolutions.regchain.curaorganization.home.services.ServicesFragment"-->
+    <!--        android:name="com.nameksolutions.regchain.curaorganization.home.services.ui.ServicesFragment"-->
     <!--        android:label="ServicesFragment" >-->
     <!--        <action-->
     <!--            android:id="@+id/action_servicesFragment_to_homeFragment"-->

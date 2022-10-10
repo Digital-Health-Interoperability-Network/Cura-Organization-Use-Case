@@ -39,7 +39,7 @@ class ServicesHomeFragment :
 
             tabTitle.tabGravity = TabLayout.GRAVITY_FILL
 
-            val adapter = childFragmentManager?.let {
+            val adapter = childFragmentManager.let {
                 ServicesHomePagerAdapter(
                     activity,
                     it,

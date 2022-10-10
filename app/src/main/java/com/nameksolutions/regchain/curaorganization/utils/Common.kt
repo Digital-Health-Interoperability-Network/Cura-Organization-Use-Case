@@ -22,6 +22,8 @@ object Common {
 
 
     const val healthcareServicesRoute = "healthcare-services"
+    const val servicesRoute = "_services"
+
 
 
     const val TAG = "EQUA"

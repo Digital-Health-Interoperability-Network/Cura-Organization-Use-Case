@@ -12,15 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.nameksolutions.regchain.curaorganization.home.services.ServicesFragment
+import com.nameksolutions.regchain.curaorganization.home.services.ui.ServicesFragment
 import com.nameksolutions.regchain.curaorganization.home.services.ui.HealthCareServicesFragment
 
 /**
  * Created by Richard Uzor  on 10/10/2022
  */
-/**
- * Created by Richard Uzor  on 10/10/2022
- */
+
 class ServicesHomePagerAdapter(
     var context: FragmentActivity?,
     fm: FragmentManager,
