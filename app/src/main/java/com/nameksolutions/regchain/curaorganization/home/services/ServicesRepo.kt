@@ -14,6 +14,10 @@ class ServicesRepo(
         api.createHealthCareService(newServiceRequest)
     }
 
+    suspend fun fetchHealthCareServices() = safeApiCall {
+        api.fetchHealthCareServices()
+    }
+
     suspend fun createServicesInfo(newServicesInfoRequest: NewServicesRequest) = safeApiCall {
         api.createServicesInfo(newServicesInfoRequest)
     }

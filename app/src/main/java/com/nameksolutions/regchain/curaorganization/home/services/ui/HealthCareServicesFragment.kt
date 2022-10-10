@@ -28,9 +28,15 @@ class HealthCareServicesFragment : BaseFragment<ServicesViewModel, FragmentHealt
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fetchHealthCareServices()
+
         binding.fabAddHealthCareService.setOnClickListener {
             findNavController().navigate(R.id.action_servicesHomeFragment_to_newService)
         }
+    }
+
+    private fun fetchHealthCareServices() {
+
     }
 
     override fun getViewModel() = ServicesViewModel::class.java

@@ -7,6 +7,7 @@ import com.nameksolutions.regchain.curaorganization.base.BaseViewModel
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.requests.services.NewHealthCareServiceRequest
 import com.nameksolutions.regchain.curaorganization.requests.services.NewServicesRequest
+import com.nameksolutions.regchain.curaorganization.responses.services.FetchHealthCareServices
 import com.nameksolutions.regchain.curaorganization.responses.services.FetchServicesInfoResponse
 import com.nameksolutions.regchain.curaorganization.responses.services.NewHealthCareServiceResponse
 import com.nameksolutions.regchain.curaorganization.responses.services.NewServicesResponse
@@ -33,9 +34,14 @@ class ServicesViewModel(
     val healthcareServiceCreationResponse: LiveData<Resource<NewHealthCareServiceResponse>>
         get() = _healthcareServiceCreation
 
+    //fetch healthcare services observer variables
+    private val _fetchHealthCareServices: MutableLiveData<Resource<FetchHealthCareServices>> = MutableLiveData()
+    val fetchHealthCareServices: LiveData<Resource<FetchHealthCareServices>>
+    get() = _fetchHealthCareServices
 
 
-    //function to create a new practitioner
+
+    //function to create a new healthcare service
     fun createHealthCareService(
         newServiceRequest: NewHealthCareServiceRequest
     ) = viewModelScope.launch {
@@ -50,10 +56,16 @@ class ServicesViewModel(
         _newServicesInfo.value = repo.createServicesInfo(newServicesRequest)
     }
 
-    //function to fetch new services info
+    //function to fetch services info
     fun fetchServicesInfo() = viewModelScope.launch {
         _fetchServicesInfo.value = Resource.Loading
         _fetchServicesInfo.value = repo.fetchServicesInfo()
+    }
+
+    //function to fetch healthcare services
+    fun fetchHealthCareServices() = viewModelScope.launch {
+        _fetchHealthCareServices.value = Resource.Loading
+        _fetchHealthCareServices.value = repo.fetchHealthCareServices()
     }
 
 }
