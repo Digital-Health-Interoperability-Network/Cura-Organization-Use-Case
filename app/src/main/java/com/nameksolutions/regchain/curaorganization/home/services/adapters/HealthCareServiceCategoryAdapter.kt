@@ -14,32 +14,33 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.nameksolutions.regchain.curaorganization.databinding.HealthCareServiceItemLayoutBinding
+import com.nameksolutions.regchain.curaorganization.databinding.HealthCareServiceCategoryItemLayoutBinding
 import com.nameksolutions.regchain.curaorganization.responses.services.HealthcareService
 
 /**
  * Created by Richard Uzor  on 10/10/2022
  */
-class HealthCareServicesAdapter: ListAdapter<HealthcareService, HealthCareServicesAdapter.HealthCareServicesViewHolder>(DiffCallback()){
+class HealthCareServiceCategoryAdapter: ListAdapter<HealthcareService, HealthCareServiceCategoryAdapter.HealthCareServicesCategoryViewHolder>(DiffCallback()){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): HealthCareServicesAdapter.HealthCareServicesViewHolder {
-        return HealthCareServicesViewHolder(
-            HealthCareServiceItemLayoutBinding.inflate(
+    ): HealthCareServiceCategoryAdapter.HealthCareServicesCategoryViewHolder {
+        return HealthCareServicesCategoryViewHolder(
+            HealthCareServiceCategoryItemLayoutBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
     }
 
     override fun onBindViewHolder(
-        holder: HealthCareServicesAdapter.HealthCareServicesViewHolder,
+        holder: HealthCareServiceCategoryAdapter.HealthCareServicesCategoryViewHolder,
         position: Int
     ) {
-        val healthCareService = getItem(position)
+        val healthCareServiceCategory = getItem(position)
         holder.apply {
-            bind(createOnClickListener(healthCareService), healthCareService)
-            itemView.tag = healthCareService
+            bind(createOnClickListener(healthCareServiceCategory), healthCareServiceCategory)
+            itemView.tag = healthCareServiceCategory
+
         }
 
     }
@@ -52,18 +53,19 @@ class HealthCareServicesAdapter: ListAdapter<HealthcareService, HealthCareServic
         }
     }
 
-    class HealthCareServicesViewHolder(private val binding: HealthCareServiceItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(listener: View.OnClickListener, itemData: HealthcareService) {
+    class HealthCareServicesCategoryViewHolder(private val binding: HealthCareServiceCategoryItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
+        fun bind(listener: View.OnClickListener, itemData: HealthcareService){
             binding.apply {
-                healthCareServiceItemClickListener = listener
-                healthCareServiceItem = itemData
+                healthCareServiceCategoryItemClickListener = listener
+                healthCareServiceCategoryItem = itemData
+
                 executePendingBindings()
             }
         }
     }
     private class DiffCallback: DiffUtil.ItemCallback<HealthcareService>(){
         override fun areItemsTheSame(oldItem: HealthcareService, newItem: HealthcareService): Boolean {
-            return oldItem.category == newItem.category
+            return oldItem._id == newItem._id
         }
 
         override fun areContentsTheSame(

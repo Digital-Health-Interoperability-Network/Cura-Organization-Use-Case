@@ -71,7 +71,6 @@
             android:id="@+id/rv_health_care_services"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_midi"
             tools:itemCount="2"
             android:clipToPadding="false"
             tools:listitem="@layout/health_care_service_item_layout"
