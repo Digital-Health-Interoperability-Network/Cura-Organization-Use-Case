@@ -169,6 +169,7 @@
     <string name="txt_pediatrics_service">Pediatrics Services</string>
     <string name="txt_dental_service">Dental Services</string>
     <string name="txt_sc_service">Special Clinical Services</string>
+    <string name="add_new_healthcare_service_fab">Add new Healthcare Service Button</string>
 
 
     <string-array name="reg_steps">

@@ -77,17 +77,12 @@
             android:name="practitionerFirstName"
             app:argType="string" />
     </fragment>
-    <!--    <fragment-->
-    <!--        android:id="@+id/servicesFragment"-->
-    <!--        android:name="com.nameksolutions.regchain.curaorganization.home.services.ui.ServicesFragment"-->
-    <!--        android:label="ServicesFragment" >-->
-    <!--        <action-->
-    <!--            android:id="@+id/action_servicesFragment_to_homeFragment"-->
-    <!--            app:destination="@id/homeFragment" />-->
-    <!--        <action-->
-    <!--            android:id="@+id/action_servicesFragment_to_newService"-->
-    <!--            app:destination="@id/newService" />-->
-    <!--    </fragment>-->
+        <fragment
+            android:id="@+id/servicesFragment"
+            android:name="com.nameksolutions.regchain.curaorganization.home.services.ui.ServicesFragment"
+            android:label="ServicesFragment" >
+
+        </fragment>
     <!--    <fragment-->
     <!--        android:id="@+id/profileFragment"-->
     <!--        android:name="com.nameksolutions.regchain.curaorganization.home.profile.ProfileFragment"-->
@@ -124,6 +119,26 @@
         <action
             android:id="@+id/action_servicesHomeFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_servicesHomeFragment_to_newService"
+            app:destination="@id/newService" />
+    </fragment>
+    <fragment
+        android:id="@+id/healthCareServicesFragment"
+        android:name="com.nameksolutions.regchain.curaorganization.home.services.ui.HealthCareServicesFragment"
+        android:label="fragment_health_care_services"
+        tools:layout="@layout/fragment_health_care_services" />
+    <fragment
+        android:id="@+id/newService"
+        android:name="com.nameksolutions.regchain.curaorganization.home.services.ui.NewService"
+        android:label="fragment_new_service"
+        tools:layout="@layout/fragment_new_service" >
+        <action
+            android:id="@+id/action_newService_to_healthCareServicesFragment"
+            app:destination="@id/healthCareServicesFragment" />
+        <action
+            android:id="@+id/action_newService_to_servicesHomeFragment"
+            app:destination="@id/servicesHomeFragment" />
     </fragment>
     <!--    <fragment-->
     <!--        android:id="@+id/newService"-->

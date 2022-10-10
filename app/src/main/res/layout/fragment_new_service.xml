@@ -21,14 +21,14 @@
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_new_service"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                tools:src="@drawable/ic_add"
-                app:civ_border_color="@color/black"
-                app:civ_border_width="1dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_midi"
-                android:id="@+id/iv_new_service"/>
+                app:civ_border_color="@color/black"
+                app:civ_border_width="1dp"
+                tools:src="@drawable/ic_add" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cv_new_practitioner_details"
@@ -48,13 +48,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                        <AutoCompleteTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/sp16"
-                            android:layout_marginStart="@dimen/padding_mini"
-                            android:hint="@string/new_service_category_hint"
-                            android:id="@+id/new_service_category_auto_complete_view"/>
+                    <AutoCompleteTextView
+                        android:id="@+id/new_service_category_auto_complete_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/padding_mini"
+                        android:hint="@string/new_service_category_hint"
+                        android:textSize="@dimen/sp16" />
 
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +62,6 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_mini"
                         android:hint="@string/new_service_provided_by_hint"
                         android:padding="@dimen/padding_mini">
 
@@ -80,7 +79,6 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_mini"
                         android:hint="@string/new_service_name_hint"
                         android:padding="@dimen/padding_mini">
 
@@ -99,7 +97,6 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_mini"
                         android:hint="@string/new_service_comment_hint"
                         android:padding="@dimen/padding_mini">
 
@@ -113,26 +110,23 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/text_input_layout_new_service_specialty"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_new_service_specialty"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxStrokeColor="@color/custom_color">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/new_service_specialty_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/padding_mini"
-                            app:boxBackgroundColor="@color/white"
-                            app:boxStrokeColor="@color/custom_color">
+                            android:layout_margin="8dp"
+                            android:hint="@string/new_service_specialty"
+                            android:inputType="none" />
 
-                            <AutoCompleteTextView
-                                android:id="@+id/new_service_specialty_view"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:hint="@string/new_service_specialty"
-                                android:inputType="none"
-                                android:paddingTop="20dp"
-                                android:paddingBottom="20dp" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
                     <TextView
@@ -393,8 +387,7 @@
                                             android:id="@+id/checkBox_new_service_thursday"
                                             android:layout_width="0dp"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="2"
-                                            />
+                                            android:layout_weight="2" />
 
                                         <LinearLayout
                                             android:id="@+id/layout_new_service_thursday"
@@ -617,37 +610,34 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/padding_mini"
-                        android:text="@string/new_service_provision_text"
-                        />
+                        android:text="@string/new_service_provision_text" />
 
                     <RadioGroup
                         android:id="@+id/new_service_provision_cost_radio_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/padding_mini"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:onClick="radio_button_click"
+                        android:padding="@dimen/padding_mini">
 
                         <RadioButton
                             android:id="@+id/new_service_provision_cost_option_free"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/new_service_provision_cost_option_free"
-                            android:onClick="radio_button_click"/>
+                            android:text="@string/new_service_provision_cost_option_free" />
 
 
                         <RadioButton
                             android:id="@+id/new_service_provision_cost_option_discount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/new_service_provision_cost_option_discount"
-                            android:onClick="radio_button_click"/>
+                            android:text="@string/new_service_provision_cost_option_discount" />
 
                         <RadioButton
                             android:id="@+id/new_service_provision_cost_option_paid"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/new_service_provision_cost_option_paid"
-                            android:onClick="radio_button_click"/>
+                            android:text="@string/new_service_provision_cost_option_paid" />
 
                     </RadioGroup>
 
@@ -657,7 +647,6 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_mini"
                         android:hint="@string/new_service_contact_email"
                         android:padding="@dimen/padding_mini">
 
@@ -673,7 +662,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_mini"
                         android:orientation="horizontal"
                         android:padding="@dimen/padding_mini"
                         android:weightSum="5">
@@ -711,13 +699,11 @@
                     </LinearLayout>
 
 
-
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_layout_new_service_eligibility"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_mini"
                         android:hint="@string/new_service_eligibility"
                         android:padding="@dimen/padding_mini">
 
@@ -731,15 +717,12 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
 
-                        <AutoCompleteTextView
-                            android:id="@+id/new_service_program_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:hint="@string/new_service_program"
-                            android:inputType="none"
-                            android:paddingTop="20dp"
-                            android:paddingBottom="20dp" />
+                    <AutoCompleteTextView
+                        android:id="@+id/new_service_program_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:hint="@string/new_service_program" />
 
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -747,7 +730,6 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_mini"
                         android:hint="@string/new_service_characteristics"
                         android:padding="@dimen/padding_mini">
 
@@ -761,38 +743,35 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="@dimen/padding_mini"
-                    android:weightSum="16">
-
-                    <CheckBox
-                        android:id="@+id/checkBox_new_service_appointment_required"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:padding="@dimen/padding_mini" />
-
-                    <TextView
-                        android:id="@+id/new_service_appointment_required_text"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="14"
                         android:layout_marginStart="@dimen/padding_mini"
-                        android:text="@string/new_service_appointment_required_text"
-                        />
+                        android:orientation="horizontal"
+                        android:weightSum="16">
 
-                </LinearLayout>
+                        <CheckBox
+                            android:id="@+id/checkBox_new_service_appointment_required"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/padding_mini" />
+
+                        <TextView
+                            android:id="@+id/new_service_appointment_required_text"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/padding_mini"
+                            android:layout_weight="14"
+                            android:text="@string/new_service_appointment_required_text" />
+
+                    </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_layout_new_service_referral_method"
                         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_mini"
                         app:boxBackgroundColor="@color/white"
                         app:boxStrokeColor="@color/custom_color">
 
@@ -802,22 +781,17 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"
                             android:hint="@string/new_service_referral_method"
-                            android:inputType="none"
-                            android:paddingTop="20dp"
-                            android:paddingBottom="20dp" />
+                            />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <AutoCompleteTextView
+                        android:id="@+id/new_service_communication_auto_complete_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/padding_mini"
-                        android:textSize="16sp"
                         android:hint="@string/new_service_communication"
-                        android:id="@+id/new_service_communication_auto_complete_view"/>
-
-
-
+                        android:textSize="16sp" />
 
 
                 </LinearLayout>
