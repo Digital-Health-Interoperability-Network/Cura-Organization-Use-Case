@@ -23,13 +23,13 @@ import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.responses.PersonnelResponse
 import com.nameksolutions.regchain.curaorganization.responses.PractitionerResponse
 import com.nameksolutions.regchain.curaorganization.utils.*
+import com.nameksolutions.regchain.curaorganization.utils.Common.TAG
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 class PersonnelFragment :
     BaseFragment<PersonnelViewModel, FragmentPersonnelBinding, PersonnelRepo>() {
 
-    val TAG = "EQUA"
     private var progressDialog: Dialog? = null
 
     //
