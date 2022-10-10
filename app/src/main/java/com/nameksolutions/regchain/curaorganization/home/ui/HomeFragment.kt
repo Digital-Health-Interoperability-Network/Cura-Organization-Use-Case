@@ -48,7 +48,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, HomeRepo>(
             }
 
             buttonServices.setOnClickListener {
-                requireView().snackbar("Services Clicked!")
+//                requireView().snackbar("Services Clicked!")
+                val serviceNav = HomeFragmentDirections.actionHomeFragmentToServicesHomeFragment()
+                findNavController().navigate(serviceNav)
             }
 
             buttonProfile.setOnClickListener {

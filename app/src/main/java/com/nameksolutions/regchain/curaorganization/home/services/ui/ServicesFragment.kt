@@ -72,8 +72,16 @@ class ServicesFragment : BaseFragment<ServicesViewModel, FragmentServicesBinding
             if (response.value._service.ambulanceServices)
                 txtAmbulanceService.isVisible = true
 
-            txtTotalNumberOfBeds.text = response.value._service.totalNumberOfBeds.toString()
-            txtNumberOfAvailableBeds.text = response.value._service.numberOfBedsAvailable.toString()
+
+            txtTotalNumberOfBeds.apply {
+                isVisible = true
+                text = response.value._service.totalNumberOfBeds.toString()
+            }
+
+            txtNumberOfAvailableBeds.apply {
+                isVisible = true
+                text = response.value._service.numberOfBedsAvailable.toString()
+            }
 
             val dentalServices = response.value._service.dentalServices
             val ogServices = response.value._service.obstericsAndGynecologyServices
