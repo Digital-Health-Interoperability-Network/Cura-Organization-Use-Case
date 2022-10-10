@@ -16,6 +16,7 @@ class ServicesFragment : BaseFragment<ServicesViewModel, FragmentServicesBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
     }
 
     override fun getViewModel() = ServicesViewModel::class.java
