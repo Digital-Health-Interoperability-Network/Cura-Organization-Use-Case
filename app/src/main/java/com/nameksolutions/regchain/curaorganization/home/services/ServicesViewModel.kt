@@ -7,10 +7,7 @@ import com.nameksolutions.regchain.curaorganization.base.BaseViewModel
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.requests.services.NewHealthCareServiceRequest
 import com.nameksolutions.regchain.curaorganization.requests.services.NewServicesRequest
-import com.nameksolutions.regchain.curaorganization.responses.services.FetchHealthCareServices
-import com.nameksolutions.regchain.curaorganization.responses.services.FetchServicesInfoResponse
-import com.nameksolutions.regchain.curaorganization.responses.services.NewHealthCareServiceResponse
-import com.nameksolutions.regchain.curaorganization.responses.services.NewServicesResponse
+import com.nameksolutions.regchain.curaorganization.responses.services.*
 import kotlinx.coroutines.launch
 
 class ServicesViewModel(
@@ -35,10 +32,16 @@ class ServicesViewModel(
         get() = _healthcareServiceCreation
 
     //fetch healthcare services observer variables
-    private val _fetchHealthCareServices: MutableLiveData<Resource<FetchHealthCareServices>> = MutableLiveData()
+    private val _fetchHealthCareServices: MutableLiveData<Resource<FetchHealthCareServices>> =
+        MutableLiveData()
     val fetchHealthCareServices: LiveData<Resource<FetchHealthCareServices>>
-    get() = _fetchHealthCareServices
+        get() = _fetchHealthCareServices
 
+    //fetch single healthcare service observer variables
+    private val _fetchOneHealthCareService: MutableLiveData<Resource<SingleHealthcareService>> =
+        MutableLiveData()
+    val fetchOneHealthCareService: LiveData<Resource<SingleHealthcareService>>
+        get() = _fetchOneHealthCareService
 
 
     //function to create a new healthcare service
@@ -66,6 +69,12 @@ class ServicesViewModel(
     fun fetchHealthCareServices() = viewModelScope.launch {
         _fetchHealthCareServices.value = Resource.Loading
         _fetchHealthCareServices.value = repo.fetchHealthCareServices()
+    }
+
+    //function to fetch a single healthcare service
+    fun fetchOneHealthcareService(id: String) = viewModelScope.launch {
+        _fetchOneHealthCareService.value = Resource.Loading
+        _fetchOneHealthCareService.value = repo.fetchOneHealthcareService(id)
     }
 
 }

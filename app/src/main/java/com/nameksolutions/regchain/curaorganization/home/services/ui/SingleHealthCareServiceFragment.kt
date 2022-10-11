@@ -32,7 +32,7 @@ import kotlinx.coroutines.runBlocking
 class SingleHealthCareServiceFragment : BaseFragment<ServicesViewModel, FragmentSingleHealthCareServiceBinding, ServicesRepo>() {
 
 
-    private val args by navArgs<PractitionerItemArgs>()
+    private val args by navArgs<SingleHealthCareServiceFragmentArgs>()
     private val availableTimeAdapter = PractitionerAvailableTImeAdapter()
     private var telecoms = listOf<Telecom>()
     private var progressDialog: Dialog? = null

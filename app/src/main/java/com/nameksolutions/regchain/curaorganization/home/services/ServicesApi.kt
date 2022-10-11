@@ -3,10 +3,7 @@ package com.nameksolutions.regchain.curaorganization.home.services
 import com.nameksolutions.regchain.curaorganization.requests.services.NewHealthCareServiceRequest
 import com.nameksolutions.regchain.curaorganization.requests.services.NewServicesRequest
 import com.nameksolutions.regchain.curaorganization.responses.SinglePractitioner
-import com.nameksolutions.regchain.curaorganization.responses.services.FetchHealthCareServices
-import com.nameksolutions.regchain.curaorganization.responses.services.FetchServicesInfoResponse
-import com.nameksolutions.regchain.curaorganization.responses.services.NewHealthCareServiceResponse
-import com.nameksolutions.regchain.curaorganization.responses.services.NewServicesResponse
+import com.nameksolutions.regchain.curaorganization.responses.services.*
 import com.nameksolutions.regchain.curaorganization.utils.Common
 import com.nameksolutions.regchain.curaorganization.utils.Common.healthcareServicesRoute
 import com.nameksolutions.regchain.curaorganization.utils.Common.servicesRoute
@@ -33,7 +30,7 @@ interface ServicesApi {
 
     //get one health care service
     @GET("${healthcareServicesRoute}/{id}/")
-    suspend fun getOneHealthcareService(@Path("id") id: String): SinglePractitioner
+    suspend fun fetchOneHealthcareService(@Path("id") id: String): SingleHealthcareService
 
 
 }

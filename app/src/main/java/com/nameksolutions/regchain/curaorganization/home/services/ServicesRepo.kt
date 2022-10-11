@@ -25,4 +25,7 @@ class ServicesRepo(
     suspend fun fetchServicesInfo() = safeApiCall {
         api.fetchServicesInfo()
     }
+    suspend fun fetchOneHealthcareService(id: String) = safeApiCall {
+        api.fetchOneHealthcareService(id)
+    }
 }
