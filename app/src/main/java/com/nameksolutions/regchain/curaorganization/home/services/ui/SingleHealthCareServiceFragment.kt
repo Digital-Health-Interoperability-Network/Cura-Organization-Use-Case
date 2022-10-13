@@ -58,6 +58,7 @@ class SingleHealthCareServiceFragment : BaseFragment<ServicesViewModel, Fragment
         viewModel.fetchOneHealthCareService.observe(viewLifecycleOwner, Observer { response ->
             when(response){
                 is Resource.Success ->{
+                    hideProgress()
                     subscribeToUI(response.value.healthcareservice)
                 }
                 is Resource.Failure ->{
