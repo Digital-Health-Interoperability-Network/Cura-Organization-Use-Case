@@ -8,6 +8,8 @@
 
 package com.nameksolutions.regchain.curaorganization.responses.services
 
+import com.google.gson.annotations.SerializedName
+
 data class HealthcareService(
     val __v: Int,
     val _id: String,
@@ -17,7 +19,8 @@ data class HealthcareService(
     val availabilityExceptions: String,
     val availableTime: List<AvailableTime>,
     val category: List<String>,
-    val charactristics: List<Charactristic>,
+    @SerializedName("charactristics")
+    val characteristics: List<Charactristic>,
     val communitcation: List<String>,
     val eligibility: List<Eligibility>,
     val extraDetails: String,

@@ -67,42 +67,32 @@ class RegDaysOfOperation :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        timePicker = TimePickerHelper(requireContext(), true, false)
+        timePicker = TimePickerHelper(requireContext(), true, isSpinnerType = true)
         with(binding) {
 
 
-            layoutMonday!!.enable(false)
-            layoutTuesday!!.enable(false)
-            layoutWednesday!!.enable(false)
-            layoutThursday!!.enable(false)
-            layoutFriday!!.enable(false)
-            layoutSaturday!!.enable(false)
-            layoutSunday!!.enable(false)
+            layoutMonday.enable(false)
+            layoutTuesday.enable(false)
+            layoutWednesday.enable(false)
+            layoutThursday.enable(false)
+            layoutFriday.enable(false)
+            layoutSaturday.enable(false)
+            layoutSunday.enable(false)
 
 
 
             checkBoxMonday.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
                     checkBoxMonday.isChecked = true
-                    layoutMonday!!.enable(true)
+                    layoutMonday.enable(true)
                     //fetch Monday times in a function and return the values
-                    regDooMondayOpen!!.setOnClickListener {
+                    regDooMondayOpen.setOnClickListener {
                         val monOpenTimeView = it as TextView
                         showTimePickerDialog(monOpenTimeView)
 
-                        Log.d(
-                            TAG, "onActivityCreated: ${
-                                monOpenTimeView.text.toString()
-                            }"
-                        )
-                        Log.d(TAG, "onActivityCreated: ${showTimePickerDialog(monOpenTimeView)}")
-
                     }
 
-                    Log.d(TAG, "onActivityCreatedPost: ${regDooMondayOpen.text}")
-
-
-                    regDooMondayClose!!.setOnClickListener {
+                    regDooMondayClose.setOnClickListener {
 
                         val closeMonTV = it as TextView
                         showTimePickerDialog(closeMonTV)
@@ -118,16 +108,16 @@ class RegDaysOfOperation :
             checkBoxTuesday.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
                     checkBoxTuesday.isChecked = true
-                    layoutTuesday!!.enable(true)
+                    layoutTuesday.enable(true)
                     //fetch Tuesday times in a function and return the values
 
-                    rooTuesdayOpen!!.setOnClickListener {
+                    rooTuesdayOpen.setOnClickListener {
 
                         val tueOpenTV = it as TextView
                         showTimePickerDialog(tueOpenTV)
 
                     }
-                    rooTuesdayClose!!.setOnClickListener {
+                    rooTuesdayClose.setOnClickListener {
                         val tueCloseTV = it as TextView
                         showTimePickerDialog(tueCloseTV)
                     }
@@ -144,12 +134,12 @@ class RegDaysOfOperation :
                     layoutWednesday.enable(true)
 
                     //fetch Wednesday times in a function and return the values
-                    rooWednesdayOpen!!.setOnClickListener {
+                    rooWednesdayOpen.setOnClickListener {
                         val wedOpenTV = it as TextView
                         showTimePickerDialog(wedOpenTV)
                     }
 
-                    rooWednesdayClose!!.setOnClickListener {
+                    rooWednesdayClose.setOnClickListener {
                         val wedCloseTV = it as TextView
                         showTimePickerDialog(wedCloseTV)
                     }
@@ -164,12 +154,12 @@ class RegDaysOfOperation :
                     layoutThursday.enable(true)
 
                     //fetch Thursday times in a function and return the values
-                    rooThursdayOpen!!.setOnClickListener {
+                    rooThursdayOpen.setOnClickListener {
                         val thursOpenTV = it as TextView
                         showTimePickerDialog(thursOpenTV)
 
                     }
-                    rooThursdayClose!!.setOnClickListener {
+                    rooThursdayClose.setOnClickListener {
                         val thursCloseTV = it as TextView
                         showTimePickerDialog(thursCloseTV)
                     }
@@ -185,11 +175,11 @@ class RegDaysOfOperation :
                     layoutFriday.enable(true)
 
                     //fetch Friday times in a function and return the values
-                    rooFridayOpen!!.setOnClickListener {
+                    rooFridayOpen.setOnClickListener {
                         val friOpenTV = it as TextView
                         showTimePickerDialog(friOpenTV)
                     }
-                    rooFridayClose!!.setOnClickListener {
+                    rooFridayClose.setOnClickListener {
                         val friCloseTV = it as TextView
                         showTimePickerDialog(friCloseTV)
                     }
@@ -205,11 +195,11 @@ class RegDaysOfOperation :
                     layoutSaturday.enable(true)
 
                     //fetch Saturday times in a function and return the values
-                    rooSaturdayOpen!!.setOnClickListener {
+                    rooSaturdayOpen.setOnClickListener {
                         val satOpenTV = it as TextView
                         showTimePickerDialog(satOpenTV)
                     }
-                    rooSaturdayClose!!.setOnClickListener {
+                    rooSaturdayClose.setOnClickListener {
                         val satCloseTV = it as TextView
                         showTimePickerDialog(satCloseTV)
                     }
@@ -225,12 +215,12 @@ class RegDaysOfOperation :
                     layoutSunday.enable(true)
 
                     //fetch Sunday times in a function and return the values
-                    rooSundayOpen!!.setOnClickListener {
+                    rooSundayOpen.setOnClickListener {
                         val sunOpenTV = it as TextView
                         showTimePickerDialog(sunOpenTV)
                     }
 
-                    rooSundayClose!!.setOnClickListener {
+                    rooSundayClose.setOnClickListener {
                         val sunCloseTV = it as TextView
                         showTimePickerDialog(sunCloseTV)
                     }
@@ -248,24 +238,24 @@ class RegDaysOfOperation :
 
                 if (checkBoxMonday.isChecked){
                     availabilityMon = availTime.copy(
-                        availableStartTime = regDooMondayOpen!!.text.toString().trim(),
-                        availableEndTime = regDooMondayClose!!.text.toString().trim(),
+                        availableStartTime = regDooMondayOpen.text.toString().trim(),
+                        availableEndTime = regDooMondayClose.text.toString().trim(),
                         daysOfWeek = listOf("Mon")
                     )
                     availableTime.add(availabilityMon)
                 }
                 if (checkBoxTuesday.isChecked){
                     availabilityTue = availTime.copy(
-                        availableStartTime = rooTuesdayOpen!!.text.toString().trim(),
-                        availableEndTime = rooTuesdayClose!!.text.toString().trim(),
+                        availableStartTime = rooTuesdayOpen.text.toString().trim(),
+                        availableEndTime = rooTuesdayClose.text.toString().trim(),
                         daysOfWeek = listOf("Tue")
                     )
                     availableTime.add(availabilityTue)
                 }
                 if (checkBoxWednesday.isChecked){
                     availabilityWed = availTime.copy(
-                        availableStartTime = rooWednesdayOpen!!.text.toString().trim(),
-                        availableEndTime = rooWednesdayClose!!.text.toString().trim(),
+                        availableStartTime = rooWednesdayOpen.text.toString().trim(),
+                        availableEndTime = rooWednesdayClose.text.toString().trim(),
                         daysOfWeek = listOf("Wed")
                     )
 
@@ -273,41 +263,36 @@ class RegDaysOfOperation :
                 }
                 if (checkBoxThursday.isChecked){
                     availabilityThurs = availTime.copy(
-                        availableStartTime = rooThursdayOpen!!.text.toString().trim(),
-                        availableEndTime = rooThursdayClose!!.text.toString().trim(),
+                        availableStartTime = rooThursdayOpen.text.toString().trim(),
+                        availableEndTime = rooThursdayClose.text.toString().trim(),
                         daysOfWeek = listOf("Thurs")
                     )
                     availableTime.add(availabilityThurs)
                 }
                 if (checkBoxFriday.isChecked){
                     availabilityFri = availTime.copy(
-                        availableStartTime = rooFridayOpen!!.text.toString().trim(),
-                        availableEndTime = rooFridayClose!!.text.toString().trim(),
+                        availableStartTime = rooFridayOpen.text.toString().trim(),
+                        availableEndTime = rooFridayClose.text.toString().trim(),
                         daysOfWeek = listOf("Fri")
                     )
                     availableTime.add(availabilityFri)
                 }
                 if (checkBoxSaturday.isChecked){
                     availabilitySat = availTime.copy(
-                        availableStartTime = rooSaturdayOpen!!.text.toString().trim(),
-                        availableEndTime = rooSaturdayClose!!.text.toString().trim(),
+                        availableStartTime = rooSaturdayOpen.text.toString().trim(),
+                        availableEndTime = rooSaturdayClose.text.toString().trim(),
                         daysOfWeek = listOf("Sat")
                     )
                     availableTime.add(availabilitySat)
                 }
                 if (checkBoxSunday.isChecked){
                     availabilitySun = availTime.copy(
-                        availableStartTime = rooSundayOpen!!.text.toString().trim(),
-                        availableEndTime = rooSundayClose!!.text.toString().trim(),
+                        availableStartTime = rooSundayOpen.text.toString().trim(),
+                        availableEndTime = rooSundayClose.text.toString().trim(),
                         daysOfWeek = listOf("Sun")
                     )
                     availableTime.add(availabilitySun)
                 }
-
-
-
-                Log.d(TAG, "onActivityCreated: $hoursDaysOfOperation")
-//                hoursDaysOfOperation["Monday"] = "${regDooMondayOpen!!.text.toString()}-${regDooMondayClose!!.text.toString()}"
 
                 if (availableTime.isEmpty()) {
                     requireView().snackbar("At least one day required")

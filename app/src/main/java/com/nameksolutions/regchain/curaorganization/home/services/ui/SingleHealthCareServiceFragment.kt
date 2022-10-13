@@ -14,19 +14,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentSingleHealthCareServiceBinding
-import com.nameksolutions.regchain.curaorganization.home.personnel.adapters.PractitionerAvailableTImeAdapter
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesApi
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesRepo
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesViewModel
 import com.nameksolutions.regchain.curaorganization.home.services.adapters.ServiceAvailableTimeAdapter
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.responses.services.AvailableTime
-import com.nameksolutions.regchain.curaorganization.responses.services.Charactristic
 import com.nameksolutions.regchain.curaorganization.responses.services.HealthcareService
 import com.nameksolutions.regchain.curaorganization.responses.services.Telecom
 import com.nameksolutions.regchain.curaorganization.utils.handleApiError
@@ -49,6 +49,11 @@ class SingleHealthCareServiceFragment : BaseFragment<ServicesViewModel, Fragment
         val healthCareServiceId = args.healthcareServiceId
 
         fetchHealthCareServiceDetail(healthCareServiceId)
+
+
+        binding.servicesMockBackBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_singleHealthCareServiceFragment_to_servicesHomeFragment)
+        }
 
     }
 
@@ -75,6 +80,8 @@ class SingleHealthCareServiceFragment : BaseFragment<ServicesViewModel, Fragment
 
     private fun subscribeToUI(value: HealthcareService) {
         with(binding){
+            val healthCareServiceNames = mutableListOf<String>(value.name.substring(0, 1))
+            healthCareServiceIconText.text = healthCareServiceNames[0]
             txtHealthCareServiceName.text = value.name
             for (category in value.category){
                 txtHealthCareServiceCategories.append(category)
@@ -99,7 +106,7 @@ class SingleHealthCareServiceFragment : BaseFragment<ServicesViewModel, Fragment
                 healthCareServiceCommunication.append(communication)
             }
 
-            for (char in value.charactristics){
+            for (char in value.characteristics){
                 val chars = mutableListOf<String>()
                 for (charCoding in char.coding){
                     chars.add(charCoding.display)

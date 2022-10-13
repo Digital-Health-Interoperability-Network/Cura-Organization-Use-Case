@@ -6,41 +6,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".auth.ui.registration.RegRegistryIdentifiers">
 
-<!--    <TextView-->
-<!--        android:id="@+id/txt_reg_id_title"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/reg_registry_identifiers_title"-->
-<!--        android:gravity="center"-->
-<!--        android:padding="@dimen/padding_midi"-->
-<!--        android:layout_margin="@dimen/margin_mini"-->
-<!--        android:textColor="@color/custom_color"-->
-<!--        android:fontFamily="@font/roboto_bold"-->
-<!--        android:textSize="24sp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"/>-->
 
-    <ScrollView
+    <TextView
+        android:id="@+id/text_reg_id_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/margin_mini"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:padding="@dimen/padding_midi"
+        android:text="@string/reg_registry_identifiers_title"
+        android:textColor="@color/custom_color"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/fragment_reg_identifiers_cv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.14" />
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/fragment_reg_identifiers_cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/text_reg_id_title"
         app:cardElevation="@dimen/padding_mini"
         android:layout_margin="@dimen/padding_mini"
         android:padding="@dimen/padding_mini"
+        app:layout_constraintVertical_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
 
 
         <LinearLayout
@@ -195,9 +201,10 @@
 
         </LinearLayout>
 
+        </ScrollView>
+
     </com.google.android.material.card.MaterialCardView>
 
-    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

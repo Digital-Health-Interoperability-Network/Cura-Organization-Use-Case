@@ -28,7 +28,7 @@
             android:layout_height="40dp"
             android:padding="@dimen/padding_midi"
             app:srcCompat="@drawable/ic_angle_left"
-            android:id="@+id/mock_back_btn"/>
+            android:id="@+id/services_mock_back_btn"/>
 
         <RelativeLayout
             android:id="@+id/health_care_service_icon_container"

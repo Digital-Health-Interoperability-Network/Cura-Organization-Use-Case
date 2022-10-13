@@ -7,34 +7,27 @@
     tools:context=".auth.ui.registration.RegDetails">
 
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/txt_reg_details_title"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_margin="@dimen/margin_mini"-->
-    <!--        android:fontFamily="@font/roboto_bold"-->
-    <!--        android:gravity="center"-->
-    <!--        android:padding="@dimen/padding_midi"-->
-    <!--        android:text="@string/reg_organization_details_title"-->
-    <!--        android:textColor="@color/custom_color"-->
-    <!--        android:textSize="24sp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <ScrollView
-        android:id="@+id/fragment_details_sv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/text_reg_details_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_mini"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:padding="@dimen/padding_midi"
+            android:text="@string/reg_organization_details_title"
+            android:textColor="@color/custom_color"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@id/fragment_details_cv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/fragment_details_cv"
         android:layout_margin="@dimen/margin_midi"
         android:padding="@dimen/padding_midi"
         app:cardElevation="@dimen/padding_mini"
@@ -45,7 +38,18 @@
 
 
 
-            <LinearLayout
+        <ScrollView
+            android:id="@+id/fragment_details_sv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_reg_details_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -231,8 +235,9 @@
 
             </LinearLayout>
 
+        </ScrollView>
+
     </com.google.android.material.card.MaterialCardView>
-</ScrollView>
 
 
 

@@ -154,6 +154,9 @@
         <argument
             android:name="healthcareServiceId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_singleHealthCareServiceFragment_to_servicesHomeFragment"
+            app:destination="@id/servicesHomeFragment" />
     </fragment>
     <!--    <fragment-->
     <!--        android:id="@+id/newService"-->
