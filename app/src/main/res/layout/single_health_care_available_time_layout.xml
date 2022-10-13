@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2022.
+  ~ Richard Uzor
+  ~ For Namek Solutions Limited,
+  ~ Abuja, FCT.
+  ~ Nigeria
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="healthCareServiceAvailableTimeItem"
+            type="com.nameksolutions.regchain.curaorganization.responses.services.AvailableTime" />
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:layout_margin="@dimen/padding_mini"
+        android:padding="@dimen/padding_midi">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@{healthCareServiceAvailableTimeItem.dayOfWeek[0]}"
+            tools:text="Monday"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@{healthCareServiceAvailableTimeItem.availableStartTime}"
+            tools:text="Start Time"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="to"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@{healthCareServiceAvailableTimeItem.availableEndTime}"
+            tools:text="End Time"/>
+
+
+    </LinearLayout>
+    <!---->
+</layout>

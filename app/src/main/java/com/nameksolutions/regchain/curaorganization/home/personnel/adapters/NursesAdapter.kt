@@ -1,5 +1,6 @@
 package com.nameksolutions.regchain.curaorganization.home.personnel.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.nameksolutions.regchain.curaorganization.databinding.PractitionersItemLayoutBinding
 import com.nameksolutions.regchain.curaorganization.home.personnel.ui.PersonnelFragmentDirections
 import com.nameksolutions.regchain.curaorganization.responses.PractitionerResponse
+import com.nameksolutions.regchain.curaorganization.utils.Common.TAG
 
 class NursesAdapter: ListAdapter<PractitionerResponse, NursesAdapter.NursesViewHolder>(NursesAdapter.DiffCallback()) {
 
@@ -39,6 +41,7 @@ class NursesAdapter: ListAdapter<PractitionerResponse, NursesAdapter.NursesViewH
     private fun createOnClickListener(nurse: PractitionerResponse): View.OnClickListener {
         return View.OnClickListener {
             //navigate to page to show doctor details using navigation directions
+            Log.d(TAG, "createOnClickListener: nurse clicked!")
             val direction = PersonnelFragmentDirections.actionPersonnelFragmentToPractitionerItem2(nurse.id)
             it.findNavController().navigate(direction)
         }

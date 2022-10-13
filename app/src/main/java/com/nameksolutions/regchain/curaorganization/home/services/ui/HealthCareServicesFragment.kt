@@ -11,7 +11,6 @@ package com.nameksolutions.regchain.curaorganization.home.services.ui
 import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +24,6 @@ import com.nameksolutions.regchain.curaorganization.databinding.FragmentHealthCa
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesApi
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesRepo
 import com.nameksolutions.regchain.curaorganization.home.services.ServicesViewModel
-import com.nameksolutions.regchain.curaorganization.home.services.adapters.HealthCareServiceCategoryAdapter
 import com.nameksolutions.regchain.curaorganization.home.services.adapters.HealthCareServicesAdapter
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.responses.services.HealthcareService
@@ -41,7 +39,6 @@ class HealthCareServicesFragment :
 
     private var progressDialog: Dialog? = null
     private val healthCareServicesAdapter: HealthCareServicesAdapter = HealthCareServicesAdapter()
-    private val healthCareServiceCategoryAdapter: HealthCareServiceCategoryAdapter = HealthCareServiceCategoryAdapter()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
