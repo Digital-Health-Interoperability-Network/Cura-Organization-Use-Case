@@ -254,7 +254,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/base_card_view_nurses"
+                    android:id="@+id/base_card_view_address"
                     style="@style/Base.CardView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -276,22 +276,36 @@
                             android:weightSum="6">
 
                             <TextView
-                                android:id="@+id/nurses_title"
+                                android:id="@+id/profile_addresses_title"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="5"
-                                android:text="@string/nurses_title"
+                                android:text="@string/addresses_title"
                                 android:textSize="18sp"
+                                android:textColor="@color/custom_color"
                                 android:textStyle="bold" />
 
                             <ImageButton
-                                android:id="@+id/nurses_button"
+                                android:id="@+id/profile_add_address_button"
+                                android:layout_width="0dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.5"
+                                android:contentDescription="@string/profile_address_add_icon"
+                                android:backgroundTint="@color/white"
+                                android:padding="@dimen/padding_midi"
+                                android:src="@drawable/ic_add"
+                                app:tint="@color/custom_color" />
+
+
+                            <ImageButton
+                                android:id="@+id/profile_addresses_button"
                                 android:layout_width="0dp"
                                 android:layout_height="25dp"
                                 android:layout_gravity="center"
                                 android:layout_weight="0.5"
                                 android:backgroundTint="@color/white"
-                                android:contentDescription="@string/nurses_expand_arrow"
+                                android:contentDescription="@string/profile_address_expand_arrow"
                                 android:padding="@dimen/padding_midi"
                                 android:src="@drawable/angle_down" />
 
@@ -299,7 +313,7 @@
 
 
                         <LinearLayout
-                            android:id="@+id/nurses_hide_able_view"
+                            android:id="@+id/profile_addresses_hide_able_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
@@ -307,23 +321,12 @@
                             android:weightSum="7"
                             tools:visibility="visible">
 
-
-                            <!--                            <TextView-->
-                            <!--                                android:id="@+id/text_nurses_no_data"-->
-                            <!--                                android:layout_width="match_parent"-->
-                            <!--                                android:layout_height="wrap_content"-->
-                            <!--                                android:padding="@dimen/padding_maxi"-->
-                            <!--                                android:text="@string/text_no_data"-->
-                            <!--                                android:textAlignment="center"-->
-                            <!--                                android:textStyle="italic"-->
-                            <!--                                android:visibility="gone" />-->
-
                             <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rv_nurses"
+                                android:id="@+id/rv_addresses"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 tools:itemCount="3"
-                                tools:listitem="@layout/practitioners_item_layout" />
+                                tools:listitem="@layout/profile_addresses_item" />
 
 
                         </LinearLayout>

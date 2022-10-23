@@ -182,6 +182,9 @@
     <string name="edit_organization_name">Edit Organisation Name</string>
     <string name="telecom_title">Telecoms</string>
     <string name="profile_telecom_expand_arrow">Expand Profile Telecom Card</string>
+    <string name="addresses_title">Addresses</string>
+    <string name="profile_address_expand_arrow">Expand Address Card</string>
+    <string name="profile_address_add_icon">Add New Address</string>
 
 
     <string-array name="reg_steps">

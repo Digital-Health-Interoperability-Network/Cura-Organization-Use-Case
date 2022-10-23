@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2022.
+  ~ Richard Uzor
+  ~ For Namek Solutions Limited,
+  ~ Abuja, FCT.
+  ~ Nigeria
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="profileAddressItemClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="addressItem"
+            type="com.nameksolutions.regchain.curaorganization.responses.profile.Addres" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_mini">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_mini"
+            android:onClick="@{profileAddressItemClickListener}"
+            android:padding="@dimen/padding_mini"
+            app:cardElevation="@dimen/padding_mini"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_mini"
+                android:weightSum="10">
+
+
+                <RelativeLayout
+                    android:id="@+id/address_icon_container"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:layout_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="37dp"
+                        android:layout_height="37dp"
+                        android:src="@drawable/bg_circle" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:padding="@dimen/padding_mini"
+                        tools:src="@drawable/ic_address" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/address_line_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_mini"
+                        android:text="@{addressItem.line[0]}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14"
+                        tools:text="AL1" />
+
+                    <TextView
+                        android:id="@+id/address_line_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_mini"
+                        android:text="@{addressItem.line[1]}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14"
+                        tools:text="AL2" />
+
+
+                    <TextView
+                        android:id="@+id/address_city_district"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_mini"
+                        android:text="@{@string/person_name(addressItem.city, addressItem.district)}"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/sp14"
+                        tools:text="CT, LGA" />
+
+                    <TextView
+                        android:id="@+id/address_postal_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_mini"
+                        android:text="@{addressItem.postalCode}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp14"
+                        tools:text="909120" />
+
+
+                    <TextView
+                        android:id="@+id/address_state_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_mini"
+                        android:text="@{@string/person_name(addressItem.state, addressItem.country)}"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/sp14"
+                        tools:text="Bayelsa, Nigeria" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
