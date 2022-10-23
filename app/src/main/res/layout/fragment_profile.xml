@@ -335,7 +335,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/base_card_view_pharmacists"
+                    android:id="@+id/base_card_view_identifiers"
                     style="@style/Base.CardView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
