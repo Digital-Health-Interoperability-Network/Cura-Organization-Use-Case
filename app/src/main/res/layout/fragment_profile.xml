@@ -319,7 +319,7 @@
                             android:orientation="horizontal"
                             android:visibility="gone"
                             android:weightSum="7"
-                            tools:visibility="visible">
+                            tools:visibility="gone">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rv_addresses"
@@ -358,22 +358,35 @@
                             android:weightSum="6">
 
                             <TextView
-                                android:id="@+id/pharmacists_title"
+                                android:id="@+id/profiler_identifiers_title"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="5"
-                                android:text="@string/pharmacists_title"
+                                android:text="@string/identifiers_title"
+                                android:textColor="@color/custom_color"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
-
                             <ImageButton
-                                android:id="@+id/pharmacists_button"
+                                android:id="@+id/profile_add_identifiers_button"
                                 android:layout_width="0dp"
                                 android:layout_height="25dp"
                                 android:layout_gravity="center"
                                 android:layout_weight="0.5"
                                 android:backgroundTint="@color/white"
-                                android:contentDescription="@string/pharmacists_expand_arrow"
+                                android:contentDescription="@string/profile_identifiers_add_icon"
+                                android:padding="@dimen/padding_midi"
+                                android:src="@drawable/ic_add"
+                                app:tint="@color/custom_color" />
+
+
+                            <ImageButton
+                                android:id="@+id/profile_identifiers_button"
+                                android:layout_width="0dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.5"
+                                android:backgroundTint="@color/white"
+                                android:contentDescription="@string/profile_identifiers_expand_arrow"
                                 android:padding="@dimen/padding_midi"
                                 android:src="@drawable/angle_down" />
 
@@ -381,30 +394,20 @@
 
 
                         <LinearLayout
-                            android:id="@+id/pharmacists_hide_able_view"
+                            android:id="@+id/profile_identifiers_hide_able_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:visibility="gone"
-                            android:weightSum="7">
-
-
-                            <TextView
-                                android:id="@+id/text_pharmacist_no_data"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="@dimen/padding_maxi"
-                                android:text="@string/text_no_data"
-                                android:textAlignment="center"
-                                android:textStyle="italic"
-                                android:visibility="gone" />
+                            android:weightSum="7"
+                            tools:visibility="visible">
 
                             <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rv_pharmacists"
+                                android:id="@+id/rv_identifiers"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 tools:itemCount="3"
-                                tools:listitem="@layout/practitioners_item_layout" />
+                                tools:listitem="@layout/profile_identifiers_item" />
 
                         </LinearLayout>
 

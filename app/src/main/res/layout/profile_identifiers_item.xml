@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2022.
+  ~ Richard Uzor
+  ~ For Namek Solutions Limited,
+  ~ Abuja, FCT.
+  ~ Nigeria
+  -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="profileIdentifierItemClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="identifierItem"
+            type="com.nameksolutions.regchain.curaorganization.responses.profile.Identifier" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_mini">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_mini"
+            android:onClick="@{profileIdentifierItemClickListener}"
+            android:padding="@dimen/padding_mini"
+            app:cardElevation="@dimen/padding_mini"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_mini"
+                android:weightSum="10">
+
+
+                <RelativeLayout
+                    android:id="@+id/identifier_icon_container"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:layout_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="37dp"
+                        android:layout_height="37dp"
+                        android:src="@drawable/bg_circle" />
+
+                    <ImageView
+                        android:id="@+id/identifier_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:padding="@dimen/padding_mini"
+                        tools:src="@drawable/ic_identifier" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/identifier_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:text="@{identifierItem.type}"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/sp14"
+                        tools:text="National Identification Number" />
+
+                    <TextView
+                        android:id="@+id/identifier_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_mini"
+                        android:text="@{identifierItem.value}"
+                        android:textSize="@dimen/sp12"
+                        tools:text="qwerty12345" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

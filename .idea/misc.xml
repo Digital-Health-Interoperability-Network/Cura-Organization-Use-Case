@@ -78,7 +78,8 @@
         <entry key="app/src/main/res/layout/personnel_stats_layout_item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/practitioner_custom_dialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/practitioners_item_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/profile_addresses_item.xml" value="0.17543064369900271" />
+        <entry key="app/src/main/res/layout/profile_addresses_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/profile_identifiers_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/profile_telcoms_item.xml" value="0.37254901960784315" />
         <entry key="app/src/main/res/layout/reg_otp_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/single_health_care_available_time_layout.xml" value="0.12825994014536127" />

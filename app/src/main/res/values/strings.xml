@@ -185,6 +185,9 @@
     <string name="addresses_title">Addresses</string>
     <string name="profile_address_expand_arrow">Expand Address Card</string>
     <string name="profile_address_add_icon">Add New Address</string>
+    <string name="identifiers_title">Identifiers</string>
+    <string name="profile_identifiers_expand_arrow">Expand Identifiers Card</string>
+    <string name="profile_identifiers_add_icon">Add New Identifier</string>
 
 
     <string-array name="reg_steps">
