@@ -85,7 +85,7 @@
         </fragment>
     <!--    <fragment-->
     <!--        android:id="@+id/profileFragment"-->
-    <!--        android:name="com.nameksolutions.regchain.curaorganization.home.profile.ProfileFragment"-->
+    <!--        android:name="com.nameksolutions.regchain.curaorganization.home.profile.ui.ProfileFragment"-->
     <!--        android:label="ProfileFragment" >-->
     <!--        <action-->
     <!--            android:id="@+id/action_profileFragment_to_homeFragment"-->

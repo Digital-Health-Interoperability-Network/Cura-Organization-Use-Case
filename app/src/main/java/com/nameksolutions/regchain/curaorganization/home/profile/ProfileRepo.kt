@@ -7,4 +7,9 @@ class ProfileRepo(
     private val api: ProfileApi,
     private val prefs: UserPreferences
 ): BaseRepo() {
+
+    suspend fun getOrganizationInfo() = safeApiCall {
+        api.getOrganizationInfo()
+    }
+
 }

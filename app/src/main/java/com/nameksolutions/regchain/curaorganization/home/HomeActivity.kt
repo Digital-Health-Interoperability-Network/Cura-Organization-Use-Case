@@ -7,7 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.databinding.ActivityHomeBinding
 import com.nameksolutions.regchain.curaorganization.home.personnel.ui.PersonnelFragment
-import com.nameksolutions.regchain.curaorganization.home.profile.ProfileFragment
+import com.nameksolutions.regchain.curaorganization.home.profile.ui.ProfileFragment
 import com.nameksolutions.regchain.curaorganization.home.services.ui.ServicesFragment
 import com.nameksolutions.regchain.curaorganization.home.tokens.TokenFragment
 import kotlinx.android.synthetic.main.activity_home.*
