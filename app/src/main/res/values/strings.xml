@@ -150,7 +150,7 @@
     <string name="new_service_communication">Communication</string>
     <string name="reg_practitioner_role_communication">Communication Language(s)</string>
     <string name="practitioner_role_title">Practitioner Role</string>
-    <string name="practitioner_role_description">Fill in the roles of this practioner in your organization</string>
+    <string name="practitioner_role_description">Fill in the roles of this practitioner in your organization</string>
     <string name="btn_practitioner_role_register">Done</string>
     <string name="reg_practitioner_role_specialty">Practitioner Specialty(ies)</string>
     <string name="available_services_title">Available Services</string>
@@ -170,7 +170,6 @@
     <string name="txt_dental_service">Dental Services</string>
     <string name="txt_sc_service">Special Clinical Services</string>
     <string name="add_new_healthcare_service_fab">Add new Healthcare Service Button</string>
-    <string name="health_care_service_category_expand_arrowE">Expand Heathcare Service Category</string>
     <string name="health_care_service_category_expand_arrow">Expand Healthcare Service Category</string>
     <string name="comment_text">Comment</string>
     <string name="txt_communication">Communication</string>
@@ -188,6 +187,11 @@
     <string name="identifiers_title">Identifiers</string>
     <string name="profile_identifiers_expand_arrow">Expand Identifiers Card</string>
     <string name="profile_identifiers_add_icon">Add New Identifier</string>
+    <string name="days_of_operation_title">Days of Operation</string>
+    <string name="profile_days_of_operation_expand_arrow">Expand Days of Operation Card</string>
+    <string name="profile_days_of_operation_add_icon">Update Days of Operation</string>
+    <string name="profile_start_time_text">Open: </string>
+    <string name="profile_close_time_text">"Close: "</string>
 
 
     <string-array name="reg_steps">

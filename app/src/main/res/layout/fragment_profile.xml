@@ -45,16 +45,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_org_names"
-        tools:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_tool_bar"
-        >
+        tools:visibility="visible">
 
         <TextView
-            tools:visibility="visible"
             android:id="@+id/profile_org_name_txt"
             style="@style/TextAppearance.AppCompat.Headline"
             android:layout_width="wrap_content"
@@ -62,87 +60,88 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="New Organisation" />
+            tools:text="New Organisation"
+            tools:visibility="visible" />
 
         <ImageView
             android:id="@+id/profile_name_edit_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            tools:visibility="visible"
             android:layout_marginStart="@dimen/margin_maxi"
             android:layout_marginTop="@dimen/padding_maxi"
+            android:contentDescription="@string/edit_organization_name"
             android:padding="@dimen/padding_mini"
             app:layout_constraintBottom_toTopOf="@id/profile_org_alias_name_txt"
             app:layout_constraintStart_toEndOf="@id/profile_org_name_txt"
             app:layout_constraintTop_toTopOf="@id/profile_org_name_txt"
             app:srcCompat="@drawable/ic_edit"
-            android:contentDescription="@string/edit_organization_name" />
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/profile_org_alias_name_txt"
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_org_name_txt"
-            tools:text="NO, New Org, New O, N Org" />
+            tools:text="NO, New Org, New O, N Org"
+            tools:visibility="visible" />
 
 
         <EditText
             android:id="@+id/et_profile_org_name"
             style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
             android:layout_width="wrap_content"
-            android:visibility="gone"
             android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="New Organisation"
-            android:inputType="text"
-            android:importantForAutofill="no" />
+            tools:text="New Organisation" />
 
         <TextView
             android:id="@+id/profile_name_edit_ok_txt"
+            style="@style/TextAppearance.AppCompat.Button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:visibility="gone"
-            style="@style/TextAppearance.AppCompat.Button"
             android:layout_marginStart="@dimen/margin_maxi"
             android:layout_marginTop="@dimen/padding_maxi"
             android:padding="@dimen/padding_mini"
+            android:text="@string/time_picker_ok"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/et_profile_org_alias_name"
             app:layout_constraintStart_toEndOf="@id/et_profile_org_name"
-            app:layout_constraintTop_toTopOf="@id/et_profile_org_name"
-            android:text="@string/time_picker_ok"/>
+            app:layout_constraintTop_toTopOf="@id/et_profile_org_name" />
 
         <EditText
             android:id="@+id/et_profile_org_alias_name"
             style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_profile_org_name"
-            tools:text="NO, New Org, New O, N Org"
-            android:inputType="text"
-            android:visibility="gone"
-            android:importantForAutofill="no" />
+            tools:text="NO, New Org, New O, N Org" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-   <androidx.constraintlayout.widget.ConstraintLayout
-       tools:visibility="gone"
-       android:id="@+id/cl_org_names_edit_mode"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@id/ll_tool_bar">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_org_names_edit_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_tool_bar"
+        tools:visibility="gone">
 
 
-   </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <ScrollView
@@ -199,9 +198,9 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="5"
-                                android:textColor="@color/custom_color"
                                 android:fontFamily="@font/roboto_black"
                                 android:text="@string/telecom_title"
+                                android:textColor="@color/custom_color"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
@@ -281,8 +280,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="5"
                                 android:text="@string/addresses_title"
-                                android:textSize="18sp"
                                 android:textColor="@color/custom_color"
+                                android:textSize="18sp"
                                 android:textStyle="bold" />
 
                             <ImageButton
@@ -291,8 +290,8 @@
                                 android:layout_height="25dp"
                                 android:layout_gravity="center"
                                 android:layout_weight="0.5"
-                                android:contentDescription="@string/profile_address_add_icon"
                                 android:backgroundTint="@color/white"
+                                android:contentDescription="@string/profile_address_add_icon"
                                 android:padding="@dimen/padding_midi"
                                 android:src="@drawable/ic_add"
                                 app:tint="@color/custom_color" />
@@ -366,6 +365,7 @@
                                 android:textColor="@color/custom_color"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
+
                             <ImageButton
                                 android:id="@+id/profile_add_identifiers_button"
                                 android:layout_width="0dp"
@@ -400,7 +400,7 @@
                             android:orientation="horizontal"
                             android:visibility="gone"
                             android:weightSum="7"
-                            tools:visibility="visible">
+                            tools:visibility="gone">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rv_identifiers"
@@ -416,7 +416,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/base_card_view_lab_techs"
+                    android:id="@+id/base_card_view_days_of_operation"
                     style="@style/Base.CardView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -438,22 +438,36 @@
                             android:weightSum="6">
 
                             <TextView
-                                android:id="@+id/lab_tech_title"
+                                android:id="@+id/days_of_operation_title"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="5"
-                                android:text="@string/Lab_scientist_title"
+                                android:text="@string/days_of_operation_title"
+                                android:textColor="@color/custom_color"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
 
                             <ImageButton
-                                android:id="@+id/lab_tech_button"
+                                android:id="@+id/profile_update_days_of_operation_button"
                                 android:layout_width="0dp"
                                 android:layout_height="25dp"
                                 android:layout_gravity="center"
                                 android:layout_weight="0.5"
                                 android:backgroundTint="@color/white"
-                                android:contentDescription="@string/lab_tech_expand_arrow"
+                                android:contentDescription="@string/profile_days_of_operation_add_icon"
+                                android:padding="@dimen/padding_midi"
+                                android:src="@drawable/ic_add"
+                                app:tint="@color/custom_color" />
+
+
+                            <ImageButton
+                                android:id="@+id/profile_days_of_operation_button"
+                                android:layout_width="0dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.5"
+                                android:backgroundTint="@color/white"
+                                android:contentDescription="@string/profile_days_of_operation_expand_arrow"
                                 android:padding="@dimen/padding_midi"
                                 android:src="@drawable/angle_down" />
 
@@ -461,115 +475,25 @@
 
 
                         <LinearLayout
-                            android:id="@+id/lab_techs_hide_able_view"
+                            android:id="@+id/days_of_operation_hide_able_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:visibility="gone"
                             android:weightSum="7">
 
-
-                            <TextView
-                                android:id="@+id/text_lab_scientist_no_data"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="@dimen/padding_maxi"
-                                android:text="@string/text_no_data"
-                                android:textAlignment="center"
-                                android:textStyle="italic"
-                                android:visibility="gone" />
-
-
                             <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rv_lab_techs"
+                                android:id="@+id/rv_days_of_operation"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 tools:itemCount="3"
-                                tools:listitem="@layout/practitioners_item_layout" />
+                                tools:listitem="@layout/profile_days_of_operation_item" />
 
                         </LinearLayout>
 
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/base_card_view_other_practitioner"
-                    style="@style/Base.CardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_mini"
-                    android:layout_marginEnd="@dimen/margin_mini"
-                    android:layout_marginBottom="@dimen/margin_mini"
-                    android:padding="@dimen/padding_midi">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_mini"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="6">
-
-                            <TextView
-                                android:id="@+id/other_practitioner_title"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:text="@string/other_practitioners"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <ImageButton
-                                android:id="@+id/other_practitioner_button"
-                                android:layout_width="0dp"
-                                android:layout_height="25dp"
-                                android:layout_gravity="center"
-                                android:layout_weight="0.5"
-                                android:backgroundTint="@color/white"
-                                android:contentDescription="@string/lab_tech_expand_arrow"
-                                android:padding="@dimen/padding_midi"
-                                android:src="@drawable/angle_down" />
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:id="@+id/other_practitioner_hide_able_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:visibility="gone"
-                            android:weightSum="7">
-
-
-                            <TextView
-                                android:id="@+id/text_other_practitioner_no_data"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="@dimen/padding_maxi"
-                                android:text="@string/text_no_data"
-                                android:textAlignment="center"
-                                android:textStyle="italic"
-                                android:visibility="gone" />
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rv_other_practitioner"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                tools:itemCount="3"
-                                tools:listitem="@layout/practitioners_item_layout" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
 
             </LinearLayout>
 
