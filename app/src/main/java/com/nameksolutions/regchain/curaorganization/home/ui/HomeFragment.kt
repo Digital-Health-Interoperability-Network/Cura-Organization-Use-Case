@@ -54,7 +54,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, HomeRepo>(
             }
 
             buttonProfile.setOnClickListener {
-                requireView().snackbar("Profile Clicked!")
+                val profileNav = HomeFragmentDirections.actionHomeFragmentToProfileFragment()
+                findNavController().navigate(profileNav)
             }
 
             buttonToken.setOnClickListener {

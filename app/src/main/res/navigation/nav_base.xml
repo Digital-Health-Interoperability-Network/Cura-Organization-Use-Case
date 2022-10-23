@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_homeFragment_to_servicesHomeFragment"
             app:destination="@id/servicesHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
         <!--                <action-->
 <!--                    android:id="@+id/action_homeFragment_to_profileFragment"-->
 <!--                    app:destination="@id/profileFragment" />-->
@@ -84,14 +87,6 @@
 
         </fragment>
     <!--    <fragment-->
-    <!--        android:id="@+id/profileFragment"-->
-    <!--        android:name="com.nameksolutions.regchain.curaorganization.home.profile.ui.ProfileFragment"-->
-    <!--        android:label="ProfileFragment" >-->
-    <!--        <action-->
-    <!--            android:id="@+id/action_profileFragment_to_homeFragment"-->
-    <!--            app:destination="@id/homeFragment" />-->
-    <!--    </fragment>-->
-    <!--    <fragment-->
     <!--        android:id="@+id/tokenFragment"-->
     <!--        android:name="com.nameksolutions.regchain.curaorganization.home.tokens.TokenFragment"-->
     <!--        android:label="TokenFragment" >-->
@@ -158,13 +153,13 @@
             android:id="@+id/action_singleHealthCareServiceFragment_to_servicesHomeFragment"
             app:destination="@id/servicesHomeFragment" />
     </fragment>
-    <!--    <fragment-->
-    <!--        android:id="@+id/newService"-->
-    <!--        android:name="com.nameksolutions.regchain.curaorganization.home.services.ui.NewService"-->
-    <!--        android:label="fragment_new_service"-->
-    <!--        tools:layout="@layout/fragment_new_service" >-->
-    <!--        <action-->
-    <!--            android:id="@+id/action_newService_to_servicesFragment"-->
-    <!--            app:destination="@id/servicesFragment" />-->
-    <!--    </fragment>-->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.nameksolutions.regchain.curaorganization.home.profile.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

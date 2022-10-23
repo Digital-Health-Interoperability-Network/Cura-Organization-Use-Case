@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nameksolutions.regchain.curaorganization.R
@@ -54,6 +55,29 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, P
         fetchOrganizationInfo()
 
         with(binding) {
+
+            profileBackBtn.setOnClickListener {
+                val homeNav = ProfileFragmentDirections.actionProfileFragmentToHomeFragment()
+                findNavController().navigate(homeNav)
+            }
+
+            profileAddTelecomButton.setOnClickListener {
+                requireView().snackbar("Coming soon...")
+            }
+
+            profileAddAddressButton.setOnClickListener {
+                requireView().snackbar("Coming soon...")
+            }
+
+            profileAddIdentifiersButton.setOnClickListener {
+                requireView().snackbar("Coming soon...")
+            }
+
+            profileUpdateDaysOfOperationButton.setOnClickListener {
+                requireView().snackbar("Coming soon...")
+            }
+
+
             profileTelecomButton.setOnClickListener {
                 // If the CardView is already expanded, set its visibility
                 //  to gone and change the expand less icon to expand more.
@@ -304,10 +328,19 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, P
             when (response){
                 is Resource.Success ->{
                     hideProgress()
+
+                    val name = response.value.organization.name
+                    val aliasNames = response.value.organization.alias
                     val telecoms = response.value.organization.telecom
                     val identifiers = response.value.organization.identifier
                     val addresses = response.value.organization.address
                     val daysOfOperation = response.value.organization._registryIdentifier.availableTime
+
+
+                    binding.profileOrgNameTxt.text = name
+                    for (alias in aliasNames){
+                        binding.profileOrgAliasNameTxt.setText("$alias,")
+                    }
 
                     telecomsAdapter.submitList(telecoms)
                     identifiersAdapter.submitList(identifiers)
