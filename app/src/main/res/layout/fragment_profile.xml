@@ -1,14 +1,576 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".home.profile.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/ll_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/profile_back_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/padding_mini"
+            android:layout_weight="1"
+            android:padding="@dimen/padding_midi"
+            app:srcCompat="@drawable/ic_angle_left" />
+
+        <TextView
+            android:id="@+id/text_profile_organization_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_mini"
+            android:layout_weight="8"
+            android:gravity="center"
+            android:text="@string/profile"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_org_names"
+        tools:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_tool_bar"
+        >
+
+        <TextView
+            tools:visibility="visible"
+            android:id="@+id/profile_org_name_txt"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="New Organisation" />
+
+        <ImageView
+            android:id="@+id/profile_name_edit_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            tools:visibility="visible"
+            android:layout_marginStart="@dimen/margin_maxi"
+            android:layout_marginTop="@dimen/padding_maxi"
+            android:padding="@dimen/padding_mini"
+            app:layout_constraintBottom_toTopOf="@id/profile_org_alias_name_txt"
+            app:layout_constraintStart_toEndOf="@id/profile_org_name_txt"
+            app:layout_constraintTop_toTopOf="@id/profile_org_name_txt"
+            app:srcCompat="@drawable/ic_edit"
+            android:contentDescription="@string/edit_organization_name" />
+
+        <TextView
+            android:id="@+id/profile_org_alias_name_txt"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_org_name_txt"
+            tools:text="NO, New Org, New O, N Org" />
+
+
+        <EditText
+            android:id="@+id/et_profile_org_name"
+            style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="New Organisation"
+            android:inputType="text"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/profile_name_edit_ok_txt"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone"
+            style="@style/TextAppearance.AppCompat.Button"
+            android:layout_marginStart="@dimen/margin_maxi"
+            android:layout_marginTop="@dimen/padding_maxi"
+            android:padding="@dimen/padding_mini"
+            app:layout_constraintBottom_toTopOf="@id/et_profile_org_alias_name"
+            app:layout_constraintStart_toEndOf="@id/et_profile_org_name"
+            app:layout_constraintTop_toTopOf="@id/et_profile_org_name"
+            android:text="@string/time_picker_ok"/>
+
+        <EditText
+            android:id="@+id/et_profile_org_alias_name"
+            style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_profile_org_name"
+            tools:text="NO, New Org, New O, N Org"
+            android:inputType="text"
+            android:visibility="gone"
+            android:importantForAutofill="no" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       tools:visibility="gone"
+       android:id="@+id/cl_org_names_edit_mode"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/ll_tool_bar">
+
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ScrollView
+        android:id="@+id/card_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_mini"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_org_names"
+        app:layout_constraintVertical_bias="0.131">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_mini"
+            android:padding="@dimen/padding_mini"
+            app:cardElevation="@dimen/padding_mini">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_mini"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/base_card_view_telecoms"
+                    style="@style/Base.CardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_mini"
+                    android:layout_marginEnd="@dimen/margin_mini"
+                    android:layout_marginBottom="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="6">
+
+                            <TextView
+                                android:id="@+id/profile_telecom_title"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:textColor="@color/custom_color"
+                                android:fontFamily="@font/roboto_black"
+                                android:text="@string/telecom_title"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <ImageButton
+                                android:id="@+id/profile_add_telecom_button"
+                                android:layout_width="0dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.5"
+                                android:backgroundTint="@color/white"
+                                android:contentDescription="@string/profile_telecom_expand_arrow"
+                                android:padding="@dimen/padding_midi"
+                                android:src="@drawable/ic_add"
+                                app:tint="@color/custom_color" />
+
+                            <ImageButton
+                                android:id="@+id/profile_telecom_button"
+                                android:layout_width="0dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.5"
+                                android:backgroundTint="@color/white"
+                                android:contentDescription="@string/profile_telecom_expand_arrow"
+                                android:padding="@dimen/padding_midi"
+                                android:src="@drawable/angle_down" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/profile_telecom_hide_able_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            android:weightSum="7"
+                            tools:visibility="gone">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_telecom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:itemCount="3"
+                                tools:listitem="@layout/profile_telecoms_item" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/base_card_view_nurses"
+                    style="@style/Base.CardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_mini"
+                    android:layout_marginEnd="@dimen/margin_mini"
+                    android:layout_marginBottom="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="6">
+
+                            <TextView
+                                android:id="@+id/nurses_title"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:text="@string/nurses_title"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <ImageButton
+                                android:id="@+id/nurses_button"
+                                android:layout_width="0dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.5"
+                                android:backgroundTint="@color/white"
+                                android:contentDescription="@string/nurses_expand_arrow"
+                                android:padding="@dimen/padding_midi"
+                                android:src="@drawable/angle_down" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/nurses_hide_able_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            android:weightSum="7"
+                            tools:visibility="visible">
+
+
+                            <!--                            <TextView-->
+                            <!--                                android:id="@+id/text_nurses_no_data"-->
+                            <!--                                android:layout_width="match_parent"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:padding="@dimen/padding_maxi"-->
+                            <!--                                android:text="@string/text_no_data"-->
+                            <!--                                android:textAlignment="center"-->
+                            <!--                                android:textStyle="italic"-->
+                            <!--                                android:visibility="gone" />-->
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_nurses"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:itemCount="3"
+                                tools:listitem="@layout/practitioners_item_layout" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/base_card_view_pharmacists"
+                    style="@style/Base.CardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_mini"
+                    android:layout_marginEnd="@dimen/margin_mini"
+                    android:layout_marginBottom="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="6">
+
+                            <TextView
+                                android:id="@+id/pharmacists_title"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:text="@string/pharmacists_title"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <ImageButton
+                                android:id="@+id/pharmacists_button"
+                                android:layout_width="0dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.5"
+                                android:backgroundTint="@color/white"
+                                android:contentDescription="@string/pharmacists_expand_arrow"
+                                android:padding="@dimen/padding_midi"
+                                android:src="@drawable/angle_down" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/pharmacists_hide_able_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            android:weightSum="7">
+
+
+                            <TextView
+                                android:id="@+id/text_pharmacist_no_data"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/padding_maxi"
+                                android:text="@string/text_no_data"
+                                android:textAlignment="center"
+                                android:textStyle="italic"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_pharmacists"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:itemCount="3"
+                                tools:listitem="@layout/practitioners_item_layout" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/base_card_view_lab_techs"
+                    style="@style/Base.CardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_mini"
+                    android:layout_marginEnd="@dimen/margin_mini"
+                    android:layout_marginBottom="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="6">
+
+                            <TextView
+                                android:id="@+id/lab_tech_title"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:text="@string/Lab_scientist_title"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <ImageButton
+                                android:id="@+id/lab_tech_button"
+                                android:layout_width="0dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.5"
+                                android:backgroundTint="@color/white"
+                                android:contentDescription="@string/lab_tech_expand_arrow"
+                                android:padding="@dimen/padding_midi"
+                                android:src="@drawable/angle_down" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/lab_techs_hide_able_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            android:weightSum="7">
+
+
+                            <TextView
+                                android:id="@+id/text_lab_scientist_no_data"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/padding_maxi"
+                                android:text="@string/text_no_data"
+                                android:textAlignment="center"
+                                android:textStyle="italic"
+                                android:visibility="gone" />
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_lab_techs"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:itemCount="3"
+                                tools:listitem="@layout/practitioners_item_layout" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/base_card_view_other_practitioner"
+                    style="@style/Base.CardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_mini"
+                    android:layout_marginEnd="@dimen/margin_mini"
+                    android:layout_marginBottom="@dimen/margin_mini"
+                    android:padding="@dimen/padding_midi">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_mini"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="6">
+
+                            <TextView
+                                android:id="@+id/other_practitioner_title"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="5"
+                                android:text="@string/other_practitioners"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <ImageButton
+                                android:id="@+id/other_practitioner_button"
+                                android:layout_width="0dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.5"
+                                android:backgroundTint="@color/white"
+                                android:contentDescription="@string/lab_tech_expand_arrow"
+                                android:padding="@dimen/padding_midi"
+                                android:src="@drawable/angle_down" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/other_practitioner_hide_able_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            android:weightSum="7">
+
+
+                            <TextView
+                                android:id="@+id/text_other_practitioner_no_data"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/padding_maxi"
+                                android:text="@string/text_no_data"
+                                android:textAlignment="center"
+                                android:textStyle="italic"
+                                android:visibility="gone" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_other_practitioner"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                tools:itemCount="3"
+                                tools:listitem="@layout/practitioners_item_layout" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

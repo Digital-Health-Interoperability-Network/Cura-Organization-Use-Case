@@ -8,10 +8,13 @@
         <entry key="app/src/main/res/drawable/angle_down.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/angle_up.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/bg_circle.xml" value="0.2335" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.117" />
         <entry key="app/src/main/res/drawable/ic_angle_left.xml" value="0.2335" />
         <entry key="app/src/main/res/drawable/ic_attention.xml" value="0.3655" />
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.365" />
         <entry key="app/src/main/res/drawable/ic_default_step.xml" value="0.3655" />
+        <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/ic_email.xml" value="0.117" />
         <entry key="app/src/main/res/drawable/ic_red_cross.xml" value="0.1675" />
         <entry key="app/src/main/res/drawable/plus-small_24.xml" value="0.141" />
         <entry key="app/src/main/res/drawable/rounded_corner.xml" value="0.141" />
@@ -50,7 +53,7 @@
         <entry key="app/src/main/res/layout/fragment_personal_email_input.xml" value="0.3189397178281317" />
         <entry key="app/src/main/res/layout/fragment_personnel.xml" value="0.31027027027027027" />
         <entry key="app/src/main/res/layout/fragment_practitioner_item.xml" value="0.24161378059836808" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.15006412997007268" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_reg_address.xml" value="0.2997007268063275" />
         <entry key="app/src/main/res/layout/fragment_reg_days_of_operation.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_reg_details.xml" value="0.33" />
@@ -75,6 +78,7 @@
         <entry key="app/src/main/res/layout/personnel_stats_layout_item.xml" value="0.22" />
         <entry key="app/src/main/res/layout/practitioner_custom_dialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/practitioners_item_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/profile_telcoms_item.xml" value="0.37254901960784315" />
         <entry key="app/src/main/res/layout/reg_otp_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/single_health_care_available_time_layout.xml" value="0.12825994014536127" />
         <entry key="app/src/main/res/layout/single_practitioner_available_time_layout_item.xml" value="0.387523629489603" />
