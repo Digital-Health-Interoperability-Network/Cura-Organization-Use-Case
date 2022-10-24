@@ -10,11 +10,13 @@ package com.nameksolutions.regchain.curaorganization.home.profile.ui
 
 import android.app.Dialog
 import android.os.Bundle
+import android.text.Editable
 import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -34,10 +36,14 @@ import com.nameksolutions.regchain.curaorganization.home.profile.adapters.Availa
 import com.nameksolutions.regchain.curaorganization.home.profile.adapters.IdentifiersAdapter
 import com.nameksolutions.regchain.curaorganization.home.profile.adapters.TelecomAdapter
 import com.nameksolutions.regchain.curaorganization.network.Resource
+import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
+import com.nameksolutions.regchain.curaorganization.responses.profile.Organization
+import com.nameksolutions.regchain.curaorganization.utils.handleApiError
 import com.nameksolutions.regchain.curaorganization.utils.showProgressDialog
 import com.nameksolutions.regchain.curaorganization.utils.snackbar
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import kotlin.properties.Delegates
 
 class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, ProfileRepo>() {
 
@@ -48,6 +54,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, P
     private val identifiersAdapter = IdentifiersAdapter()
     private val availableTimeAdapter = AvailableTimeAdapter()
 
+    private val createOrganizationRequest = CreateOrganizationRequest()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,6 +62,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, P
         fetchOrganizationInfo()
 
         with(binding) {
+            setNameEditMode(false)
 
             profileBackBtn.setOnClickListener {
                 val homeNav = ProfileFragmentDirections.actionProfileFragmentToHomeFragment()
@@ -346,6 +354,8 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, P
                     identifiersAdapter.submitList(identifiers)
                     addressesAdapter.submitList(addresses)
                     availableTimeAdapter.submitList(daysOfOperation)
+
+                    enableEdits(response.value.organization)
                 }
                 is Resource.Failure ->{
                     hideProgress()
@@ -357,6 +367,104 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, P
             }
         })
 
+    }
+
+    private fun enableEdits(organization: Organization) {
+
+        with(binding){
+            profileNameEditBtn.setOnClickListener {
+                setNameEditMode(true)
+
+                var newOrgName: String
+                var newOrgAliasName: List<String>
+
+                etProfileOrgName.apply {
+                    isVisible = true
+                    setText(organization.name)
+                }
+
+                etProfileOrgAliasName.apply {
+                    isVisible = true
+                    for (aliasName in organization.alias)
+                        append(aliasName)
+                }
+                profileNameEditOkTxt.apply {
+                    isVisible = true
+                    setOnClickListener {
+                        newOrgName = etProfileOrgName.text.toString().trim()
+                        newOrgAliasName = etProfileOrgAliasName.text.toString().trim().split("\\s*,\\s*")
+
+                        if (newOrgName.isEmpty()){
+                            newOrgName = organization.name
+                        }
+                        if (newOrgAliasName.isEmpty()){
+                            newOrgAliasName = organization.alias
+                        }
+
+                        updateOrganisationName(newOrgName, newOrgAliasName)
+                    }
+                }
+
+
+
+
+
+            }
+
+        }
+    }
+
+    private fun updateOrganisationName(newOrgName: String, newOrgAliasName: List<String>) {
+        val updatedOrganizationBody = createOrganizationRequest.copy(
+            name = newOrgName,
+            alias = newOrgAliasName
+        )
+
+        viewModel.updateOrganizationDetails(updatedOrganizationBody)
+        viewModel.updateOrganizationDetails.observe(viewLifecycleOwner, Observer { response ->
+            when(response){
+                is Resource.Success ->{
+                    hideProgress()
+                    setNameEditMode(false)
+
+                    val name = response.value.organization.name
+                    val aliasNames = response.value.organization.alias
+
+                    binding.profileOrgNameTxt.text = name
+                    for (alias in aliasNames){
+                        binding.profileOrgAliasNameTxt.setText("$alias,")
+                    }
+
+                }
+                is Resource.Failure ->{
+                    hideProgress()
+                    handleApiError(response) { updateOrganisationName(newOrgName, newOrgAliasName) }
+                }
+                is Resource.Loading ->{
+                    showProgress()
+                }
+            }
+        })
+    }
+
+    private fun setNameEditMode(isEditing: Boolean){
+        with(binding){
+            if (isEditing){ //is in editing mode
+                profileNameEditOkTxt.isVisible = true
+                etProfileOrgName.isVisible = true
+                etProfileOrgAliasName.isVisible = true
+                profileOrgNameTxt.isVisible = false
+                profileOrgAliasNameTxt.isVisible = false
+                profileNameEditBtn.isVisible = false
+            }else{ //is not in editing mode
+                profileNameEditOkTxt.isVisible = false
+                etProfileOrgName.isVisible = false
+                etProfileOrgAliasName.isVisible = false
+                profileOrgNameTxt.isVisible = true
+                profileOrgAliasNameTxt.isVisible = true
+                profileNameEditBtn.isVisible = true
+            }
+        }
     }
 
 

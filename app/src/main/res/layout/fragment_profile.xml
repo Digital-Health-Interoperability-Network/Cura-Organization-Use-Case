@@ -67,6 +67,7 @@
             android:id="@+id/profile_name_edit_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:visibility="invisible"
             android:layout_marginStart="@dimen/margin_maxi"
             android:layout_marginTop="@dimen/padding_maxi"
             android:contentDescription="@string/edit_organization_name"
@@ -75,7 +76,7 @@
             app:layout_constraintStart_toEndOf="@id/profile_org_name_txt"
             app:layout_constraintTop_toTopOf="@id/profile_org_name_txt"
             app:srcCompat="@drawable/ic_edit"
-            tools:visibility="visible" />
+            tools:visibility="invisible" />
 
         <TextView
             android:id="@+id/profile_org_alias_name_txt"

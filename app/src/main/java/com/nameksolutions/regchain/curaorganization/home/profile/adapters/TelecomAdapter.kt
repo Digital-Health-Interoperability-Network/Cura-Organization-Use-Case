@@ -1,8 +1,10 @@
 package com.nameksolutions.regchain.curaorganization.home.profile.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -13,9 +15,12 @@ import com.nameksolutions.regchain.curaorganization.responses.PractitionerRespon
 import com.nameksolutions.regchain.curaorganization.responses.profile.GetOrganizationResponse
 import com.nameksolutions.regchain.curaorganization.responses.profile.Telecom
 import com.nameksolutions.regchain.curaorganization.utils.snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class TelecomAdapter :
     ListAdapter<Telecom, TelecomAdapter.TelecomViewHolder>(DiffCallback()) {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -55,6 +60,7 @@ class TelecomAdapter :
             binding.apply {
                 profileTelecomItemClickListener = listener
                 telecomItem = itemData
+
                 executePendingBindings()
             }
         }
