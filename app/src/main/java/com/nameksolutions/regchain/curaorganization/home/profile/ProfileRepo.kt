@@ -2,6 +2,7 @@ package com.nameksolutions.regchain.curaorganization.home.profile
 
 import com.nameksolutions.regchain.curaorganization.base.BaseRepo
 import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
+import com.nameksolutions.regchain.curaorganization.requests.TelecomRequest
 import com.nameksolutions.regchain.curaorganization.utils.UserPreferences
 
 class ProfileRepo(
@@ -15,5 +16,8 @@ class ProfileRepo(
 
     suspend fun updateOrganizationDetails(updateOrganizationDetails: CreateOrganizationRequest) =
         safeApiCall { api.updateOrganizationDetails(updateOrganizationDetails) }
+
+    suspend fun updateOrganizationTelecom(updateOrganizationTelecom: TelecomRequest) =
+        safeApiCall { api.updateOrganizationTelecom(updateOrganizationTelecom) }
 
 }

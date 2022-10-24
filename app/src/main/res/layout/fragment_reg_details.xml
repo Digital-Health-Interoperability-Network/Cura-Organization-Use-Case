@@ -7,27 +7,27 @@
     tools:context=".auth.ui.registration.RegDetails">
 
 
-        <TextView
-            android:id="@+id/text_reg_details_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_mini"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="center"
-            android:padding="@dimen/padding_midi"
-            android:text="@string/reg_organization_details_title"
-            android:textColor="@color/custom_color"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@id/fragment_details_cv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/text_reg_details_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_mini"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:padding="@dimen/padding_midi"
+        android:text="@string/reg_organization_details_title"
+        android:textColor="@color/custom_color"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@id/fragment_details_cv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/fragment_details_cv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_details_cv"
         android:layout_margin="@dimen/margin_midi"
         android:padding="@dimen/padding_midi"
         app:cardElevation="@dimen/padding_mini"
@@ -37,19 +37,18 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
         <ScrollView
             android:id="@+id/fragment_details_sv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/text_reg_details_title"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_reg_details_title"
             app:layout_constraintTop_toTopOf="parent">
 
 
-        <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -113,25 +112,23 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/text_input_layout_reg_organization_identifier"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/padding_mini"
+                    android:hint="@string/reg_organization_identifier"
+                    android:padding="@dimen/padding_mini">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_layout_reg_organization_identifier"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reg_organization_identifier_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_mini"
-                        android:hint="@string/reg_organization_identifier"
-                        android:padding="@dimen/padding_mini">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/reg_organization_identifier_value"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:importantForAutofill="no"
-                            android:inputType="textPersonName"
-                            android:labelFor="@id/reg_organization_identifier_value" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:labelFor="@id/reg_organization_identifier_value" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -208,11 +205,11 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:paddingTop="20dp"
-                        tools:overrideLibrary="com.hbb20.countrypicker"
                         app:ccp_contentColor="@color/custom_color"
                         app:ccp_countryPreference="NG,US,GH"
                         app:ccp_defaultNameCode="NG"
-                        app:ccp_hintExampleNumber="true" />
+                        app:ccp_hintExampleNumber="true"
+                        tools:overrideLibrary="com.hbb20.countrypicker" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/text_input_layout_organization_phone_number"
@@ -238,8 +235,6 @@
         </ScrollView>
 
     </com.google.android.material.card.MaterialCardView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

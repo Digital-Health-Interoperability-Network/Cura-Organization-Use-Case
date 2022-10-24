@@ -16,11 +16,19 @@ import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
 import com.nameksolutions.regchain.curaorganization.databinding.FragmentPersonnelBinding
@@ -37,6 +45,7 @@ import com.nameksolutions.regchain.curaorganization.home.profile.adapters.Identi
 import com.nameksolutions.regchain.curaorganization.home.profile.adapters.TelecomAdapter
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.requests.CreateOrganizationRequest
+import com.nameksolutions.regchain.curaorganization.requests.TelecomRequest
 import com.nameksolutions.regchain.curaorganization.responses.profile.Organization
 import com.nameksolutions.regchain.curaorganization.utils.handleApiError
 import com.nameksolutions.regchain.curaorganization.utils.showProgressDialog
@@ -54,7 +63,10 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, P
     private val identifiersAdapter = IdentifiersAdapter()
     private val availableTimeAdapter = AvailableTimeAdapter()
 
+    lateinit var organizationDetail: Organization
+
     private val createOrganizationRequest = CreateOrganizationRequest()
+    private val updateTelecomRequest = TelecomRequest()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -337,6 +349,8 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, P
                 is Resource.Success ->{
                     hideProgress()
 
+                    organizationDetail = response.value.organization
+
                     val name = response.value.organization.name
                     val aliasNames = response.value.organization.alias
                     val telecoms = response.value.organization.telecom
@@ -411,7 +425,90 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileBinding, P
 
             }
 
+            profileAddTelecomButton.setOnClickListener {
+
+                lateinit var newTelecomValue: String
+                lateinit var newTelecomType: String
+
+                val telecomValueArray = arrayListOf<String>("Email")
+                val telecomValueArrayAdapter =
+                    ArrayAdapter(
+                        requireContext(),
+                        R.layout.drop_down_item,
+                        telecomValueArray
+                    )
+
+
+                val builder = AlertDialog.Builder(requireContext(),R.style.CustomAlertDialog)
+                    .create()
+                val view = layoutInflater.inflate(R.layout.custom_telecom_update_layout_dialog,null)
+                val telecomTextValue = view.findViewById<TextInputEditText>(R.id.profile_telecom_update_value)
+                val telecomType = view.findViewById<AutoCompleteTextView>(R.id.update_telecom_type)
+//                val telecomEmailInput = view.findViewById<TextInputLayout>(R.id.text_input_layout_update_telecom_value)
+//                val telecomPhoneInput = view.findViewById<TextInputLayout>(R.id.telecom_update_phone_layout)
+                val  updateButton = view.findViewById<Button>(R.id.profile_telecom_update_okay_button)
+                val  cancelButton = view.findViewById<Button>(R.id.profile_telecom_update_cancel_button)
+
+//                telecomType.addTextChangedListener{
+//                    if (it.toString() == "Phone"){
+//                        telecomEmailInput.isVisible = false
+//                        telecomPhoneInput.isVisible = true
+//                    }else{
+//                        telecomEmailInput.isVisible = true
+//                        telecomPhoneInput.isVisible = false
+//                    }
+//                }
+
+                telecomType.setAdapter(telecomValueArrayAdapter)
+                builder.setView(view)
+
+                updateButton.setOnClickListener {
+                    val updatedTelecomValue = telecomTextValue.text.toString().trim()
+                    val updatedTelecomType = telecomType.text.toString().trim()
+
+                    updateOrganisationTelecom(updatedTelecomValue, updatedTelecomType, builder)
+                }
+                cancelButton.setOnClickListener {
+                    builder.dismiss()
+                }
+                builder.setCanceledOnTouchOutside(false)
+                builder.show()
+            }
+
         }
+    }
+
+    private fun updateOrganisationTelecom(
+        updatedTelecomValue: String,
+        updatedTelecomType: String,
+        builder: AlertDialog
+    ) {
+        val updatedOrganizationTelecom = updateTelecomRequest.copy(
+            value = updatedTelecomValue,
+            system = updatedTelecomType,
+            use = "Alternative",
+            rank = organizationDetail.telecom.lastIndex +1,
+            active = true
+        )
+
+        viewModel.updateOrganizationTelecom(updatedOrganizationTelecom)
+        viewModel.updateOrganizationTelecom.observe(viewLifecycleOwner, Observer { response ->
+            when(response){
+                is Resource.Success ->{
+                    builder.dismiss()
+                    hideProgress()
+                    fetchOrganizationInfo()
+                }
+                is Resource.Failure ->{
+                    hideProgress()
+                    handleApiError(response) {updateOrganisationTelecom(updatedTelecomValue, updatedTelecomType, builder)}
+                }
+                is Resource.Loading ->{
+                    showProgress()
+                }
+            }
+        })
+
     }
 
     private fun updateOrganisationName(newOrgName: String, newOrgAliasName: List<String>) {

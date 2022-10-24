@@ -192,6 +192,10 @@
     <string name="profile_days_of_operation_add_icon">Update Days of Operation</string>
     <string name="profile_start_time_text">Open: </string>
     <string name="profile_close_time_text">"Close: "</string>
+    <string name="profile_update_telecom_value">Value</string>
+    <string name="update_btn_text">Update</string>
+    <string name="profile_update_telecom_email_valueEmai">Email</string>
+    <string name="profile_update_telecom_email_value">Email</string>
 
 
     <string-array name="reg_steps">
