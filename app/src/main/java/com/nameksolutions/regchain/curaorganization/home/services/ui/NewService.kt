@@ -94,10 +94,15 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                 ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, categories)
             newServiceCategoryAutoCompleteView.setAdapter(categoriesAdapter)
 
+            val referralMethods = resources.getStringArray(R.array.new_service_referral_method)
+            val referralMethodAdapter =
+                ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, referralMethods)
+            newServiceReferralMethodView.setAdapter(referralMethodAdapter)
+
             val languages = resources.getStringArray(R.array.id_communication)
             val languagesAdapter =
                 ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, languages)
-            newServiceCategoryAutoCompleteView.setAdapter(languagesAdapter)
+            newServiceCommunicationAutoCompleteView.setAdapter(languagesAdapter)
 
             val specialties = resources.getStringArray(R.array.new_service_specialties)
             val specialtiesAdapter =
