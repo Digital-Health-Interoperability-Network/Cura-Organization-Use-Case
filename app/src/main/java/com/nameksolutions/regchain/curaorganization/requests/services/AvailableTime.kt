@@ -12,5 +12,5 @@ data class AvailableTime(
     val allDay: Boolean? = true,
     val availableEndTime: String? = "",
     val availableStartTime: String? = "",
-    val daysOfWeek: List<String>? = listOf()
+    val daysOfWeek: String? = ""
 )

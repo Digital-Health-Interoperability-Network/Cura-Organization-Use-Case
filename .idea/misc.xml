@@ -50,7 +50,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_new_personnel.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_new_practitioner_role.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_new_service.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_new_service.xml" value="0.12" />
         <entry key="app/src/main/res/layout/fragment_personal_email_input.xml" value="0.3189397178281317" />
         <entry key="app/src/main/res/layout/fragment_personnel.xml" value="0.31027027027027027" />
         <entry key="app/src/main/res/layout/fragment_practitioner_item.xml" value="0.24161378059836808" />

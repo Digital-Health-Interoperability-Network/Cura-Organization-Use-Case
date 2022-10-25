@@ -91,17 +91,17 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
 
             val categories = resources.getStringArray(R.array.new_service_categories)
             val categoriesAdapter =
-                ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, categories)
+                ArrayAdapter(requireContext(), R.layout.drop_down_item, categories)
             newServiceCategoryAutoCompleteView.setAdapter(categoriesAdapter)
 
             val referralMethods = resources.getStringArray(R.array.new_service_referral_method)
             val referralMethodAdapter =
-                ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, referralMethods)
+                ArrayAdapter(requireContext(), R.layout.drop_down_item, referralMethods)
             newServiceReferralMethodView.setAdapter(referralMethodAdapter)
 
             val languages = resources.getStringArray(R.array.id_communication)
             val languagesAdapter =
-                ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, languages)
+                ArrayAdapter(requireContext(), R.layout.drop_down_item, languages)
             newServiceCommunicationAutoCompleteView.setAdapter(languagesAdapter)
 
             val specialties = resources.getStringArray(R.array.new_service_specialties)
@@ -365,7 +365,7 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     availabilityMon = availTime.copy(
                         availableStartTime = newServiceMondayOpen.text.toString().trim(),
                         availableEndTime = newServiceMondayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Mon")
+                        daysOfWeek = "Mon"
                     )
                     availableTime.add(availabilityMon)
                 }
@@ -373,7 +373,7 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     availabilityTue = availTime.copy(
                         availableStartTime = newServiceTuesdayOpen.text.toString().trim(),
                         availableEndTime = newServiceTuesdayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Tue")
+                        daysOfWeek = "Tue"
                     )
                     availableTime.add(availabilityTue)
                 }
@@ -381,7 +381,7 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     availabilityWed = availTime.copy(
                         availableStartTime = newServiceWednesdayOpen.text.toString().trim(),
                         availableEndTime = newServiceWednesdayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Wed")
+                        daysOfWeek = "Wed"
                     )
                     availableTime.add(availabilityWed)
                 }
@@ -389,7 +389,7 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     availabilityThurs = availTime.copy(
                         availableStartTime = newServiceThursdayOpen.text.toString().trim(),
                         availableEndTime = newServiceThursdayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Thurs")
+                        daysOfWeek = "Thurs"
                     )
                     availableTime.add(availabilityThurs)
                 }
@@ -397,7 +397,7 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     availabilityFri = availTime.copy(
                         availableStartTime = newServiceFridayOpen.text.toString().trim(),
                         availableEndTime = newServiceFridayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Fri")
+                        daysOfWeek = "Fri"
                     )
                     availableTime.add(availabilityFri)
                 }
@@ -405,7 +405,7 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     availabilitySat = availTime.copy(
                         availableStartTime = newServiceSaturdayOpen.text.toString().trim(),
                         availableEndTime = newServiceSaturdayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Sat")
+                        daysOfWeek = "Sat"
                     )
                     availableTime.add(availabilitySat)
                 }
@@ -413,7 +413,7 @@ class NewService : BaseFragment<ServicesViewModel,FragmentNewServiceBinding, Ser
                     availabilitySun = availTime.copy(
                         availableStartTime = newServiceSundayOpen.text.toString().trim(),
                         availableEndTime = newServiceSundayClose.text.toString().trim(),
-                        daysOfWeek = listOf("Sun")
+                        daysOfWeek = "Sun"
                     )
                     availableTime.add(availabilitySun)
                 }
