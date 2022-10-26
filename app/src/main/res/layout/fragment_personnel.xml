@@ -76,13 +76,30 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:backgroundTint="@color/custom_color"
             android:clickable="true"
             android:focusable="true"
             app:srcCompat="@drawable/ic_add"/>
 
     </LinearLayout>
+    <ScrollView
+        android:id="@+id/card_practitioners"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_mini"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_search"
+        app:layout_constraintVertical_bias="0.131">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_statistics"
@@ -136,19 +153,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card_statistics" />
-
-    <ScrollView
-        android:id="@+id/card_practitioners"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/padding_mini"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/personnel_view_divider"
-        app:layout_constraintVertical_bias="0.131">
-
 
         <com.google.android.material.card.MaterialCardView
 
@@ -560,6 +564,8 @@
 
 
         </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
 
     </ScrollView>
 

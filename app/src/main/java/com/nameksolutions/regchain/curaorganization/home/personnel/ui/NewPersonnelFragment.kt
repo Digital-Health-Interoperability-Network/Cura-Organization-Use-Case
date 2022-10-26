@@ -203,7 +203,7 @@ class NewPersonnelFragment :
             }
             //if new practitioner role communication field is empty
             if (newPractitionerRoleCommunication.isEmpty()) {
-                textInputLayoutPractitionerCommunication.error =
+                regPractitionerCommunication.error =
                     "At leLeast One Language Required"
                 return
             } else {

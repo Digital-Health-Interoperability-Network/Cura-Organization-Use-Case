@@ -13,8 +13,6 @@ import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.util.Log
-import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,8 +30,6 @@ import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelRepo
 import com.nameksolutions.regchain.curaorganization.home.personnel.PersonnelViewModel
 import com.nameksolutions.regchain.curaorganization.network.Resource
 import com.nameksolutions.regchain.curaorganization.requests.AvailableTimeRequest
-import com.nameksolutions.regchain.curaorganization.requests.CreatePractitionerRequest
-import com.nameksolutions.regchain.curaorganization.requests.NameRequest
 import com.nameksolutions.regchain.curaorganization.requests.PractitionerRoleRequest
 import com.nameksolutions.regchain.curaorganization.utils.*
 import kotlinx.coroutines.flow.first
@@ -78,7 +74,7 @@ class NewPractitionerRoleFragment :
 
     }
 
-    private fun beginEntry() {
+    private fun beginEntry(fetchedPractitionerRoles: List<String>) {
         with(binding) {
             val practitionerName = "${args.practitionerFirstName} ${args.practitionerSurName}"
             practitionerId = args.practitionerId
@@ -88,7 +84,19 @@ class NewPractitionerRoleFragment :
 
             textviewNewPractitionerRolePractitionerName.text = practitionerName
 
-            val practitionerRolesSpecialtyArray = resources.getStringArray(R.array.id_communication)
+            val practitionerRolesArray = fetchedPractitionerRoles
+            val practitionerRolesArrayAdapter =
+                ArrayAdapter(
+                    requireContext(),
+                    R.layout.drop_down_item,
+                    practitionerRolesArray
+                )
+            binding.regPractitionerRole.setAdapter(practitionerRolesArrayAdapter)
+            binding.regPractitionerRole.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
+
+
+
+            val practitionerRolesSpecialtyArray = resources.getStringArray(R.array.new_service_specialties)
             val practitionerRolesSpecialtyArrayAdapter =
                 ArrayAdapter(
                     requireContext(),
@@ -97,16 +105,7 @@ class NewPractitionerRoleFragment :
                 )
             binding.regPractitionerRoleSpecialty.setAdapter(practitionerRolesSpecialtyArrayAdapter)
 
-            val practitionerRolesArray = fetchedPractitionerRoles
-            val practitionerRolesArrayAdapter =
-                ArrayAdapter(
-                    requireContext(),
-                    R.layout.drop_down_item,
-                    practitionerRolesArray
-                )
-
-            binding.regPractitionerRole.setAdapter(practitionerRolesArrayAdapter)
-
+            binding.regPractitionerRoleSpecialty.setTokenizer(MultiAutoCompleteTextView.CommaTokenizer())
 
 
             practitionersAvailableTimesButton.setOnClickListener {
@@ -130,9 +129,7 @@ class NewPractitionerRoleFragment :
                     practitionersAvailableTimesHideAbleView.visibility = View.VISIBLE
                     practitionersAvailableTimesButton.setImageResource(R.drawable.angle_up)
 
-
                 }
-
 
             }
 
@@ -383,12 +380,12 @@ class NewPractitionerRoleFragment :
         with(binding) {
             //if new practitioner role field is empty
             if (newPractitionerRole.isEmpty()) {
-                textInputLayoutPractitionerRole.error = "Practitioner Role Required"
+                regPractitionerRole.error = "Practitioner Role Required"
                 regPractitionerRole.requestFocus()
                 return
             } //if new practitioner role field is empty
             if (newPractitionerRoleSpecialty.isEmpty()) {
-                textInputLayoutPractitionerRoleSpeciality.error = "Practitioner Required Required"
+                regPractitionerRoleSpecialty.error = "Practitioner Required Required"
                 regPractitionerRoleSpecialty.requestFocus()
                 return
             }
@@ -396,14 +393,20 @@ class NewPractitionerRoleFragment :
                 requireView().snackbar("At least one day required")
             } else {
 
+                val newPractitionerRoleRequest: MutableList<String> = mutableListOf()
                 val newPractitionerRoleSpecialtyArray =
                     newPractitionerRoleSpecialty.split("\\s*,\\s*")
-                val newPractitionerRoleArray = newPractitionerRole.split("\\s*,\\s*")
+                val newPractitionerRoleArray =
+                    newPractitionerRole.split("\\s*,\\s*")
+
+                for(role in newPractitionerRoleArray){
+                    newPractitionerRoleRequest.add(role)
+                }
 
 
                 val practitionerRole = practitionerRole.copy(
                     availableTime = availableTime,
-                    code = newPractitionerRoleArray,
+                    code = newPractitionerRoleRequest,
                     specialty = newPractitionerRoleSpecialtyArray
                 )
 
@@ -449,12 +452,9 @@ class NewPractitionerRoleFragment :
                     requireView().snackbar("Roles Fetched")
                     fetchedPractitionerRoles =
                         response.value.listOfPractitionerRoles
-                    Log.d(
-                        Common.TAG,
-                        "getPractitionerRoleList: ${response.value.listOfPractitionerRoles}"
-                    )
 
-                    beginEntry()
+
+                    beginEntry(fetchedPractitionerRoles)
 
                 }
                 is Resource.Failure -> {

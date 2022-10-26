@@ -418,70 +418,6 @@ class PersonnelFragment :
         }
     }
 
-//    private fun fetchAllPractitioner() {
-//        viewModel.getAllPractitioners()
-//        viewModel.allPractitionerDetails.observe(viewLifecycleOwner, Observer {
-//            when(it){
-//                is Resource.Success -> {
-//                    hideProgress()
-//                    //populate the ui
-//                    val practitioners = it.value.data.practitoners
-//                    Log.d(TAG, "fetchAllPractitioner: $practitioners")
-//                    val doctors = mutableListOf<Practitoner>()
-//                    val nurses = mutableListOf<Practitoner>()
-//                    val pharmacists = mutableListOf<Practitoner>()
-//                    val labScientists = mutableListOf<Practitoner>()
-//                    val otherPractitioners = mutableListOf<Practitoner>()
-//                    for (practitioner in practitioners){
-//                        val practitionerRoles = practitioner.practitionerRole
-//                        for (practitionerRole in practitionerRoles){
-//                            when (practitionerRole.code) {
-//                                "Doctor" -> {
-//                                    if (practitionerRole.code == "Doctor")
-//                                        doctors.add(practitioner)
-//                                    subscribeAllDoctorsUI(doctors)
-//                                    Log.d(TAG, "fetchAllPractitioner: Are Doctors")
-//                                }
-//                                "Nurse" -> {
-//                                    if (practitionerRole.code == "Nurse")
-//                                        nurses.add(practitioner)
-//                                    subscribeAllNursesUI(nurses)
-//                                    Log.d(TAG, "fetchAllPractitioner: Are Nurses")
-//                                }
-//                                "Pharmacist" -> {
-//                                    if (practitionerRole.code == "Pharmacist")
-//                                        pharmacists.add(practitioner)
-//                                    subscribeAllPharmacistsUI(pharmacists)
-//                                    Log.d(TAG, "fetchAllPractitioner: Are Pharmacists")
-//                                }
-//                                "Lab Scientist" -> {
-//                                    if (practitionerRole.code == "Lab Scientist")
-//                                        labScientists.add(practitioner)
-//                                    subscribeAllLabTechsUI(labScientists)
-//                                    Log.d(TAG, "fetchAllPractitioner: Are Lab Scientists")
-//                                }
-//                                else -> {
-//                                    otherPractitioners.add(practitioner)
-//                                    subscribeAllOtherUI(otherPractitioners)
-//                                    Log.d(TAG, "fetchAllPractitioner: Are Other Practitioners")
-//                                }
-//                            }
-//                        }
-//                    }
-//                    Log.d(TAG, "fetchAllPractitionerDoctors: $doctors")
-//                    Log.d(TAG, "fetchAllPractitoner: $it")
-//                }
-//                is Resource.Failure -> {
-//                    hideProgress()
-//                    Log.d(TAG, "fetchAllPractitoner: $it")
-//                }
-//                is Resource.Loading -> {
-//                    showProgress()
-//                }
-//            }
-//        })
-//    }
-
     private fun fetchAllPractitionersStats() {
         viewModel.getAllPersonnelStats()
         viewModel.practitionerStats.observe(viewLifecycleOwner, Observer {
@@ -516,18 +452,17 @@ class PersonnelFragment :
 
     private fun fetchPractitioners() {
         viewModel.getPractitionersByRole()
-        viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer {
-            Log.d(TAG, "fetchPractitioners: ${it.toString()}")
-            when (it) {
+        viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer { response->
+            when (response) {
                 is Resource.Success -> {
                     hideProgress()
-                    if (it.value.practitioners.isEmpty()) {
+                    if (response.value.practitioners.isEmpty()) {
                         //show error message
                         requireView().snackbar("No Practitioners Found!") { viewModel.getPractitionersByRole() }
                     } else {
                         // populate the ui
                         //fetch all practitioner list
-                        val practitioners = it.value.practitioners
+                        val practitioners = response.value.practitioners
                         val doctors = mutableListOf<PractitionerResponse>()
                         val nurses = mutableListOf<PractitionerResponse>()
                         val pharmacists = mutableListOf<PractitionerResponse>()
@@ -536,42 +471,44 @@ class PersonnelFragment :
                         for (practitioner in practitioners) {
                             //fetch the list of roles in for each practitioner
                             val practitionerRoles = practitioner.practitionerRoles
-                            for (practitionerRole in practitionerRoles!!) {
+                            for (practitionerRole in practitionerRoles) {
                                 //check the role of each practitioner
-//                                if (practitionerRole.code.contains("Doctor")) {
-                                if ("Doctor" in practitionerRole.code) {
+                                if (practitionerRole.code.contains("Doctor")) {
                                     doctors.add(practitioner)
-                                    Log.d(TAG, "fetchPractitioners doctors: $doctors")
-                                    subscribeAllDoctorsUI(doctors)
                                 }
                                 else if (practitionerRole.code.contains("Nurse")) {
                                     nurses.add(practitioner)
-                                    Log.d(TAG, "fetchPractitioners nurses: $nurses")
-                                    subscribeAllNursesUI(nurses)
                                 }
                                 else if ("Pharmacist" in practitionerRole.code) {
                                     pharmacists.add(practitioner)
-                                    Log.d(TAG, "fetchPractitioners pharmacists: $pharmacists")
-                                    subscribeAllPharmacistsUI(pharmacists)
                                 }
                                 else if (practitionerRole.code.contains("Lab Scientist")) {
                                     labScientists.add(practitioner)
-                                    Log.d(TAG, "fetch labScientists: $labScientists")
-                                    subscribeAllLabTechsUI(labScientists)
                                 } else {
                                     otherPractitioners.add(practitioner)
-                                    subscribeAllOtherUI(otherPractitioners)
                                 }
                             }
                         }
+                        subscribeAllDoctorsUI(doctors.distinctBy { it.id })
+                        subscribeAllNursesUI(nurses.distinctBy { it.id })
+                        subscribeAllPharmacistsUI(pharmacists.distinctBy { it.id })
+                        subscribeAllLabTechsUI(labScientists.distinctBy { it.id })
+                        subscribeAllOtherUI(otherPractitioners.distinctBy { it.id })
+                        Log.d(TAG, "fetchPractitioners doctors: $doctors")
+                        Log.d(TAG, "fetchPractitioners nurses: $nurses")
+                        Log.d(TAG, "fetchPractitioners pharmacists: $pharmacists")
+                        Log.d(TAG, "fetch labScientists: $labScientists")
+
+
+
+
 
                     }
 //
                 }
                 is Resource.Failure -> {
                     hideProgress()
-                    Log.d(TAG, "fetchPractitioners: $it")
-                    handleApiError(it) { viewModel.getPractitionersByRole() }
+                    handleApiError(response) { viewModel.getPractitionersByRole() }
                 }
                 is Resource.Loading -> {
                     showProgress()

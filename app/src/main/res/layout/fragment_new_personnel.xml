@@ -259,14 +259,6 @@
 
                     </LinearLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_layout_practitioner_communication"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/padding_mini"
-                        app:boxBackgroundColor="@color/white"
-                        app:boxStrokeColor="@color/custom_color">
 
                         <MultiAutoCompleteTextView
                             android:id="@+id/reg_practitioner_communication"
@@ -277,9 +269,6 @@
                             android:hint="@string/reg_practitioner_role_communication"
                             android:inputType="none"
                             android:paddingBottom="8dp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
 
 
                 </LinearLayout>
@@ -322,11 +311,6 @@
 
         </LinearLayout>
 
-
 </ScrollView>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

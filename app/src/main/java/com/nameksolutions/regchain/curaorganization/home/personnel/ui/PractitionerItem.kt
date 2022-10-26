@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -67,6 +68,8 @@ class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerIt
                     for (role in practitionerRoles){
                         binding.txtPractitionerRoles.append(role.code.toString())
                     }
+                    val practitionerSurName = response.value.practitioner.name.family
+                    val practitionerFirstName = response.value.practitioner.name.given[0]
 
                     telecoms = response.value.practitioner.telecom
                     binding.singlePractitionerGender.text = response.value.practitioner.gender
@@ -103,6 +106,12 @@ class PractitionerItem : BaseFragment<PersonnelViewModel, FragmentPractitionerIt
                                 requireContext(), practitionerAvailableTimeLayoutManager.orientation
                             )
                         )
+                    }
+
+                    binding.practitionerEditBtn.isVisible = true
+                    binding.practitionerEditBtn.setOnClickListener {
+                        val editRoleDirection = PractitionerItemDirections.actionPractitionerItemToNewPractitionerRoleFragment(practitionerId, practitionerSurName, practitionerFirstName)
+                        findNavController().navigate(editRoleDirection)
                     }
 
                     availableTimeAdapter.submitList(listOfAvailableTimes)

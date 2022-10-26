@@ -105,6 +105,9 @@
         <argument
             android:name="currentPractitionerId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_practitionerItem_to_newPractitionerRoleFragment"
+            app:destination="@id/newPractitionerRoleFragment" />
     </fragment>
     <fragment
         android:id="@+id/servicesHomeFragment"
