@@ -32,7 +32,6 @@ class PersonnelFragment :
 
     private var progressDialog: Dialog? = null
 
-    //
     private val practitionersAdapter = PractitionersAdapter()
     private val nursesAdapter = NursesAdapter()
     private val pharmacistsAdapter = PharmacistsAdapter()
@@ -384,12 +383,7 @@ class PersonnelFragment :
                 adapter = pharmacistsAdapter
                 rvPharmacists.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-//                addItemDecoration(
-//                    DividerItemDecoration(
-//                        requireContext(),
-//                        practitionersLayoutManager.orientation
-//                    )
-//                )
+
             }
             rvLabTechs.apply {
                 adapter = labScientistsAdapter
@@ -452,7 +446,7 @@ class PersonnelFragment :
 
     private fun fetchPractitioners() {
         viewModel.getPractitionersByRole()
-        viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer { response->
+        viewModel.allPractitionerByRoleDetails.observe(viewLifecycleOwner, Observer { response ->
             when (response) {
                 is Resource.Success -> {
                     hideProgress()
@@ -475,14 +469,11 @@ class PersonnelFragment :
                                 //check the role of each practitioner
                                 if (practitionerRole.code.contains("Doctor")) {
                                     doctors.add(practitioner)
-                                }
-                                else if (practitionerRole.code.contains("Nurse")) {
+                                } else if (practitionerRole.code.contains("Nurse")) {
                                     nurses.add(practitioner)
-                                }
-                                else if ("Pharmacist" in practitionerRole.code) {
+                                } else if ("Pharmacist" in practitionerRole.code) {
                                     pharmacists.add(practitioner)
-                                }
-                                else if (practitionerRole.code.contains("Lab Scientist")) {
+                                } else if (practitionerRole.code.contains("Lab Scientist")) {
                                     labScientists.add(practitioner)
                                 } else {
                                     otherPractitioners.add(practitioner)
@@ -494,17 +485,8 @@ class PersonnelFragment :
                         subscribeAllPharmacistsUI(pharmacists.distinctBy { it.id })
                         subscribeAllLabTechsUI(labScientists.distinctBy { it.id })
                         subscribeAllOtherUI(otherPractitioners.distinctBy { it.id })
-                        Log.d(TAG, "fetchPractitioners doctors: $doctors")
-                        Log.d(TAG, "fetchPractitioners nurses: $nurses")
-                        Log.d(TAG, "fetchPractitioners pharmacists: $pharmacists")
-                        Log.d(TAG, "fetch labScientists: $labScientists")
-
-
-
-
 
                     }
-//
                 }
                 is Resource.Failure -> {
                     hideProgress()
@@ -552,31 +534,16 @@ class PersonnelFragment :
             binding.textPharmacistNoData.visible(false)
         }
 
-
     }
 
     private fun subscribeAllNursesUI(nurses: List<PractitionerResponse>) {
         if (nurses.isNotEmpty()) {
-//            binding.rvNurses.visible(true)
             nursesAdapter.submitList(nurses)
-//        } else {
-//            binding.rvNurses.visible(false)
-//            binding.textNursesNoData.visible(true)
         }
-
-
     }
 
     private fun subscribeAllDoctorsUI(doctors: List<PractitionerResponse>) {
-//        if (doctors.isNotEmpty()) {
-//            binding.rvDoctors.visible(true)
-            Log.d(TAG, "subscribeAllDoctorsUI: $doctors")
-            practitionersAdapter.submitList(doctors)
-//        } else {
-//            binding.rvDoctors.visible(false)
-//            binding.textDoctorsNoData.visible(false)
-//        }
-
+        practitionersAdapter.submitList(doctors)
     }
 
 

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2022.
+  ~ Richard Uzor
+  ~ For Namek Solutions Limited,
+  ~ Abuja, FCT.
+  ~ Nigeria
+  -->
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:elevation="@dimen/padding_mini"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_update_name_prefix"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_margin="@dimen/padding_mini"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/custom_color">
+
+            <AutoCompleteTextView
+                android:id="@+id/update_practitioner_name_prefix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:hint="@string/reg_practitioner_title"
+                android:inputType="none"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_update_practitioner_surname"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_margin="@dimen/padding_mini"
+            android:hint="@string/reg_practitioner_surname"
+            android:padding="@dimen/padding_mini">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/update_practitioner_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:labelFor="@id/reg_id_state_id" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_update_practitioner_other_names"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding_mini"
+        android:hint="@string/reg_practitioner_other_names"
+        android:padding="@dimen/padding_mini">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/update_practitioner_other_names"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            android:labelFor="@id/reg_practitioner_other_names" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/practitioner_name_update_cancel_button"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_margin="30dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:text="@string/btn_practitioner_cancel"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button"
+                android:id="@+id/practitioner_name_update_okay_button"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_margin="30dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:text="@string/update_btn_text"
+                android:textAllCaps="false"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

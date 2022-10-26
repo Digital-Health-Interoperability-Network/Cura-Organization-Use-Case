@@ -17,9 +17,10 @@ class PersonnelViewModel(
 ) : BaseViewModel(repo) {
 
     //fetch all practitioner statistics
-    private val _practitionerStats: MutableLiveData<Resource<GetPersonnelStatsResponse>> = MutableLiveData()
+    private val _practitionerStats: MutableLiveData<Resource<GetPersonnelStatsResponse>> =
+        MutableLiveData()
     val practitionerStats: LiveData<Resource<GetPersonnelStatsResponse>>
-    get() = _practitionerStats
+        get() = _practitionerStats
 
     //create Practitioner Observer Variables
     private val _practitionerCreation: MutableLiveData<Resource<CreatePractitionerResponse>> =
@@ -33,10 +34,17 @@ class PersonnelViewModel(
     val practitionerRoleCreationResponse: LiveData<Resource<PractitionerRoleCreateResponse>>
         get() = _practitionerRoleCreation
 
-//    //fetch Practitioner Observer Variables
-    private val _onePractitionerInfo: MutableLiveData<Resource<SinglePractitioner>> = MutableLiveData()
+    //fetch Practitioner Observer Variables
+    private val _onePractitionerInfo: MutableLiveData<Resource<SinglePractitioner>> =
+        MutableLiveData()
     val onePractitionerInfo: LiveData<Resource<SinglePractitioner>>
-    get() = _onePractitionerInfo
+        get() = _onePractitionerInfo
+
+    //update Practitioner Observer Variables
+    private val _updateOnePractitionerInfo: MutableLiveData<Resource<SinglePractitioner>> =
+        MutableLiveData()
+    val updateOnePractitionerInfo: LiveData<Resource<SinglePractitioner>>
+        get() = _updateOnePractitionerInfo
 
 
     //fetch all practitioner by role Observer Variables
@@ -45,9 +53,10 @@ class PersonnelViewModel(
     val allPractitionerByRoleDetails: LiveData<Resource<GetPractitionersResponse>>
         get() = _allPractitionerByRoleDetails
 
-    private val _practitionerRoleList: MutableLiveData<Resource<PractitionerRolesGetResponse>> = MutableLiveData()
+    private val _practitionerRoleList: MutableLiveData<Resource<PractitionerRolesGetResponse>> =
+        MutableLiveData()
     val practitionerRoleListResponse: LiveData<Resource<PractitionerRolesGetResponse>>
-    get() = _practitionerRoleList
+        get() = _practitionerRoleList
 
 ////    = = = = = = = = = = = = = = = FUNCTIONS TO FETCH FROM REPO  = = = = = = = = = = = = = = = = =
 //
@@ -90,6 +99,15 @@ class PersonnelViewModel(
         _onePractitionerInfo.value = Resource.Loading
         _onePractitionerInfo.value =
             repo.getOnePractitioner(practitionerId)
+    }
+
+    fun updateOnePractitioner(
+        practitionerId: String,
+        updatePractitionerRequest: CreatePractitionerRequest
+    ) = viewModelScope.launch {
+        _updateOnePractitionerInfo.value = Resource.Loading
+        _updateOnePractitionerInfo.value =
+            repo.updateOnePractitioner(practitionerId, updatePractitionerRequest)
     }
 
     fun getPractitionersByRole() = viewModelScope.launch {

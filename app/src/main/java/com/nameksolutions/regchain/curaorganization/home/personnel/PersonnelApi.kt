@@ -25,10 +25,12 @@ interface PersonnelApi {
     suspend fun getAllPersonnelStats(): GetPersonnelStatsResponse
 
     @POST("$practitionerRoute/{practitionerId}/$practitionerRoleRoute")
-    suspend fun createPractitionerRole(@Path("practitionerId") practitionerId: String,
-                                       @Body practitionerRoleRequest: PractitionerRoleRequest
+    suspend fun createPractitionerRole(
+        @Path("practitionerId") practitionerId: String,
+        @Body practitionerRoleRequest: PractitionerRoleRequest
     ): PractitionerRoleCreateResponse
-//
+
+    //
 //   // @GET(practitionerRoute)
 ////    suspend fun getAllPractitioners(): AllPractitioner
 //
@@ -37,6 +39,12 @@ interface PersonnelApi {
 ////
     @GET("$practitionerRoute/{practitionerId}/")
     suspend fun getOnePractitioner(@Path("practitionerId") id: String): SinglePractitioner
+
+    @PATCH("$practitionerRoute/{practitionerId}/")
+    suspend fun updateOnePractitioner(
+        @Path("practitionerId") id: String,
+        @Body updatePractitioner: CreatePractitionerRequest
+    ): SinglePractitioner
 
     @GET("$practitionerRoute/")
     suspend fun getPractitionersByRole(): GetPractitionersResponse

@@ -8,7 +8,7 @@ import com.nameksolutions.regchain.curaorganization.utils.UserPreferences
 class PersonnelRepo(
     private val api: PersonnelApi,
     private val prefs: UserPreferences
-): BaseRepo() {
+) : BaseRepo() {
 
     suspend fun getAllPersonnelStats() = safeApiCall {
         api.getAllPersonnelStats()
@@ -30,13 +30,19 @@ class PersonnelRepo(
         api.createPractitioner(createPractitioner)
     }
 
-    suspend fun createPractitionerRole(practitionerId: String,
-                                       practitionerRoleRequest: PractitionerRoleRequest
+    suspend fun createPractitionerRole(
+        practitionerId: String,
+        practitionerRoleRequest: PractitionerRoleRequest
     ) = safeApiCall { api.createPractitionerRole(practitionerId, practitionerRoleRequest) }
 
     suspend fun getOnePractitioner(id: String) = safeApiCall {
         api.getOnePractitioner(id)
     }
+
+    suspend fun updateOnePractitioner(id: String, updatePractitioner: CreatePractitionerRequest) =
+        safeApiCall {
+            api.updateOnePractitioner(id, updatePractitioner)
+        }
 
 //    suspend fun updatePractitioner(createPractitioner: PractitionerRequest) = safeApiCall {
 //        api.updatePractitioner(createPractitioner)

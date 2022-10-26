@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayout
 import com.nameksolutions.regchain.curaorganization.R
 import com.nameksolutions.regchain.curaorganization.base.BaseFragment
@@ -34,6 +35,10 @@ class ServicesHomeFragment :
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
+            servicesBackBtn.setOnClickListener {
+                val servicesBackToHome = ServicesHomeFragmentDirections.actionServicesHomeFragmentToHomeFragment()
+                findNavController().navigate(servicesBackToHome)
+            }
             tabTitle.addTab(tabTitle.newTab().setText("Services Info"))
             tabTitle.addTab(tabTitle.newTab().setText("Healthcare Services"))
 
